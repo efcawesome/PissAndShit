@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace testmod.Buffs
+namespace PissAndShit.Buffs
 {
 	public class Skooma : ModBuff
 	{
