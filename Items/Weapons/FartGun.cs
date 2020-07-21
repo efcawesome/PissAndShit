@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace testmod.Items
+namespace PissAndShit.Items
 {
 	public class FartGun : ModItem
 	{
