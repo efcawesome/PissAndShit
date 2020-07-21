@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace PissandShit.NPCs
+namespace PissAndShit.NPCs
 {
 
 	public class Inflated : ModNPC
