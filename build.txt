@@ -1,3 +1,3 @@
-displayName = Piss and Shit
+displayName = Inflation Mod
 author = Big Chungus
 version = 0.1
