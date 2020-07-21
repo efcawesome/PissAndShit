@@ -1,0 +1,3 @@
+displayName = Piss and Shit
+author = Big Chungus
+version = 0.1
