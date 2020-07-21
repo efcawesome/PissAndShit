@@ -18,9 +18,9 @@ namespace PissAndShit.Buffs
 		{
 			for (int i = 0; i < 9; i++)
 			{
-				player.velocity.X *= 1.10f;
-				player.moveSpeed *= 1.10f;
-				player.maxRunSpeed *= 1.10f;
+				player.velocity.X *= 1.01f;
+				player.moveSpeed *= 1.01f;
+				player.maxRunSpeed *= 1.01f;
 			}
 		}
 	}
