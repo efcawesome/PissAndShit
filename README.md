@@ -1,2 +1,2 @@
-# PissAndShit
+# Inflation
 mod
