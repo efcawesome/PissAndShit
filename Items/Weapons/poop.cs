@@ -1,7 +1,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace pissandshit.Items
+namespace PissandShit.Items.Weapons
 {
 	public class poop : ModItem
 	{
