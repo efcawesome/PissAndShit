@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace testmod.NPCs
+namespace PissAndShit.NPCs
 {
 	public class CoochieSnatcher : ModNPC
 	{	
