@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace testmod.Projectiles
+namespace PissAndShit.Projectiles
 {
 	public class Fart : ModProjectile
 	{
