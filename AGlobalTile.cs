@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace testmod
+namespace PissAndShit
 
 {
     public class AGlobalTile : GlobalTile
