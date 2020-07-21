@@ -9,7 +9,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
-namespace testmod.NPCs
+namespace PissAndShit.NPCs
 {
 	public class AGLobalNPC : GlobalNPC
 	{	
