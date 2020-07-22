@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CringeMod.Items.Accessories
+namespace PissAndShit.Items.Accessories
 {
     class BadTimeMedallion : ModItem
     {
