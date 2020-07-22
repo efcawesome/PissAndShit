@@ -22,6 +22,11 @@ namespace PissAndShit.NPCs
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BrokenHeroBottle"));
 			}
+			
+			if (Main.rand.Next(20) == 0)
+			{
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("JarOfMoonMilk"));
+			}
 		}
 
 		public override void AI(NPC npc)
