@@ -26,9 +26,9 @@ namespace PissAndShit.NPCs
 		{
 			npc.CloneDefaults(NPCID.EaterofWorldsHead);
 			npc.aiStyle = 6;
-			npc.damage = 7;
-			npc.defense = 2;
-			npc.lifeMax = 25000;
+			npc.damage = 100;
+			npc.defense = 35;
+			npc.lifeMax = 50000;
 			npc.width = 50;
 			npc.height = 50;
 			npc.lavaImmune = true;
@@ -78,8 +78,8 @@ namespace PissAndShit.NPCs
 			{
 				npc.CloneDefaults(NPCID.EaterofWorldsBody);
 				npc.aiStyle = 6;
-				npc.damage = 7;
-				npc.defense = 2;
+				npc.damage = 60;
+				npc.defense = 10;
 				npc.width = 50;
 				npc.height = 50;
 				npc.lavaImmune = true;
@@ -105,8 +105,8 @@ namespace PissAndShit.NPCs
 		{
 			npc.CloneDefaults(NPCID.EaterofWorldsTail);
 			npc.aiStyle = 6;
-			npc.damage = 7;
-			npc.defense = 2;
+			npc.damage = 100;
+			npc.defense = 35;
 			npc.width = 50;
 			npc.height = 50;
 			npc.lavaImmune = true;
