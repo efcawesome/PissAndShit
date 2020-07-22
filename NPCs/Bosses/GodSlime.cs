@@ -14,7 +14,7 @@ using System.Security.Cryptography.X509Certificates;
 using Terraria.Localization;
 using Microsoft.Xna.Framework.Audio;
 
-namespace CringeMod.NPCs.Bosses
+namespace PissAndShit.NPCs.Bosses
 {
     [AutoloadBossHead]
     public class GodSlime : ModNPC
