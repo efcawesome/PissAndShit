@@ -40,7 +40,7 @@ namespace PissAndShit.Items.Weapons
         {
             int spread = 10;
             float spreadMult = 0.1f;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 10; i++)
             {
                 float vX = speedX + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
                 float vY = speedY + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
