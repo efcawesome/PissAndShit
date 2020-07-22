@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ModLoader; 
 using Microsoft.Xna.Framework;
 using Terraria.ID;
-namespace PissAndShit.NPCs
+namespace PissAndShit.NPCs.Bosses
 {
     public class boozeshrume : ModNPC
     {
