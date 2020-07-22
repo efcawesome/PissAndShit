@@ -5,8 +5,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace PissAndShit.NPCs
+namespace PissAndShit.NPCs.Bosses
 {
+	[AutoloadBossHead]
 	internal class Sanswormhead : ModNPC
 	{
 		public static int health = 0;
@@ -70,6 +71,7 @@ namespace PissAndShit.NPCs
 			return true;
 		}
 
+		[AutoloadBossHead]
 		internal class Sanswormbody : ModNPC
 		{
 			public override void SetStaticDefaults()
