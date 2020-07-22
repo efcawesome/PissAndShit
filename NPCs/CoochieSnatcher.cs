@@ -26,7 +26,7 @@ namespace PissAndShit.NPCs
 			npc.DeathSound = SoundID.NPCDeath5;
 			npc.value = 31f;
 			npc.knockBackResist = 0.2f;
-            npc.aiStyle = 43;
+            npc.aiStyle = 69;
 			npc.noGravity = true;
 			npc.noTileCollide = true;
 		}
