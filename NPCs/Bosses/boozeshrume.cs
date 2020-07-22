@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 namespace PissAndShit.NPCs.Bosses
 {
+	[AutoloadBossHead]
     public class boozeshrume : ModNPC
     {
         
