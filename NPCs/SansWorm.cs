@@ -24,7 +24,7 @@ namespace PissAndShit.NPCs
 
 		public override void SetDefaults()
 		{
-			npc.CloneDefaults(NPCID.DiggerHead);
+			npc.CloneDefaults(NPCID.EaterofWorldsHead);
 			npc.aiStyle = 6;
 			npc.damage = 7;
 			npc.defense = 2;
@@ -39,23 +39,23 @@ namespace PissAndShit.NPCs
 		{
 			if (Main.netMode != 1)
 			{
-				
+
 				if (npc.ai[0] == 0)
 				{
-					
+
 					npc.realLife = npc.whoAmI;
-					
+
 					int latestNPC = npc.whoAmI;
 
-					
+
 					for (int i = 0; i < maxLength; ++i)
 					{
-						
+
 						latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Sanswormbody"), npc.whoAmI, 0, latestNPC);
 						Main.npc[(int)latestNPC].realLife = npc.whoAmI;
 						Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
 					}
-					
+
 					latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Sanswormtail"), npc.whoAmI, 0, latestNPC);
 					Main.npc[(int)latestNPC].realLife = npc.whoAmI;
 					Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
@@ -76,7 +76,7 @@ namespace PissAndShit.NPCs
 			}
 			public override void SetDefaults()
 			{
-				npc.CloneDefaults(NPCID.DiggerBody);
+				npc.CloneDefaults(NPCID.EaterofWorldsBody);
 				npc.aiStyle = 6;
 				npc.damage = 7;
 				npc.defense = 2;
@@ -86,25 +86,37 @@ namespace PissAndShit.NPCs
 				npc.boss = true;
 
 			}
+				public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+			{
+
+				return false;       
+			}
+
+		}
+	}
+
+	internal class Sanswormtail : ModNPC
+	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Eater Of Sins");
+		}
+		public override void SetDefaults()
+		{
+			npc.CloneDefaults(NPCID.EaterofWorldsTail);
+			npc.aiStyle = 6;
+			npc.damage = 7;
+			npc.defense = 2;
+			npc.width = 50;
+			npc.height = 50;
+			npc.lavaImmune = true;
+			npc.boss = true;
 		}
 
-		internal class Sanswormtail : ModNPC
+			public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
 		{
-			public override void SetStaticDefaults()
-			{
-				DisplayName.SetDefault("Eater Of Sins");
-			}
-			public override void SetDefaults()
-			{
-				npc.CloneDefaults(NPCID.DiggerTail);
-				npc.aiStyle = 6;
-				npc.damage = 7;
-				npc.defense = 2;
-				npc.width = 50;
-				npc.height = 50;
-				npc.lavaImmune = true;
-				npc.boss = true;
-			}
+
+			return false;       
 		}
 	}
 }
