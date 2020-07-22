@@ -12,6 +12,7 @@ namespace PissAndShit.NPCs
 	{	
 		public override void SetStaticDefaults()
 		{
+		        Main.npcFrameCount[npc.type] = 8;
 			DisplayName.SetDefault("Pigler");
 		}
 
