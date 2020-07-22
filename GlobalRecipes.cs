@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ShitAndPiss.Items
+namespace PissAndShit.Items
 {
 	internal class GlobalRecipes : GlobalRecipe
 	{
