@@ -41,7 +41,10 @@ namespace PissAndShit.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Gel, 999);
+            recipe.AddIngredient(mod.ItemType("HallowedBottle"));
+            recipe.AddIngredient(mod.ItemType("JarOfMoonMilk"));
+            recipe.AddIngredient(ItemID.LunarBar, 10);
+            recipe.AddIngredient(ItemID.Gel, 50);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
