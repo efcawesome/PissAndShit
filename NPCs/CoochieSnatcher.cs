@@ -21,12 +21,12 @@ namespace PissAndShit.NPCs
 			npc.height = 64;
 			npc.damage = 28;
 			npc.defense = 12;
-			npc.lifeMax = 1;
+			npc.lifeMax = 400;
 			npc.HitSound = SoundID.NPCHit5;
 			npc.DeathSound = SoundID.NPCDeath5;
 			npc.value = 31f;
 			npc.knockBackResist = 0.2f;
-            npc.aiStyle = 30;
+            npc.aiStyle = 43;
 			npc.noGravity = true;
 			npc.noTileCollide = true;
 		}
