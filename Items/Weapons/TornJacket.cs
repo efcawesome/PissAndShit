@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace PissAndShit.Weapons.Items
+namespace PissAndShit.Items.Weapons
 {
 	public class TornJacket : ModItem
 	{
