@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace PissAndShit.Items
+namespace PissAndShit.Items.Consumables
 {
     class HeavenlyChalice : ModItem
     {
