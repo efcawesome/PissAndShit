@@ -37,8 +37,8 @@ namespace PissAndShit.Items.Consumables
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemType<NocturnalOoze>());
-            recipe.AddIngredient(ItemType<BrokenHeroBottle>());
+            recipe.AddIngredient(mod.ItemType("NocturnalOoze"));
+            recipe.AddIngredient(mod.ItemType("BrokenHeroBottle"));
             recipe.SetResult(this);
             recipe.AddRecipe();
 
