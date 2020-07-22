@@ -25,7 +25,7 @@ namespace PissAndShit.NPCs
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.lavaImmune = true;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/heavenly_bullshit");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Staying_As_a_1.14");
             musicPriority = MusicPriority.BossHigh;
         }
         public bool SpeeeenBool = false;
