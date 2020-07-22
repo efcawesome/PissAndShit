@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using PissAndShit.Items.Misc;
 
 namespace PissAndShit.Items.Consumables
 {
