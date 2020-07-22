@@ -8,7 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace PissAndShit.Items
+namespace PissAndShit.Items.Consumables
 {
     public class LavaBottle: ModItem
     {
