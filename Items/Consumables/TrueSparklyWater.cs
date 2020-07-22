@@ -9,7 +9,7 @@ using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework;
 
 
-namespace PissAndShit.Items
+namespace PissAndShit.Items.Consumables
 {
     public class TrueSparklyWater : ModItem
     {
