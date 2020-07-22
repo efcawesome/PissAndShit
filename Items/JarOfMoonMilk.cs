@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CringeMod.Items
+namespace PissAndShit.Items
 {
     class JarOfMoonMilk : ModItem
     {
