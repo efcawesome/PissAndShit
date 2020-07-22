@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -41,8 +41,43 @@ namespace PissAndShit.NPCs
             animationType = NPCID.DukeFishron;
         }
 
+		public void SimpleFlyMovement(Vector2 desiredVelocity, float moveSpeed)
+		{
+			if (npc.velocity.X < desiredVelocity.X)
+			{
+				npc.velocity.X += moveSpeed;
+				if (npc.velocity.X < 0f && desiredVelocity.X > 0f)
+				{
+					npc.velocity.X += moveSpeed;
+				}
+			}
+			else if (npc.velocity.X > desiredVelocity.X)
+			{
+				npc.velocity.X -= moveSpeed;
+				if (npc.velocity.X > 0f && desiredVelocity.X < 0f)
+				{
+					npc.velocity.X -= moveSpeed;
+				}
+			}
+			if (npc.velocity.Y < desiredVelocity.Y)
+			{
+				npc.velocity.Y += moveSpeed;
+				if (npc.velocity.Y < 0f && desiredVelocity.Y > 0f)
+				{
+					npc.velocity.Y += moveSpeed;
+				}
+			}
+			else if (npc.velocity.Y > desiredVelocity.Y)
+			{
+				npc.velocity.Y -= moveSpeed;
+				if (npc.velocity.Y > 0f && desiredVelocity.Y < 0f)
+				{
+					npc.velocity.Y -= moveSpeed;
+				}
+			}
+		}
 
-        public override void AI()
+		public override void AI()
         {
 			bool expertMode = Main.expertMode;
 			float num = expertMode ? (0.6f * Main.damageMultiplier) : 1f;
