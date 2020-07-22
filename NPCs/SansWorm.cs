@@ -28,7 +28,7 @@ namespace PissAndShit.NPCs
 			npc.aiStyle = 6;
 			npc.damage = 100;
 			npc.defense = 35;
-			npc.lifeMax = 50000;
+			npc.lifeMax = 150000;
 			npc.width = 50;
 			npc.height = 50;
 			npc.lavaImmune = true;
