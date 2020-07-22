@@ -14,7 +14,7 @@ namespace PissAndShit.Items.Accessories
         public override void SetDefaults()
         {
             item.width = 32;
-            item.height = 30;
+            item.height = 32;
 
             item.value = Item.buyPrice(gold: 50);
             item.rare = ItemRarityID.Expert;
