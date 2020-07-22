@@ -1,7 +1,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace PissAndShit.Items
+namespace PissAndShit.Items.Weapons
 {
 	public class BottleSword : ModItem
 	{
