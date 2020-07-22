@@ -34,6 +34,8 @@ namespace PissAndShit.NPCs
 			npc.lavaImmune = true;
 			npc.value = Item.buyPrice(0, 1, 75, 0);
 			npc.boss = true;
+            		music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/sin");
+          		musicPriority = MusicPriority.BossHigh;
 		}
 		public override bool PreAI()
 		{
