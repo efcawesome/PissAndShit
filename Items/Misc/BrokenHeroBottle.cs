@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace PissAndShit.Items
+namespace PissAndShit.Items.Misc
 {
     public class BrokenHeroBottle : ModItem
     {
