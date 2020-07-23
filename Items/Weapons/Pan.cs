@@ -1,4 +1,4 @@
-using PissAndShit.items.weapons;
+using PissAndShit.Items.Weapons;
 using Terraria.ID;
 using Terraria.ModLoader;
 
