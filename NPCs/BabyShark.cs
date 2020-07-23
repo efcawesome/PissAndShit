@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -8,8 +8,6 @@ namespace PissAndShit.NPCs
 {
     class BabyShark : ModNPC
     {
-    	private int frameNum = 0;
-	private int frameTimer = 0;
         public override void SetStaticDefaults()
         {
 			DisplayName.SetDefault("Young Sharkron");
@@ -75,7 +73,6 @@ namespace PissAndShit.NPCs
 
         public override void AI()
         {
-			frameTimer++;
 			npc.noTileCollide = true;
 			int num39 = 90;
 			if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead)
@@ -195,23 +192,7 @@ namespace PissAndShit.NPCs
 				}
 			}
 		}
-		
-		public override void FindFrame(int frameHeight)
-		{
-
-			if (frameTimer == 6)
-			{
-				frameNum++;
-				frameTimer = 0;
-			}
-
-			if (frameNum == 4)
-			{
-				frameNum = 0;
-			}
-
-			npc.frame.Y = frameNum * frameHeight;
-		}
 	}
+
     }
 
