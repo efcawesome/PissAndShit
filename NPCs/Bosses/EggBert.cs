@@ -62,7 +62,7 @@ namespace PissAndShit.NPCs.Bosses
             if (eggTimer >= 480)
             {
                 eggTimer = 0;
-                eggType = Main.rand.Next(1);
+                eggType = Main.rand.Next(2);
                 if (!Main.expertMode)
                 {
                     if (eggType == 0)
