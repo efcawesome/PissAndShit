@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CringeMod.NPCs.Bosses
+namespace PissAndShit.NPCs.Bosses
 {
     [AutoloadBossHead]
     class Hive : ModNPC
