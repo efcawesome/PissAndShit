@@ -39,6 +39,14 @@ namespace PissAndShit.Items.Consumables
             }
             return true;
         }
+        {
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.Dirt, 50);
+			recipe.AddIngredient(ItemID.Snow, 50);
+			recipe.AddTile(TileID.WorkBenches);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
 
        
     }
