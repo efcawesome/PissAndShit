@@ -23,7 +23,7 @@ namespace PissAndShit.NPCs.Bosses
             npc.aiStyle = -1;
             aiType = 94;
 
-            npc.npcSlots = 5;
+            npc.npcSlots = 1;
 
             npc.lifeMax = 10000;
             npc.defense = 10000;
