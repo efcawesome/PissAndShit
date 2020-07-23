@@ -31,7 +31,7 @@ namespace PissAndShit.NPCs.Bosses
 
             npc.npcSlots = 5;
 
-            npc.lifeMax = 2400;
+            npc.lifeMax = 2600;
             npc.damage = 22;
             npc.defense = 12;
             npc.knockBackResist = 0f;
@@ -67,10 +67,13 @@ namespace PissAndShit.NPCs.Bosses
                 {
                     if (eggType == 0)
                     {
+                        Main.NewText("you are eggcelant");
+                        Main.NewText("you are eggcelant");
                         NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), mod.NPCType("Eggling"), npc.whoAmI);
                     }
                     if (eggType == 1)
                     {
+                        Main.NewText("you are eggcelant");
                         NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), NPCID.BunnySlimed, npc.whoAmI);
                     }
                 }
@@ -78,6 +81,9 @@ namespace PissAndShit.NPCs.Bosses
                 {
                     if (eggType == 0)
                     {
+                        Main.NewText("you are eggcelant");
+                        Main.NewText("you are eggcelant");
+                        Main.NewText("you are eggcelant");
                         NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), mod.NPCType("Eggling"), npc.whoAmI);
                         NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), mod.NPCType("Eggling"), npc.whoAmI);
                     }
