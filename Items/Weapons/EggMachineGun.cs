@@ -1,4 +1,4 @@
-using PissAndShit.items.Weapons;
+using PissAndShit.Items.Weapons;
 using PissAndShit.Projectiles;
 using Microsoft.Xna.Framework;
 using System;
