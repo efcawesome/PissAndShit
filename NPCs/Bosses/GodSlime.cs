@@ -51,7 +51,8 @@ namespace PissAndShit.NPCs.Bosses
 
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            music = MusicID.LunarBoss;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/heavenly_bullshit");
+            musicPriority = MusicPriority.BossHigh;
 
             bossBag = mod.ItemType("GodSlimeTreasureBag");
         }
