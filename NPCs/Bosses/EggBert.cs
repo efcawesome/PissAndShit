@@ -73,6 +73,22 @@ namespace PissAndShit.NPCs.Bosses
                         NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), NPCID.BunnySlimed, npc.whoAmI);
                     }
                 }
+                if (Main.expertMode)
+                {
+                    if (eggType == 0)
+                    {
+                        NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), mod.NPCType("Eggling"), npc.whoAmI);
+                        NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), mod.NPCType("Eggling"), npc.whoAmI);
+                    }
+                    if (eggType == 1)
+                    {
+                        NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), NPCID.BunnySlimed, npc.whoAmI);
+                        NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), NPCID.BunnySlimed, npc.whoAmI);
+                        NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), NPCID.BunnySlimed, npc.whoAmI);
+                        NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), NPCID.BunnySlimed, npc.whoAmI);
+                        NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), NPCID.BunnySlimed, npc.whoAmI);
+                    }
+                }
             }
         }
         public override void NPCLoot()
