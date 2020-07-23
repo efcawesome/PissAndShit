@@ -42,8 +42,8 @@ namespace PissAndShit.Items.Consumables
 	public override void AddRecipes()
         {
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Dirt, 50);
-			recipe.AddIngredient(ItemID.Snow, 50);
+			recipe.AddIngredient(ItemID.DirtBlock, 50);
+			recipe.AddIngredient(ItemID.SnowBlock, 50);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
