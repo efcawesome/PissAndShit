@@ -29,7 +29,7 @@ namespace PissAndShit.NPCs.Bosses
             npc.defense = 10000;
             npc.knockBackResist = 0f;
 
-            npc.value = Item.buyPrice(platinum: 1);
+            npc.value = Item.buyPrice(platinum: 5);
 
             npc.lavaImmune = true;
             npc.noTileCollide = true;
