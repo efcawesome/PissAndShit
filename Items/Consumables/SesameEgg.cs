@@ -39,6 +39,7 @@ namespace PissAndShit.Items.Consumables
             }
             return true;
         }
+	public override void AddRecipes()
         {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Dirt, 50);
@@ -47,7 +48,5 @@ namespace PissAndShit.Items.Consumables
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
-
-       
     }
 }
