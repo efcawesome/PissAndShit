@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CringeMod.Items.Weapons
+namespace PissAndShit.Items.Weapons
 {
     class YoungRazorTyphoon : ModItem
     {
