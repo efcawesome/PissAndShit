@@ -37,8 +37,8 @@ namespace PissAndShit.NPCs.Bosses
 
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            music = MusicID.Jungle;
-
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/CHUNGUS");
+            musicPriority = MusicPriority.BossHigh;
             bossBag = mod.ItemType("HiveTreasureBag");
         }
 
