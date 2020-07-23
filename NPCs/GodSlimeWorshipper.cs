@@ -26,6 +26,7 @@ namespace PissAndShit.NPCs
             
             npc.lifeMax = 50000;
             npc.damage = 200;
+            npc.defense = 100;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.aiStyle = 1;
