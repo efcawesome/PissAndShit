@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CringeMod.Items.Consumables
+namespace PissAndShit.Items.Consumables
 {
     class SesameEgg : ModItem
     {
