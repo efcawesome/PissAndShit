@@ -20,8 +20,8 @@ namespace PissAndShit.Projectiles
         public override void SetDefaults()
         {
             projectile.CloneDefaults(ProjectileID.SharknadoBolt);
-            projectile.width = 14;
-            projectile.height = 18;
+            projectile.width = 54;
+            projectile.height = 54;
             aiType = ProjectileID.SharknadoBolt;
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
