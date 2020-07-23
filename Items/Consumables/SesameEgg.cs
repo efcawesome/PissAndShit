@@ -1,3 +1,4 @@
+using PissAndShit.Items.Consumables;
 using PissAndShit.NPCs.Bosses;
 using System;
 using System.Collections.Generic;
