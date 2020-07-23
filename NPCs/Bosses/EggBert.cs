@@ -18,8 +18,8 @@ namespace PissAndShit.NPCs.Bosses
             DisplayName.SetDefault("Egg Bert");
 
         }
-        private int beeTimer = 0;
-        private int beeType;
+        private int eggTimer = 0;
+        private int eggType;
         public override void SetDefaults()
         {
             npc.width = 160;
@@ -50,18 +50,18 @@ namespace PissAndShit.NPCs.Bosses
         }
         public override void AI()
         {
-            beeTimer++;
-            if (beeTimer >= 480)
+            eggTimer++;
+            if (eggTimer >= 480)
             {
-                beeTimer = 0;
-                beeType = Main.rand.Next(1);
+                eggTimer = 0;
+                eggType = Main.rand.Next(1);
                 if (!Main.expertMode)
                 {
-                    if (beeType == 0)
+                    if (eggType == 0)
                     {
                         NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), mod.NPCType("Eggling"), npc.whoAmI);
                     }
-                    if (beeType == 1)
+                    if (eggType == 1)
                     {
                         NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), NPCID.BunnySlimed, npc.whoAmI);
                     }
