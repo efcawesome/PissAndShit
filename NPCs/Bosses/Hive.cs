@@ -45,7 +45,7 @@ namespace PissAndShit.NPCs.Bosses
         public override void AI()
         {
             beeTimer++;
-            if(beeTimer >= 100)
+            if(beeTimer >= 10)
             {
                 beeTimer = 0;
                 beeType = Main.rand.Next(100);
