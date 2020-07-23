@@ -33,7 +33,6 @@ namespace PissAndShit.NPCs
             aiType = NPCID.AngryNimbus;
             banner = Item.NPCtoBanner(NPCID.Bunny);
             bannerItem = Item.BannerToItem(banner);   
-            }
         }
     }
 }
