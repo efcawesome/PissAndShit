@@ -1,4 +1,4 @@
-﻿using ChaoticDeviations.Projectiles.Yoyo;
+using PissAndShit.Projectiles.Yoyo;
 using System;
 using Terraria;
 using Terraria.ID;
