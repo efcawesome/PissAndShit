@@ -41,6 +41,7 @@ namespace PissAndShit.NPCs.Bosses
             npc.lavaImmune = false;
             npc.noTileCollide = false;
             npc.noGravity = false;
+            npc.boss = true;
 
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
