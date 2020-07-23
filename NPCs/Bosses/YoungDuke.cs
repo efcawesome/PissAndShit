@@ -38,7 +38,10 @@ namespace PissAndShit.NPCs
 			npc.buffImmune[24] = true;
 			npc.buffImmune[31] = true;
 			npc.buffImmune[44] = true;
-            animationType = NPCID.DukeFishron;
+            		animationType = NPCID.DukeFishron;
+	    		music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2");
+            		musicPriority = MusicPriority.BossHigh;
+
         }
 
 		public void SimpleFlyMovement(Vector2 desiredVelocity, float moveSpeed)
