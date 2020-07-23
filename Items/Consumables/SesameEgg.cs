@@ -1,4 +1,4 @@
-using PissAndShit.NPCs.Bosses
+using PissAndShit.NPCs.Bosses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
