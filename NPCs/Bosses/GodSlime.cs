@@ -203,5 +203,15 @@ namespace PissAndShit.NPCs.Bosses
 
             npc.frame.Y = frameNum * frameHeight;
         }
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if(Main.expertMode)
+            {
+                if(Main.rand.Next(5) == 0)
+                {
+                    NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-100, 100), (int)npc.Center.Y + Main.rand.Next(-100, 100), mod.NPCType("GodSlimeWorshipper"), npc.whoAmI);
+                }
+            }
+        }
     }
 }
