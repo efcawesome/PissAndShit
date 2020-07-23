@@ -1,7 +1,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CringeMod.Items.Weapons
+namespace PissAndShit.Items.Weapons
 {
 	public class Pan : ModItem
 	{
