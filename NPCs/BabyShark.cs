@@ -19,9 +19,9 @@ namespace PissAndShit.NPCs
 			npc.width = 120;
 			npc.height = 24;
 			npc.aiStyle = 71;
-			npc.damage = 100;
-			npc.defense = 100;
-			npc.lifeMax = 100;
+			npc.damage = 20;
+			npc.defense = 20;
+			npc.lifeMax = 20;
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath1;
 			npc.knockBackResist = 0f;
