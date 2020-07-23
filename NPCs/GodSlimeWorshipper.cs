@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace CringeMod.NPCs.Enemies
+namespace PissAndShit.NPCs
 {
     class GodSlimeWorshipper : ModNPC
     {
