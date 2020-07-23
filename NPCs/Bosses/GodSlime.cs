@@ -29,8 +29,8 @@ namespace PissAndShit.NPCs.Bosses
 
         public override void SetDefaults()
         {
-            npc.width = 492;
-            npc.height = 300;
+            npc.width = 390;
+            npc.height = 220;
 
             npc.boss = true;
             npc.aiStyle = 1;
