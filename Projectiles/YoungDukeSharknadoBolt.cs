@@ -10,11 +10,11 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Projectiles
 {
-    class YoungDukeSharknadoBolt : ModProjectile
+    class YoungSharknadoBolt : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Young Duke's Sharknado Bolt");
+            DisplayName.SetDefault("Young Sharknado Bolt");
             Main.projFrames[projectile.type] = 3;
         }
         public override void SetDefaults()
