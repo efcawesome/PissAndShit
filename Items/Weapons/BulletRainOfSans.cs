@@ -36,18 +36,17 @@ namespace PissAndShit.Items.Weapons
             item.noMelee = true;
         }
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) //This lets you modify the firing of the item
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            /*Code is made by berberborscing*/
-            int spread = 100; //The angle of random spread.
-            float spreadMult = 0.1f; //Multiplier for bullet spread, set it higher and it will make for some outrageous spread.
+            int spread = 100;
+            float spreadMult = 0.1f;
             for (int i = 0; i < 3; i++)
             {
                 float vX = speedX + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
                 float vY = speedY + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
                 Projectile.NewProjectile(position.X, position.Y, vX, vY, type, damage, knockBack, Main.myPlayer);
             }
-            return false; //Makes sure to not spawn the original projectile
+            return false;
         }
 
         public override bool ConsumeAmmo(Player p)
