@@ -3,16 +3,17 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit.NPCs
 {
-        [AutoloadBossHead]
 	class YoungDuke : ModNPC
 	{
 		public override string Texture => "Terraria/NPC_" + NPCID.DukeFishron;
 
 		public override void SetStaticDefaults()
 		{
+
 			DisplayName.SetDefault("Young Duke");
 			Main.npcFrameCount[npc.type] = 8;
 		}
@@ -39,11 +40,10 @@ namespace PissAndShit.NPCs
 			npc.buffImmune[24] = true;
 			npc.buffImmune[31] = true;
 			npc.buffImmune[44] = true;
-            		animationType = NPCID.DukeFishron;
-	    		music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2");
-            		musicPriority = MusicPriority.BossHigh;
-
-        }
+			animationType = NPCID.DukeFishron;
+			music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2");
+			musicPriority = MusicPriority.BossHigh;
+		}
 
 		public void SimpleFlyMovement(Vector2 desiredVelocity, float moveSpeed)
 		{
@@ -580,8 +580,8 @@ namespace PissAndShit.NPCs
 				if (Main.netMode != NetmodeID.MultiplayerClient && npc.ai[2] == (float)(num36 - 30))
 				{
 					Vector2 vector4 = npc.rotation.ToRotationVector2() * (Vector2.UnitX * npc.direction) * (npc.width + 20) / 2f + center;
-					Projectile.NewProjectile(vector4.X, vector4.Y, npc.direction * 2, 8f, ProjectileID.SharknadoBolt, 0, 0f, Main.myPlayer);
-					Projectile.NewProjectile(vector4.X, vector4.Y, -npc.direction * 2, 8f, ProjectileID.SharknadoBolt, 0, 0f, Main.myPlayer);
+					Projectile.NewProjectile(vector4.X, vector4.Y, npc.direction * 2, 8f, ProjectileType<Projectiles.YoungDukeSharknadoBolt>(), 0, 0f, Main.myPlayer);
+					Projectile.NewProjectile(vector4.X, vector4.Y, -npc.direction * 2, 8f, ProjectileType<Projectiles.YoungDukeSharknadoBolt>(), 0, 0f, Main.myPlayer);
 				}
 				npc.ai[2] += 1f;
 				if (npc.ai[2] >= (float)num36)
@@ -803,7 +803,7 @@ namespace PissAndShit.NPCs
 				}
 				if (Main.netMode != NetmodeID.MultiplayerClient && npc.ai[2] == (float)(num36 - 30))
 				{
-					Projectile.NewProjectile(center.X, center.Y, 0f, 0f, ProjectileID.SharknadoBolt, 0, 0f, Main.myPlayer, 1f, npc.target + 1);
+					Projectile.NewProjectile(center.X, center.Y, 0f, 0f, ProjectileType<Projectiles.YoungDukeSharknadoBolt>(), 0, 0f, Main.myPlayer, 1f, npc.target + 1);
 				}
 				npc.ai[2] += 1f;
 				if (npc.ai[2] >= (float)num36)
