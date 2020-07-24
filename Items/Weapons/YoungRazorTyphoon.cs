@@ -18,12 +18,12 @@ namespace PissAndShit.Items.Weapons
 
         public override void SetDefaults()
         {
-            item.damage = 12;
+            item.damage = 14;
             item.magic = true;
             item.width = 22;
             item.height = 24;
-            item.useTime = 18;
-            item.useAnimation = 36;
+            item.useTime = 20;
+            item.useAnimation = 40;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.noMelee = true;
             item.knockBack = 0.5f;
