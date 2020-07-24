@@ -14,7 +14,7 @@ namespace PissAndShit.NPCs
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Young Duke");
-			Main.npcFrameCount[npc.type] = 6;
+			Main.npcFrameCount[npc.type] = 8;
 		}
 
 		public override void SetDefaults()
