@@ -14,7 +14,7 @@ namespace PissAndShit.Items.Weapons
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("80% chance to not consume ammo.");
+            Tooltip.SetDefault("80% chance to not consume ammo. rest in peace bert. :c");
         }
         public override void SetDefaults()
         {
@@ -26,7 +26,7 @@ namespace PissAndShit.Items.Weapons
             item.useAnimation = 2;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 2;
-            item.value = Item.sellPrice(platinum: 1);
+            item.value = Item.sellPrice(platinum: 5);
             item.rare = ItemRarityID.Purple;
             item.UseSound = SoundID.Item40;
             item.autoReuse = true;
@@ -35,6 +35,17 @@ namespace PissAndShit.Items.Weapons
             item.shootSpeed = 10f;
             item.noMelee = true;
         }
+        	public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.VortexBeater,1);
+			recipe.AddIngredient(ItemID.SDMG, 1);
+			recipe.AddIngredient(ItemID.ChainGun, 1);
+			recipe.AddIngredient(ItemID.FragmentVortex, 25);
+			recipe.AddTile(TileID.WorkBenches);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
