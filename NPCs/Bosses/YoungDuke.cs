@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.NPCs
 {
+        [AutoloadBossHead]
 	class YoungDuke : ModNPC
 	{
 		public override string Texture => "Terraria/NPC_" + NPCID.DukeFishron;
