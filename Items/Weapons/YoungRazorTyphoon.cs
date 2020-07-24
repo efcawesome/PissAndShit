@@ -18,18 +18,18 @@ namespace PissAndShit.Items.Weapons
 
         public override void SetDefaults()
         {
-            item.damage = 20;
+            item.damage = 12;
             item.magic = true;
             item.width = 22;
             item.height = 24;
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 13;
+            item.useAnimation = 26;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.noMelee = true;
             item.knockBack = 0.5f;
             item.value = Item.sellPrice(gold: 1, silver: 50);
             item.rare = ItemRarityID.Green;
-            item.mana = 8;
+            item.mana = 10;
             item.UseSound = SoundID.Item84;
             item.autoReuse = true;
             item.shoot = ProjectileID.Typhoon;
