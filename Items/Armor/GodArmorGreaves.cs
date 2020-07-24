@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CringeMod.Items.Armor
+namespace PissAndShit.Items.Armor
 {
     [AutoloadEquip(EquipType.Legs)]
     class GodArmorGreaves : ModItem
