@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CringeMod.Items
+namespace PissAndShit.Items.BossBags
 {
     class EaterOfSinsBag : ModItem
     {
