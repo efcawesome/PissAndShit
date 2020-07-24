@@ -24,6 +24,15 @@ namespace PissAndShit.Items.Weapons
 			item.rare = 5;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
+			
+			
+			public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.Bottle, 999);
+			recipe.AddTile(TileID.WorkBenches);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
 		}
 	}
 }
