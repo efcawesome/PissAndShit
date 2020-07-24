@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace CringeMod.Items.Armor
+namespace PissAndShit.Items.Armor
 {
     [AutoloadEquip(EquipType.Body)]
     class GodArmorChestplate : ModItem
