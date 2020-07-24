@@ -1,5 +1,5 @@
-using PissAndShit.NPCs
-using PissAndShit.Items.Weapons
+using PissAndShit.NPCs;
+using PissAndShit.Items.Weapons;
 using Terraria;
 using System;
 using System.Collections.Generic;
