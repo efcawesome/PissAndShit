@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace PissAndShit.NPCs
+namespace PissAndShit.NPCs.Bosses
 {
 	class YoungDuke : ModNPC
 	{
