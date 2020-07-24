@@ -22,8 +22,8 @@ namespace PissAndShit.Items.Weapons
             item.magic = true;
             item.width = 22;
             item.height = 24;
-            item.useTime = 13;
-            item.useAnimation = 26;
+            item.useTime = 18;
+            item.useAnimation = 36;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.noMelee = true;
             item.knockBack = 0.5f;
