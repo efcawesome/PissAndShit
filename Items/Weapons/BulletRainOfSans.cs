@@ -14,7 +14,7 @@ namespace PissAndShit.Items.Weapons
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("80% chance to not consume ammo. rest in peace bert. :c");
+            Tooltip.SetDefault("80% chance to not consume ammo.");
         }
         public override void SetDefaults()
         {
