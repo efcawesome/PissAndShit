@@ -79,8 +79,8 @@ namespace PissAndShit.NPCs.Bosses
                         Main.NewText("you are very chungy");
                         Main.NewText("you are very chungy");
                         Main.NewText("you are very chungy");
-                        NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), mod.NPCType("ChungusMinion"), npc.whoAmI);
-                        NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), mod.NPCType("ChungusMinion"), npc.whoAmI);
+                        NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), mod.NPCType("UgandanMinion"), npc.whoAmI);
+                        NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), mod.NPCType("UgandanMinion"), npc.whoAmI);
                     }
                     if (beeType == 1)
                     {
