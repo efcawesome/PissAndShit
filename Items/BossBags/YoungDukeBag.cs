@@ -10,9 +10,9 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.BossBags
 {
-    class EaterOfSinsBag : ModItem
+    class YoungDukeBag : ModItem
     {
-        public override int BossBagNPC => mod.NPCType("SansWorm");
+        public override int BossBagNPC => mod.NPCType("YoungDuke");
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Treasure Bag");
@@ -31,35 +31,35 @@ namespace PissAndShit.Items.BossBags
 
         public override void OpenBossBag(Player player)
         {
-            int bossWeapon = Main.rand.Next(5);
-            int.wingsDrop = Main.rand.Next(15);
-            player.QuickSpawnItem(ItemID.PlatinumCoin, 5);
-            player.QuickSpawnItem(ItemID.SuperHealingPotion, Main.rand.Next(5, 10));
-            if(bossWeapon == 0)
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YoungRazorTyphoon"));
-			}
+            	int bossWeapon = Main.rand.Next(5);
+            	int wingsDrop = Main.rand.Next(15);
+            	player.QuickSpawnItem(ItemID.GoldCoin, 30);
+            	player.QuickSpawnItem(ItemID.HealingPotion, Main.rand.Next(5, 10));
+        	if(bossWeapon == 0)
+		{
+			player.QuickSpawnItem(mod.ItemType("YoungRazorTyphoon"));
+		}
 			else if(bossWeapon == 1)
-			{
+		{
 			
-			}
+		}
 			else if(bossWeapon == 2)
-			{
+		{
 			
-			}
+		}
 			else if(bossWeapon == 3)
-			{
+		{
 			
-			}
+		}
 			else if(bossWeapon == 4)
-			{
+		{
 			
-			}
+		}
 			
-			if(wingsDrop == 0)
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YoungFishronWings"));
-			}
+		if(wingsDrop == 0)
+		{
+			player.QuickSpawnItem(mod.ItemType("YoungFishronWings"), 1);
+		}
         }
     }
 }
