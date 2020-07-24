@@ -9,7 +9,6 @@ namespace PissAndShit.NPCs
 {
 	class YoungDuke : ModNPC
 	{
-		public override string Texture => "Terraria/NPC_" + NPCID.DukeFishron;
 
 		public override void SetStaticDefaults()
 		{
