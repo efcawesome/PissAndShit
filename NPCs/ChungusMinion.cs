@@ -1,4 +1,4 @@
-using PissAndShit.Items.Consumables
+using PissAndShit.Items.Consumables;
 using System;
 using System.Collections.Generic;
 using System.Linq;
