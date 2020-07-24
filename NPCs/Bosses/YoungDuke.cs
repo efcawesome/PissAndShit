@@ -41,8 +41,46 @@ namespace PissAndShit.NPCs
             		animationType = NPCID.DukeFishron;
 	    		music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2");
             		musicPriority = MusicPriority.BossHigh;
+			bossBag = mod.ItemType("YoungDukeBag");
 
         }
+		public override void NPCLoot()
+		{
+			int bossWeapon = Main.rand.Next(5);
+			int wingsDrop = Main.rand.Next(15);
+			if(Main.expertMode)
+			{
+				npc.dropBossBags();
+			}
+			else if(!Main.expertMode)
+			{
+				if(bossWeapon == 0)
+				{
+					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YoungRazorTyphoon"));
+				}
+				else if(bossWeapon == 1)
+				{
+				
+				}
+				else if(bossWeapon == 2)
+				{
+				
+				}
+				else if(bossWeapon == 3)
+				{
+				
+				}
+				else if(bossWeapon == 4)
+				{
+				
+				}
+				
+				if(wingsDrop == 0)
+				{
+					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YoungFishronWings"));
+				}
+			}
+		}
 
 		public void SimpleFlyMovement(Vector2 desiredVelocity, float moveSpeed)
 		{
