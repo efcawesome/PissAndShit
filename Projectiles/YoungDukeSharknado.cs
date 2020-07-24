@@ -21,37 +21,30 @@ namespace PissAndShit.Projectiles
 			projectile.height = 42;
 			projectile.hostile = true;
 			projectile.penetrate = -1;
-			projectile.aiStyle = 64;
 			projectile.tileCollide = false;
 			projectile.ignoreWater = true;
 			projectile.alpha = 255;
 			projectile.timeLeft = 540;
 		}
-        public override void Kill(int timeLeft)
-        {
+		public override void Kill(int timeLeft)
+		{
 
 			for (int num282 = 0; num282 < 20; num282++)
 			{
 				int num283 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 212, projectile.direction * 2, 0f, 100, default(Color), 1.4f);
 				Dust dust218 = Main.dust[num283];
-				dust218.color = Color.CornflowerBlue;
+				dust218.color = Color.LightPink;
 				dust218.color = Color.Lerp(dust218.color, Color.White, 0.3f);
 				dust218.noGravity = true;
 			}
 		}
 		public override void AI()
 		{
-			int num771 = 10;
-			int num772 = 15;
-			float num773 = 1f;
+			int num771 = 8;
+			int num772 = 8;
+			float num773 = 1.5f;
 			int num775 = 150;
 			int num776 = 42;
-			if (projectile.type == 386)
-			{
-				num771 = 16;
-				num772 = 16;
-				num773 = 1.5f;
-			}
 			if (projectile.velocity.X != 0f)
 			{
 				projectile.direction = (projectile.spriteDirection = -Math.Sign(projectile.velocity.X));
@@ -124,12 +117,8 @@ namespace PissAndShit.Projectiles
 				}
 				if ((int)projectile.ai[1] % num778 == 0 && projectile.ai[1] != 0f)
 				{
-					int num779 = 372;
-					if (projectile.type == 386)
-					{
-						num779 = 373;
-					}
-					int num780 = NPC.NewNPC((int)center.X, (int)center.Y, num779);
+					
+					int num780 = NPC.NewNPC((int)center.X, (int)center.Y, NPCType<NPCs.BabyShark>());
 					Main.npc[num780].velocity = projectile.velocity;
 					Main.npc[num780].netUpdate = true;
 					if (projectile.type == 386)
@@ -155,4 +144,4 @@ namespace PissAndShit.Projectiles
 			}
 		}
 	}
-    }
+}
