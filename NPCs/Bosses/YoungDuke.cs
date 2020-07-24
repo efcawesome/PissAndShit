@@ -13,13 +13,13 @@ namespace PissAndShit.NPCs
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Young Duke");
-			Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.DukeFishron];
+			Main.npcFrameCount[npc.type] = 6;
 		}
 
 		public override void SetDefaults()
         {
-			npc.width = 150;
-			npc.height = 100;
+			npc.width = 192;
+			npc.height = 130;
 			npc.aiStyle = 69;
 			npc.damage = 25;
 			npc.defense = 16;
