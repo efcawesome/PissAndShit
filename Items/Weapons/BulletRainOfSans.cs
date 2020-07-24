@@ -53,19 +53,7 @@ namespace PissAndShit.Items.Weapons
         public override bool ConsumeAmmo(Player p)
         {
             int rand = Main.rand.Next(1, 6);
-            if (rand == 1)
-            {
-                return false;
-            }
-            else if (rand == 2)
-            {
-                return false;
-            }
-            else if (rand == 3)
-            {
-                return false;
-            }
-            else if (rand == 4)
+            if (rand >= 1 && rand <= 4)
             {
                 return false;
             }
