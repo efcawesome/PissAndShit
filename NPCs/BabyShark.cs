@@ -3,6 +3,7 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit.NPCs
 {
@@ -36,10 +37,7 @@ namespace PissAndShit.NPCs
 
         public override void HitEffect(int hitDirection, double damage)
         {
-			/*
-			 This will be uncommented when gores added
-			Gore.NewGore(base.position, base.velocity, 372);
-			*/
+			
 
 			if (npc.life > 0)
 			{
@@ -57,15 +55,14 @@ namespace PissAndShit.NPCs
 					Dust dust160 = dust2;
 					dust160.velocity /= 2f;
 				}
-				/*
-				 This will be uncommented when gores are added
+				
 				 
 				
-				Gore.NewGore(base.Center, base.velocity * 0.8f, 583);
-				Gore.NewGore(base.Center, base.velocity * 0.8f, 577);
-				Gore.NewGore(base.Center, base.velocity * 0.9f, 578);
-				Gore.NewGore(base.Center, base.velocity, 579);
-				*/
+				Gore.NewGore(npc.Center, npc.velocity * 0.8f, mod.GetGoreSlot("Gores/dukegore_"),1f);
+				Gore.NewGore(npc.Center, npc.velocity * 0.8f, mod.GetGoreSlot("Gores/dukegore_2"), 1f);
+				Gore.NewGore(npc.Center, npc.velocity * 0.9f, mod.GetGoreSlot("Gores/dukegore_3"), 1f);
+				Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/dukegore_4"), 1f);
+			
 			}
 
 			
