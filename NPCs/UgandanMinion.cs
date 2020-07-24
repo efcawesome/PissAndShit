@@ -35,29 +35,7 @@ namespace PissAndShit.NPCs
             bannerItem = Item.BannerToItem(banner);
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-            return SpawnCondition.OverworldDaySlime.Chance * 0.15f;
-            // You can modify this to offer different scenarios. 
-            // For example:
-            /*
-             * float chance = 0f;
-             * if(!Main.dayTime)
-             * {
-             *     chance += .1f;
-             *     if(spawnInfo.spawnTileY <= Main.rockLayer && spawnInfo.spawnTileY >= Main.worldSurface * 0.15)
-             *     {
-             *         chance += .2f;
-             *     }
-             * }
-             * return chance;
-             */
-            // In the above example we set a float chance to 0. We then increase it based on conditions.
-            // First we check if it is night. If it is, we increase by .1 then we check if the y is between 
-            // Main.rockLayer and a bit above WorldSurface. If it is then we add .2.
-            // In this example, the enemy is more likely to spawn on surface and underground but can spawn anywhere 
-            // if it is night.
-        }
+      
 
         //public override void HitEffect(int hitDirection, double damage)
         //{
