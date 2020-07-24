@@ -1,4 +1,4 @@
-using PissAndShit.projectiles;
+using PissAndShit.Projectiles;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
