@@ -55,7 +55,11 @@ namespace PissAndShit.NPCs.Bosses
 
             bossBag = mod.ItemType("GrandDadBag");
         }
-
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * bossLifeScale);
+            npc.damage = (int)(npc.damage * 1.3f);
+        }
 
         public override void AI()
         {
