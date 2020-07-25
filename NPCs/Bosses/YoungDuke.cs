@@ -7,7 +7,8 @@ using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit.NPCs.Bosses
 {
-	class YoungDuke : ModNPC
+        [AutoloadBossHead]
+	public class YoungDuke : ModNPC
 	{
 		
 
