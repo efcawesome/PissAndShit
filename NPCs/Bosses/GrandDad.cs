@@ -11,7 +11,7 @@ using Terraria.Localization;
 using System.Security.Policy;
 using System.Data.SqlTypes;
 
-namespace CringeMod.NPCs.Bosses
+namespace PissAndShit.NPCs.Bosses
 {
     [AutoloadBossHead]
     class GrandDad : ModNPC
