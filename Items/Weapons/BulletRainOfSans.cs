@@ -14,6 +14,7 @@ namespace PissAndShit.Items.Weapons
     {
         public override void SetStaticDefaults()
         {
+	    DisplayName.SetDefault("Bullet Hell");
             Tooltip.SetDefault("80% chance to not consume ammo.");
         }
         public override void SetDefaults()
