@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CringeMod.Projectiles
+namespace PissAndShit.Projectiles
 {
     class SevenDaggerProj : ModProjectile
     {
