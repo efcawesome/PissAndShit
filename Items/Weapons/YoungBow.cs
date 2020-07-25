@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +34,8 @@ namespace PissAndShit.Items.Weapons
 			item.rare = 2;
 			item.autoReuse = false;
 			item.shoot = 10;
-			item.ammo = AmmoID.Arrow;
+			item.useAmmo = AmmoID.Arrow;
+			item.UseSound = SoundID.Item5;
 			item.shootSpeed = 19f;
 		}
 
