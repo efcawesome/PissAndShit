@@ -23,7 +23,7 @@ namespace PissAndShit.NPCs
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BrokenHeroBottle"));
 			}
 			
-			if (npc.type == 398)
+			if (npc.type == NPCID.MoonLordCore)
 			{
 				if (Main.rand.Next(20) == 0)
 				{
