@@ -7,14 +7,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CringeMod.Items.Accessories
+namespace PissAndShit.Items.Accessories
 {
     class HiveChunk : ModItem
     {
         public override void SetDefaults()
         {
-            item.width = 32;
-            item.height = 30;
+            item.width = 26;
+            item.height = 26;
 
             item.value = Item.buyPrice(gold: 50);
             item.rare = ItemRarityID.Expert;
