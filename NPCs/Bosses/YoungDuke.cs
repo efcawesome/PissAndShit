@@ -9,6 +9,7 @@ namespace PissAndShit.NPCs.Bosses
 {
 	class YoungDuke : ModNPC
 	{
+		
 
 		public override void SetStaticDefaults()
 		{
@@ -44,7 +45,35 @@ namespace PissAndShit.NPCs.Bosses
 			musicPriority = MusicPriority.BossHigh;
 		}
 
-		public void SimpleFlyMovement(Vector2 desiredVelocity, float moveSpeed)
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+			npc.lifeMax = (int)((double)npc.lifeMax * 0.6 * (double)1f);
+			npc.damage = (int)((double)npc.damage * 0.7);
+		}
+
+		public override void HitEffect(int hitDirection, double damage)
+		{
+			if (npc.life > 0)
+			{
+				for (int num123 = 0; (double)num123 < npc.damage / (double)npc.lifeMax * 100.0; num123++)
+				{
+					Dust.NewDust(npc.position, npc.width, npc.height, 5, hitDirection, -1f);
+				}
+			}
+			else
+			{
+				for (int num125 = 0; num125 < 150; num125++)
+				{
+					Dust.NewDust(npc.position, npc.width, npc.height, 5, 2 * hitDirection, -2f);
+				}
+				Gore.NewGore(npc.Center - Vector2.UnitX * 20f * npc.direction, npc.velocity, mod.GetGoreSlot("Gores/younggore_4"), npc.scale);
+				Gore.NewGore(npc.Center - Vector2.UnitY * 30f, npc.velocity, mod.GetGoreSlot("Gores/younggore_3"), npc.scale);
+				Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/younggore_(1)"), npc.scale);
+				Gore.NewGore(npc.Center - Vector2.UnitY * 30f, npc.velocity, mod.GetGoreSlot("Gores/younggore_3"), npc.scale);
+				Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/younggore_2"), npc.scale);
+			}
+		}
+        public void SimpleFlyMovement(Vector2 desiredVelocity, float moveSpeed)
 		{
 			if (npc.velocity.X < desiredVelocity.X)
 			{
@@ -546,7 +575,7 @@ namespace PissAndShit.NPCs.Bosses
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						Vector2 vector3 = Vector2.Normalize(player.Center - center) * (npc.width + 20) / 2f + center;
-						NPC.NewNPC((int)vector3.X, (int)vector3.Y + 45, 371);
+						NPC.NewNPC((int)vector3.X, (int)vector3.Y + 45, NPCType<SoapBubble>());
 					}
 				}
 				int num19 = Math.Sign(player.Center.X - center.X);
@@ -773,7 +802,7 @@ namespace PissAndShit.NPCs.Bosses
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						Vector2 vector6 = Vector2.Normalize(npc.velocity) * (npc.width + 20) / 2f + center;
-						int num25 = NPC.NewNPC((int)vector6.X, (int)vector6.Y + 45, 371);
+						int num25 = NPC.NewNPC((int)vector6.X, (int)vector6.Y + 45, NPCType<SoapBubble>());
 						Main.npc[num25].target = npc.target;
 						Main.npc[num25].velocity = Vector2.Normalize(npc.velocity).RotatedBy((float)Math.PI / 2f * (float)npc.direction) * scaleFactor3;
 						Main.npc[num25].netUpdate = true;
