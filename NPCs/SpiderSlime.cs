@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CringeMod.NPCs.Enemies
+namespace PissAndShit.NPCs
 {
     class SpiderSlime : ModNPC
     {
