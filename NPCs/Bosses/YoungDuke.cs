@@ -3,16 +3,19 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit.NPCs.Bosses
 {
-	[AutoloadBossHead]
 	class YoungDuke : ModNPC
 	{
+		
+
 		public override void SetStaticDefaults()
 		{
+
 			DisplayName.SetDefault("Young Duke");
-			Main.npcFrameCount[npc.type] = 6;
+			Main.npcFrameCount[npc.type] = 8;
 		}
 
 		public override void SetDefaults()
@@ -37,50 +40,40 @@ namespace PissAndShit.NPCs.Bosses
 			npc.buffImmune[24] = true;
 			npc.buffImmune[31] = true;
 			npc.buffImmune[44] = true;
-            		animationType = NPCID.DukeFishron;
-	    		music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2");
-            		musicPriority = MusicPriority.BossHigh;
-			bossBag = mod.ItemType("YoungDukeBag");
-
-        }
-		public override void NPCLoot()
-		{
-			int bossWeapon = Main.rand.Next(5);
-			int wingsDrop = Main.rand.Next(15);
-			if(Main.expertMode)
-			{
-			}
-			else if(!Main.expertMode)
-			{
-				if(bossWeapon == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YoungRazorTyphoon"));
-				}
-				else if(bossWeapon == 1)
-				{
-				
-				}
-				else if(bossWeapon == 2)
-				{
-				
-				}
-				else if(bossWeapon == 3)
-				{
-				
-				}
-				else if(bossWeapon == 4)
-				{
-				
-				}
-				
-				if(wingsDrop == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YoungFishronWings"));
-				}
-			}
+			animationType = NPCID.DukeFishron;
+			music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2");
+			musicPriority = MusicPriority.BossHigh;
 		}
 
-		public void SimpleFlyMovement(Vector2 desiredVelocity, float moveSpeed)
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+			npc.lifeMax = (int)((double)npc.lifeMax * 0.6 * (double)1f);
+			npc.damage = (int)((double)npc.damage * 0.7);
+		}
+
+		public override void HitEffect(int hitDirection, double damage)
+		{
+			if (npc.life > 0)
+			{
+				for (int num123 = 0; (double)num123 < npc.damage / (double)npc.lifeMax * 100.0; num123++)
+				{
+					Dust.NewDust(npc.position, npc.width, npc.height, 5, hitDirection, -1f);
+				}
+			}
+			else
+			{
+				for (int num125 = 0; num125 < 150; num125++)
+				{
+					Dust.NewDust(npc.position, npc.width, npc.height, 5, 2 * hitDirection, -2f);
+				}
+				Gore.NewGore(npc.Center - Vector2.UnitX * 20f * npc.direction, npc.velocity, mod.GetGoreSlot("Gores/younggore_4"), npc.scale);
+				Gore.NewGore(npc.Center - Vector2.UnitY * 30f, npc.velocity, mod.GetGoreSlot("Gores/younggore_3"), npc.scale);
+				Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/younggore_(1)"), npc.scale);
+				Gore.NewGore(npc.Center - Vector2.UnitY * 30f, npc.velocity, mod.GetGoreSlot("Gores/younggore_3"), npc.scale);
+				Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/younggore_2"), npc.scale);
+			}
+		}
+        public void SimpleFlyMovement(Vector2 desiredVelocity, float moveSpeed)
 		{
 			if (npc.velocity.X < desiredVelocity.X)
 			{
@@ -582,7 +575,7 @@ namespace PissAndShit.NPCs.Bosses
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						Vector2 vector3 = Vector2.Normalize(player.Center - center) * (npc.width + 20) / 2f + center;
-						NPC.NewNPC((int)vector3.X, (int)vector3.Y + 45, 371);
+						NPC.NewNPC((int)vector3.X, (int)vector3.Y + 45, NPCType<SoapBubble>());
 					}
 				}
 				int num19 = Math.Sign(player.Center.X - center.X);
@@ -615,8 +608,8 @@ namespace PissAndShit.NPCs.Bosses
 				if (Main.netMode != NetmodeID.MultiplayerClient && npc.ai[2] == (float)(num36 - 30))
 				{
 					Vector2 vector4 = npc.rotation.ToRotationVector2() * (Vector2.UnitX * npc.direction) * (npc.width + 20) / 2f + center;
-					Projectile.NewProjectile(vector4.X, vector4.Y, npc.direction * 2, 8f, ProjectileID.SharknadoBolt, 0, 0f, Main.myPlayer);
-					Projectile.NewProjectile(vector4.X, vector4.Y, -npc.direction * 2, 8f, ProjectileID.SharknadoBolt, 0, 0f, Main.myPlayer);
+					Projectile.NewProjectile(vector4.X, vector4.Y, npc.direction * 2, 8f, ProjectileType<Projectiles.YoungDukeSharknadoBolt>(), 0, 0f, Main.myPlayer);
+					Projectile.NewProjectile(vector4.X, vector4.Y, -npc.direction * 2, 8f, ProjectileType<Projectiles.YoungDukeSharknadoBolt>(), 0, 0f, Main.myPlayer);
 				}
 				npc.ai[2] += 1f;
 				if (npc.ai[2] >= (float)num36)
@@ -809,7 +802,7 @@ namespace PissAndShit.NPCs.Bosses
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						Vector2 vector6 = Vector2.Normalize(npc.velocity) * (npc.width + 20) / 2f + center;
-						int num25 = NPC.NewNPC((int)vector6.X, (int)vector6.Y + 45, 371);
+						int num25 = NPC.NewNPC((int)vector6.X, (int)vector6.Y + 45, NPCType<SoapBubble>());
 						Main.npc[num25].target = npc.target;
 						Main.npc[num25].velocity = Vector2.Normalize(npc.velocity).RotatedBy((float)Math.PI / 2f * (float)npc.direction) * scaleFactor3;
 						Main.npc[num25].netUpdate = true;
@@ -838,7 +831,7 @@ namespace PissAndShit.NPCs.Bosses
 				}
 				if (Main.netMode != NetmodeID.MultiplayerClient && npc.ai[2] == (float)(num36 - 30))
 				{
-					Projectile.NewProjectile(center.X, center.Y, 0f, 0f, ProjectileID.SharknadoBolt, 0, 0f, Main.myPlayer, 1f, npc.target + 1);
+					Projectile.NewProjectile(center.X, center.Y, 0f, 0f, ProjectileType<Projectiles.YoungDukeSharknadoBolt>(), 0, 0f, Main.myPlayer, 1f, npc.target + 1);
 				}
 				npc.ai[2] += 1f;
 				if (npc.ai[2] >= (float)num36)
