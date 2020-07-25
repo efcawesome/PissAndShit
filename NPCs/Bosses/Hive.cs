@@ -111,15 +111,15 @@ namespace PissAndShit.NPCs.Bosses
                     }
                     else if (beeType >= 1 && beeType <= 5)
                     {
-                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.QueenBee, npc.whoAmI);
+                        NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), NPCID.QueenBee, npc.whoAmI);
                     }
                     else if (beeType >= 6 && beeType <= 15)
                     {
-                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.MossHornet, npc.whoAmI);
+                        NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), NPCID.MossHornet, npc.whoAmI);
                     }
                     else if (beeType >= 16)
                     {
-                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.Hornet, npc.whoAmI);
+                        NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), NPCID.Hornet, npc.whoAmI);
                     }
                 }
             }
