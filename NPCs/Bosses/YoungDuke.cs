@@ -9,8 +9,6 @@ namespace PissAndShit.NPCs.Bosses
 	[AutoloadBossHead]
 	class YoungDuke : ModNPC
 	{
-		public override string Texture => "Terraria/NPC_" + NPCID.DukeFishron;
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Young Duke");
@@ -51,7 +49,6 @@ namespace PissAndShit.NPCs.Bosses
 			int wingsDrop = Main.rand.Next(15);
 			if(Main.expertMode)
 			{
-				npc.dropBossBags();
 			}
 			else if(!Main.expertMode)
 			{
