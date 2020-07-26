@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,20 +25,20 @@ namespace PissAndShit.NPCs.Bosses
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("GRAND DAD");
-            Main.npcFrameCount[npc.type] = 2;
+            Main.npcFrameCount[npc.type] = 4;
         }
 
         public override void SetDefaults()
         {
             npc.width = 122;
-            npc.height = 144;
+            npc.height = 240;
 
             npc.boss = true;
             npc.aiStyle = -1;
 
             npc.npcSlots = 5;
 
-            npc.lifeMax = 7777777;
+            npc.lifeMax = 500000;
             npc.damage = 500;
             npc.defense = 777;
             npc.knockBackResist = 0f;
@@ -78,7 +78,6 @@ namespace PissAndShit.NPCs.Bosses
             }
             if (npc.life <= npc.lifeMax / 2)
             {
-                frameNum = 1;
                 secondPhase = true;
             }
             if (teleportTimer >= 30)
@@ -125,7 +124,22 @@ namespace PissAndShit.NPCs.Bosses
                     return;
                 }
             }
-
+            if(targetPosition.X > npc.position.X && secondPhase == false)
+            {
+                frameNum = 0;
+            }
+            else if(targetPosition.X < npc.position.X && secondPhase == false)
+            {
+                frameNum = 1;
+            }
+            else if(targetPosition.X > npc.position.X && secondPhase == true)
+            {
+                frameNum = 2;
+            }
+            else if (targetPosition.X < npc.position.X && secondPhase == true)
+            {
+                frameNum = 3;
+            }
         }
 
         public override void FindFrame(int frameHeight)
