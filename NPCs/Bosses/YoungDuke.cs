@@ -819,7 +819,6 @@ namespace PissAndShit.NPCs.Bosses
 						Main.npc[num25].target = npc.target;
 						Main.npc[num25].velocity = Vector2.Normalize(npc.velocity).RotatedBy((float)Math.PI / 2f * (float)npc.direction) * scaleFactor3;
 						Main.npc[num25].netUpdate = true;
-						Main.npc[num25].ai[3] = (float)Main.rand.Next(80, 121) / 100f;
 					}
 				}
 				npc.velocity = npc.velocity.RotatedBy((0f - num7) * (float)npc.direction);
@@ -844,7 +843,7 @@ namespace PissAndShit.NPCs.Bosses
 				}
 				if (Main.netMode != NetmodeID.MultiplayerClient && npc.ai[2] == (float)(num36 - 30))
 				{
-					Projectile.NewProjectile(center.X, center.Y, 0f, 0f, ProjectileType<Projectiles.YoungDukeSharknadoBolt>(), 0, 0f, Main.myPlayer, 1f, npc.target + 1);
+					Projectile.NewProjectile(center.X, center.Y, 0f, 0f, ProjectileType<Projectiles.YoungDukeSharknadoBolt>(), 0, 0f, Main.myPlayer);
 				}
 				npc.ai[2] += 1f;
 				if (npc.ai[2] >= (float)num36)
