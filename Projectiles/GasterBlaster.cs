@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +19,7 @@ namespace PissAndShit.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Young Duke's Trusty Blaster");
-            Main.projFrames[projectile.type] = 1;
+            Main.projFrames[projectile.type] = 5;
         }
 
         public override void SetDefaults()
@@ -28,10 +28,12 @@ namespace PissAndShit.Projectiles
             projectile.width = 50;
             projectile.hostile = true;
             projectile.penetrate = -1;
-            projectile.alpha = 255;
             projectile.timeLeft = 300;
             projectile.tileCollide = true;
             projectile.ignoreWater = true;
+
+
+            
         }
 
         public override void Kill(int timeLeft)
@@ -50,15 +52,21 @@ namespace PissAndShit.Projectiles
         public override void AI()
         {
             Vector2 center = projectile.Center;
+            if (++projectile.frameCounter >= 5)
+            {
+                projectile.frameCounter = 0;
+                projectile.frame = ++projectile.frame % Main.projFrames[projectile.type];
+            }
 
             projectile.ai[0] += 1f;
-            if (projectile.ai[0] >= 30f)
+            if (projectile.ai[0] >= 15f)
             {
                 // Half a second has passed. Reset timer, etc.
                 projectile.ai[0] = 0f;
                 projectile.netUpdate = true;
                 // Do something here, maybe change to a new state.
                 NPC.NewNPC((int)center.X, (int)center.Y, NPCType<NPCs.SoapBubble>());
+                
             }
         }
     }
