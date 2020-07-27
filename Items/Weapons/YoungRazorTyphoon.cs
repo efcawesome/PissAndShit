@@ -31,9 +31,10 @@ namespace PissAndShit.Items.Weapons
             item.rare = ItemRarityID.Green;
             item.mana = 15;
             item.UseSound = SoundID.Item84;
-            item.autoReuse = false;
-            item.shoot = ProjectileID.Typhoon;
+            item.autoReuse = true;
+            item.shoot = mod.ProjectileType("YoungTyphoon");
             item.shootSpeed = 6;
         }
     }
 }
+
