@@ -2,7 +2,6 @@ using PissAndShit.Projectiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using PissAndShit.Projectiles;
 using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit.Items.Weapons

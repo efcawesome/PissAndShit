@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using Microsoft.Xna.Framework;
-
 
 namespace PissAndShit.Items
 {
-    public class Capitalism: ModItem
+    public class Capitalism : ModItem
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Capitalism");
             Tooltip.SetDefault("Big and shinny and strong and epic and shinny");
         }
+
         public override void SetDefaults()
         {
             item.width = 118;
@@ -38,6 +32,7 @@ namespace PissAndShit.Items
         {
             target.AddBuff(BuffID.Midas, 1200);
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -47,6 +42,5 @@ namespace PissAndShit.Items
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-
     }
 }

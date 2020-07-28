@@ -1,11 +1,6 @@
 ﻿using PissAndShit.Items.Accessories;
 using PissAndShit.Items.Weapons;
 using PissAndShit.NPCs.Bosses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -15,7 +10,9 @@ namespace PissAndShit.Items.BossBags
     class GodSlimeTreasureBag : ModItem
     {
         int bossWeapon = Main.rand.Next(4);
+
         public override int BossBagNPC => ModContent.NPCType<GodSlime>();
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Treasure Bag");
@@ -38,19 +35,19 @@ namespace PissAndShit.Items.BossBags
             player.QuickSpawnItem(ItemID.SuperHealingPotion, Main.rand.Next(5, 10));
             player.QuickSpawnItem(ItemID.Gel, 999);
             player.QuickSpawnItem(ModContent.ItemType<GodSlimesGel>(), 1);
-            if(bossWeapon == 0)
+            if (bossWeapon == 0)
             {
                 player.QuickSpawnItem(ModContent.ItemType<GodlyCross>(), 1);
             }
-            else if(bossWeapon == 1)
+            else if (bossWeapon == 1)
             {
 
             }
-            else if(bossWeapon == 2)
+            else if (bossWeapon == 2)
             {
 
             }
-            else if(bossWeapon == 3)
+            else if (bossWeapon == 3)
             {
 
             }

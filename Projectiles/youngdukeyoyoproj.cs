@@ -9,13 +9,13 @@ namespace PissAndShit.Projectiles
         public override void SetStaticDefaults()
         {
 
-            
+
             ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = 8f;
 
-           
+
             ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 300f;
 
-            
+
             ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 14f;
         }
 
@@ -39,7 +39,7 @@ namespace PissAndShit.Projectiles
             }
 
         }
-        
+
 
 
 

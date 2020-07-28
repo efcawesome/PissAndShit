@@ -1,12 +1,6 @@
-﻿using IL.Terraria.GameContent.UI;
-using PissAndShit.Items.Accessories;
+﻿using PissAndShit.Items.Accessories;
 using PissAndShit.Items.Weapons;
 using PissAndShit.NPCs.Bosses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -34,35 +28,35 @@ namespace PissAndShit.Items.BossBags
 
         public override void OpenBossBag(Player player)
         {
-            	int bossWeapon = Main.rand.Next(5);
-            	int wingsDrop = Main.rand.Next(15);
-            	player.QuickSpawnItem(ItemID.GoldCoin, 30);
-            	player.QuickSpawnItem(ItemID.HealingPotion, Main.rand.Next(5, 10));
-        	if(bossWeapon == 0)
-		{
-			player.QuickSpawnItem(ModContent.ItemType<YoungRazorTyphoon>());
-		}
-			else if(bossWeapon == 1)
-		{
-			
-		}
-			else if(bossWeapon == 2)
-		{
-			
-		}
-			else if(bossWeapon == 3)
-		{
-			
-		}
-			else if(bossWeapon == 4)
-		{
-			
-		}
-			
-		if(wingsDrop == 0)
-		{
-			player.QuickSpawnItem(ModContent.ItemType<YoungFishronWings>(), 1);
-		}
+            int bossWeapon = Main.rand.Next(5);
+            int wingsDrop = Main.rand.Next(15);
+            player.QuickSpawnItem(ItemID.GoldCoin, 30);
+            player.QuickSpawnItem(ItemID.HealingPotion, Main.rand.Next(5, 10));
+            if (bossWeapon == 0)
+            {
+                player.QuickSpawnItem(ModContent.ItemType<YoungRazorTyphoon>());
+            }
+            else if (bossWeapon == 1)
+            {
+
+            }
+            else if (bossWeapon == 2)
+            {
+
+            }
+            else if (bossWeapon == 3)
+            {
+
+            }
+            else if (bossWeapon == 4)
+            {
+
+            }
+
+            if (wingsDrop == 0)
+            {
+                player.QuickSpawnItem(ModContent.ItemType<YoungFishronWings>(), 1);
+            }
         }
     }
 }

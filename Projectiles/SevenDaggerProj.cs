@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,6 +10,7 @@ namespace PissAndShit.Projectiles
         {
             DisplayName.SetDefault("Shooting Seven");
         }
+
         public override void SetDefaults()
         {
             projectile.width = 14;

@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit
 {
-	public class PissAndShit : Mod
-	{
-	}
+    public class PissAndShit : Mod
+    {
+    }
 }

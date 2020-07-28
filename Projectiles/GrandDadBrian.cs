@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -15,6 +10,7 @@ namespace PissAndShit.Projectiles
         {
             DisplayName.SetDefault("GrandDadBrian");
         }
+
         public override void SetDefaults()
         {
             projectile.width = 64;
@@ -28,7 +24,7 @@ namespace PissAndShit.Projectiles
 
         public override void AI()
         {
-        //    projectile.CloneDefaults(ProjectileID.DesertDjinnCurse);
+            //    projectile.CloneDefaults(ProjectileID.DesertDjinnCurse);
         }
     }
     //yes I like to put comments on every code I do

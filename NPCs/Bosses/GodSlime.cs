@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Microsoft.Xna.Framework;
-using MonoMod.Cil;
-using Microsoft.Xna.Framework.Graphics;
-using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
-using Terraria.Localization;
-using Microsoft.Xna.Framework.Audio;
-using PissAndShit.Items.BossBags;
+﻿using PissAndShit.Items.BossBags;
 using PissAndShit.Items.Weapons;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace PissAndShit.NPCs.Bosses
 {
@@ -37,7 +25,7 @@ namespace PissAndShit.NPCs.Bosses
             npc.boss = true;
             npc.aiStyle = 1;
             aiType = 1;
-            
+
             npc.npcSlots = 5;
 
             npc.lifeMax = 10000000;
@@ -121,10 +109,11 @@ namespace PissAndShit.NPCs.Bosses
                 NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
                 NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
                 NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-            } else
+            }
+            else
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Gel, 999);
-                if(bossWeapon == 0)
+                if (bossWeapon == 0)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<GodlyCross>());
                 }
@@ -190,6 +179,7 @@ namespace PissAndShit.NPCs.Bosses
         {
             frameTimer++;
         }
+
         public override void FindFrame(int frameHeight)
         {
 
@@ -206,11 +196,12 @@ namespace PissAndShit.NPCs.Bosses
 
             npc.frame.Y = frameNum * frameHeight;
         }
+
         public override void HitEffect(int hitDirection, double damage)
         {
-            if(Main.expertMode)
+            if (Main.expertMode)
             {
-                if(Main.rand.Next(5) == 0)
+                if (Main.rand.Next(5) == 0)
                 {
                     NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-100, 100), (int)npc.Center.Y + Main.rand.Next(-100, 100), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
                 }

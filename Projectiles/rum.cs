@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
+
 namespace PissAndShit.Projectiles
 {
     public class rum : ModProjectile
@@ -10,6 +11,7 @@ namespace PissAndShit.Projectiles
         {
             DisplayName.SetDefault("rum");
         }
+
         public override void SetDefaults()
         {
             projectile.damage = 35;
@@ -20,15 +22,17 @@ namespace PissAndShit.Projectiles
             projectile.penetrate = 1;
             projectile.width = projectile.height = 14;
         }
+
         public override void AI()
         {
             projectile.velocity.Y += 0.4f;
             projectile.rotation = projectile.velocity.ToRotation();
         }
+
         public override void Kill(int timeLeft)
         {
-            Dust.NewDust(projectile.Center,10,10,DustID.ToxicBubble,14,14);
-            Projectile.NewProjectile(projectile.position,-projectile.velocity * 0.1f,ModContent.ProjectileType<Projectiles.RumCloud>(),40,3);
+            Dust.NewDust(projectile.Center, 10, 10, DustID.ToxicBubble, 14, 14);
+            Projectile.NewProjectile(projectile.position, -projectile.velocity * 0.1f, ModContent.ProjectileType<Projectiles.RumCloud>(), 40, 3);
         }
     }
 }
