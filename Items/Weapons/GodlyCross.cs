@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using PissAndShit.Projectiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace PissAndShit.Items.Weapons
 
             item.autoReuse = true;
             item.rare = ItemRarityID.Red;
-            item.shoot = mod.ProjectileType("GodlyCrossProj");
+            item.shoot = ModContent.ProjectileType<GodlyCrossProj>();
             item.shootSpeed = 10.5f;
         }
 

@@ -22,14 +22,14 @@ namespace PissAndShit.Items.Consumables
         {
             item.useTime = 15;
             item.useAnimation = 15;
-            item.useStyle = 2;
+            item.useStyle = ItemUseStyleID.EatingUsing;
             item.UseSound = SoundID.Item3;
             item.width = 20;
             item.buffType = (BuffID.Burning);
             item.buffTime = 1800;
             item.height = 26;
             item.width = 20;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.maxStack = 30;
             item.consumable = true;
         }

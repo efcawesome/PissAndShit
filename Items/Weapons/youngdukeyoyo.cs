@@ -22,7 +22,7 @@ namespace PissAndShit.Items.Weapons
 
         public override void SetDefaults()
         {
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.width = 26;
             item.height = 30;
             item.useAnimation = 25;
@@ -30,7 +30,7 @@ namespace PissAndShit.Items.Weapons
             item.shootSpeed = 16f;
             item.knockBack = 4.5f;
             item.damage = 40;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
 
             item.melee = true;
             item.channel = true;

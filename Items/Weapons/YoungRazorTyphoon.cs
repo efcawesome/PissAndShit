@@ -1,3 +1,4 @@
+using PissAndShit.Projectiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace PissAndShit.Items.Weapons
             item.mana = 15;
             item.UseSound = SoundID.Item84;
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType("YoungTyphoon");
+            item.shoot = ModContent.ProjectileType<YoungTyphoon>();
             item.shootSpeed = 6;
         }
     }

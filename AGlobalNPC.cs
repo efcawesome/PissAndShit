@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 using Terraria.Utilities;
 using static Terraria.ModLoader.ModContent;
 using PissAndShit.Items;
-
+using PissAndShit.Items.Misc;
 
 namespace PissAndShit.NPCs
 {
@@ -20,14 +20,14 @@ namespace PissAndShit.NPCs
 		{
 			if (npc.type == NPCID.Mothron)
 			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BrokenHeroBottle"));
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<BrokenHeroBottle>());
 			}
 			
 			if (npc.type == NPCID.MoonLordCore)
 			{
 				if (Main.rand.Next(20) == 0)
 				{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("JarOfMoonMilk"));
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<JarOfMoonMilk>());
 				}
 			}
 		}

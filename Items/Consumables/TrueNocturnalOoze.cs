@@ -22,14 +22,14 @@ namespace PissAndShit.Items.Consumables
         {
             item.useTime = 15;
             item.useAnimation = 15;
-            item.useStyle = 2;
+            item.useStyle = ItemUseStyleID.EatingUsing;
             item.UseSound = SoundID.Item3;
             item.width = 20;
             item.buffType = (BuffID.Obstructed);
             item.buffTime = 600;
             item.height = 36;
             item.width = 28;
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
             item.maxStack = 30;
             item.consumable = true;
         }
@@ -37,8 +37,8 @@ namespace PissAndShit.Items.Consumables
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("NocturnalOoze"));
-            recipe.AddIngredient(mod.ItemType("BrokenHeroBottle"));
+            recipe.AddIngredient(ModContent.ItemType<NocturnalOoze>());
+            recipe.AddIngredient(ModContent.ItemType<BrokenHeroBottle>());
             recipe.SetResult(this);
             recipe.AddRecipe();
 

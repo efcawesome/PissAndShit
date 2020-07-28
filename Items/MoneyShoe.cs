@@ -19,7 +19,7 @@ namespace PissAndShit.Items
         }
         public override void SetDefaults()
         {
-            item.rare = 5;
+            item.rare = ItemRarityID.Pink;
             item.width = 12;
             item.height = 12;
             item.maxStack = 1;

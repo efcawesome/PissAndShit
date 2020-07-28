@@ -39,7 +39,7 @@ namespace PissAndShit.Projectiles
 			
 			for (int i = 0; i < 6; i++)
 			{
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, Main.rand.Next(-5 , 5), Main.rand.Next(-5 , 5), mod.ProjectileType("Fart"), 30, 5, 0, 18, 1);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, Main.rand.Next(-5 , 5), Main.rand.Next(-5 , 5), ModContent.ProjectileType<Fart>(), 30, 5, 0, 18, 1);
 			}
 		}
 

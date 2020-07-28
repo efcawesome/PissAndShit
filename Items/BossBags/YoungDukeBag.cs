@@ -1,4 +1,7 @@
 ﻿using IL.Terraria.GameContent.UI;
+using PissAndShit.Items.Accessories;
+using PissAndShit.Items.Weapons;
+using PissAndShit.NPCs.Bosses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +15,7 @@ namespace PissAndShit.Items.BossBags
 {
     class YoungDukeBag : ModItem
     {
-        public override int BossBagNPC => mod.NPCType("YoungDuke");
+        public override int BossBagNPC => ModContent.NPCType<YoungDuke>();
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Treasure Bag");
@@ -37,7 +40,7 @@ namespace PissAndShit.Items.BossBags
             	player.QuickSpawnItem(ItemID.HealingPotion, Main.rand.Next(5, 10));
         	if(bossWeapon == 0)
 		{
-			player.QuickSpawnItem(mod.ItemType("YoungRazorTyphoon"));
+			player.QuickSpawnItem(ModContent.ItemType<YoungRazorTyphoon>());
 		}
 			else if(bossWeapon == 1)
 		{
@@ -58,7 +61,7 @@ namespace PissAndShit.Items.BossBags
 			
 		if(wingsDrop == 0)
 		{
-			player.QuickSpawnItem(mod.ItemType("YoungFishronWings"), 1);
+			player.QuickSpawnItem(ModContent.ItemType<YoungFishronWings>(), 1);
 		}
         }
     }

@@ -23,10 +23,10 @@ namespace PissAndShit.Items
         {
             item.width = 118;
             item.height = 118;
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
             item.damage = 100;
             item.crit = 25;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.UseSound = SoundID.Item4;
             item.useTime = 15;
             item.useAnimation = 15;

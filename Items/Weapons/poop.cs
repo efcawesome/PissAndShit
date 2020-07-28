@@ -19,10 +19,10 @@ namespace PissAndShit.Items.Weapons
 			item.height = 80;
 			item.useTime = 1;
 			item.useAnimation = 5;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 30;
 			item.value = 10000;
-			item.rare = 2;
+			item.rare = ItemRarityID.Green;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 		}

@@ -24,13 +24,13 @@ namespace PissAndShit.Items.Consumables
 			item.UseSound = SoundID.Item3;
 			item.maxStack = 30;
 			item.consumable = true;
-			item.rare = 1;
+			item.rare = ItemRarityID.Blue;
 			item.value = Item.buyPrice(silver: 15);
 		}
 		
 		public override bool UseItem(Player player)
 		{
-			player.AddBuff(mod.BuffType("Skooma"), 1080, true);
+			player.AddBuff(ModContent.BuffType<Buffs.Skooma>(), 1080, true);
 			return true;
 		}
 		

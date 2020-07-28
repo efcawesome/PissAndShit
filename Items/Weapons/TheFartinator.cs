@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using PissAndShit.Projectiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,14 +21,14 @@ namespace PissAndShit.Items.Weapons
 			item.height = 64;
 			item.useTime = 10;
 			item.useAnimation = 10;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 4.2f;
 			item.value = 48000;
-			item.rare = 6;
+			item.rare = ItemRarityID.LightPurple;
 			item.UseSound = SoundID.Item26;
 			item.autoReuse = true;
-			item.shoot = mod.ProjectileType("Fart2");
+			item.shoot = ModContent.ProjectileType<Fart2>();
 			item.shootSpeed = 21f;
 		}
 

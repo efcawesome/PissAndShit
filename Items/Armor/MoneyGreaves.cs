@@ -24,7 +24,7 @@ namespace PissAndShit.Items.Armor
 			item.width = 22;
 			item.height = 18;
 			item.value = 10000;
-			item.rare = 7;
+			item.rare = ItemRarityID.Lime;
 			item.defense = 15;
 		}
 

@@ -21,7 +21,7 @@ namespace PissAndShit.Items.Weapons
 
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(2624);
+			item.CloneDefaults(ItemID.Tsunami);
 			item.damage = 5;
 			item.ranged = true;
 			item.width = 44;
@@ -29,10 +29,10 @@ namespace PissAndShit.Items.Weapons
 			item.useTime = 2;
 			item.useAnimation = 2;
 			item.UseSound = SoundID.Item11;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.value = 23000;
-			item.rare = 2;
+			item.rare = ItemRarityID.Green;
 			item.autoReuse = true;
 			item.shoot = 10;
 			item.useAmmo = AmmoID.Bullet;

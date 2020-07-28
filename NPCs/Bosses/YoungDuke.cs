@@ -14,6 +14,7 @@ using System.Security.Cryptography.X509Certificates;
 using Terraria.Localization;
 using Microsoft.Xna.Framework.Audio;
 using static Terraria.ModLoader.ModContent;
+using PissAndShit.Items.BossBags;
 
 namespace PissAndShit.NPCs.Bosses
 {
@@ -55,7 +56,7 @@ namespace PissAndShit.NPCs.Bosses
 			music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2");
 			musicPriority = MusicPriority.BossHigh;
 			
-			 bossBag = mod.ItemType("YoungDukeBag");
+			 bossBag = ModContent.ItemType<YoungDukeBag>();
 		}
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

@@ -21,17 +21,17 @@ namespace PissAndShit.Items.Weapons
 
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(2624);
+			item.CloneDefaults(ItemID.Tsunami);
 			item.damage = 15;
 			item.ranged = true;
 			item.width = 28;
 			item.height = 58;
 			item.useTime = 25;
 			item.useAnimation = 25;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.value = 23000;
-			item.rare = 2;
+			item.rare = ItemRarityID.Green;
 			item.autoReuse = false;
 			item.shoot = 10;
 			item.useAmmo = AmmoID.Arrow;

@@ -35,7 +35,7 @@ namespace PissAndShit.Projectiles
         {
             if (Main.rand.Next(10) == 0)
             {
-                Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, 0, 50, projectile.knockBack, Main.myPlayer);
+                Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, ProjectileID.None, 50, projectile.knockBack, Main.myPlayer);
             }
 
         }

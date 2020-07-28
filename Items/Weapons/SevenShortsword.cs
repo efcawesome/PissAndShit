@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using PissAndShit.Projectiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace PissAndShit.Items.Weapons
 
             item.autoReuse = true;
             item.rare = ItemRarityID.Red;
-            item.shoot = mod.ProjectileType("SevenDaggerProj");
+            item.shoot = ModContent.ProjectileType<SevenDaggerProj>();
             item.shootSpeed = 12f;
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

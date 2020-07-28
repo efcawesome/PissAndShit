@@ -39,7 +39,7 @@ namespace PissAndShit.NPCs.Bosses
 		}
 		public override bool PreAI()
 		{
-			if (Main.netMode != 1)
+			if (Main.netMode != NetmodeID.MultiplayerClient)
 			{
 
 				if (npc.ai[0] == 0)
