@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ModLoader; 
 using Microsoft.Xna.Framework;
 using Terraria.ID;
+using PissAndShit.Items.Misc;
 namespace PissAndShit.NPCs.Bosses
 {
 	[AutoloadBossHead]
@@ -89,6 +90,8 @@ namespace PissAndShit.NPCs.Bosses
         public override void NPCLoot()
         {
             Main.NewText("boozeshrume.exe has stopped working",Color.MediumPurple);
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ScrumpyCiderRedwineTequillaWhiskeyVodkaRumArrackSpiritPureEthanolDrinkMix"), 3);
+
         }
     }
 }
