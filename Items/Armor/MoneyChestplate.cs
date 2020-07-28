@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
 
-namespace PissAndShit.Items
+namespace PissAndShit.Items.Armor
 {
     [AutoloadEquip(EquipType.Body)]
     public class MoneyChestplate: ModItem
