@@ -1,5 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,10 +17,10 @@ namespace PissAndShit.Projectiles
 
 		public override void SetDefaults()
 		{
-			projectile.arrow = true;
-			projectile.width = 10;
-			projectile.height = 10;
+			projectile.width = 18;
+			projectile.height = 18;
 			projectile.aiStyle = 1;
+			projectile.friendly = true;
 			projectile.magic = true;
 			aiType = ProjectileID.WoodenArrowFriendly;
 		}
@@ -38,9 +36,6 @@ namespace PissAndShit.Projectiles
 		public override void AI()
 		{
 			projectile.rotation += 0.2f * (float)projectile.direction;
-			projectile.velocity.X = projectile.velocity.X * 0.95f;
-
-			projectile.velocity.X = projectile.velocity.X + 0.5f;
 		}
 	}
 }
