@@ -1,4 +1,4 @@
-﻿using PissAndShit.Items.Accessories;
+using PissAndShit.Items.Accessories;
 using PissAndShit.Items.Weapons;
 using PissAndShit.NPCs.Bosses;
 using Terraria;
@@ -36,21 +36,17 @@ namespace PissAndShit.Items.BossBags
             {
                 player.QuickSpawnItem(ModContent.ItemType<YoungRazorTyphoon>());
             }
-            else if (bossWeapon == 1)
+            if (bossWeapon == 1)
             {
-
+                player.QuickSpawnItem(ModContent.ItemType<YoungBow>());
             }
-            else if (bossWeapon == 2)
+            if (bossWeapon == 2)
             {
-
+                player.QuickSpawnItem(ModContent.ItemType<youngdukeyoyo>());
             }
-            else if (bossWeapon == 3)
+            if (bossWeapon == 3)
             {
-
-            }
-            else if (bossWeapon == 4)
-            {
-
+                player.QuickSpawnItem(ModContent.ItemType<YoungGun>());
             }
 
             if (wingsDrop == 0)
