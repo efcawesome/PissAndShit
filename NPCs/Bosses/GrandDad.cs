@@ -107,7 +107,7 @@ namespace PissAndShit.NPCs.Bosses
                     }
                     if (projectileShoot == 2)
                     {
-                        //needs personalized copies
+                        Projectile.NewProjectile(shootPos.X + (float)(-100 * npc.direction) + (float)Main.rand.Next(-20, 20), shootPos.Y - (float)Main.rand.Next(-20, 20), shootVel.X, shootVel.Y, mod.ProjectileType("GrandDadBrian"), npc.damage / 2, 5f);
                     }
                 }
                 projectileTimer = 0;
