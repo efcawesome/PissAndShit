@@ -3,6 +3,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using PissAndShit.Items.Misc;
+using PissAndShit.Items.BossBags;
+
 namespace PissAndShit.NPCs.Bosses
 {
     [AutoloadBossHead]
@@ -29,6 +31,8 @@ namespace PissAndShit.NPCs.Bosses
             npc.lavaImmune = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Staying_As_a_1.14");
             musicPriority = MusicPriority.BossHigh;
+
+            bossBag = ModContent.ItemType<BoozeshrumeBag>();
         }
 
         public bool SpeeeenBool = false;
@@ -92,8 +96,15 @@ namespace PissAndShit.NPCs.Bosses
         public override void NPCLoot()
         {
             Main.NewText("boozeshrume.exe has stopped working", Color.MediumPurple);
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ScrumpyCiderRedwineTequillaWhiskeyVodkaRumArrackSpiritPureEthanolDrinkMix"), 3);
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Weapons/BeerBook"));
+            if(!Main.expertMode)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ScrumpyCiderRedwineTequillaWhiskeyVodkaRumArrackSpiritPureEthanolDrinkMix"), 3);
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Weapons/BeerBook"));
+            }
+            if(Main.expertMode)
+            {
+                npc.DropBossBags();
+            }
         }
     }
 }
