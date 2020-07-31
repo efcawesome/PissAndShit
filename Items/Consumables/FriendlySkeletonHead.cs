@@ -1,10 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,6 +11,7 @@ namespace PissAndShit.Items.Consumables
             DisplayName.SetDefault("Friendly Skeleton Head");
             Tooltip.SetDefault("Summons a dungeon guardian to *protect* you");
         }
+
         public override void SetDefaults()
         {
             item.width = 14;
@@ -28,6 +23,7 @@ namespace PissAndShit.Items.Consumables
             item.consumable = true;
             item.rare = ItemRarityID.Gray;
         }
+
         public override bool CanUseItem(Player player)
         {
             return !NPC.AnyNPCs(NPCID.DungeonGuardian);

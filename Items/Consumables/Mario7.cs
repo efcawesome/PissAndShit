@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PissAndShit.NPCs.Bosses;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -30,7 +26,7 @@ namespace PissAndShit.Items.Consumables
 
         public override bool CanUseItem(Player player)
         {
-            return !NPC.AnyNPCs(mod.NPCType("GrandDad"));
+            return !NPC.AnyNPCs(ModContent.NPCType<GrandDad>());
         }
 
         public override bool UseItem(Player player)
@@ -38,7 +34,7 @@ namespace PissAndShit.Items.Consumables
             Main.PlaySound(SoundID.Roar, player.position);
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-                NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("GrandDad"));
+                NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<GrandDad>());
             }
             return true;
         }

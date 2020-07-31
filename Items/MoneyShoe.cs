@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -17,13 +12,15 @@ namespace PissAndShit.Items
             DisplayName.SetDefault("Money Shoe");
             Tooltip.SetDefault("Mmm yes shiny on shoe");
         }
+
         public override void SetDefaults()
         {
-            item.rare = 5;
+            item.rare = ItemRarityID.Pink;
             item.width = 12;
             item.height = 12;
             item.maxStack = 1;
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

@@ -1,9 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,6 +12,7 @@ namespace PissAndShit.Items.Weapons
         {
             Tooltip.SetDefault("Not a Daedelus Stormbow nockoff.");
         }
+
         public override void SetDefaults()
         {
             item.Size = new Vector2(16, 27);
@@ -34,6 +31,7 @@ namespace PissAndShit.Items.Weapons
             item.shootSpeed = 11f;
             item.noMelee = true;
         }
+
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             int numberProjectiles = 20 + Main.rand.Next(5);
@@ -56,6 +54,7 @@ namespace PissAndShit.Items.Weapons
             }
             return false;
         }
+
         public override bool ConsumeAmmo(Player p)
         {
             int rand = Main.rand.Next(3);

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,6 +11,7 @@ namespace PissAndShit.Projectiles
             DisplayName.SetDefault("Whirlpool");
             Main.projFrames[projectile.type] = 3;
         }
+
         public override void SetDefaults()
         {
             projectile.width = 30;

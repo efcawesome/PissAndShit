@@ -8,7 +8,7 @@ namespace PissAndShit.Items.Misc
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Does something horrifying to your liver." + "\n \" You shouldn't drink this \" " );
+            Tooltip.SetDefault("Does something horrifying to your liver." + "\n \" You shouldn't drink this \" ");
         }
 
         public override void SetDefaults()

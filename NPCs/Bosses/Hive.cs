@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -41,19 +36,21 @@ namespace PissAndShit.NPCs.Bosses
             musicPriority = MusicPriority.BossHigh;
             bossBag = mod.ItemType("HiveTreasureBag");
         }
+
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * bossLifeScale);
             npc.damage = (int)(npc.damage * 1.3f);
         }
+
         public override void AI()
         {
             beeTimer++;
-            if(beeTimer >= 5)
+            if (beeTimer >= 5)
             {
                 beeTimer = 0;
                 beeType = Main.rand.Next(100);
-                if(!Main.expertMode)
+                if (!Main.expertMode)
                 {
                     if (beeType == 0)
                     {
@@ -72,7 +69,7 @@ namespace PissAndShit.NPCs.Bosses
                         NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), NPCID.Bee, npc.whoAmI);
                     }
                 }
-                if(Main.expertMode)
+                if (Main.expertMode)
                 {
                     if (beeType == 0)
                     {

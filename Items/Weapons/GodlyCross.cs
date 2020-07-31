@@ -1,9 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PissAndShit.Projectiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,7 +28,7 @@ namespace PissAndShit.Items.Weapons
 
             item.autoReuse = true;
             item.rare = ItemRarityID.Red;
-            item.shoot = mod.ProjectileType("GodlyCrossProj");
+            item.shoot = ModContent.ProjectileType<GodlyCrossProj>();
             item.shootSpeed = 10.5f;
         }
 

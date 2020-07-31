@@ -1,15 +1,8 @@
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PissAndShit.Items.Weapons;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using System.Security.Policy;
-using System.Data.SqlTypes;
 
 namespace PissAndShit.NPCs.Bosses
 {
@@ -55,6 +48,7 @@ namespace PissAndShit.NPCs.Bosses
 
             bossBag = mod.ItemType("GrandDadBag");
         }
+
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * bossLifeScale);
@@ -124,15 +118,15 @@ namespace PissAndShit.NPCs.Bosses
                     return;
                 }
             }
-            if(targetPosition.X > npc.position.X && secondPhase == false)
+            if (targetPosition.X > npc.position.X && secondPhase == false)
             {
                 frameNum = 0;
             }
-            else if(targetPosition.X < npc.position.X && secondPhase == false)
+            else if (targetPosition.X < npc.position.X && secondPhase == false)
             {
                 frameNum = 1;
             }
-            else if(targetPosition.X > npc.position.X && secondPhase == true)
+            else if (targetPosition.X > npc.position.X && secondPhase == true)
             {
                 frameNum = 2;
             }
@@ -146,10 +140,11 @@ namespace PissAndShit.NPCs.Bosses
         {
             npc.frame.Y = frameNum * frameHeight;
         }
+
         public override void NPCLoot()
         {
             int bossWeapon = Main.rand.Next(4);
-            if(Main.expertMode)
+            if (Main.expertMode)
             {
                 npc.DropBossBags();
             }
@@ -157,7 +152,7 @@ namespace PissAndShit.NPCs.Bosses
             {
                 if (bossWeapon == 0)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SevenShortsword"));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<SevenShortsword>());
                 }
             }
         }

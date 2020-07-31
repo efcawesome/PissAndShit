@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,6 +11,7 @@ namespace PissAndShit.Items.Accessories
             DisplayName.SetDefault("Hive Chunk");
             Tooltip.SetDefault("Gives permanent honey buff\n+250 max life\n+50 defense");
         }
+
         public override void SetDefaults()
         {
             item.width = 32;

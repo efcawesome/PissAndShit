@@ -1,11 +1,6 @@
 ﻿using Terraria;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace PissAndShit.NPCs
 {
@@ -23,7 +18,7 @@ namespace PissAndShit.NPCs
         {
             npc.width = 158;
             npc.height = 115;
-            
+
             npc.lifeMax = 50000;
             npc.damage = 200;
             npc.defense = 100;
