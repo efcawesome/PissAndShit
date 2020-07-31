@@ -1,4 +1,5 @@
-﻿using Terraria;
+using PissAndShit.Items.Weapons;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -34,7 +35,7 @@ namespace PissAndShit.NPCs.Bosses
             npc.DeathSound = SoundID.NPCDeath1;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/CHUNGUS");
             musicPriority = MusicPriority.BossHigh;
-            bossBag = mod.ItemType("HiveTreasureBag");
+            bossBag = mod.ItemType("HiveBag");
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -122,6 +123,29 @@ namespace PissAndShit.NPCs.Bosses
                     {
                         NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-200, 200), (int)npc.Center.Y + Main.rand.Next(-200, 200), NPCID.Hornet, npc.whoAmI);
                     }
+                }
+            }
+        }
+        public override void NPCLoot()
+        {
+            int bossWeapon = Main.rand.Next(3);
+            if (Main.expertMode)
+            {
+                npc.DropBossBags();
+            }
+            if(!Main.expertMode)
+            {
+                if (bossWeapon == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<BeeBasher>());
+                }
+                if (bossWeapon == 1)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<BeeBook>());
+                }
+                if (bossWeapon == 2)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<BeeTime>());
                 }
             }
         }
