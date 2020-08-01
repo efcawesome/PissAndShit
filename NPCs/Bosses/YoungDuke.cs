@@ -846,22 +846,22 @@ namespace PissAndShit.NPCs.Bosses
                     if (playerX > 0f)
                     {
                         Main.projectile[gasterblaster].spriteDirection = player.direction;
-                        Main.projectile[gasterblaster].rotation = (float)Math.Atan2(playerX, playerY) + 3.14f;
+                        Main.projectile[gasterblaster].rotation = (float)Math.Atan2(playerX, -playerY) + 3.14f;
                     }
-                    else 
+                    if (playerX < 0f)
                     {
                         Main.projectile[gasterblaster].spriteDirection = -player.direction;
-                        Main.projectile[gasterblaster].rotation = (float)Math.Atan2(playerX, playerY) + 3.14f;
+                        Main.projectile[gasterblaster].rotation = (float)Math.Atan2(playerX, -playerY) + -3.14f;
                     }
                     if (playerX > 0f)
                     {
                         Main.projectile[gasterblastertwo].spriteDirection = player.direction;
-                        Main.projectile[gasterblastertwo].rotation = (float)Math.Atan2(playerX, playerY) + 3.14f;
+                        Main.projectile[gasterblastertwo].rotation = (float)Math.Atan2(playerX, -playerY) + 3.14f;
                     }
-                    else
+                    if (playerX < 0f)
                     {
                         Main.projectile[gasterblastertwo].spriteDirection = -player.direction;
-                        Main.projectile[gasterblastertwo].rotation = (float)Math.Atan2(playerX, playerY) + 3.14f;
+                        Main.projectile[gasterblastertwo].rotation = (float)Math.Atan2(playerX, -playerY) + -3.14f;
                     }
                     npc.ai[2] += 1f;
                     if (npc.ai[2] >= (float)num36)
