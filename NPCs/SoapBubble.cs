@@ -32,6 +32,15 @@ namespace PissAndShit.NPCs
             NPCID.Sets.ProjectileNPC[npc.type] = true;
         }
 
+
+public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            target.AddBuff(BuffType<Soaped>(), 300, false);
+        }
+
+
+
+
         public override void HitEffect(int hitDirection, double damage)
         {
             Main.PlaySound(SoundID.NPCKilled, (int)npc.position.X, (int)npc.position.Y, 3);
