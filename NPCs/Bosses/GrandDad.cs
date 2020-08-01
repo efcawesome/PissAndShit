@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using PissAndShit.Items.BossBags;
 using PissAndShit.Items.Weapons;
 using Terraria;
 using Terraria.ID;
@@ -46,7 +47,7 @@ namespace PissAndShit.NPCs.Bosses
             npc.DeathSound = SoundID.NPCDeath1;
             music = MusicID.Underground;
 
-            bossBag = mod.ItemType("GrandDadBag");
+            bossBag = ModContent.ItemType<GrandDadBag>();
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -153,6 +154,10 @@ namespace PissAndShit.NPCs.Bosses
                 if (bossWeapon == 0)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<SevenShortsword>());
+                }
+                if (bossWeapon == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<DaedalusSevenbow>());
                 }
             }
         }
