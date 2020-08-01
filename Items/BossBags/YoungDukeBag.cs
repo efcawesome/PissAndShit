@@ -29,9 +29,9 @@ namespace PissAndShit.Items.BossBags
         public override void OpenBossBag(Player player)
         {
             int bossWeapon = Main.rand.Next(5);
-            int wingsDrop = Main.rand.Next(15);
             player.QuickSpawnItem(ItemID.GoldCoin, 30);
             player.QuickSpawnItem(ItemID.HealingPotion, Main.rand.Next(5, 10));
+            player.QuickSpawnItem(ModContent.ItemType<YoungFishronWings>(), 1);
             if (bossWeapon == 0)
             {
                 player.QuickSpawnItem(ModContent.ItemType<YoungRazorTyphoon>());
@@ -47,11 +47,6 @@ namespace PissAndShit.Items.BossBags
             if (bossWeapon == 3)
             {
                 player.QuickSpawnItem(ModContent.ItemType<YoungGun>());
-            }
-
-            if (wingsDrop == 0)
-            {
-                player.QuickSpawnItem(ModContent.ItemType<YoungFishronWings>(), 1);
             }
         }
     }
