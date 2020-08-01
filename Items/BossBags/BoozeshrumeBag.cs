@@ -38,7 +38,7 @@ namespace PissAndShit.Items.BossBags
             }
             if (bossWeapon == 1)
             {
-
+                player.QuickSpawnItem(ModContent.ItemType<BeerBow>(), 1);
             }
             if (bossWeapon == 2)
             {
