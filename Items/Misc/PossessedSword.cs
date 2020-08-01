@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,12 +32,20 @@ namespace PissAndShit.Items.Misc
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.IronBar, 10);
-            recipe.AddIngredient(ItemID.RottenChunk, 10);
+            recipe.AddRecipeGroup(RecipeGroupID.IronBar, 10);
+            recipe.AddIngredient(ItemID.Vertebrae, 5);
             recipe.AddIngredient(ItemID.GoldCoin, 5);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
+
+            ModRecipe recipe1 = new ModRecipe(mod);
+            recipe1.AddRecipeGroup(RecipeGroupID.IronBar, 10);
+            recipe1.AddIngredient(ItemID.RottenChunk, 5);
+            recipe1.AddIngredient(ItemID.GoldCoin, 5);
+            recipe1.AddTile(TileID.DemonAltar);
+            recipe1.SetResult(this);
+            recipe1.AddRecipe();
         }
     }
 }
