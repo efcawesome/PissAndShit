@@ -832,260 +832,290 @@ namespace PissAndShit.NPCs.Bosses
                 }
                 if (Main.netMode != NetmodeID.MultiplayerClient && npc.ai[2] == (float)(num36 - 30))
                 {
-                    Projectile.NewProjectile(center.X, center.Y, npc.direction * 2, 4f, ProjectileType<Projectiles.GasterBlaster>(), 0, 0f, Main.myPlayer);
-                    Projectile.NewProjectile(center.X, center.Y, -npc.direction * 2, 4f, ProjectileType<Projectiles.GasterBlaster>(), 0, 0f, Main.myPlayer);
-                }
-                npc.ai[2] += 1f;
-                if (npc.ai[2] >= (float)num36)
-                {
-                    npc.ai[0] = 5f;
-                    npc.ai[1] = 0f;
-                    npc.ai[2] = 0f;
-                    npc.netUpdate = true;
-                }
-            }
-            else if (npc.ai[0] == 9f)
-            {
-                if (npc.ai[2] < (float)(num3 - 90))
-                {
-                    if (Collision.SolidCollision(npc.position, npc.width, npc.height))
+                    float gasterdirection = -2f;
+                    if (player.position.Y > npc.position.Y)
                     {
-                        npc.alpha += 15;
+                        gasterdirection = 2f;
+                    }
+                    npc.TargetClosest();
+                    Vector2 vectoridk = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
+                    float playerX = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vectoridk.X;
+                    float playerY = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vectoridk.Y;
+                    int gasterblaster = Projectile.NewProjectile(center.X, center.Y, npc.direction * 2, gasterdirection, ProjectileType<Projectiles.GasterBlaster>(), 0, 0f, Main.myPlayer);
+                    int gasterblastertwo = Projectile.NewProjectile(center.X, center.Y, -npc.direction * 2, gasterdirection, ProjectileType<Projectiles.GasterBlaster>(), 0, 0f, Main.myPlayer);
+                    if (playerX > 0f)
+                    {
+                        Main.projectile[gasterblaster].spriteDirection = player.direction;
+                        Main.projectile[gasterblaster].rotation = (float)Math.Atan2(playerX, playerY) + 3.14f;
+                    }
+                    else 
+                    {
+                        Main.projectile[gasterblaster].spriteDirection = -player.direction;
+                        Main.projectile[gasterblaster].rotation = (float)Math.Atan2(playerX, playerY) + 3.14f;
+                    }
+                    if (playerX > 0f)
+                    {
+                        Main.projectile[gasterblastertwo].spriteDirection = player.direction;
+                        Main.projectile[gasterblastertwo].rotation = (float)Math.Atan2(playerX, playerY) + 3.14f;
                     }
                     else
                     {
-                        npc.alpha -= 15;
+                        Main.projectile[gasterblastertwo].spriteDirection = -player.direction;
+                        Main.projectile[gasterblastertwo].rotation = (float)Math.Atan2(playerX, playerY) + 3.14f;
                     }
-                    if (npc.alpha < 0)
+                    npc.ai[2] += 1f;
+                    if (npc.ai[2] >= (float)num36)
                     {
-                        npc.alpha = 0;
-                    }
-                    if (npc.alpha > 150)
-                    {
-                        npc.alpha = 150;
-                    }
-                }
-                else if (npc.alpha < 255)
-                {
-                    npc.alpha += 4;
-                    if (npc.alpha > 255)
-                    {
-                        npc.alpha = 255;
+                        npc.ai[0] = 5f;
+                        npc.ai[1] = 0f;
+                        npc.ai[2] = 0f;
+                        npc.netUpdate = true;
                     }
                 }
-                npc.velocity *= 0.98f;
-                npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
-                if (npc.ai[2] == (float)(num3 - 60))
+                else if (npc.ai[0] == 9f)
                 {
-                    Main.PlaySound(SoundID.Zombie, (int)center.X, (int)center.Y, 20);
-                }
-                npc.ai[2] += 1f;
-                if (npc.ai[2] >= (float)num3)
-                {
-                    npc.ai[0] = 10f;
-                    npc.ai[1] = 0f;
-                    npc.ai[2] = 0f;
-                    npc.ai[3] = 0f;
-                    npc.netUpdate = true;
-                }
-            }
-            else if (npc.ai[0] == 10f && !player.dead)
-            {
-                npc.dontTakeDamage = false;
-                npc.chaseable = false;
-                if (npc.alpha < 255)
-                {
-                    npc.alpha += 25;
-                    if (npc.alpha > 255)
+                    if (npc.ai[2] < (float)(num3 - 90))
                     {
-                        npc.alpha = 255;
-                    }
-                }
-                if (npc.ai[1] == 0f)
-                {
-                    npc.ai[1] = 360 * Math.Sign((center - player.Center).X);
-                }
-                Vector2 desiredVelocity = Vector2.Normalize(player.Center + new Vector2(npc.ai[1], -200f) - center - npc.velocity) * scaleFactor;
-                SimpleFlyMovement(desiredVelocity, num23);
-                int num26 = Math.Sign(player.Center.X - center.X);
-                if (num26 != 0)
-                {
-                    if (npc.ai[2] == 0f && num26 != npc.direction)
-                    {
-                        npc.rotation += (float)Math.PI;
-                        for (int l = 0; l < npc.oldPos.Length; l++)
+                        if (Collision.SolidCollision(npc.position, npc.width, npc.height))
                         {
-                            npc.oldPos[l] = Vector2.Zero;
+                            npc.alpha += 15;
+                        }
+                        else
+                        {
+                            npc.alpha -= 15;
+                        }
+                        if (npc.alpha < 0)
+                        {
+                            npc.alpha = 0;
+                        }
+                        if (npc.alpha > 150)
+                        {
+                            npc.alpha = 150;
                         }
                     }
-                    npc.direction = num26;
-                    if (npc.spriteDirection != -npc.direction)
+                    else if (npc.alpha < 255)
                     {
-                        npc.rotation += (float)Math.PI;
-                    }
-                    npc.spriteDirection = -npc.direction;
-                }
-                npc.ai[2] += 1f;
-                if (!(npc.ai[2] >= (float)num12))
-                {
-                    return;
-                }
-                int num27 = 0;
-                switch ((int)npc.ai[3])
-                {
-                    case 0:
-                    case 2:
-                    case 3:
-                    case 5:
-                    case 6:
-                    case 7:
-                        num27 = 1;
-                        break;
-                    case 1:
-                    case 4:
-                    case 8:
-                        num27 = 2;
-                        break;
-                }
-                switch (num27)
-                {
-                    case 1:
-                        npc.ai[0] = 11f;
-                        npc.ai[1] = 0f;
-                        npc.ai[2] = 0f;
-                        npc.velocity = Vector2.Normalize(player.Center - center) * num32;
-                        npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X);
-                        if (num26 != 0)
+                        npc.alpha += 4;
+                        if (npc.alpha > 255)
                         {
-                            npc.direction = num26;
-                            if (npc.spriteDirection == 1)
-                            {
-                                npc.rotation += (float)Math.PI;
-                            }
-                            npc.spriteDirection = -npc.direction;
+                            npc.alpha = 255;
                         }
-                        break;
-                    case 2:
-                        npc.ai[0] = 12f;
-                        npc.ai[1] = 0f;
-                        npc.ai[2] = 0f;
-                        break;
-                    case 3:
-                        npc.ai[0] = 13f;
-                        npc.ai[1] = 0f;
-                        npc.ai[2] = 0f;
-                        break;
-                }
-                npc.netUpdate = true;
-            }
-            else if (npc.ai[0] == 11f)
-            {
-                npc.dontTakeDamage = false;
-                npc.chaseable = true;
-                npc.alpha -= 25;
-                if (npc.alpha < 0)
-                {
-                    npc.alpha = 0;
-                }
-                int num28 = 7;
-                for (int m = 0; m < num28; m++)
-                {
-                    Vector2 value9 = (Vector2.Normalize(npc.velocity) * new Vector2((float)(npc.width + 50) / 2f, npc.height) * 0.75f).RotatedBy((double)(m - (num28 / 2 - 1)) * Math.PI / (double)(float)num28) + center;
-                    Vector2 value5 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - (float)Math.PI / 2f).ToRotationVector2() * Main.rand.Next(3, 8);
-                    int num29 = Dust.NewDust(value9 + value5, 0, 0, 172, value5.X * 2f, value5.Y * 2f, 100, default(Color), 1.4f);
-                    Main.dust[num29].noGravity = true;
-                    Main.dust[num29].noLight = true;
-                    Main.dust[num29].velocity /= 4f;
-                    Main.dust[num29].velocity -= npc.velocity;
-                }
-                npc.ai[2] += 1f;
-                if (npc.ai[2] >= (float)num31)
-                {
-                    npc.ai[0] = 10f;
-                    npc.ai[1] = 0f;
-                    npc.ai[2] = 0f;
-                    npc.ai[3] += 1f;
-                    npc.netUpdate = true;
-                }
-            }
-            else if (npc.ai[0] == 12f)
-            {
-                npc.dontTakeDamage = true;
-                npc.chaseable = false;
-                if (npc.alpha < 255)
-                {
-                    npc.alpha += 17;
-                    if (npc.alpha > 255)
+                    }
+                    npc.velocity *= 0.98f;
+                    npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
+                    if (npc.ai[2] == (float)(num3 - 60))
                     {
-                        npc.alpha = 255;
+                        Main.PlaySound(SoundID.Zombie, (int)center.X, (int)center.Y, 20);
+                    }
+                    npc.ai[2] += 1f;
+                    if (npc.ai[2] >= (float)num3)
+                    {
+                        npc.ai[0] = 10f;
+                        npc.ai[1] = 0f;
+                        npc.ai[2] = 0f;
+                        npc.ai[3] = 0f;
+                        npc.netUpdate = true;
                     }
                 }
-                npc.velocity *= 0.98f;
-                npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
-                if (npc.ai[2] == (float)(num4 / 2))
+                else if (npc.ai[0] == 10f && !player.dead)
                 {
-                    Main.PlaySound(SoundID.Zombie, (int)center.X, (int)center.Y, 20);
-                }
-                if (Main.netMode != NetmodeID.MultiplayerClient && npc.ai[2] == (float)(num4 / 2))
-                {
+                    npc.dontTakeDamage = false;
+                    npc.chaseable = false;
+                    if (npc.alpha < 255)
+                    {
+                        npc.alpha += 25;
+                        if (npc.alpha > 255)
+                        {
+                            npc.alpha = 255;
+                        }
+                    }
                     if (npc.ai[1] == 0f)
                     {
-                        npc.ai[1] = 300 * Math.Sign((center - player.Center).X);
+                        npc.ai[1] = 360 * Math.Sign((center - player.Center).X);
                     }
-                    Vector2 vector7 = player.Center + new Vector2(0f - npc.ai[1], -200f);
-                    Vector2 vector9 = npc.Center = vector7;
-                    center = vector9;
-                    int num30 = Math.Sign(player.Center.X - center.X);
-                    if (num30 != 0)
+                    Vector2 desiredVelocity = Vector2.Normalize(player.Center + new Vector2(npc.ai[1], -200f) - center - npc.velocity) * scaleFactor;
+                    SimpleFlyMovement(desiredVelocity, num23);
+                    int num26 = Math.Sign(player.Center.X - center.X);
+                    if (num26 != 0)
                     {
-                        if (npc.ai[2] == 0f && num30 != npc.direction)
+                        if (npc.ai[2] == 0f && num26 != npc.direction)
                         {
                             npc.rotation += (float)Math.PI;
-                            for (int n = 0; n < npc.oldPos.Length; n++)
+                            for (int l = 0; l < npc.oldPos.Length; l++)
                             {
-                                npc.oldPos[n] = Vector2.Zero;
+                                npc.oldPos[l] = Vector2.Zero;
                             }
                         }
-                        npc.direction = num30;
+                        npc.direction = num26;
                         if (npc.spriteDirection != -npc.direction)
                         {
                             npc.rotation += (float)Math.PI;
                         }
                         npc.spriteDirection = -npc.direction;
                     }
-                }
-                npc.ai[2] += 1f;
-                if (npc.ai[2] >= (float)num4)
-                {
-                    npc.ai[0] = 10f;
-                    npc.ai[1] = 0f;
-                    npc.ai[2] = 0f;
-                    npc.ai[3] += 1f;
-                    if (npc.ai[3] >= 9f)
+                    npc.ai[2] += 1f;
+                    if (!(npc.ai[2] >= (float)num12))
                     {
-                        npc.ai[3] = 0f;
+                        return;
+                    }
+                    int num27 = 0;
+                    switch ((int)npc.ai[3])
+                    {
+                        case 0:
+                        case 2:
+                        case 3:
+                        case 5:
+                        case 6:
+                        case 7:
+                            num27 = 1;
+                            break;
+                        case 1:
+                        case 4:
+                        case 8:
+                            num27 = 2;
+                            break;
+                    }
+                    switch (num27)
+                    {
+                        case 1:
+                            npc.ai[0] = 11f;
+                            npc.ai[1] = 0f;
+                            npc.ai[2] = 0f;
+                            npc.velocity = Vector2.Normalize(player.Center - center) * num32;
+                            npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X);
+                            if (num26 != 0)
+                            {
+                                npc.direction = num26;
+                                if (npc.spriteDirection == 1)
+                                {
+                                    npc.rotation += (float)Math.PI;
+                                }
+                                npc.spriteDirection = -npc.direction;
+                            }
+                            break;
+                        case 2:
+                            npc.ai[0] = 12f;
+                            npc.ai[1] = 0f;
+                            npc.ai[2] = 0f;
+                            break;
+                        case 3:
+                            npc.ai[0] = 13f;
+                            npc.ai[1] = 0f;
+                            npc.ai[2] = 0f;
+                            break;
                     }
                     npc.netUpdate = true;
                 }
-            }
-            else if (npc.ai[0] == 13f)
-            {
-                if (npc.ai[2] == 0f)
+                else if (npc.ai[0] == 11f)
                 {
-                    Main.PlaySound(SoundID.Zombie, (int)center.X, (int)center.Y, 20);
+                    npc.dontTakeDamage = false;
+                    npc.chaseable = true;
+                    npc.alpha -= 25;
+                    if (npc.alpha < 0)
+                    {
+                        npc.alpha = 0;
+                    }
+                    int num28 = 7;
+                    for (int m = 0; m < num28; m++)
+                    {
+                        Vector2 value9 = (Vector2.Normalize(npc.velocity) * new Vector2((float)(npc.width + 50) / 2f, npc.height) * 0.75f).RotatedBy((double)(m - (num28 / 2 - 1)) * Math.PI / (double)(float)num28) + center;
+                        Vector2 value5 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - (float)Math.PI / 2f).ToRotationVector2() * Main.rand.Next(3, 8);
+                        int num29 = Dust.NewDust(value9 + value5, 0, 0, 172, value5.X * 2f, value5.Y * 2f, 100, default(Color), 1.4f);
+                        Main.dust[num29].noGravity = true;
+                        Main.dust[num29].noLight = true;
+                        Main.dust[num29].velocity /= 4f;
+                        Main.dust[num29].velocity -= npc.velocity;
+                    }
+                    npc.ai[2] += 1f;
+                    if (npc.ai[2] >= (float)num31)
+                    {
+                        npc.ai[0] = 10f;
+                        npc.ai[1] = 0f;
+                        npc.ai[2] = 0f;
+                        npc.ai[3] += 1f;
+                        npc.netUpdate = true;
+                    }
                 }
-                npc.velocity = npc.velocity.RotatedBy((0f - num7) * (float)npc.direction);
-                npc.rotation -= num7 * (float)npc.direction;
-                npc.ai[2] += 1f;
-                if (npc.ai[2] >= (float)num5)
+                else if (npc.ai[0] == 12f)
                 {
-                    npc.ai[0] = 10f;
-                    npc.ai[1] = 0f;
-                    npc.ai[2] = 0f;
-                    npc.ai[3] += 1f;
-                    npc.netUpdate = true;
+                    npc.dontTakeDamage = true;
+                    npc.chaseable = false;
+                    if (npc.alpha < 255)
+                    {
+                        npc.alpha += 17;
+                        if (npc.alpha > 255)
+                        {
+                            npc.alpha = 255;
+                        }
+                    }
+                    npc.velocity *= 0.98f;
+                    npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
+                    if (npc.ai[2] == (float)(num4 / 2))
+                    {
+                        Main.PlaySound(SoundID.Zombie, (int)center.X, (int)center.Y, 20);
+                    }
+                    if (Main.netMode != NetmodeID.MultiplayerClient && npc.ai[2] == (float)(num4 / 2))
+                    {
+                        if (npc.ai[1] == 0f)
+                        {
+                            npc.ai[1] = 300 * Math.Sign((center - player.Center).X);
+                        }
+                        Vector2 vector7 = player.Center + new Vector2(0f - npc.ai[1], -200f);
+                        Vector2 vector9 = npc.Center = vector7;
+                        center = vector9;
+                        int num30 = Math.Sign(player.Center.X - center.X);
+                        if (num30 != 0)
+                        {
+                            if (npc.ai[2] == 0f && num30 != npc.direction)
+                            {
+                                npc.rotation += (float)Math.PI;
+                                for (int n = 0; n < npc.oldPos.Length; n++)
+                                {
+                                    npc.oldPos[n] = Vector2.Zero;
+                                }
+                            }
+                            npc.direction = num30;
+                            if (npc.spriteDirection != -npc.direction)
+                            {
+                                npc.rotation += (float)Math.PI;
+                            }
+                            npc.spriteDirection = -npc.direction;
+                        }
+                    }
+                    npc.ai[2] += 1f;
+                    if (npc.ai[2] >= (float)num4)
+                    {
+                        npc.ai[0] = 10f;
+                        npc.ai[1] = 0f;
+                        npc.ai[2] = 0f;
+                        npc.ai[3] += 1f;
+                        if (npc.ai[3] >= 9f)
+                        {
+                            npc.ai[3] = 0f;
+                        }
+                        npc.netUpdate = true;
+                    }
+                }
+                else if (npc.ai[0] == 13f)
+                {
+                    if (npc.ai[2] == 0f)
+                    {
+                        Main.PlaySound(SoundID.Zombie, (int)center.X, (int)center.Y, 20);
+                    }
+                    npc.velocity = npc.velocity.RotatedBy((0f - num7) * (float)npc.direction);
+                    npc.rotation -= num7 * (float)npc.direction;
+                    npc.ai[2] += 1f;
+                    if (npc.ai[2] >= (float)num5)
+                    {
+                        npc.ai[0] = 10f;
+                        npc.ai[1] = 0f;
+                        npc.ai[2] = 0f;
+                        npc.ai[3] += 1f;
+                        npc.netUpdate = true;
+                    }
                 }
             }
         }
     }
 }
+
