@@ -1,9 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PissAndShit.Projectiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,9 +28,10 @@ namespace PissAndShit.Items.Weapons
 
             item.autoReuse = true;
             item.rare = ItemRarityID.Red;
-            item.shoot = mod.ProjectileType("SevenDaggerProj");
+            item.shoot = ModContent.ProjectileType<SevenDaggerProj>();
             item.shootSpeed = 12f;
         }
+
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             int spread = 30;

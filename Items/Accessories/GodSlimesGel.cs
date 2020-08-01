@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,6 +11,7 @@ namespace PissAndShit.Items.Accessories
             DisplayName.SetDefault("God Slime's Gel");
             Tooltip.SetDefault("Makes you jump H I G H");
         }
+
         public override void SetDefaults()
         {
             item.width = 32;

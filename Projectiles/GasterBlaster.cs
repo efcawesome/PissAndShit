@@ -1,21 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
-using Terraria;
-using Terraria.ID;
-using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework;
-using PissAndShit.Dusts;
-using PissAndShit.NPCs;
+using Terraria;
+using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit.Projectiles
 {
     class GasterBlaster : ModProjectile
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Young Duke's Trusty Blaster");
@@ -31,9 +22,6 @@ namespace PissAndShit.Projectiles
             projectile.timeLeft = 300;
             projectile.tileCollide = true;
             projectile.ignoreWater = true;
-
-
-            
         }
 
         public override void Kill(int timeLeft)
@@ -66,7 +54,7 @@ namespace PissAndShit.Projectiles
                 projectile.netUpdate = true;
                 // Do something here, maybe change to a new state.
                 NPC.NewNPC((int)center.X, (int)center.Y, NPCType<NPCs.SoapBubble>());
-                
+
             }
         }
     }

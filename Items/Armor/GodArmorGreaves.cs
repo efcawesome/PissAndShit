@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,6 +12,7 @@ namespace PissAndShit.Items.Armor
             DisplayName.SetDefault("Godly Greaves");
             Tooltip.SetDefault("Increases jump height and speed.\nIncreases movement speed.");
         }
+
         public override void SetDefaults()
         {
             item.width = 24;

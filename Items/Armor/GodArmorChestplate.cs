@@ -1,9 +1,4 @@
 ﻿using Terraria;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria.ID;
 
@@ -17,6 +12,7 @@ namespace PissAndShit.Items.Armor
             DisplayName.SetDefault("Godly Greaves");
             Tooltip.SetDefault("Increases damage by 10%.\nIncreases damage resistance by 30%.");
         }
+
         public override void SetDefaults()
         {
             item.width = 30;
@@ -25,6 +21,7 @@ namespace PissAndShit.Items.Armor
             item.rare = ItemRarityID.Red;
             item.defense = 60;
         }
+
         public override void UpdateEquip(Player player)
         {
             player.allDamage *= 1.1f;

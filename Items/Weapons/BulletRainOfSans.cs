@@ -1,12 +1,7 @@
-﻿using Terraria;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 namespace PissAndShit.Items.Weapons
 {
@@ -14,9 +9,10 @@ namespace PissAndShit.Items.Weapons
     {
         public override void SetStaticDefaults()
         {
-	    DisplayName.SetDefault("Bullet Hell");
+            DisplayName.SetDefault("Bullet Hell");
             Tooltip.SetDefault("80% chance to not consume ammo.");
         }
+
         public override void SetDefaults()
         {
             item.width = 26;
@@ -36,17 +32,18 @@ namespace PissAndShit.Items.Weapons
             item.shootSpeed = 10f;
             item.noMelee = true;
         }
-        	public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.VortexBeater,1);
-			recipe.AddIngredient(ItemID.SDMG, 1);
-			recipe.AddIngredient(ItemID.ChainGun, 1);
-			recipe.AddIngredient(ItemID.FragmentVortex, 25);
-			recipe.AddTile(TileID.WorkBenches);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.VortexBeater, 1);
+            recipe.AddIngredient(ItemID.SDMG, 1);
+            recipe.AddIngredient(ItemID.ChainGun, 1);
+            recipe.AddIngredient(ItemID.FragmentVortex, 25);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

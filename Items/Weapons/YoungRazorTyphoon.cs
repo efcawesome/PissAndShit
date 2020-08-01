@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PissAndShit.Projectiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,9 +27,10 @@ namespace PissAndShit.Items.Weapons
             item.rare = ItemRarityID.Green;
             item.mana = 15;
             item.UseSound = SoundID.Item84;
-            item.autoReuse = false;
-            item.shoot = ProjectileID.Typhoon;
+            item.autoReuse = true;
+            item.shoot = ModContent.ProjectileType<YoungTyphoon>();
             item.shootSpeed = 6;
         }
     }
 }
+
