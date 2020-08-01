@@ -31,7 +31,7 @@ namespace PissAndShit.Items.BossBags
             int bossWeapon = Main.rand.Next(4);
             player.QuickSpawnItem(ItemID.GoldCoin, 60);
             player.QuickSpawnItem(ItemID.GreaterHealingPotion, Main.rand.Next(5, 10));
-            player.QuickSpawnItem(ModContent.ItemType<BoozeExpertDrop>(), Main.rand.Next(5, 10));
+            player.QuickSpawnItem(ModContent.ItemType<BoozeExpertItem>(), Main.rand.Next(5, 10));
             if (bossWeapon == 0)
             {
                 player.QuickSpawnItem(ModContent.ItemType<BeerBook>(), 1);
