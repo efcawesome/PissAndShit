@@ -36,7 +36,11 @@ namespace PissAndShit.NPCs
 
 public override void OnHitPlayer(Player target, int damage, bool crit)
         {
+<<<<<<< HEAD
             target.AddBuff(mod.BuffType("Soaped"), 300, false);
+=======
+            target.AddBuff(ModContent.BuffType<Soaped>(), 300, false);
+>>>>>>> 41a2236777f87cc639023c1848d6e02ea8f1c1d9
         }
 
 
