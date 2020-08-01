@@ -1,4 +1,5 @@
-﻿using PissAndShit.NPCs.Bosses;
+using PissAndShit.Items.Misc;
+using PissAndShit.NPCs.Bosses;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -38,6 +39,7 @@ namespace PissAndShit.Items.Consumables
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Gel, 999);
+            recipe.AddIngredient(ModContent.ItemType<JarOfMoonMilk>(), 1);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
