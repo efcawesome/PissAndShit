@@ -17,8 +17,9 @@ namespace PissAndShit.Items.Accessories
             item.width = 22;
             item.height = 20;
             item.value = Item.sellPrice(gold: 1);
-            item.rare = ItemRarityID.Green;
+            item.rare = ItemRarityID.Expert;
             item.accessory = true;
+            item.expert = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
