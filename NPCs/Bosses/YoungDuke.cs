@@ -832,7 +832,8 @@ namespace PissAndShit.NPCs.Bosses
                 }
                 if (Main.netMode != NetmodeID.MultiplayerClient && npc.ai[2] == (float)(num36 - 30))
                 {
-                    Projectile.NewProjectile(center.X, center.Y, 0f, 0f, ProjectileType<Projectiles.YoungDukeSharknadoBolt>(), 0, 0f, Main.myPlayer);
+                    Projectile.NewProjectile(center.X, center.Y, npc.direction * 2, 4f, ProjectileType<Projectiles.GasterBlaster>(), 0, 0f, Main.myPlayer);
+                    Projectile.NewProjectile(center.X, center.Y, -npc.direction * 2, 4f, ProjectileType<Projectiles.GasterBlaster>(), 0, 0f, Main.myPlayer);
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= (float)num36)
