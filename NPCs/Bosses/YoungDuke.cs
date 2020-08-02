@@ -185,6 +185,10 @@ namespace PissAndShit.NPCs.Bosses
             int num8 = 75;
             Vector2 center = npc.Center;
             Player player = Main.player[npc.target];
+            if (npc.ai[0] >= 5f)
+            {
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Young_Dook_Phase_2");
+            }
             if (npc.target < 0 || npc.target == 255 || player.dead || !player.active)
             {
                 npc.TargetClosest();
