@@ -45,7 +45,8 @@ namespace PissAndShit.NPCs.Bosses
 
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            music = MusicID.Underground;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/GRANDDAD");
+            musicPriority = MusicPriority.BossHigh;
 
             bossBag = ModContent.ItemType<GrandDadBag>();
         }
