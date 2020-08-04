@@ -7,22 +7,6 @@ namespace PissAndShit.NPCs
 {
     public class AGLobalNPC : GlobalNPC
     {
-        public override void NPCLoot(NPC npc)
-        {
-            if (npc.type == NPCID.Mothron)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<BrokenHeroBottle>());
-            }
-
-            if (npc.type == NPCID.MoonLordCore)
-            {
-                if (Main.rand.Next(20) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<JarOfMoonMilk>());
-                }
-            }
-        }
-
         public override void AI(NPC npc)
         {
             if (npc.type == NPCID.Zombie && Main.rand.Next(2) == 0)
