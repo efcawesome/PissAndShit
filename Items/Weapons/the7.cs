@@ -22,7 +22,7 @@ namespace PissAndShit.Items
         {
             item.width = 66;
             item.height = 78;
-            item.rare = 11;
+            item.rare = ItemRarityID.Expert;
             item.damage = 1000000000;
             item.crit = 1000;
             item.useStyle = 1;
@@ -32,6 +32,7 @@ namespace PissAndShit.Items
             item.autoReuse = true;
             item.melee = true;
             item.scale = 3;
+            item.expert = true;
         }
 
     }
