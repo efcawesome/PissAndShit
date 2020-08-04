@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -28,6 +28,18 @@ namespace PissAndShit.Items.Armor
         {
             player.statDefense += 135;
             player.endurance += 110;
+        }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.SolarFlareLeggings, 1);
+            recipe.AddIngredient(ItemID.NebulaLeggings, 1);
+            recipe.AddIngredient(ItemID.StardustLeggings, 1);
+            recipe.AddIngredient(ItemID.VortexLeggings, 1);
+            recipe.AddIngredient(ItemID.LunarBar, 100);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }
