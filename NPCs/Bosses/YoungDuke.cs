@@ -13,7 +13,7 @@ namespace PissAndShit.NPCs.Bosses
     [AutoloadBossHead]
     public class YoungDuke : ModNPC
     {
-        private short Cthulu;
+        //private short Cthulu;
 
         public override void SetStaticDefaults()
         {
