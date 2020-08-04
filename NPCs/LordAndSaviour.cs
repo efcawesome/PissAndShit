@@ -11,7 +11,7 @@ namespace PissAndShit.NPCs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Fabsol, our Lord and Savior");
+			DisplayName.SetDefault("A Lord and Savior");
 			NPCID.Sets.MustAlwaysDraw[npc.type] = true;
 		}
 
@@ -39,4 +39,4 @@ namespace PissAndShit.NPCs
 	}
 }
 
-//Fabsol in piss and shit, what war crimes will he commit
+//[redacted] in piss and shit, what war crimes will he commit
