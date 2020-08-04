@@ -26,5 +26,22 @@ namespace PissAndShit.Items.Weapons
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
         }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.TerraBlade, 1);
+            recipe.AddIngredient(3063, 1);
+            recipe.AddIngredient(ItemID.StarWrath, 1);
+            recipe.AddIngredient(ItemID.InfluxWaver, 1);
+            recipe.AddIngredient(ItemID.TheHorsemansBlade, 1);
+            recipe.AddIngredient(ItemID.Seedler, 1);
+            recipe.AddIngredient(ItemID.Starfury, 1);
+            recipe.AddIngredient(ItemID.BeeKeeper, 1);
+            recipe.AddIngredient(ItemID.EnchantedSword, 1);
+            recipe.AddIngredient(ItemID.CopperShortsword, 1);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }
