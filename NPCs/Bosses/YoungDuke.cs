@@ -164,6 +164,13 @@ namespace PissAndShit.NPCs.Bosses
                 if (proj.active && proj.type == 384)
                     proj.Kill();
             }
+
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC npc = Main.npc[i];
+                if (npc.active && npc.type == 371)
+                    npc.life = 0;
+            }
             bool expertMode = Main.expertMode;
             float num = expertMode ? (0.6f * Main.damageMultiplier) : 1f;
             bool flag = (double)npc.life <= (double)npc.lifeMax * 0.5;
