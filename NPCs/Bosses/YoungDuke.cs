@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using PissAndShit.Items.BossBags;
 using static Terraria.ModLoader.ModContent;
 using PissAndShit.Projectiles;
+using PissAndShit.Items.Weapons;
 
 namespace PissAndShit.NPCs.Bosses
 {
@@ -48,11 +49,40 @@ namespace PissAndShit.NPCs.Bosses
 
             bossBag = ModContent.ItemType<YoungDukeBag>();
         }
-
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = ItemID.HealingPotion;
+        }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)((double)npc.lifeMax * 0.6 * (double)1f);
             npc.damage = (int)((double)npc.damage * 0.7);
+        }
+        public override void NPCLoot()
+        {
+            int bossWeapon = Main.rand.Next(4);
+            if (Main.expertMode)
+            {
+                npc.DropBossBags();
+            }
+            else
+            {
+                switch(bossWeapon)
+                {
+                    case 0:
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<YoungBow>());
+                        break;
+                    case 1:
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<youngdukeyoyo>());
+                        break;
+                    case 2:
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<YoungGun>());
+                        break;
+                    case 3:
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<YoungRazorTyphoon>());
+                        break;
+                }
+            }
         }
 
         public override void HitEffect(int hitDirection, double damage)
