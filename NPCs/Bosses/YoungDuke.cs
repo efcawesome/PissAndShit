@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using PissAndShit.Items.BossBags;
 using static Terraria.ModLoader.ModContent;
+using PissAndShit.Projectiles;
 
 namespace PissAndShit.NPCs.Bosses
 {
@@ -841,33 +842,9 @@ namespace PissAndShit.NPCs.Bosses
                     {
                         gasterdirection = 2f;
                     }
-                    npc.TargetClosest();
-                    Vector2 vectoridk = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                    float playerX = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vectoridk.X;
-                    float playerY = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vectoridk.Y;
-                    int gasterblaster = Projectile.NewProjectile(center.X, center.Y, npc.direction * 2, gasterdirection, ProjectileType<Projectiles.GasterBlaster>(), 0, 0f, Main.myPlayer);
-                    int gasterblastertwo = Projectile.NewProjectile(center.X, center.Y, -npc.direction * 2, gasterdirection, ProjectileType<Projectiles.GasterBlaster>(), 0, 0f, Main.myPlayer);
-                    if (playerX > 0f)
-                    {
-                        Main.projectile[gasterblaster].spriteDirection = player.direction;
-                        Main.projectile[gasterblaster].rotation = (float)Math.Atan2(playerX, -playerY) + 3.14f;
-                    }
-                    if (playerX < 0f)
-                    {
-                        Main.projectile[gasterblaster].spriteDirection = -player.direction;
-                        Main.projectile[gasterblaster].rotation = (float)Math.Atan2(playerX, -playerY) + -3.14f;
-                    }
-                    if (playerX > 0f)
-                    {
-                        Main.projectile[gasterblastertwo].spriteDirection = player.direction;
-                        Main.projectile[gasterblastertwo].rotation = (float)Math.Atan2(playerX, -playerY) + 3.14f;
-                    }
-                    if (playerX < 0f)
-                    {
-                        Main.projectile[gasterblastertwo].spriteDirection = -player.direction;
-                        Main.projectile[gasterblastertwo].rotation = (float)Math.Atan2(playerX, -playerY) + -3.14f;
-                    }
-                    npc.ai[2] += 1f;
+                    NPC.NewNPC((int)center.X, (int)center.Y, NPCType<GasterBlaster>());
+                    int fart = Projectile.NewProjectile(center, npc.velocity, ProjectileType<Fart>(), 0, 0f, 0, 0, 0);
+                    Main.projectile[fart].friendly = false;
                     if (npc.ai[2] >= (float)num36)
                     {
                         npc.ai[0] = 5f;
@@ -897,14 +874,7 @@ namespace PissAndShit.NPCs.Bosses
                             npc.alpha = 150;
                         }
                     }
-                    else if (npc.alpha < 255)
-                    {
-                        npc.alpha += 4;
-                        if (npc.alpha > 255)
-                        {
-                            npc.alpha = 255;
-                        }
-                    }
+                    
                     npc.velocity *= 0.98f;
                     npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
                     if (npc.ai[2] == (float)(num3 - 60))
@@ -1122,4 +1092,3 @@ namespace PissAndShit.NPCs.Bosses
         }
     }
 }
-
