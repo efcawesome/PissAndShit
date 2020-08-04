@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 
 
-namespace PissAndShit.Items
+namespace PissAndShit.Items.Weapons
 {
     public class the7: ModItem
     {
