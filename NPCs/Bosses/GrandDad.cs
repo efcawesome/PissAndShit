@@ -32,7 +32,7 @@ namespace PissAndShit.NPCs.Bosses
 
             npc.npcSlots = 5;
 
-            npc.lifeMax = 500000;
+            npc.lifeMax = 7777777;
             npc.damage = 500;
             npc.defense = 777;
             npc.knockBackResist = 0f;
