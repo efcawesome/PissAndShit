@@ -894,11 +894,11 @@ namespace PissAndShit.NPCs.Bosses
                 }
                 if (Main.netMode != NetmodeID.MultiplayerClient && npc.ai[2] == (float)(num36 - 30))
                 {
-                    float gasterdirection = -2f;
-                    if (player.position.Y > npc.position.Y)
+                    //float gasterdirection = -2f;
+                    /*if (player.position.Y > npc.position.Y)
                     {
                         gasterdirection = 2f;
-                    }
+                    }*/
                     NPC.NewNPC((int)center.X, (int)center.Y, NPCType<GasterBlaster>());
                     if (npc.ai[2] >= (float)num36)
                     {
