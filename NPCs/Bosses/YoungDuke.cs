@@ -12,6 +12,8 @@ namespace PissAndShit.NPCs.Bosses
     [AutoloadBossHead]
     public class YoungDuke : ModNPC
     {
+        private short Cthulu;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Young Duke");
@@ -114,6 +116,24 @@ namespace PissAndShit.NPCs.Bosses
 
         public override void AI()
         {
+            for (int i = 0; i < Main.maxProjectiles; i++)
+            {
+                Projectile proj = Main.projectile[i];
+                if (proj.active && proj.type == 386)
+                    proj.Kill();
+            }
+            for (int i = 0; i < Main.maxProjectiles; i++)
+            {
+                Projectile proj = Main.projectile[i];
+                if (proj.active && proj.type == 385)
+                    proj.Kill();
+            }
+            for (int i = 0; i < Main.maxProjectiles; i++)
+            {
+                Projectile proj = Main.projectile[i];
+                if (proj.active && proj.type == 384)
+                    proj.Kill();
+            }
             bool expertMode = Main.expertMode;
             float num = expertMode ? (0.6f * Main.damageMultiplier) : 1f;
             bool flag = (double)npc.life <= (double)npc.lifeMax * 0.5;
@@ -824,7 +844,7 @@ namespace PissAndShit.NPCs.Bosses
                     npc.ai[1] = 0f;
                     npc.ai[2] = 0f;
                     npc.netUpdate = true;
-                }
+                } 
             }
             else if (npc.ai[0] == 8f)
 
@@ -849,7 +869,7 @@ namespace PissAndShit.NPCs.Bosses
                         npc.ai[1] = 0f;
                         npc.ai[2] = 0f;
                         npc.netUpdate = true;
-                    }
+                    } 
                 }
                 else if (npc.ai[0] == 9f)
                 {
@@ -887,7 +907,7 @@ namespace PissAndShit.NPCs.Bosses
                         npc.ai[2] = 0f;
                         npc.ai[3] = 0f;
                         npc.netUpdate = true;
-                    }
+                    } 
                 }
                 else if (npc.ai[0] == 10f && !player.dead)
                 {
