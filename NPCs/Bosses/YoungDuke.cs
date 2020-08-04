@@ -843,8 +843,6 @@ namespace PissAndShit.NPCs.Bosses
                         gasterdirection = 2f;
                     }
                     NPC.NewNPC((int)center.X, (int)center.Y, NPCType<GasterBlaster>());
-                    int fart = Projectile.NewProjectile(center, npc.velocity, ProjectileType<Fart>(), 0, 0f, 0, 0, 0);
-                    Main.projectile[fart].friendly = false;
                     if (npc.ai[2] >= (float)num36)
                     {
                         npc.ai[0] = 5f;
