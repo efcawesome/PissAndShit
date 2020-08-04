@@ -8,7 +8,7 @@ namespace PissAndShit.NPCs
     {
         private int frameNum = 0;
         private int frameTimer = 0;
-        int timer = 0;
+        //int timer = 0;
 
         public override void SetStaticDefaults()
         {
