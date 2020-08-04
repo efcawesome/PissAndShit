@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -39,6 +39,18 @@ namespace PissAndShit.Items.Armor
         public override void UpdateArmorSet(Player player)
         {
             player.statLifeMax2 += 500;
+        }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.SolarFlareHelmet, 1);
+            recipe.AddIngredient(ItemID.NebulaHelmet, 1);
+            recipe.AddIngredient(ItemID.StardustHelmet, 1);
+            recipe.AddIngredient(ItemID.VortexHelmet, 1);
+            recipe.AddIngredient(ItemID.LunarBar, 100);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }
