@@ -55,6 +55,7 @@ namespace PissAndShit.NPCs.Bosses
 
         public override void NPCLoot()
         {
+            PaSWorld.downedGodSlime = true;
             int bossWeapon = Main.rand.Next(4);
             if (Main.expertMode)
             {
