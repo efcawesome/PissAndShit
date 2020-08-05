@@ -95,6 +95,7 @@ namespace PissAndShit.NPCs.Bosses
 
         public override void NPCLoot()
         {
+            PaSWorld.downedBoozeshrume = true;
             Main.NewText("boozeshrume.exe has stopped working", Color.MediumPurple);
             if(!Main.expertMode)
             {
