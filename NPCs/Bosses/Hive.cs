@@ -128,6 +128,7 @@ namespace PissAndShit.NPCs.Bosses
         }
         public override void NPCLoot()
         {
+            PaSWorld.downedHive = true;
             int bossWeapon = Main.rand.Next(3);
             if (Main.expertMode)
             {
