@@ -29,7 +29,7 @@ namespace PissAndShit.Items.BossBags
 
         public override void OpenBossBag(Player player)
         {
-            int bossWeapon = Main.rand.Next(4);
+            int bossWeapon = Main.rand.Next(2);
             player.QuickSpawnItem(ItemID.PlatinumCoin, 5);
             player.QuickSpawnItem(ItemID.SuperHealingPotion, Main.rand.Next(5, 10));
             player.QuickSpawnItem(ItemID.Gel, 999);
@@ -41,14 +41,6 @@ namespace PissAndShit.Items.BossBags
             if (bossWeapon == 1)
             {
                 player.QuickSpawnItem(ModContent.ItemType<HolyShower>(), 1);
-            }
-            if (bossWeapon == 2)
-            {
-
-            }
-            if (bossWeapon == 3)
-            {
-
             }
         }
     }
