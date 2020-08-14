@@ -31,6 +31,7 @@ namespace PissAndShit.NPCs
             npc.noGravity = true;
             npc.spriteDirection = 0;
             npc.rotation = 0;
+            npc.dontTakeDamage = true;
 
         }
 
