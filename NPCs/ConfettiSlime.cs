@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using PissAndShit.Items.Consumables;
+using Terraria.GameContent.Events;
 
 namespace PissAndShit.NPCs
 {
@@ -59,6 +60,14 @@ namespace PissAndShit.NPCs
             }
 
             npc.frame.Y = frameNum * frameHeight;
+	}
+
+	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	{
+	    if (BirthdayParty.PartyIsUp)
+		return SpawnCondition.OverworldDaySlime.Chance * 0.1f / 2;
+	    return 0f;
+	    
 	}
 	
     }
