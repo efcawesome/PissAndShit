@@ -25,15 +25,6 @@ namespace PissAndShit.NPCs
         static int enemyRegenerateChance = 0;
         static int enemyDefenseChance = 0;
         public static bool hardDifficulty = false;
-        public override void SetDefaults(NPC npc)
-        {
-            if (hardDifficulty == true)
-            {
-                npc.lifeMax *= 10;
-                npc.life *= 10;
-                npc.damage *= 4;
-            }
-        }
         public override void AI(NPC npc)
         {
             npc.TargetClosest(true);
