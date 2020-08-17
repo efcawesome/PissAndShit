@@ -60,6 +60,12 @@ namespace PissAndShit.NPCs
 					return "Splat";
 				case 2:
 					return "Zap";
+				case 3:
+					return "Tigershon";
+				case 4:
+					return "Moosic";
+				case 5:
+					return "Funta";
 				default:
 					return "Trevor";
 			}
