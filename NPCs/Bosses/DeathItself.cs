@@ -18,6 +18,7 @@ namespace PissAndShit.NPCs.Bosses
 	private int DeathAttkCounter1 = 0;
 	private int DeathAttkCounter2 = 0;
 	private int DeathAttkCounter3 = 0;
+	private int DeathAttkCounter4 = 0;
 	private int DeathRocketShootOffset = 0;
 	private int DeathRocketShootOffset2 = 0;
 	private int DeathRocketsShot = 0;
@@ -62,8 +63,56 @@ namespace PissAndShit.NPCs.Bosses
 	    
 	    switch ((int)npc.ai[0])
 	    {
-		case 0:
+		case 0: // initial charge for when summoned by item
+		    targetPos = player.Center;
+                    targetPos.X += 500 * (npc.Center.X < targetPos.X ? -1 : 1);
 		    npc.ai[1]++;
+		    DeathAttkCounter3++;
+		    if (DeathAttkCounter3 > 120)
+		    {
+			npc.velocity.X = 0;
+			npc.velocity.Y = 0;
+		    }
+		    else
+		    {
+			if (npc.Distance(targetPos) > 50)
+			{
+			    speedModifier = npc.localAI[3] > 0 ? 0.5f : 2f;
+			    if (npc.Center.X < targetPos.X)
+			    {
+				npc.velocity.X += speedModifier;
+				if (npc.velocity.X < 0)
+				    npc.velocity.X += speedModifier * 2;
+			    }
+			    else
+			    {
+				npc.velocity.X -= speedModifier;
+				if (npc.velocity.X > 0)
+				    npc.velocity.X -= speedModifier * 2;
+			    }
+			    if (npc.Center.Y < targetPos.Y)
+			    {
+				npc.velocity.Y += speedModifier;
+				if (npc.velocity.Y < 0)
+				    npc.velocity.Y += speedModifier * 2;
+			    }
+			    else
+			    {
+				npc.velocity.Y -= speedModifier;
+				if (npc.velocity.Y > 0)
+				    npc.velocity.Y -= speedModifier * 2;
+			    }
+			    if (npc.localAI[3] > 0)
+			    {
+				if (Math.Abs(npc.velocity.X) > 24)
+				    npc.velocity.X = 24 * Math.Sign(npc.velocity.X);
+				if (Math.Abs(npc.velocity.Y) > 24)
+				    npc.velocity.Y = 24 * Math.Sign(npc.velocity.Y);
+			    }
+			}
+			npc.ai[1] = 0;
+		    }
+		    
 		    if (npc.ai[1] == 30)
 		    {
 			DeathRocketShootOffset = -10;
@@ -87,6 +136,7 @@ namespace PissAndShit.NPCs.Bosses
 		    {
 			DeathRocketsShot = 0;
 			DeathRocketShootOffset = 0;
+			DeathAttkCounter3 = 0;
 			npc.ai[0]++;
 		    }
 		    break;
@@ -97,7 +147,7 @@ namespace PissAndShit.NPCs.Bosses
 			AttkChange(2);
 		    }
 		    
-		    DeathAttkCounter1 = 0;
+		    //DeathAttkCounter1 = 0; do we need this?
 		    //DeathRocketsShot = 0;
 		    for (DeathRocketShootOffset2 = 0; DeathRocketShootOffset2 < 800; DeathRocketShootOffset2 = DeathRocketShootOffset2 + 20)
 		    {
@@ -124,9 +174,11 @@ namespace PissAndShit.NPCs.Bosses
 			{
 			     if (npc.direction == 1){
 				 Projectile.NewProjectile(npc.Center, new Vector2(32, 0) + -Vector2.UnitX.RotatedBy(Main.rand.NextDouble() * 10), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+				 DeathAttkCounter1 = DeathAttkCounter1 + 1;
 				 /*Projectile.NewProjectile(npc.Center, -Vector2.UnitX.RotatedBy(Main.rand.NextDouble() / 5) * -Main.rand.NextFloat(30f), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);*/}
 			    else{
 				Projectile.NewProjectile(npc.Center, -new Vector2(32, 0) + Vector2.UnitX.RotatedBy(Main.rand.NextDouble() * 10), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+				DeathAttkCounter1 = DeathAttkCounter1 + 1;
 				/*Projectile.NewProjectile(npc.Center, Vector2.UnitX.RotatedBy(Main.rand.NextDouble() / 5) * -Main.rand.NextFloat(30f), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);*/}
 			}
 			npc.ai[1] = 0;
@@ -167,7 +219,63 @@ namespace PissAndShit.NPCs.Bosses
                                 npc.velocity.Y = 24 * Math.Sign(npc.velocity.Y);
                         }
 		    }
+		    
+		    if (DeathAttkCounter1 >= 15)
+		    {
+			DeathAttkCounter4 = 0;
+			AttkChange(3);
+		    }
 		    break;
+		case 3:
+		    targetPos = player.Center;
+		    targetPos.X += 500 * (npc.Center.X < targetPos.X ? -1 : 1);
+		    DeathAttkCounter4++;
+		    speedModifier = npc.localAI[3] > 0 ? 0.5f : 2f;
+		    if (DeathAttkCounter4 >= 60)
+                    {
+			targetPos.Y = targetPos.Y - 0;
+		    }
+		    else
+		    {
+			targetPos.Y = targetPos.Y + 120;
+		    }
+		    
+                   if (npc.Distance(targetPos) > 50)
+		   {
+		       speedModifier = npc.localAI[3] > 0 ? 0.5f : 2f;
+		       if (npc.Center.X < targetPos.X)
+		       {
+			   npc.velocity.X += speedModifier;
+			   if (npc.velocity.X < 0)
+			       npc.velocity.X += speedModifier * 2;
+		       }
+		       else
+		       {
+			   npc.velocity.X -= speedModifier;
+			   if (npc.velocity.X > 0)
+			       npc.velocity.X -= speedModifier * 2;
+		       }
+		       if (npc.Center.Y < targetPos.Y)
+		       {
+			   npc.velocity.Y += speedModifier;
+			   if (npc.velocity.Y < 0)
+			       npc.velocity.Y += speedModifier * 2;
+		       }
+		       else
+		       {
+			   npc.velocity.Y -= speedModifier;
+			   if (npc.velocity.Y > 0)
+			       npc.velocity.Y -= speedModifier * 2;
+		       }
+		       if (npc.localAI[3] > 0)
+		       {
+			   if (Math.Abs(npc.velocity.X) > 24)
+			       npc.velocity.X = 24 * Math.Sign(npc.velocity.X);
+			   if (Math.Abs(npc.velocity.Y) > 24)
+			       npc.velocity.Y = 24 * Math.Sign(npc.velocity.Y);
+		       }
+		   }
+		   break;
 	    }
 	}
 
