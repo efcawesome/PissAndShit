@@ -40,12 +40,14 @@ namespace PissAndShit.Items.Misc
             {
                 difficultyActive = true;
                 PaSWorld.endlessModeSave = true;
+                AGLobalNPC.hardDifficulty = PaSWorld.endlessModeSave;
                 Main.NewText("GET READY FOR A CHALLENGE", 135, 16, 22);
             }
             else
             {
                 difficultyActive = false;
                 PaSWorld.endlessModeSave = false;
+                AGLobalNPC.hardDifficulty = PaSWorld.endlessModeSave;
                 Main.NewText("noob", 48, 248, 255);
             }
             return true;
