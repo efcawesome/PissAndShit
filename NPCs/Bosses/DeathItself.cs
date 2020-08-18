@@ -17,6 +17,8 @@ namespace PissAndShit.NPCs.Bosses
 	private int DeathPhase = 0;
 	private int DeathAttkCounter1 = 0;
 	private int DeathAttkCounter2 = 0;
+	private int DeathAttkCounter3 = 0;
+	private int DeathAttkCounter4 = 0;
 	private int DeathRocketShootOffset = 0;
 	private int DeathRocketShootOffset2 = 0;
 	private int DeathRocketsShot = 0;
@@ -24,13 +26,13 @@ namespace PissAndShit.NPCs.Bosses
 	public override void SetStaticDefaults()
 	{
 	    DisplayName.SetDefault("Death Himself, God of Universes, Extinguisher of Souls, Obliterator of the Foolish");
-	    //Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.Zombie];
+	    Main.npcFrameCount[npc.type] = 3;
 	}
 	
 	public override void SetDefaults()
 	{
-	    npc.width = 40;
-	    npc.height = 40;
+	    npc.width = 48;
+	    npc.height = 48;
 	    npc.damage = 400;
 	    npc.defense = 70;
 	    npc.lifeMax = 220000;
@@ -44,6 +46,8 @@ namespace PissAndShit.NPCs.Bosses
 	    npc.noGravity = true;
 	    music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/LastDance");
             musicPriority = MusicPriority.BossHigh;
+	    npc.dontTakeDamage = true;
+	    npc.scale = 1f;
 	    for (int i = 1; i < 1000; i++)
 	    {
 		npc.ai[0] = 0;
@@ -53,11 +57,62 @@ namespace PissAndShit.NPCs.Bosses
 	public override void AI()
 	{
 	    Player player = Main.player[Main.myPlayer];
+	    npc.direction = npc.spriteDirection = npc.Center.X < player.Center.X ? 1 : -1;
+	    Vector2 targetPos;
+	    float speedModifier;
 	    
 	    switch ((int)npc.ai[0])
 	    {
-		case 0:
+		case 0: // initial charge for when summoned by item
+		    targetPos = player.Center;
+                    targetPos.X += 500 * (npc.Center.X < targetPos.X ? -1 : 1);
 		    npc.ai[1]++;
+		    DeathAttkCounter3++;
+		    if (DeathAttkCounter3 > 120)
+		    {
+			npc.velocity.X = 0;
+			npc.velocity.Y = 0;
+		    }
+		    else
+		    {
+			if (npc.Distance(targetPos) > 50)
+			{
+			    speedModifier = npc.localAI[3] > 0 ? 0.5f : 2f;
+			    if (npc.Center.X < targetPos.X)
+			    {
+				npc.velocity.X += speedModifier;
+				if (npc.velocity.X < 0)
+				    npc.velocity.X += speedModifier * 2;
+			    }
+			    else
+			    {
+				npc.velocity.X -= speedModifier;
+				if (npc.velocity.X > 0)
+				    npc.velocity.X -= speedModifier * 2;
+			    }
+			    if (npc.Center.Y < targetPos.Y)
+			    {
+				npc.velocity.Y += speedModifier;
+				if (npc.velocity.Y < 0)
+				    npc.velocity.Y += speedModifier * 2;
+			    }
+			    else
+			    {
+				npc.velocity.Y -= speedModifier;
+				if (npc.velocity.Y > 0)
+				    npc.velocity.Y -= speedModifier * 2;
+			    }
+			    if (npc.localAI[3] > 0)
+			    {
+				if (Math.Abs(npc.velocity.X) > 24)
+				    npc.velocity.X = 24 * Math.Sign(npc.velocity.X);
+				if (Math.Abs(npc.velocity.Y) > 24)
+				    npc.velocity.Y = 24 * Math.Sign(npc.velocity.Y);
+			    }
+			}
+			npc.ai[1] = 0;
+		    }
+		    
 		    if (npc.ai[1] == 30)
 		    {
 			DeathRocketShootOffset = -10;
@@ -72,7 +127,7 @@ namespace PissAndShit.NPCs.Bosses
 			DeathRocketShootOffset = -10;
 			for (DeathRocketShootOffset = -10; DeathRocketShootOffset < 10; DeathRocketShootOffset++)
 			{
-			    Projectile.NewProjectile(npc.position, new Vector2(-14, DeathRocketShootOffset), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y + 12), new Vector2(-14, DeathRocketShootOffset), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
 			}
 			DeathAttkCounter1 = DeathAttkCounter1 + 1;
 			npc.ai[1] = 0;
@@ -81,14 +136,18 @@ namespace PissAndShit.NPCs.Bosses
 		    {
 			DeathRocketsShot = 0;
 			DeathRocketShootOffset = 0;
+			DeathAttkCounter3 = 0;
 			npc.ai[0]++;
 		    }
 		    break;
 		    
 		case 1:
-		    if (DeathAttkCounter2 = 1)
-			break;
-		    DeathAttkCounter1 = 0;
+		    if (DeathAttkCounter2 == 1)
+		    {
+			AttkChange(2);
+		    }
+		    
+		    //DeathAttkCounter1 = 0; do we need this?
 		    //DeathRocketsShot = 0;
 		    for (DeathRocketShootOffset2 = 0; DeathRocketShootOffset2 < 800; DeathRocketShootOffset2 = DeathRocketShootOffset2 + 20)
 		    {
@@ -101,7 +160,160 @@ namespace PissAndShit.NPCs.Bosses
 			DeathRocketsShot = DeathRocketsShot + 1;
 		    }
 		    break;
+		case 2: // YEET SELF AT PLAYER AND THROW LOTS OF ROCKETS
+		    
+		    npc.ai[1]++;
+		    npc.dontTakeDamage = false;
+		    
+                    targetPos = player.Center;
+                    targetPos.X += 500 * (npc.Center.X < targetPos.X ? -1 : 1);
+
+		    if (npc.ai[1] >= 30)
+		    {
+			for (int i = 0; i < 5 + Main.rand.Next(20); i++)
+			{
+			     if (npc.direction == 1){
+				 Projectile.NewProjectile(npc.Center, new Vector2(32, 0) + -Vector2.UnitX.RotatedBy(Main.rand.NextDouble() * 10), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+				 DeathAttkCounter1 = DeathAttkCounter1 + 1;
+				 /*Projectile.NewProjectile(npc.Center, -Vector2.UnitX.RotatedBy(Main.rand.NextDouble() / 5) * -Main.rand.NextFloat(30f), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);*/}
+			    else{
+				Projectile.NewProjectile(npc.Center, -new Vector2(32, 0) + Vector2.UnitX.RotatedBy(Main.rand.NextDouble() * 10), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+				DeathAttkCounter1 = DeathAttkCounter1 + 1;
+				/*Projectile.NewProjectile(npc.Center, Vector2.UnitX.RotatedBy(Main.rand.NextDouble() / 5) * -Main.rand.NextFloat(30f), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);*/}
+			}
+			npc.ai[1] = 0;
+		    }
+		    
+                    if (npc.Distance(targetPos) > 50)
+                    {
+                        speedModifier = npc.localAI[3] > 0 ? 0.5f : 2f;
+                        if (npc.Center.X < targetPos.X)
+                        {
+                            npc.velocity.X += speedModifier;
+                            if (npc.velocity.X < 0)
+                                npc.velocity.X += speedModifier * 2;
+                        }
+                        else
+                        {
+                            npc.velocity.X -= speedModifier;
+                            if (npc.velocity.X > 0)
+                                npc.velocity.X -= speedModifier * 2;
+                        }
+                        if (npc.Center.Y < targetPos.Y)
+                        {
+                            npc.velocity.Y += speedModifier;
+                            if (npc.velocity.Y < 0)
+                                npc.velocity.Y += speedModifier * 2;
+                        }
+                        else
+                        {
+                            npc.velocity.Y -= speedModifier;
+                            if (npc.velocity.Y > 0)
+                                npc.velocity.Y -= speedModifier * 2;
+                        }
+                        if (npc.localAI[3] > 0)
+                        {
+                            if (Math.Abs(npc.velocity.X) > 24)
+                                npc.velocity.X = 24 * Math.Sign(npc.velocity.X);
+                            if (Math.Abs(npc.velocity.Y) > 24)
+                                npc.velocity.Y = 24 * Math.Sign(npc.velocity.Y);
+                        }
+		    }
+		    
+		    if (DeathAttkCounter1 >= 15)
+		    {
+			DeathAttkCounter4 = 0;
+			AttkChange(3);
+		    }
+		    break;
+		case 3:
+		    targetPos = player.Center;
+		    targetPos.X += 500 * (npc.Center.X < targetPos.X ? -1 : 1);
+		    DeathAttkCounter4++;
+		    speedModifier = npc.localAI[3] > 0 ? 0.5f : 2f;
+		    if (DeathAttkCounter4 >= 60)
+                    {
+			targetPos.Y = targetPos.Y - 0;
+		    }
+		    else
+		    {
+			targetPos.Y = targetPos.Y + 120;
+		    }
+		    
+                   if (npc.Distance(targetPos) > 50)
+		   {
+		       speedModifier = npc.localAI[3] > 0 ? 0.5f : 2f;
+		       if (npc.Center.X < targetPos.X)
+		       {
+			   npc.velocity.X += speedModifier;
+			   if (npc.velocity.X < 0)
+			       npc.velocity.X += speedModifier * 2;
+		       }
+		       else
+		       {
+			   npc.velocity.X -= speedModifier;
+			   if (npc.velocity.X > 0)
+			       npc.velocity.X -= speedModifier * 2;
+		       }
+		       if (npc.Center.Y < targetPos.Y)
+		       {
+			   npc.velocity.Y += speedModifier;
+			   if (npc.velocity.Y < 0)
+			       npc.velocity.Y += speedModifier * 2;
+		       }
+		       else
+		       {
+			   npc.velocity.Y -= speedModifier;
+			   if (npc.velocity.Y > 0)
+			       npc.velocity.Y -= speedModifier * 2;
+		       }
+		       if (npc.localAI[3] > 0)
+		       {
+			   if (Math.Abs(npc.velocity.X) > 24)
+			       npc.velocity.X = 24 * Math.Sign(npc.velocity.X);
+			   if (Math.Abs(npc.velocity.Y) > 24)
+			       npc.velocity.Y = 24 * Math.Sign(npc.velocity.Y);
+		       }
+		   }
+		   break;
 	    }
+	}
+
+	public override void FindFrame(int frameHeight)
+        {
+            if (++npc.frameCounter > 3)
+            {
+                npc.frameCounter = 0;
+                npc.frame.Y += frameHeight;
+                if (npc.frame.Y >= 3 * frameHeight)
+                    npc.frame.Y = 0;
+            }
+	}
+
+	void AttkChange(int changeTo)
+	{
+	    DeathAttkCounter1 = 0;
+	    DeathAttkCounter2 = 0;
+	    DeathAttkCounter3 = 0;
+	    DeathRocketShootOffset = 0;
+	    DeathRocketShootOffset2 = 0;
+	    DeathRocketsShot = 0;
+	    npc.ai[0] = changeTo;
+	}
+
+	public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Texture2D texture2D13 = Main.npcTexture[npc.type];
+            Rectangle rectangle = npc.frame;
+            Vector2 origin2 = rectangle.Size() / 2f;
+	    
+            Color color26 = lightColor;
+            color26 = npc.GetAlpha(color26);
+	    
+            SpriteEffects effects = npc.spriteDirection < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+	    
+            Main.spriteBatch.Draw(texture2D13, npc.Center - Main.screenPosition + new Vector2(0f, npc.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), npc.GetAlpha(lightColor), npc.rotation, origin2, npc.scale, effects, 0f);
+            return false;
 	}
     }	
 }
