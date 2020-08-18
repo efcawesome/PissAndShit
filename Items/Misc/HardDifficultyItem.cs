@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using PissAndShit.NPCs;
 using System;
 using System.Collections.Generic;
@@ -30,18 +30,22 @@ namespace PissAndShit.Items.Misc
             item.consumable = false;
             item.rare = ItemRarityID.Red;
         }
+        public override bool CanUseItem(Player player)
+        {
+            return Main.expertMode;
+        }
         public override bool UseItem(Player player)
         {
             if (difficultyActive == false)
             {
-                AGLobalNPC.hardDifficulty = true;
                 difficultyActive = true;
+                PaSWorld.endlessModeSave = true;
                 Main.NewText("GET READY FOR A CHALLENGE", 135, 16, 22);
             }
             else
             {
-                AGLobalNPC.hardDifficulty = false;
                 difficultyActive = false;
+                PaSWorld.endlessModeSave = false;
                 Main.NewText("noob", 48, 248, 255);
             }
             return true;
