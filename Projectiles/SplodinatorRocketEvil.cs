@@ -35,7 +35,7 @@ namespace PissAndShit.Projectiles
 	public class SplodinatorRocketEvil : ModProjectile
 	{   
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Exoultimagigahypersplosionator Rocket");
+			DisplayName.SetDefault("deaths meme kaboom cylinder");
 			Main.projFrames[projectile.type] = 2;
 		}
 
