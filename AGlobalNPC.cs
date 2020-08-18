@@ -21,10 +21,32 @@ namespace PissAndShit.NPCs
 
         static int boneShootTimer = 0;
 
+        static int destroyerShootTimer = 0;
+
         static int enemyEnrageChance = 0;
         static int enemyRegenerateChance = 0;
         static int enemyDefenseChance = 0;
-        public static bool hardDifficulty = false;
+        public static bool hardDifficulty = PaSWorld.endlessModeSave;
+        public override void SetDefaults(NPC npc)
+        {
+            if (hardDifficulty == true)
+            {
+                npc.life = npc.lifeMax *= 2;
+                npc.damage *= 2;
+                if(npc.type == NPCID.TheDestroyerBody)
+                {
+                    npc.defense = 10000;
+                }
+                if(npc.type == NPCID.SkeletronPrime)
+                {
+                    npc.damage = 1000000;
+                }
+                if(npc.type == NPCID.PrimeCannon || npc.type == NPCID.PrimeSaw || npc.type == NPCID.PrimeVice || npc.type == NPCID.PrimeLaser)
+                {
+                    npc.immortal = true;
+                }
+            }
+        }
         public override void AI(NPC npc)
         {
             npc.TargetClosest(true);
@@ -140,6 +162,23 @@ namespace PissAndShit.NPCs
                         }
                         boneShootTimer = 0;
                     }
+                }
+                if(npc.type == NPCID.TheDestroyerBody)
+                {
+                    destroyerShootTimer++;
+                    if(destroyerShootTimer >= 20 && Main.rand.Next(3) == 0)
+                    {
+                        Projectile.NewProjectile(shootPos1.X + (float)Main.rand.Next(-200, 200), shootPos1.Y + (float)Main.rand.Next(-200, 200), shootVel1.X, shootVel1.Y, ProjectileID.DeathLaser, npc.damage / 4, 5f);
+                        destroyerShootTimer = 0;
+                    }
+                }
+                if(npc.type == NPCID.Spazmatism)
+                {
+                    npc.position.Y = player1.position.Y;
+                }
+                if(npc.type == NPCID.Retinazer)
+                {
+                    npc.position.X = player1.position.X;
                 }
             }
         }
