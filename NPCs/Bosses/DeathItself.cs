@@ -19,9 +19,11 @@ namespace PissAndShit.NPCs.Bosses
 	private int DeathAttkCounter2 = 0;
 	private int DeathAttkCounter3 = 0;
 	private int DeathAttkCounter4 = 0;
+	private int DeathAttkChangeTimer = 0;
 	private int DeathRocketShootOffset = 0;
 	private int DeathRocketShootOffset2 = 0;
 	private int DeathRocketsShot = 0;
+	private bool DeathTriggerOnce = true;
 	
 	public override void SetStaticDefaults()
 	{
@@ -130,6 +132,7 @@ namespace PissAndShit.NPCs.Bosses
 			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y + 12), new Vector2(-14, DeathRocketShootOffset), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
 			}
 			DeathAttkCounter1 = DeathAttkCounter1 + 1;
+			
 			npc.ai[1] = 0;
 		    }
 		    if (DeathAttkCounter1 == 4)
@@ -137,52 +140,30 @@ namespace PissAndShit.NPCs.Bosses
 			DeathRocketsShot = 0;
 			DeathRocketShootOffset = 0;
 			DeathAttkCounter3 = 0;
-			npc.ai[0]++;
+			npc.ai[1] = 0;
+			npc.ai[0] = 1;
 		    }
 		    break;
 		    
 		case 1:
-		    if (DeathAttkCounter2 == 1)
-		    {
-			AttkChange(2);
-		    }
-		    
-		    //DeathAttkCounter1 = 0; do we need this?
-		    //DeathRocketsShot = 0;
 		    for (DeathRocketShootOffset2 = 0; DeathRocketShootOffset2 < 800; DeathRocketShootOffset2 = DeathRocketShootOffset2 + 20)
 		    {
 			if (DeathRocketsShot >= 200)
 			{
-			    DeathAttkCounter2 = 1;
-			    npc.ai[0] = 0;
+			    DeathAttkCounter2 = 0;
+			    DeathAttkCounter1 = 0;
+			    npc.ai[0] = 2;
 			}
 			Projectile.NewProjectile(new Vector2(npc.position.X - 400 + DeathRocketShootOffset2 * 6, npc.position.Y - 800), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
 			DeathRocketsShot = DeathRocketsShot + 1;
 		    }
 		    break;
 		case 2: // YEET SELF AT PLAYER AND THROW LOTS OF ROCKETS
-		    
-		    npc.ai[1]++;
 		    npc.dontTakeDamage = false;
 		    
                     targetPos = player.Center;
                     targetPos.X += 500 * (npc.Center.X < targetPos.X ? -1 : 1);
-
-		    if (npc.ai[1] >= 30)
-		    {
-			for (int i = 0; i < 5 + Main.rand.Next(20); i++)
-			{
-			     if (npc.direction == 1){
-				 Projectile.NewProjectile(npc.Center, new Vector2(32, 0) + -Vector2.UnitX.RotatedBy(Main.rand.NextDouble() * 10), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
-				 DeathAttkCounter1 = DeathAttkCounter1 + 1;
-				 /*Projectile.NewProjectile(npc.Center, -Vector2.UnitX.RotatedBy(Main.rand.NextDouble() / 5) * -Main.rand.NextFloat(30f), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);*/}
-			    else{
-				Projectile.NewProjectile(npc.Center, -new Vector2(32, 0) + Vector2.UnitX.RotatedBy(Main.rand.NextDouble() * 10), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
-				DeathAttkCounter1 = DeathAttkCounter1 + 1;
-				/*Projectile.NewProjectile(npc.Center, Vector2.UnitX.RotatedBy(Main.rand.NextDouble() / 5) * -Main.rand.NextFloat(30f), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);*/}
-			}
-			npc.ai[1] = 0;
-		    }
+		    npc.ai[1]++;
 		    
                     if (npc.Distance(targetPos) > 50)
                     {
@@ -219,14 +200,49 @@ namespace PissAndShit.NPCs.Bosses
                                 npc.velocity.Y = 24 * Math.Sign(npc.velocity.Y);
                         }
 		    }
-		    
-		    if (DeathAttkCounter1 >= 15)
+
+		    if (npc.ai[1] >= 30)
 		    {
-			DeathAttkCounter4 = 0;
+			DeathAttkCounter1++;
+			for (int i = 0; i < 5 + Main.rand.Next(20); i++)
+			{
+			    if (npc.direction == 1)
+			    {
+				Projectile.NewProjectile(npc.Center, new Vector2(32, 0) + -Vector2.UnitX.RotatedBy(Main.rand.NextDouble() * 10), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			    }
+			    else
+			    {
+				Projectile.NewProjectile(npc.Center, -new Vector2(32, 0) + Vector2.UnitX.RotatedBy(Main.rand.NextDouble() * 10), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			    }
+			    
+			    npc.ai[1] = 0;
+			}
+		    }
+		    
+		    if (DeathAttkCounter1 >= 5)
+		    {
 			AttkChange(3);
 		    }
 		    break;
-		case 3:
+		    
+		case 3: // throw dagger bomb
+		    npc.ai[1]++;
+		    if (npc.ai[1] > 60)
+		    {
+			if (npc.direction == 1)
+			{
+			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(25, -7), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(15, -7), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(35, -7), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			}
+			else
+			{
+			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(-25, -7), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(-15, -7), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(-35, -7), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			}
+			npc.ai[1] = 0;
+		    }
 		    targetPos = player.Center;
 		    targetPos.X += 500 * (npc.Center.X < targetPos.X ? -1 : 1);
 		    DeathAttkCounter4++;
@@ -292,13 +308,19 @@ namespace PissAndShit.NPCs.Bosses
 
 	void AttkChange(int changeTo)
 	{
-	    DeathAttkCounter1 = 0;
-	    DeathAttkCounter2 = 0;
-	    DeathAttkCounter3 = 0;
-	    DeathRocketShootOffset = 0;
-	    DeathRocketShootOffset2 = 0;
-	    DeathRocketsShot = 0;
-	    npc.ai[0] = changeTo;
+	    for (int i = 0; i < 120; i++)
+	    {
+		npc.ai[1] = 0;
+		DeathAttkChangeTimer = 0;
+		DeathAttkChangeTimer++;
+		DeathAttkCounter1 = 0;
+		DeathAttkCounter2 = 0;
+		DeathAttkCounter3 = 0;
+		DeathRocketShootOffset = 0;
+		DeathRocketShootOffset2 = 0;
+		DeathRocketsShot = 0;
+		npc.ai[0] = changeTo;
+	    }
 	}
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
