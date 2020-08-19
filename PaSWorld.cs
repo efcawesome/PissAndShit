@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using PissAndShit.NPCs;
 
 namespace PissAndShit
 {
@@ -17,6 +18,8 @@ namespace PissAndShit
         public static bool downedYoungDuke = false;
         public static bool downedBoozeshrume = false;
         public static bool downedHive = false;
+        public static bool endlessModeSave = false;
+        public static bool endlesserModeSave = false;
 
         public override void Initialize()
         {
@@ -25,6 +28,8 @@ namespace PissAndShit
             downedYoungDuke = false;
             downedBoozeshrume = false;
             downedHive = false;
+            endlessModeSave = false;
+            endlesserModeSave = false;
         }
 
         public override TagCompound Save()
@@ -35,6 +40,9 @@ namespace PissAndShit
             if (downedYoungDuke) Downed.Add("youngDuke");
             if (downedBoozeshrume) Downed.Add("boozeshrume");
             if (downedHive) Downed.Add("hive");
+            var Modes = new List<string>();
+            if (endlessModeSave) Modes.Add("endlessModeSave");
+            if (endlesserModeSave) Modes.Add("endlesserModeSave");
                  
             return new TagCompound
             {
@@ -43,6 +51,10 @@ namespace PissAndShit
                 },
                 {
                     "Downed", Downed
+
+                },
+                {
+                    "Modes", Modes
                 }
             };
         }
@@ -55,6 +67,9 @@ namespace PissAndShit
             downedYoungDuke = Downed.Contains("youngDuke");
             downedBoozeshrume = Downed.Contains("boozeshrume");
             downedHive = Downed.Contains("hive");
+            var Modes = tag.GetList<string>("Modes");
+            endlessModeSave = Modes.Contains("endlessModeSave");
+            endlesserModeSave = Modes.Contains("endlesserModeSave");
         }
 
         public override void LoadLegacy(BinaryReader reader)
@@ -68,6 +83,9 @@ namespace PissAndShit
                 downedYoungDuke = flags[2];
                 downedBoozeshrume = flags[3];
                 downedHive = flags[4];
+                BitsByte flags1 = reader.ReadByte();
+                endlessModeSave = flags1[0];
+                endlesserModeSave = flags1[1];
             }
         }
 
@@ -80,6 +98,10 @@ namespace PissAndShit
             flags[3] = downedBoozeshrume;
             flags[4] = downedHive;
 
+            BitsByte flags1 = new BitsByte();
+            flags1[0] = endlessModeSave;
+            flags1[1] = endlesserModeSave;
+
             writer.Write(flags);
         }
 
@@ -91,6 +113,10 @@ namespace PissAndShit
             downedYoungDuke = flags[2];
             downedBoozeshrume = flags[3];
             downedHive = flags[4];
+
+            BitsByte flags1 = reader.ReadByte();
+            endlessModeSave = flags1[0];
+            endlesserModeSave = flags1[0];
         }
     }
 }
