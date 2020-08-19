@@ -315,7 +315,7 @@ namespace PissAndShit.NPCs
                     if (golemLowLife == true)
                     {
                         headFireballTimer++;
-                        if (headFireballTimer >= 120)
+                        if (headFireballTimer >= 90)
                         {
                             Projectile.NewProjectile(shootPos1.X, shootPos1.Y, -10, -10, ProjectileID.Fireball, npc.damage / 4, 5f);
                             Projectile.NewProjectile(shootPos1.X, shootPos1.Y, 10, -10, ProjectileID.Fireball, npc.damage / 4, 5f);
