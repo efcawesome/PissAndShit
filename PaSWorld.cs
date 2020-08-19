@@ -69,7 +69,7 @@ namespace PissAndShit
             downedHive = Downed.Contains("hive");
             var Modes = tag.GetList<string>("Modes");
             endlessModeSave = Modes.Contains("endlessModeSave");
-            endlesserModeSave = Modes.Contains("endlesserModeSave")
+            endlesserModeSave = Modes.Contains("endlesserModeSave");
         }
 
         public override void LoadLegacy(BinaryReader reader)
