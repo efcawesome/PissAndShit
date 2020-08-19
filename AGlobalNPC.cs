@@ -29,6 +29,12 @@ namespace PissAndShit.NPCs
         static int planteraDespawnTimer = 0;
         static bool planteraStatusBool = false;
 
+        static int leftFistShootTimer = 0;
+        static int rightFistShootTimer = 0;
+        static int headShootTimer = 0;
+        static int bodyLaserTimer = 0;
+        static int bodyScytheTimer = 0;
+
         static int enemyEnrageChance = 0;
         static int enemyRegenerateChance = 0;
         static int enemyDefenseChance = 0;
@@ -47,7 +53,7 @@ namespace PissAndShit.NPCs
                 {
                     npc.damage = 1000000;
                 }
-                if(npc.type == NPCID.PrimeCannon || npc.type == NPCID.PrimeSaw || npc.type == NPCID.PrimeVice || npc.type == NPCID.PrimeLaser || npc.type == NPCID.PlanterasTentacle)
+                if(npc.type == NPCID.PrimeCannon || npc.type == NPCID.PrimeSaw || npc.type == NPCID.PrimeVice || npc.type == NPCID.PrimeLaser || npc.type == NPCID.PlanterasTentacle || npc.type == NPCID.GolemFistLeft || npc.type == NPCID.GolemFistRight)
                 {
                     npc.immortal = true;
                 }
@@ -264,6 +270,75 @@ namespace PissAndShit.NPCs
                         planteraDespawnTimer = 0;
                     }
                 }
+                if(npc.type == NPCID.GolemFistLeft)
+                {
+                    leftFistShootTimer++;
+                    if(leftFistShootTimer >= 20)
+                    {
+                        int projectile = Projectile.NewProjectile(shootPos1.X, shootPos1.Y, 0, 0, ProjectileID.DeathSickle, npc.damage / 4, 5f);
+                        Main.projectile[projectile].hostile = true;
+                        Main.projectile[projectile].friendly = false;
+                        leftFistShootTimer = 0;
+                    }
+                }
+                if (npc.type == NPCID.GolemFistRight)
+                {
+                    rightFistShootTimer++;
+                    if (rightFistShootTimer >= 20)
+                    {
+                        int projectile = Projectile.NewProjectile(shootPos1.X, shootPos1.Y, 0, 0, ProjectileID.DeathSickle, npc.damage / 4, 5f);
+                        Main.projectile[projectile].hostile = true;
+                        Main.projectile[projectile].friendly = false;
+                        rightFistShootTimer = 0;
+                    }
+                }
+                if(npc.type == NPCID.GolemHeadFree)
+                {
+                    headShootTimer++;
+                    if(headShootTimer >= 40 + Main.rand.Next(-20, 20))
+                    {
+                        int projectile = Projectile.NewProjectile(shootPos1.X, shootPos1.Y, shootVel1.X, shootVel1.Y, ProjectileID.DeathSickle , npc.damage / 4, 5f);
+                        Main.projectile[projectile].hostile = true;
+                        Main.projectile[projectile].friendly = false;
+                        headShootTimer = 0;
+                    }
+                }
+                if(npc.type == NPCID.Golem)
+                {
+                    bodyLaserTimer++;
+                    if (bodyLaserTimer >= 10)
+                    {
+                        if(npc.life > npc.lifeMax / 2)
+                        {
+                            Projectile.NewProjectile(shootPos1.X - 10, shootPos1.Y, shootVel1.X, shootVel1.Y, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X + 10, shootPos1.Y, shootVel1.X, shootVel1.Y, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                        }
+                        else if(npc.life <= npc.lifeMax/2)
+                        {
+                            Projectile.NewProjectile(shootPos1.X - 20, shootPos1.Y, 0, -15, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X + 20, shootPos1.Y, 0, -15, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X - 20, shootPos1.Y, 0, 15, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X + 20, shootPos1.Y, 0, 15, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X - 20, shootPos1.Y, -15, -15, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X + 20, shootPos1.Y, -15, -15, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X - 20, shootPos1.Y, 15, 15, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X + 20, shootPos1.Y, 15, 15, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X, shootPos1.Y - 20, -15, 0, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X, shootPos1.Y + 20, -15, 0, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X, shootPos1.Y - 20, 15, 0, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X, shootPos1.Y + 20, 15, 0, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X, shootPos1.Y - 20, 15, -15, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X, shootPos1.Y + 20, 15, -15, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X, shootPos1.Y - 20, -15, 15, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X, shootPos1.Y + 20, -15, 15, ProjectileID.EyeBeam, npc.damage / 4, 5f);
+                        }
+                        bodyLaserTimer = 0;
+                    }
+                }
+                if(npc.type == NPCID.CultistBoss)
+                {
+
+                }
             }
         }
 
@@ -289,6 +364,10 @@ namespace PissAndShit.NPCs
                     npc.defense *= 2;
                     CombatText.NewText(npc.Hitbox, Color.OrangeRed, npc.FullName + " has increased their defense", dramatic: true);
                 }
+            }
+            if(npc.type == NPCID.Golem || npc.type == NPCID.GolemFistLeft || npc.type == NPCID.GolemFistRight)
+            {
+                target.AddBuff(BuffID.Stoned, 60, false);
             }
         }
         public override void NPCLoot(NPC npc)
