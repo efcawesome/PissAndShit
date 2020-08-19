@@ -17,7 +17,7 @@ namespace PissAndShit.Items.Misc
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Endlesser Mode");
-            Tooltip.SetDefault("Use only if you are a true gamer");
+            Tooltip.SetDefault("Use only if you are a true gamer\nMakes bosses even more difficult\nCan only be used while endless mode is active");
         }
         public override void SetDefaults()
         {
