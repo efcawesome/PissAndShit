@@ -19,6 +19,7 @@ namespace PissAndShit
         public static bool downedBoozeshrume = false;
         public static bool downedHive = false;
         public static bool endlessModeSave = false;
+        public static bool endlesserModeSave = false;
 
         public override void Initialize()
         {
@@ -28,6 +29,7 @@ namespace PissAndShit
             downedBoozeshrume = false;
             downedHive = false;
             endlessModeSave = false;
+            endlesserModeSave = false;
         }
 
         public override TagCompound Save()
@@ -40,6 +42,7 @@ namespace PissAndShit
             if (downedHive) Downed.Add("hive");
             var Modes = new List<string>();
             if (endlessModeSave) Modes.Add("endlessModeSave");
+            if (endlesserModeSave) Modes.Add("endlesserModeSave");
                  
             return new TagCompound
             {
@@ -66,6 +69,7 @@ namespace PissAndShit
             downedHive = Downed.Contains("hive");
             var Modes = tag.GetList<string>("Modes");
             endlessModeSave = Modes.Contains("endlessModeSave");
+            endlesserModeSave = Modes.Contains("endlesserModeSave")
         }
 
         public override void LoadLegacy(BinaryReader reader)
@@ -81,6 +85,7 @@ namespace PissAndShit
                 downedHive = flags[4];
                 BitsByte flags1 = reader.ReadByte();
                 endlessModeSave = flags1[0];
+                endlesserModeSave = flags1[1];
             }
         }
 
@@ -95,6 +100,7 @@ namespace PissAndShit
 
             BitsByte flags1 = new BitsByte();
             flags1[0] = endlessModeSave;
+            flags1[1] = endlesserModeSave;
 
             writer.Write(flags);
         }
@@ -110,6 +116,7 @@ namespace PissAndShit
 
             BitsByte flags1 = reader.ReadByte();
             endlessModeSave = flags1[0];
+            endlesserModeSave = flags1[0];
         }
     }
 }
