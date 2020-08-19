@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using PissAndShit.NPCs;
 using System;
 using System.Collections.Generic;
@@ -41,14 +41,14 @@ namespace PissAndShit.Items.Misc
                 difficultyActive = true;
                 PaSWorld.endlesserModeSave = true;
                 AGLobalNPC.endlesserModeBool = PaSWorld.endlesserModeSave;
-                Main.NewText("Turn back before its too late", 0, 0, 0);
+                Main.NewText("Turn back before its too late", 48, 0, 2);
             }
             else
             {
                 difficultyActive = false;
                 PaSWorld.endlesserModeSave = false;
                 AGLobalNPC.endlesserModeBool = PaSWorld.endlesserModeSave;
-                Main.NewText("You may have strayed from the path, but you are back on it again", 255, 255, 255);
+                Main.NewText("You may have strayed from the path, but you are back on it again", 212, 38, 45);
             }
             return true;
         }
