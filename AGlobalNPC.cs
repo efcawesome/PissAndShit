@@ -32,8 +32,11 @@ namespace PissAndShit.NPCs
         static int leftFistShootTimer = 0;
         static int rightFistShootTimer = 0;
         static int headShootTimer = 0;
+        static int headFireballTimer = 0;
         static int bodyLaserTimer = 0;
-        static int bodyScytheTimer = 0;
+        static bool golemLowLife = false;
+
+        static bool lunarEnemySpawn = false;
 
         static int enemyEnrageChance = 0;
         static int enemyRegenerateChance = 0;
@@ -45,17 +48,24 @@ namespace PissAndShit.NPCs
             {
                 npc.life = npc.lifeMax *= 2;
                 npc.damage *= 2;
-                if(npc.type == NPCID.TheDestroyerBody)
+                if (npc.type == NPCID.TheDestroyerBody)
                 {
                     npc.defense = 10000;
                 }
-                if(npc.type == NPCID.SkeletronPrime)
+                if (npc.type == NPCID.SkeletronPrime)
                 {
                     npc.damage = 1000000;
                 }
-                if(npc.type == NPCID.PrimeCannon || npc.type == NPCID.PrimeSaw || npc.type == NPCID.PrimeVice || npc.type == NPCID.PrimeLaser || npc.type == NPCID.PlanterasTentacle || npc.type == NPCID.GolemFistLeft || npc.type == NPCID.GolemFistRight)
+                if (npc.type == NPCID.PrimeCannon || npc.type == NPCID.PrimeSaw || npc.type == NPCID.PrimeVice || npc.type == NPCID.PrimeLaser || npc.type == NPCID.PlanterasTentacle || npc.type == NPCID.GolemFistLeft || npc.type == NPCID.GolemFistRight)
                 {
                     npc.immortal = true;
+                }
+                if(NPC.AnyNPCs(NPCID.CultistBoss))
+                {
+                    if(npc.type == NPCID.SolarCrawltipedeTail || npc.type == NPCID.NebulaBrain || npc.type == NPCID.VortexHornetQueen || npc.type == NPCID.StardustJellyfishBig) 
+                    {
+                        npc.immortal = true;
+                    }
                 }
             }
         }
@@ -302,9 +312,22 @@ namespace PissAndShit.NPCs
                         Main.projectile[projectile].friendly = false;
                         headShootTimer = 0;
                     }
+                    if (golemLowLife == true)
+                    {
+                        headFireballTimer++;
+                        if (headFireballTimer >= 120)
+                        {
+                            Projectile.NewProjectile(shootPos1.X, shootPos1.Y, -10, -10, ProjectileID.Fireball, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X, shootPos1.Y, 10, -10, ProjectileID.Fireball, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X, shootPos1.Y, -10, 10, ProjectileID.Fireball, npc.damage / 4, 5f);
+                            Projectile.NewProjectile(shootPos1.X, shootPos1.Y, 10, 10, ProjectileID.Fireball, npc.damage / 4, 5f);
+                            headFireballTimer = 0;
+                        }
+                    }
                 }
                 if(npc.type == NPCID.Golem)
                 {
+                    if (npc.life <= npc.lifeMax / 4) golemLowLife = true;
                     bodyLaserTimer++;
                     if (bodyLaserTimer >= 10)
                     {
@@ -337,7 +360,14 @@ namespace PissAndShit.NPCs
                 }
                 if(npc.type == NPCID.CultistBoss)
                 {
-
+                    if(lunarEnemySpawn == false)
+                    {
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.SolarCrawltipedeHead, npc.whoAmI);
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.NebulaBrain, npc.whoAmI);
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.VortexHornetQueen, npc.whoAmI);
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, 407, npc.whoAmI);
+                        lunarEnemySpawn = true;
+                    }
                 }
             }
         }
@@ -365,10 +395,14 @@ namespace PissAndShit.NPCs
                     CombatText.NewText(npc.Hitbox, Color.OrangeRed, npc.FullName + " has increased their defense", dramatic: true);
                 }
             }
-            if(npc.type == NPCID.Golem || npc.type == NPCID.GolemFistLeft || npc.type == NPCID.GolemFistRight)
+            if(hardDifficulty == true)
             {
-                target.AddBuff(BuffID.Stoned, 60, false);
+                if (npc.type == NPCID.Golem || npc.type == NPCID.GolemFistLeft || npc.type == NPCID.GolemFistRight)
+                {
+                    target.AddBuff(BuffID.Stoned, 60, false);
+                }
             }
+
         }
         public override void NPCLoot(NPC npc)
         {
@@ -394,6 +428,10 @@ namespace PissAndShit.NPCs
                 if(npc.type == NPCID.SkeletronHead)
                 {
                     NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.DungeonGuardian, npc.whoAmI);
+                }
+                if(npc.type == NPCID.CultistBoss)
+                {
+                    lunarEnemySpawn = true;
                 }
             }
         }
