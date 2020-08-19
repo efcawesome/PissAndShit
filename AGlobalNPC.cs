@@ -36,12 +36,16 @@ namespace PissAndShit.NPCs
         static int bodyLaserTimer = 0;
         static bool golemLowLife = false;
 
+        static int lunarEnemySpawnTimer = 0;
+        static bool ancientDragonSpawned = false;
         static bool lunarEnemySpawn = false;
 
         static int enemyEnrageChance = 0;
         static int enemyRegenerateChance = 0;
         static int enemyDefenseChance = 0;
+
         public static bool hardDifficulty = PaSWorld.endlessModeSave;
+        public static bool endlesserModeBool = false;
         public override void SetDefaults(NPC npc)
         {
             if (hardDifficulty == true)
@@ -62,7 +66,17 @@ namespace PissAndShit.NPCs
                 }
                 if(NPC.AnyNPCs(NPCID.CultistBoss))
                 {
-                    if(npc.type == NPCID.SolarCrawltipedeTail || npc.type == NPCID.NebulaBrain || npc.type == NPCID.VortexHornetQueen || npc.type == NPCID.StardustJellyfishBig) 
+                    if(npc.type == NPCID.CultistDragonHead)
+                    {
+                        npc.immortal = true;
+                    }
+                }
+            }
+            if(endlesserModeBool == true)
+            {
+                if (NPC.AnyNPCs(NPCID.CultistBoss))
+                {
+                    if (npc.type == NPCID.SolarCrawltipedeTail || npc.type == NPCID.NebulaBrain || npc.type == NPCID.VortexHornetQueen || npc.type == NPCID.StardustJellyfishBig)
                     {
                         npc.immortal = true;
                     }
@@ -360,7 +374,55 @@ namespace PissAndShit.NPCs
                 }
                 if(npc.type == NPCID.CultistBoss)
                 {
-                    if(lunarEnemySpawn == false)
+                    lunarEnemySpawnTimer++;
+                    if(ancientDragonSpawned == false)
+                    {
+                        NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y + 100, NPCID.CultistDragonHead, npc.whoAmI);
+                        NPC.NewNPC((int)npc.Center.X - 100, (int)npc.Center.Y - 100, NPCID.CultistDragonHead, npc.whoAmI);
+                        ancientDragonSpawned = true;
+                    }
+                    if(lunarEnemySpawnTimer >= 900)
+                    {
+                        switch(Main.rand.Next(4))
+                        {
+                            case 0:
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.SolarCrawltipedeHead, npc.whoAmI);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.SolarDrakomireRider, npc.whoAmI);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.SolarDrakomire, npc.whoAmI);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.SolarSroller, npc.whoAmI);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.SolarCorite, npc.whoAmI);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.SolarSolenian, npc.whoAmI);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.SolarSpearman, npc.whoAmI);
+                                break;
+                            case 1:
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.VortexSoldier, npc.whoAmI);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.VortexHornetQueen, npc.whoAmI);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.VortexHornet, npc.whoAmI);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.VortexRifleman, npc.whoAmI);
+                                break;
+                            case 2:
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.NebulaBrain, npc.whoAmI);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.NebulaHeadcrab, npc.whoAmI);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.NebulaBeast, npc.whoAmI);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.NebulaSoldier, npc.whoAmI);
+                                break;
+                            case 3:
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.StardustCellBig, npc.whoAmI);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.StardustJellyfishBig, npc.whoAmI);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.StardustSoldier, npc.whoAmI);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.StardustSpiderBig, npc.whoAmI);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.StardustWormHead, npc.whoAmI);
+                                break;
+                        }
+                        lunarEnemySpawnTimer = 0;
+                    }
+                }
+            }
+            if(endlesserModeBool == true)
+            {
+                if (npc.type == NPCID.CultistBoss)
+                {
+                    if (lunarEnemySpawn == false)
                     {
                         NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.SolarCrawltipedeHead, npc.whoAmI);
                         NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.NebulaBrain, npc.whoAmI);
@@ -374,7 +436,7 @@ namespace PissAndShit.NPCs
 
         public override void OnHitPlayer(NPC npc, Player target, int damage, bool crit)
         {
-            if (hardDifficulty == true)
+            if (endlesserModeBool == true)
             {
                 enemyEnrageChance = Main.rand.Next(15);
                 if (enemyEnrageChance == 0)
@@ -429,9 +491,29 @@ namespace PissAndShit.NPCs
                 {
                     NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.DungeonGuardian, npc.whoAmI);
                 }
-                if(npc.type == NPCID.CultistBoss)
+                if (npc.type == NPCID.CultistBoss)
                 {
-                    lunarEnemySpawn = true;
+                    ancientDragonSpawned = false;
+                    for (int i = 0; i < Main.maxNPCs; i++)
+                    {
+                        NPC npc1 = Main.npc[i];
+                        if (npc1.active && npc1.type == NPCID.CultistDragonHead) npc1.active = false;
+                    }
+                }
+            }
+            if(endlesserModeBool == true)
+            {
+                if (npc.type == NPCID.CultistBoss)
+                {
+                    lunarEnemySpawn = false;
+                    for (int i = 0; i < Main.maxNPCs; i++)
+                    {
+                        NPC npc1 = Main.npc[i];
+                        if (npc1.active && npc1.type == NPCID.SolarCrawltipedeHead) npc1.active = false;
+                        if (npc1.active && npc1.type == NPCID.NebulaBrain) npc1.active = false;
+                        if (npc1.active && npc1.type == NPCID.VortexHornetQueen) npc1.active = false;
+                        if (npc1.active && npc1.type == NPCID.StardustJellyfishBig) npc1.active = false;
+                    }
                 }
             }
         }
