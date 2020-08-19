@@ -109,7 +109,7 @@ namespace PissAndShit.NPCs.Bosses
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            ShitWorld.downedVendingMachine = true;
+            PaSWorld.downedVendingMachine = true;
             if (Main.netMode == NetmodeID.Server)
             {
                 NetMessage.SendData(MessageID.WorldData, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);
