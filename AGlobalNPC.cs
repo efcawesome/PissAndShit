@@ -3,6 +3,7 @@ using PissAndShit.Items.Misc;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.Exceptions;
 
 namespace PissAndShit.NPCs
 {
@@ -24,6 +25,9 @@ namespace PissAndShit.NPCs
         static int destroyerShootTimer = 0;
 
         static int dungeonEnemySpawnTimer = 0;
+
+        static int planteraDespawnTimer = 0;
+        static bool planteraStatusBool = false;
 
         static int enemyEnrageChance = 0;
         static int enemyRegenerateChance = 0;
@@ -227,7 +231,38 @@ namespace PissAndShit.NPCs
                 }
                 if(npc.type == NPCID.Plantera)
                 {
-
+                    if(player1.Distance(npc.Center) > 400)
+                    {
+                        planteraStatusBool = false;
+                        if(planteraDespawnTimer == 0)
+                        {
+                            Main.NewText("You are too far away from plantera!", 42, 173, 40);
+                        }
+                        planteraDespawnTimer++;
+                        if (planteraDespawnTimer == 60)
+                        {
+                            Main.NewText("Plantera will despawn in 2 seconds", 42, 173, 40);
+                        }
+                        if (planteraDespawnTimer == 120)
+                        {
+                            Main.NewText("Plantera will despawn in 1 seconds", 42, 173, 40);
+                        }
+                        if (planteraDespawnTimer > 180)
+                        {
+                            npc.active = false;
+                            Main.NewText("Plantera despawned", 42, 173, 40);
+                            planteraDespawnTimer = 0;
+                        }
+                    }
+                    else
+                    {
+                        if(planteraStatusBool == false)
+                        {
+                            Main.NewText("You are close enough to plantera!", 42, 173, 40);
+                            planteraStatusBool = true;
+                        }
+                        planteraDespawnTimer = 0;
+                    }
                 }
             }
         }
