@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using PissAndShit.NPCs;
 using System;
 using System.Collections.Generic;
@@ -16,8 +16,8 @@ namespace PissAndShit.Items.Misc
         private static bool difficultyActive = false;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Super True Expert Masochist Eternity Revengance Death mode");
-            Tooltip.SetDefault("Have fun!");
+            DisplayName.SetDefault("Endless Mode");
+            Tooltip.SetDefault("Changes all bosses\nCan only be used in expert mode\nHave fun!");
         }
         public override void SetDefaults()
         {
