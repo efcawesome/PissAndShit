@@ -17,6 +17,8 @@ namespace PissAndShit
         public static bool downedGrandDad = false;
         public static bool downedYoungDuke = false;
         public static bool downedBoozeshrume = false;
+        public static bool downedVendingMachine = false;
+        public static bool downedDeathHimself = false;
         public static bool downedHive = false;
         public static bool endlessModeSave = false;
         public static bool endlesserModeSave = false;
