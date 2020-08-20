@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using PissAndShit.NPCs;
 using System;
 using System.Collections.Generic;
@@ -11,13 +11,13 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Misc
 {
-    class HardDifficultyItem : ModItem
+    class EndlesserModeItem : ModItem
     {
         private static bool difficultyActive = false;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Super True Expert Masochist Eternity Revengance Death mode");
-            Tooltip.SetDefault("Have fun!");
+            DisplayName.SetDefault("Endlesser Mode");
+            Tooltip.SetDefault("Use only if you are a true gamer\nMakes bosses even more difficult\nCan only be used while endless mode is active");
         }
         public override void SetDefaults()
         {
@@ -30,19 +30,25 @@ namespace PissAndShit.Items.Misc
             item.consumable = false;
             item.rare = ItemRarityID.Red;
         }
+        public override bool CanUseItem(Player player)
+        {
+            return PaSWorld.endlessModeSave;
+        }
         public override bool UseItem(Player player)
         {
             if (difficultyActive == false)
             {
-                AGLobalNPC.hardDifficulty = true;
                 difficultyActive = true;
-                Main.NewText("GET READY FOR A CHALLENGE", 135, 16, 22);
+                PaSWorld.endlesserModeSave = true;
+                AGLobalNPC.endlesserModeBool = PaSWorld.endlesserModeSave;
+                Main.NewText("Turn back before its too late", 48, 0, 2);
             }
             else
             {
-                AGLobalNPC.hardDifficulty = false;
                 difficultyActive = false;
-                Main.NewText("noob", 48, 248, 255);
+                PaSWorld.endlesserModeSave = false;
+                AGLobalNPC.endlesserModeBool = PaSWorld.endlesserModeSave;
+                Main.NewText("You may have strayed from the path, but you are back on it again", 212, 38, 45);
             }
             return true;
         }
