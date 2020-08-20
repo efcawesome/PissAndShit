@@ -1,7 +1,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace PissAndShit.Items.Armor
+namespace PissAndShit.Items.Armor.DevSets
 {
     [AutoloadEquip(EquipType.Head)]
     public class DevShardionHat : ModItem
