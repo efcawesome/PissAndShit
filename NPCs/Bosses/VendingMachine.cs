@@ -14,7 +14,6 @@ namespace PissAndShit.NPCs.Bosses
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Vending Machine");
-            Main.npcFrameCount[npc.type] = 4; // The actual sprite got 4 frames
         }
 
         public override void SetDefaults()
@@ -23,8 +22,8 @@ namespace PissAndShit.NPCs.Bosses
             npc.noGravity = false;
             npc.noTileCollide = false;
             npc.lavaImmune = true;
-            npc.width = 100;
-            npc.height = 100;
+            npc.width = 635;
+            npc.height = 862;
             npc.damage = 40;
             npc.defense = 10;
             npc.lifeMax = 4000;
