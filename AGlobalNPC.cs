@@ -496,12 +496,16 @@ namespace PissAndShit.NPCs
                     npc.defense *= 2;
                     CombatText.NewText(npc.Hitbox, Color.OrangeRed, npc.FullName + " has increased their defense", dramatic: true);
                 }
+                if (npc.type == NPCID.Golem || npc.type == NPCID.GolemFistLeft || npc.type == NPCID.GolemFistRight)
+                {
+                    target.AddBuff(BuffID.Stoned, 60, false);
+                }
             }
             if(hardDifficulty == true)
             {
                 if (npc.type == NPCID.Golem || npc.type == NPCID.GolemFistLeft || npc.type == NPCID.GolemFistRight)
                 {
-                    target.AddBuff(BuffID.Stoned, 60, false);
+                    target.AddBuff(BuffID.Slow, 120, false);
                 }
             }
 
