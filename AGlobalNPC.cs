@@ -40,6 +40,9 @@ namespace PissAndShit.NPCs
         static bool ancientDragonSpawned = false;
         static bool lunarEnemySpawn = false;
 
+        static int eyeballTimer = 0;
+        static int handEyeShootTimer = 0;
+
         static int enemyEnrageChance = 0;
         static int enemyRegenerateChance = 0;
         static int enemyDefenseChance = 0;
@@ -66,7 +69,7 @@ namespace PissAndShit.NPCs
                 }
                 if(NPC.AnyNPCs(NPCID.CultistBoss))
                 {
-                    if(npc.type == NPCID.CultistDragonHead)
+                    if(npc.type == NPCID.CultistDragonHead || npc.type == NPCID.CultistDragonBody1 || npc.type == NPCID.CultistDragonBody2 || npc.type == NPCID.CultistDragonBody3 || npc.type == NPCID.CultistDragonBody4 || npc.type == NPCID.CultistDragonTail)
                     {
                         npc.immortal = true;
                     }
@@ -416,6 +419,43 @@ namespace PissAndShit.NPCs
                         }
                         lunarEnemySpawnTimer = 0;
                     }
+                }
+                if(npc.type == NPCID.MoonLordCore)
+                {
+                    eyeballTimer++;
+                    if(eyeballTimer >= 180 + Main.rand.Next(-60, 60))
+                    {
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, -10, ProjectileID.PhantasmalSphere, 100, 5f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 10, ProjectileID.PhantasmalSphere, 100, 5f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -10, 0, ProjectileID.PhantasmalSphere, 100, 5f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 10, 0, ProjectileID.PhantasmalSphere, 100, 5f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 10, -10, ProjectileID.PhantasmalSphere, 100, 5f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -10, -10, ProjectileID.PhantasmalSphere, 100, 5f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 10, 10, ProjectileID.PhantasmalSphere, 100, 5f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -10, 10, ProjectileID.PhantasmalSphere, 100, 5f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 5, -10, ProjectileID.PhantasmalSphere, 100, 5f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -5, -10, ProjectileID.PhantasmalSphere, 100, 5f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 5, 10, ProjectileID.PhantasmalSphere, 100, 5f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -5, 10, ProjectileID.PhantasmalSphere, 100, 5f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 10, -5, ProjectileID.PhantasmalSphere, 100, 5f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -10, -5, ProjectileID.PhantasmalSphere, 100, 5f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 10, 5, ProjectileID.PhantasmalSphere, 100, 5f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -10, 5, ProjectileID.PhantasmalSphere, 100, 5f);
+                        eyeballTimer = 0;
+                    }
+                    handEyeShootTimer++;
+                    if (handEyeShootTimer >= 120 + Main.rand.Next(-30, 30))
+                    {
+                        for (int u = 0; u < 20; u++)
+                        {
+                            Projectile.NewProjectile(shootPos1.X + Main.rand.Next(-1000, 1000), shootPos1.Y + Main.rand.Next(-1000, 1000), shootVel1.X, shootVel1.Y, ProjectileID.PhantasmalEye, 50, 5f);
+                        }
+                        handEyeShootTimer = 0;
+                    }
+                }
+                if(npc.type == NPCID.MoonLordHand)
+                {
+
                 }
             }
             if(endlesserModeBool == true)
