@@ -154,7 +154,7 @@ namespace PissAndShit.NPCs.Bosses
 			    DeathAttkCounter1 = 0;
 			    npc.ai[0] = 2;
 			}
-			Projectile.NewProjectile(new Vector2(npc.position.X - 400 + DeathRocketShootOffset2 * 6, npc.position.Y - 800), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			Projectile.NewProjectile(new Vector2(npc.position.X - 400 + DeathRocketShootOffset2 * 6, player.position.Y - 800), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
 			DeathRocketsShot = DeathRocketsShot + 1;
 		    }
 		    break;
@@ -231,15 +231,15 @@ namespace PissAndShit.NPCs.Bosses
 		    {
 			if (npc.direction == 1)
 			{
-			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(25, -7), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
-			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(15, -7), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
-			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(35, -7), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(20, -15), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(10, -15), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(30, -15), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
 			}
 			else
 			{
-			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(-25, -7), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
-			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(-15, -7), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
-			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(-35, -7), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(-20, -15), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(-10, -15), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			    Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y), new Vector2(-30, -15), ModContent.ProjectileType<Projectiles.DeathItselfDaggerBomb>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
 			}
 			npc.ai[1] = 0;
 		    }

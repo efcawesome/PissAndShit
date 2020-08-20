@@ -20,14 +20,14 @@ namespace PissAndShit.Projectiles
             projectile.ranged = true;
             projectile.aiStyle = 2;
             projectile.penetrate = 1;
-            projectile.width = 11;
-	    projectile.height = 26;
+            projectile.width = 22;
+	    projectile.height = 52;
             projectile.scale *= 1.3f;
         }
 
 	public override void AI()
 	{
-	    projectile.velocity = projectile.velocity / 2;
+	    projectile.velocity = projectile.velocity / 1.0f;
 	}
     }
 }

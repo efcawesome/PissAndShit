@@ -1,7 +1,34 @@
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
+// kindly ignore the using abomination
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using System;
+using System.Linq;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.Serialization;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.ModLoader.Config;
+using Terraria.ModLoader.Config.UI;
+using Terraria.UI;
+using Microsoft.Xna.Framework;
+using System;
+using Terraria.Audio;
+using Terraria.ID;
+using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit.Projectiles
 {
@@ -20,8 +47,8 @@ namespace PissAndShit.Projectiles
             projectile.knockBack = 2;
             projectile.ranged = true;
             projectile.penetrate = 1;
-            projectile.width = 29;
-	    projectile.height = 18;
+            projectile.width = 38;
+	    projectile.height = 24;
             projectile.scale *= 1.3f;
 	    projectile.timeLeft = 30;
         }
@@ -55,7 +82,10 @@ namespace PissAndShit.Projectiles
 	    }
 	    projectile.ai[0] += 1f;	
 	    
-	    projectile.rotation += projectile.velocity.X * 0.1f / 3;
+	    if (projectile.velocity != Vector2.Zero)
+	    {
+		projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
+	    }
 	}
 
 	private void Resize(int newWidth, int newHeight)
@@ -68,11 +98,11 @@ namespace PissAndShit.Projectiles
 
 	public override void Kill(int timeLeft)
 	{
-	    Projectile.NewProjectile(new Vector2(projectile.position.X, projectile.position.Y - 800), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
-	    Projectile.NewProjectile(new Vector2(projectile.position.X - 50, projectile.position.Y - 800), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
-	    Projectile.NewProjectile(new Vector2(projectile.position.X + 50, projectile.position.Y - 800), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
-	    Projectile.NewProjectile(new Vector2(projectile.position.X - 100, projectile.position.Y - 800), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
-	    Projectile.NewProjectile(new Vector2(projectile.position.X + 100, projectile.position.Y - 800), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
+	    Projectile.NewProjectile(new Vector2(projectile.position.X, projectile.position.Y), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
+	    Projectile.NewProjectile(new Vector2(projectile.position.X - 50, projectile.position.Y), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
+	    Projectile.NewProjectile(new Vector2(projectile.position.X + 50, projectile.position.Y), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
+	    Projectile.NewProjectile(new Vector2(projectile.position.X - 100, projectile.position.Y), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
+	    Projectile.NewProjectile(new Vector2(projectile.position.X + 100, projectile.position.Y), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
 	    
 	    return;
 	}
