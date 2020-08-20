@@ -22,8 +22,8 @@ namespace PissAndShit.NPCs.Bosses
             npc.noGravity = false;
             npc.noTileCollide = false;
             npc.lavaImmune = true;
-            npc.width = 635;
-            npc.height = 862;
+            npc.width = 544;
+            npc.height = 813;
             npc.damage = 40;
             npc.defense = 10;
             npc.lifeMax = 4000;
