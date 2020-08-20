@@ -30,6 +30,18 @@ namespace PissAndShit
             }
         }
 
+        public override void PostUpdateBuffs()
+        {
+            if (PaSWorld.endlesserModeSave == true)
+            {
+                if (player.HasBuff(145))
+                {
+                    player.wingTimeMax = 0;
+                    player.rocketTimeMax = 0;
+                }
+            }
+        }
+
         public override void DrawEffects(PlayerDrawInfo drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
         {
             if (soaped)
