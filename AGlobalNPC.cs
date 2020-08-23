@@ -252,6 +252,7 @@ namespace PissAndShit.NPCs
                                 NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.DungeonSpirit, npc.whoAmI);
                                 break;
                         }
+                        dungeonEnemySpawnTimer = 0;
                     }
                 }
                 if(npc.type == NPCID.Spazmatism)
@@ -458,7 +459,7 @@ namespace PissAndShit.NPCs
 
                 }
             }
-            if(endlesserModeBool == true)
+            if (endlesserModeBool == true)
             {
                 if (npc.type == NPCID.CultistBoss)
                 {
@@ -469,6 +470,49 @@ namespace PissAndShit.NPCs
                         NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.VortexHornetQueen, npc.whoAmI);
                         NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, 407, npc.whoAmI);
                         lunarEnemySpawn = true;
+                    }
+                }
+                if (npc.type == NPCID.SkeletronPrime)
+                {
+                    dungeonEnemySpawnTimer++;
+                    if (dungeonEnemySpawnTimer >= 600 + Main.rand.Next(-300, 300))
+                    {
+                        switch (Main.rand.Next(11))
+                        {
+                            case 0:
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.HellArmoredBones, npc.whoAmI);
+                                break;
+                            case 1:
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.RustyArmoredBonesAxe, npc.whoAmI);
+                                break;
+                            case 2:
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.BoneLee, npc.whoAmI);
+                                break;
+                            case 3:
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.RaggedCaster, npc.whoAmI);
+                                break;
+                            case 4:
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.TacticalSkeleton, npc.whoAmI);
+                                break;
+                            case 5:
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.SkeletonSniper, npc.whoAmI);
+                                break;
+                            case 6:
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.Necromancer, npc.whoAmI);
+                                break;
+                            case 7:
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.DiabolistRed, npc.whoAmI);
+                                break;
+                            case 8:
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.DiabolistWhite, npc.whoAmI);
+                                break;
+                            case 9:
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.GiantCursedSkull, npc.whoAmI);
+                                break;
+                            case 10:
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.DungeonSpirit, npc.whoAmI);
+                                break;
+                        }
                     }
                 }
             }
