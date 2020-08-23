@@ -51,7 +51,7 @@ namespace PissAndShit.NPCs
 	
 	public override string TownNPCName()
 	{
-	    switch (WorldGen.genRand.Next(4))
+	    switch (WorldGen.genRand.Next(5))
 	    {
 		case 0:
 		    return "Arnie";
@@ -61,6 +61,8 @@ namespace PissAndShit.NPCs
 		    return "Soundperson";
 		case 3:
 		    return "Enterium";
+		case 4:
+		    return "Fragment-ion";
 		default:
 		    return "Fragment-ion";
 	    }
