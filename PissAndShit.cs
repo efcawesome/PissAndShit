@@ -65,7 +65,8 @@ namespace PissAndShit
                 GetSoundSlot(SoundType.Music, "Sounds/Music/POOP_WORM"),
                 GetSoundSlot(SoundType.Music, "Sounds/Music/Staying_As_a_1.14"),
                 GetSoundSlot(SoundType.Music, "Sounds/Music/Young_Dook_Phase_2"),
-                GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2")
+                GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2"),
+                GetSoundSlot(SoundType.Music, "Sounds/Music/boss")
             };
             foreach (var slot in slots)
             {
@@ -76,6 +77,18 @@ namespace PissAndShit
             }
 
             base.Close();
+        }
+        public override void UpdateMusic(ref int music, ref MusicPriority priority)
+        {
+            if(PaSWorld.endlesserModeSave == true)
+            {
+                if (Main.myPlayer == -1 || Main.gameMenu || !Main.LocalPlayer.active)
+                {
+                    return;
+                }
+                music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/boss");
+                priority = MusicPriority.BiomeMedium;
+            }
         }
     }
 }
