@@ -87,7 +87,7 @@ namespace PissAndShit
                     return;
                 }
                 music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/boss");
-                priority = MusicPriority.BiomeMedium;
+                priority = MusicPriority.BossHigh;
             }
         }
     }
