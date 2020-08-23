@@ -5,6 +5,7 @@ using PissAndShit.NPCs;
 using PissAndShit.NPCs.Bosses;
 using System;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -53,6 +54,28 @@ namespace PissAndShit
                         "Use an [i:" + ModContent.ItemType<HiveSummon>() + "]"
                     );
             }
+        }
+        public override void Close()
+        {
+            var slots = new int[] {
+                GetSoundSlot(SoundType.Music, "Sounds/Music/BallsOfFlesh"),
+                GetSoundSlot(SoundType.Music, "Sounds/Music/CHUNGUS"),
+                GetSoundSlot(SoundType.Music, "Sounds/Music/GRANDDAD"),
+                GetSoundSlot(SoundType.Music, "Sounds/Music/heavenly_bullshit"),
+                GetSoundSlot(SoundType.Music, "Sounds/Music/POOP_WORM"),
+                GetSoundSlot(SoundType.Music, "Sounds/Music/Staying_As_a_1.14"),
+                GetSoundSlot(SoundType.Music, "Sounds/Music/Young_Dook_Phase_2"),
+                GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2")
+            };
+            foreach (var slot in slots)
+            {
+                if (Main.music.IndexInRange(slot) && Main.music[slot]?.IsPlaying == true)
+                {
+                    Main.music[slot].Stop(Microsoft.Xna.Framework.Audio.AudioStopOptions.Immediate);
+                }
+            }
+
+            base.Close();
         }
     }
 }
