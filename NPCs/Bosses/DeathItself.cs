@@ -292,6 +292,12 @@ namespace PissAndShit.NPCs.Bosses
 		       }
 		   }
 		   break;
+		case 4: // lasers
+		    npc.ai[1]++;
+		    if (npc.ai[1] > 60)
+		    {
+			// do smth?
+		    }
 	    }
 	}
 

@@ -23,7 +23,7 @@ namespace PissAndShit.NPCs
 	public override void SetStaticDefaults()
 	{
 	    // DisplayName automatically assigned from .lang files, but the commented line below is the normal approach.
-	    // DisplayName.SetDefault("Example Person");
+	    DisplayName.SetDefault("Death Himself, God of Universes, Extinguisher of Souls, Obliterator of the Foolish");
             Main.npcFrameCount[npc.type] = 25;
             NPCID.Sets.ExtraFramesCount[npc.type] = 9;
             NPCID.Sets.AttackFrameCount[npc.type] = 4;
@@ -54,19 +54,15 @@ namespace PissAndShit.NPCs
 	    switch (WorldGen.genRand.Next(4))
 	    {
 		case 0:
-		    return "Pyxen";
+		    return "Arnie";
 		case 1:
-		    return "Splat";
+		    return "E.F.C. Lame";
 		case 2:
-		    return "Zap";
+		    return "Soundperson";
 		case 3:
-		    return "Tigershon";
-		case 4:
-		    return "Moosic";
-		case 5:
-		    return "Funta";
+		    return "Enterium";
 		default:
-		    return "Trevor";
+		    return "Fragment-ion";
 	    }
 	}
 	
@@ -103,7 +99,7 @@ namespace PissAndShit.NPCs
 		    return "Reality is an illusion and the universe is a hologram! Buy gold!";
 		    
 		case 5:  
-		    return "How do I make an egg salald... sandwich? Is that what those are called?";
+		    return "How do I make an egg salad... sandwich? Is that what those are called?";
 		    
 		case 6:  
 		    return "YOU FOOL! YOU’VE FALLEN INTO- oh wait it’s just you.";
