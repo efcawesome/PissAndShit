@@ -298,6 +298,7 @@ namespace PissAndShit.NPCs.Bosses
 		    {
 			// do smth?
 		    }
+		    break;
 	    }
 	}
 
