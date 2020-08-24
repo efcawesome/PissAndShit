@@ -16,16 +16,17 @@ namespace PissAndShit.NPCs.Bosses
         private bool secondPhase = false;
         private int projectileShoot = 0;
         private int projectileTimer = 0;
+        private int framecount = 0;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("GRAND DAD");
-            Main.npcFrameCount[npc.type] = 4;
+            Main.npcFrameCount[npc.type] = 15;
         }
 
         public override void SetDefaults()
         {
             npc.width = 122;
-            npc.height = 240;
+            npc.height = 181;
 
             npc.boss = true;
             npc.aiStyle = -1;
@@ -61,6 +62,7 @@ namespace PissAndShit.NPCs.Bosses
         {
             Player player = Main.player[npc.target];
             npc.TargetClosest(true);
+            npc.direction = npc.spriteDirection = npc.Center.X < player.Center.X ? -1 : 1;
             Vector2 targetPosition = Main.player[npc.target].position;
             Vector2 target = npc.HasPlayerTarget ? player.Center : Main.npc[npc.target].Center;
             npc.netAlways = true;
@@ -78,10 +80,12 @@ namespace PissAndShit.NPCs.Bosses
             }
             if (teleportTimer >= 30)
             {
+                /*
                 npc.position.X = targetPosition.X + Main.rand.Next(-500, 500);
                 npc.position.Y = targetPosition.Y + Main.rand.Next(-500, 500);
-                Main.PlaySound(SoundID.Item6);
                 teleportTimer = 0;
+                */
+
             }
             if (projectileTimer >= 180)
             {
@@ -120,28 +124,111 @@ namespace PissAndShit.NPCs.Bosses
                     return;
                 }
             }
-            if (targetPosition.X > npc.position.X && secondPhase == false)
-            {
-                frameNum = 0;
-            }
-            else if (targetPosition.X < npc.position.X && secondPhase == false)
-            {
-                frameNum = 1;
-            }
-            else if (targetPosition.X > npc.position.X && secondPhase == true)
-            {
-                frameNum = 2;
-            }
-            else if (targetPosition.X < npc.position.X && secondPhase == true)
-            {
-                frameNum = 3;
-            }
+            
         }
 
         public override void FindFrame(int frameHeight)
         {
-            npc.frame.Y = frameNum * frameHeight;
+            /*if (secondPhase == true)
+            {
+                if (++npc.frameCounter > 15)
+                {
+                    npc.frameCounter = 6;
+                    npc.frame.Y += frameHeight;
+                    if (npc.frame.Y >= 15 * frameHeight)
+                    {
+                        npc.frame.Y = 6;
+                    }
+                }
+
+
+            }
+            else { 
+            
+
+                if (++npc.frameCounter > 5)
+                {
+                    npc.frameCounter = 0;
+                    npc.frame.Y += frameHeight;
+                    if (npc.frame.Y >= 5 * frameHeight)
+                    {
+                        npc.frame.Y = 0;
+                    }
+                }
+            } */
+            npc.frameCounter += 1.0;
+            if (npc.frameCounter < 5.0)
+            {
+                npc.frame.Y = 0;
+                if (secondPhase == true)
+                {
+                    npc.frame.Y += frameHeight * 5;
+                }
+            }
+            else if (npc.frameCounter < 10.0)
+            {
+                npc.frame.Y = frameHeight;
+                if (secondPhase == true)
+                {
+                    npc.frame.Y += frameHeight * 5;
+                }       
+            }
+            else if (npc.frameCounter < 15.0)
+            {
+                npc.frame.Y = frameHeight * 2;
+                if (secondPhase == true)
+                {
+                    npc.frame.Y += frameHeight * 5;
+                }
+            }
+            else if (npc.frameCounter < 20.0)
+            {
+                npc.frame.Y = frameHeight * 3;
+                if (secondPhase == true)
+                {
+                    npc.frame.Y += frameHeight * 5;
+                }
+            }
+            else if (npc.frameCounter < 25.0)
+            {
+                npc.frame.Y = frameHeight * 4;
+                if (secondPhase == true)
+                {
+                    npc.frame.Y += frameHeight * 5;
+                }
+            }
+            /*else if (npc.frameCounter < 42.0 && secondPhase == true)
+            {
+                npc.frame.Y = frameHeight * 9;
+            }*/
+            else if (npc.frameCounter < 30.0 && secondPhase == true)
+            {
+                npc.frame.Y = frameHeight * 10;
+            }
+            else if (npc.frameCounter < 35.0 && secondPhase == true)
+            {
+                npc.frame.Y = frameHeight * 11;
+            }
+            else if (npc.frameCounter < 40.0 && secondPhase == true)
+            {
+                npc.frame.Y = frameHeight * 12;
+            }
+            else if (npc.frameCounter < 45.0 && secondPhase == true)
+            {
+                npc.frame.Y = frameHeight * 13;
+            }
+            else if (npc.frameCounter < 50.0 && secondPhase == true)
+            {
+                npc.frame.Y = frameHeight * 14;
+            }
+            else
+            {
+                npc.frameCounter = 0.0;
+                npc.frame.Y = 0;
+            }
+            
         }
+
 
         public override void NPCLoot()
         {
