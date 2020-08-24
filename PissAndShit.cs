@@ -90,5 +90,15 @@ namespace PissAndShit
                 priority = MusicPriority.BossHigh;
             }
         }
+        
+        public override void Load()
+        {
+            if (!Main.dedServ)
+            {
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/heavenly_bullshit"), ItemType("GodSlimeMusicBox"), TileType("GodSlimeMusicBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2"), ItemType("YoungDukeMusicBox"), TileType("YoungDukeMusicBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/GRANDDAD"), ItemType("GrandDadMusicBox"), TileType("GrandDadMusicBox"));
+            }
+        }
     }
 }
