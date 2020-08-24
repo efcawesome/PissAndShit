@@ -32,12 +32,12 @@ using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit.Projectiles
 {
-    public class DeathItselfDaggerBomb : ModProjectile
+    public class DeathItselfScytheBomb : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("deaths meme stabber kaboomer");
-	    Main.projFrames[projectile.type] = 5;
+            DisplayName.SetDefault("deaths meme slicer kaboomer");
+	    Main.projFrames[projectile.type] = 4;
         }
 
         public override void SetDefaults()

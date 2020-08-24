@@ -9,14 +9,14 @@ namespace PissAndShit
     public class PaSPlayer : ModPlayer
     {
         public bool kamra = false;
-        public bool soaped = false;
+	public bool soaped = false;
 
         public override void ResetEffects()
         {
             kamra = false;
             soaped = false;
         }
-
+	
         public override void UpdateBadLifeRegen()
         {
             if (kamra)
@@ -58,6 +58,6 @@ namespace PissAndShit
                 g *= 0.5f;
                 b *= 0.7f;
             }
-        }
+        }   
     }
 }

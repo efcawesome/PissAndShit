@@ -22,6 +22,7 @@ namespace PissAndShit.Projectiles
             projectile.penetrate = 1;
             projectile.width = 22;
 	    projectile.height = 52;
+	    projectile.tileCollide = false;
         }
 
 	public override void AI()

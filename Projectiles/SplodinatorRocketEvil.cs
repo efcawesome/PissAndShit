@@ -49,7 +49,7 @@ namespace PissAndShit.Projectiles
 			projectile.hostile = true;         //Can the projectile deal damage to the player?
 			projectile.ranged = true;           //Is the projectile shoot by a ranged weapon?
 			projectile.timeLeft = 600;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
-			projectile.tileCollide = true;          //Can the projectile collide with tiles?
+			projectile.tileCollide = false;          //Can the projectile collide with tiles?
 			projectile.penetrate = 1;
 			
 		}

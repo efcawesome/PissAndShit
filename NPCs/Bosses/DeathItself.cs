@@ -7,6 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
 using System.IO;
+using Terraria.DataStructures;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace PissAndShit.NPCs.Bosses
@@ -23,6 +24,8 @@ namespace PissAndShit.NPCs.Bosses
 	private int DeathRocketShootOffset = 0;
 	private int DeathRocketShootOffset2 = 0;
 	private int DeathRocketsShot = 0;
+	Vector2 DeathLaserBoxPosition;
+	Vector2 DeathLaserBoxValueFixer;
 	private bool DeathTriggerOnce = true;
 	
 	public override void SetStaticDefaults()
@@ -250,6 +253,7 @@ namespace PissAndShit.NPCs.Bosses
 		    if (DeathAttkCounter4 >= 60)
                     {
 			targetPos.Y = targetPos.Y - 0;
+			AttkChange(4);
 		    }
 		    else
 		    {
@@ -291,12 +295,57 @@ namespace PissAndShit.NPCs.Bosses
 			       npc.velocity.Y = 24 * Math.Sign(npc.velocity.Y);
 		       }
 		   }
+		   DeathAttkCounter2++;
+		   if (DeathAttkCounter2 >= 120)
+		       AttkChange(4);
 		   break;
 		case 4: // lasers
+		    npc.velocity.X = 0f;
+		    npc.velocity.Y = 0f;
 		    npc.ai[1]++;
-		    if (npc.ai[1] > 60)
+
+		    player.wingTimeMax = 999999;
+		    player.wingTime = player.wingTimeMax;
+		    player.onHitDodge = false;
+		    player.shadowDodge = false;
+		    player.blackBelt = false;
+		    if (player.HasBuff(88))
 		    {
-			// do smth?
+			player.KillMe(PlayerDeathReason.ByCustomReason(player.name + " tried to escape under Death's watch."), 1.0, 0);
+		    }
+		    if (player.HasBuff(59))
+		    {
+			player.ClearBuff(59);
+		    }
+		    
+		    if (npc.ai[1] == 60)
+		    {
+			DeathLaserBoxPosition = player.Center;
+			//hear ye hear ye, code below is massive spaghetti and we could do it better. it works though
+			DeathLaserBoxValueFixer = new Vector2(DeathLaserBoxPosition.X + 1, DeathLaserBoxPosition.Y + 1);
+			DeathLaserBoxPosition = new Vector2(DeathLaserBoxValueFixer.X - 1, DeathLaserBoxValueFixer.Y - 1);
+			//ok no more spaghetti
+			
+			//left and right lasers
+			Projectile.NewProjectile(DeathLaserBoxPosition + new Vector2(-250, 0), new Vector2(0,1), ModContent.ProjectileType<Projectiles.Deathrays.DeathDeathray>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			Projectile.NewProjectile(DeathLaserBoxPosition + new Vector2(250, 0), new Vector2(0,1), ModContent.ProjectileType<Projectiles.Deathrays.DeathDeathray>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			Projectile.NewProjectile(DeathLaserBoxPosition + new Vector2(-250, 0), new Vector2(0,-1), ModContent.ProjectileType<Projectiles.Deathrays.DeathDeathray>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			Projectile.NewProjectile(DeathLaserBoxPosition + new Vector2(250, 0), new Vector2(0,-1), ModContent.ProjectileType<Projectiles.Deathrays.DeathDeathray>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			//top and bottom lasers
+			Projectile.NewProjectile(DeathLaserBoxPosition + new Vector2(0, -250), new Vector2(1,0), ModContent.ProjectileType<Projectiles.Deathrays.DeathDeathray>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			Projectile.NewProjectile(DeathLaserBoxPosition + new Vector2(0, 250), new Vector2(1,0), ModContent.ProjectileType<Projectiles.Deathrays.DeathDeathray>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			Projectile.NewProjectile(DeathLaserBoxPosition + new Vector2(0, -250), new Vector2(-1,0), ModContent.ProjectileType<Projectiles.Deathrays.DeathDeathray>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			Projectile.NewProjectile(DeathLaserBoxPosition + new Vector2(0, 250), new Vector2(-1,0), ModContent.ProjectileType<Projectiles.Deathrays.DeathDeathray>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+		    }
+		    if (npc.ai[1] == 180)
+		    {
+			for (int i = 0; i < 20; i++)
+			    Projectile.NewProjectile(DeathLaserBoxPosition + new Vector2(0, -800), -Vector2.UnitX.RotatedBy(-Main.rand.NextDouble() * -Math.PI) * -Main.rand.NextFloat(30f), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+		    }
+		    if (npc.ai[1] == 240)
+		    {
+			for (int i = 0; i < 20; i++)
+			    Projectile.NewProjectile(DeathLaserBoxPosition + new Vector2(0, -800), -Vector2.UnitX.RotatedBy(-Main.rand.NextDouble() * -Math.PI) * -Main.rand.NextFloat(30f) / 2, ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
 		    }
 		    break;
 	    }
