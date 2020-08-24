@@ -80,11 +80,11 @@ namespace PissAndShit.NPCs.Bosses
             }
             if (teleportTimer >= 30)
             {
-                /*
+                
                 npc.position.X = targetPosition.X + Main.rand.Next(-500, 500);
                 npc.position.Y = targetPosition.Y + Main.rand.Next(-500, 500);
                 teleportTimer = 0;
-                */
+                
 
             }
             if (projectileTimer >= 180)
