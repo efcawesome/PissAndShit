@@ -1,9 +1,10 @@
-Inflation is a collaborative experiment in modding. We gathered over 80 "developers" and attempted to "code" this monstrosity. If this has caught your eye, feel free to download it, althouth the result may not please you
+The Super Funny High Quality Community Made Content Mod is a collaborative experiment in modding. We gathered over 80 "developers" and attempted to "code" this monstrosity. If this has caught your eye, feel free to download it, althouth the result may not please you
 
 ~~~ CHANGELOG ~~~
 
 V1.1 - THE RETURN PT1:
 -Endless Mode
+-ENDLESSER MODE
 -Oddity NPC
 -Content from Compendium of Trash
 -Mechanical Bee boss
@@ -20,13 +21,13 @@ v1.0:
 
 ~~~ LEAD DEVS ~~~
 
-Pyxis, Phanta, musicman, TigerShark, Split
+Pyxis (creator), Arnold Palmer, musicman, TigerShark, Split, efcawesome
 
 ~~~ SECOND IN COMMANDS ~~~
-efcawesome, Exitium, Shardion, Arnold Palmer
+Exitium, Shardion
 
 ~~~ TOP/NOTABLE CONTRIBUTORS ~~~
-multibanana, Fargowilta, A44, BabyBlueSheep, Doodle, PuddingPepzi, Randomtrr2, Hugekraken, Lemmy, Rebmiami, yogu, bob100, Bobby 4852, the42ndcorgi, Dr. Doofenshmirtz, Samuel Werner, nelomanee
+multibanana, Fargowilta, A44, BabyBlueSheep, Doodle, PuddingPepzi, Randomtrr2, Hugekraken, Lemmy, Rebmiami, yogu, bob100, Bobby 4852, the42ndcorgi, Dr. Doofenshmirtz, Samuel Werner, nelomanee, Phanta
 
 ~~~ OTHER DEVELOPERS ~~~
 
