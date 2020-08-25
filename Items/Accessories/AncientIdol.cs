@@ -24,7 +24,7 @@ namespace PissAndShit.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            //player.GetModPlayer<PaSPlayer>().ancientIdol = true;
+            player.GetModPlayer<PaSPlayer>().ancientIdol = true;
         }
     }
 }

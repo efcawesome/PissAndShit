@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using PissAndShit.Dusts;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -10,11 +11,13 @@ namespace PissAndShit
     {
         public bool kamra = false;
         public bool soaped = false;
+        public bool ancientIdol = false;
 
         public override void ResetEffects()
         {
             kamra = false;
             soaped = false;
+            ancientIdol = false;
         }
 
         public override void UpdateBadLifeRegen()
@@ -57,6 +60,66 @@ namespace PissAndShit
                 r *= 0.1f;
                 g *= 0.5f;
                 b *= 0.7f;
+            }
+        }
+        public override void OnHitByNPC(NPC npc, int damage, bool crit)
+        {
+            if (ancientIdol == true)
+            {
+                int projectile = Projectile.NewProjectile(player.Center.X + 5, player.Center.Y, 0, 15, ProjectileID.EyeBeam, 150, 3f, player.whoAmI);
+                Main.projectile[projectile].hostile = false;
+                Main.projectile[projectile].friendly = true;
+                int projectile1 = Projectile.NewProjectile(player.Center.X + 5, player.Center.Y, 0, -15, ProjectileID.EyeBeam, 150, 3f, player.whoAmI);
+                Main.projectile[projectile1].hostile = false;
+                Main.projectile[projectile1].friendly = true;
+                int projectile2 = Projectile.NewProjectile(player.Center.X, player.Center.Y + 5, 15, 0, ProjectileID.EyeBeam, 150, 3f, player.whoAmI);
+                Main.projectile[projectile2].hostile = false;
+                Main.projectile[projectile2].friendly = true;
+                int projectile3 = Projectile.NewProjectile(player.Center.X, player.Center.Y + 5, -15, 0, ProjectileID.EyeBeam, 150, 3f, player.whoAmI);
+                Main.projectile[projectile3].hostile = false;
+                Main.projectile[projectile3].friendly = true;
+                int projectile4 = Projectile.NewProjectile(player.Center.X - 5, player.Center.Y, 0, 15, ProjectileID.EyeBeam, 150, 3f, player.whoAmI);
+                Main.projectile[projectile4].hostile = false;
+                Main.projectile[projectile4].friendly = true;
+                int projectile5 = Projectile.NewProjectile(player.Center.X - 5, player.Center.Y, 0, -15, ProjectileID.EyeBeam, 150, 3f, player.whoAmI);
+                Main.projectile[projectile5].hostile = false;
+                Main.projectile[projectile5].friendly = true;
+                int projectile6 = Projectile.NewProjectile(player.Center.X - 5, player.Center.Y - 5, 15, 0, ProjectileID.EyeBeam, 150, 3f, player.whoAmI);
+                Main.projectile[projectile6].hostile = false;
+                Main.projectile[projectile6].friendly = true;
+                int projectile7 = Projectile.NewProjectile(player.Center.X - 5, player.Center.Y - 5, -15, 0, ProjectileID.EyeBeam, 150, 3f, player.whoAmI);
+                Main.projectile[projectile7].hostile = false;
+                Main.projectile[projectile7].friendly = true;
+            }
+        }
+        public override void OnHitByProjectile(Projectile proj, int damage, bool crit)
+        {
+            if (ancientIdol == true)
+            {
+                int projectile = Projectile.NewProjectile(player.Center.X + 5, player.Center.Y, 0, 15, ProjectileID.EyeBeam, 150, 3f, player.whoAmI);
+                Main.projectile[projectile].hostile = false;
+                Main.projectile[projectile].friendly = true;
+                int projectile1 = Projectile.NewProjectile(player.Center.X + 5, player.Center.Y, 0, -15, ProjectileID.EyeBeam, 150, 3f, player.whoAmI);
+                Main.projectile[projectile1].hostile = false;
+                Main.projectile[projectile1].friendly = true;
+                int projectile2 = Projectile.NewProjectile(player.Center.X, player.Center.Y + 5, 15, 0, ProjectileID.EyeBeam, 150, 3f, player.whoAmI);
+                Main.projectile[projectile2].hostile = false;
+                Main.projectile[projectile2].friendly = true;
+                int projectile3 = Projectile.NewProjectile(player.Center.X, player.Center.Y + 5, -15, 0, ProjectileID.EyeBeam, 150, 3f, player.whoAmI);
+                Main.projectile[projectile3].hostile = false;
+                Main.projectile[projectile3].friendly = true;
+                int projectile4 = Projectile.NewProjectile(player.Center.X - 5, player.Center.Y, 0, 15, ProjectileID.EyeBeam, 150, 3f, player.whoAmI);
+                Main.projectile[projectile4].hostile = false;
+                Main.projectile[projectile4].friendly = true;
+                int projectile5 = Projectile.NewProjectile(player.Center.X - 5, player.Center.Y, 0, -15, ProjectileID.EyeBeam, 150, 3f, player.whoAmI);
+                Main.projectile[projectile5].hostile = false;
+                Main.projectile[projectile5].friendly = true;
+                int projectile6 = Projectile.NewProjectile(player.Center.X - 5, player.Center.Y - 5, 15, 0, ProjectileID.EyeBeam, 150, 3f, player.whoAmI);
+                Main.projectile[projectile6].hostile = false;
+                Main.projectile[projectile6].friendly = true;
+                int projectile7 = Projectile.NewProjectile(player.Center.X - 5, player.Center.Y - 5, -15, 0, ProjectileID.EyeBeam, 150, 3f, player.whoAmI);
+                Main.projectile[projectile7].hostile = false;
+                Main.projectile[projectile7].friendly = true;
             }
         }
     }
