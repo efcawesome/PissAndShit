@@ -29,6 +29,7 @@ namespace PissAndShit.Items.Armor
             player.statDefense += 150;
             player.endurance += 130;
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

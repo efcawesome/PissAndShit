@@ -1,4 +1,3 @@
-using PissAndShit.Items.Misc;
 using PissAndShit.NPCs.Bosses;
 using Terraria;
 using Terraria.ID;
@@ -6,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Consumables
 {
-    class HeavenlyChalice : ModItem
+    public class HeavenlyChalice : ModItem
     {
         public override void SetDefaults()
         {

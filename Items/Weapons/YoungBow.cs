@@ -1,7 +1,7 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 namespace PissAndShit.Items.Weapons
 {
@@ -27,12 +27,11 @@ namespace PissAndShit.Items.Weapons
             item.value = 23000;
             item.rare = ItemRarityID.Green;
             item.autoReuse = false;
-            item.shoot = 10;
+            item.shoot = ProjectileID.PurificationPowder;
             item.useAmmo = AmmoID.Arrow;
             item.UseSound = SoundID.Item5;
             item.shootSpeed = 19f;
         }
-
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
@@ -42,7 +41,7 @@ namespace PissAndShit.Items.Weapons
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(30)); // 30 degree spread.
                                                                                                                 // If you want to randomize the speed to stagger the projectiles
                                                                                                                 // float scale = 1f - (Main.rand.NextFloat() * .3f);
-                                                                                                                // perturbedSpeed = perturbedSpeed * scale; 
+                                                                                                                // perturbedSpeed = perturbedSpeed * scale;
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
             }
             return false; // return false because we don't want tmodloader to shoot projectile

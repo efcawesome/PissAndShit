@@ -1,34 +1,7 @@
-// kindly ignore the using abomination
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using System;
-using System.Linq;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.Serialization;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.ModLoader.Config;
-using Terraria.ModLoader.Config.UI;
-using Terraria.UI;
-using Microsoft.Xna.Framework;
-using System;
-using Terraria.Audio;
-using Terraria.ID;
-using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit.Projectiles
 {
@@ -37,7 +10,7 @@ namespace PissAndShit.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("deaths meme slicer kaboomer");
-	    Main.projFrames[projectile.type] = 4;
+            Main.projFrames[projectile.type] = 4;
         }
 
         public override void SetDefaults()
@@ -48,64 +21,69 @@ namespace PissAndShit.Projectiles
             projectile.ranged = true;
             projectile.penetrate = 1;
             projectile.width = 38;
-	    projectile.height = 24;
+            projectile.height = 24;
             projectile.scale *= 1.3f;
-	    projectile.timeLeft = 30;
-	    projectile.tileCollide = false;
+            projectile.timeLeft = 30;
+            projectile.tileCollide = false;
         }
 
-	public override void AI()
-	{
-	    int num13 = 6;
-	    
-	    if (projectile.owner == Main.myPlayer && projectile.timeLeft <= 3)
-	    {
-		projectile.tileCollide = false;
-		projectile.ai[1] = 0f;
-		projectile.alpha = 255;
-		Resize(128, 128);
-		projectile.damage = 800;
-		projectile.knockBack = 8f;
-	    }
-	    else
-	    {		
-	        projectile.damage = 0;	
-		int num33 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100);
-		Main.dust[num33].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
-		Main.dust[num33].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
-		Main.dust[num33].noGravity = true;
-		Main.dust[num33].position = projectile.Center + new Vector2(0f, -projectile.height / 2).RotatedBy(projectile.rotation) * 1.1f;
-		int num34 = 6;
-		Dust dust8 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, num34, 0f, 0f, 100);
-		dust8.scale = 1f + (float)Main.rand.Next(5) * 0.1f;
-		dust8.noGravity = true;
-		dust8.position = projectile.Center + new Vector2(0f, -projectile.height / 2 - 6).RotatedBy(projectile.rotation) * 1.1f;
-	    }
-	    projectile.ai[0] += 1f;	
-	    
-	    if (projectile.velocity != Vector2.Zero)
-	    {
-		projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
-	    }
-	}
+        public override void AI()
+        {
+            if (projectile.owner == Main.myPlayer && projectile.timeLeft <= 3)
+            {
+                projectile.tileCollide = false;
+                projectile.ai[1] = 0f;
+                projectile.alpha = 255;
+                Resize(128, 128);
+                projectile.damage = 800;
+                projectile.knockBack = 8f;
+            }
+            else
+            {
+                projectile.damage = 0;
 
-	private void Resize(int newWidth, int newHeight)
-	{
-	    projectile.position = projectile.Center;
-	    projectile.width = newWidth;
-	    projectile.height = newHeight;
-	    projectile.Center = projectile.position;
-	}
+                int num33 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100);
 
-	public override void Kill(int timeLeft)
-	{
-	    Projectile.NewProjectile(new Vector2(projectile.position.X, projectile.position.Y), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
-	    Projectile.NewProjectile(new Vector2(projectile.position.X - 50, projectile.position.Y), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
-	    Projectile.NewProjectile(new Vector2(projectile.position.X + 50, projectile.position.Y), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
-	    Projectile.NewProjectile(new Vector2(projectile.position.X - 100, projectile.position.Y), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
-	    Projectile.NewProjectile(new Vector2(projectile.position.X + 100, projectile.position.Y), new Vector2(0, 25), ModContent.ProjectileType<Projectiles.DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
-	    
-	    return;
-	}
+                Main.dust[num33].scale = 0.1f + Main.rand.Next(5) * 0.1f;
+                Main.dust[num33].fadeIn = 1.5f + Main.rand.Next(5) * 0.1f;
+                Main.dust[num33].noGravity = true;
+                Main.dust[num33].position = projectile.Center + new Vector2(0f, -projectile.height / 2).RotatedBy(projectile.rotation) * 1.1f;
+
+                int num34 = 6;
+                Dust dust8 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, num34, 0f, 0f, 100);
+
+                dust8.scale = 1f + Main.rand.Next(5) * 0.1f;
+                dust8.noGravity = true;
+                dust8.position = projectile.Center + new Vector2(0f, -projectile.height / 2 - 6).RotatedBy(projectile.rotation) * 1.1f;
+            }
+
+            projectile.ai[0] += 1f;
+
+            if (projectile.velocity != Vector2.Zero)
+            {
+                projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
+            }
+        }
+
+        private void Resize(int newWidth, int newHeight)
+        {
+            projectile.position = projectile.Center;
+            projectile.width = newWidth;
+            projectile.height = newHeight;
+            projectile.Center = projectile.position;
+        }
+
+        public override void Kill(int timeLeft)
+        {
+            Projectile.NewProjectile(new Vector2(projectile.position.X, projectile.position.Y), new Vector2(0, 25), ModContent.ProjectileType<DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
+
+            Projectile.NewProjectile(new Vector2(projectile.position.X - 50, projectile.position.Y), new Vector2(0, 25), ModContent.ProjectileType<DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
+
+            Projectile.NewProjectile(new Vector2(projectile.position.X + 50, projectile.position.Y), new Vector2(0, 25), ModContent.ProjectileType<DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
+
+            Projectile.NewProjectile(new Vector2(projectile.position.X - 100, projectile.position.Y), new Vector2(0, 25), ModContent.ProjectileType<DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
+
+            Projectile.NewProjectile(new Vector2(projectile.position.X + 100, projectile.position.Y), new Vector2(0, 25), ModContent.ProjectileType<DeathItselfDagger>(), 400, 0f, Main.myPlayer, 0f, projectile.owner);
+        }
     }
 }

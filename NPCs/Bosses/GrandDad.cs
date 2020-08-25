@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using PissAndShit.Items.BossBags;
 using PissAndShit.Items.Weapons;
+using PissAndShit.Projectiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,15 +9,14 @@ using Terraria.ModLoader;
 namespace PissAndShit.NPCs.Bosses
 {
     [AutoloadBossHead]
-    class GrandDad : ModNPC
+    public class GrandDad : ModNPC
     {
-        private int frameNum = 0;
         private bool canTeleport = true;
         private int teleportTimer = 0;
         private bool secondPhase = false;
         private int projectileShoot = 0;
         private int projectileTimer = 0;
-        private int framecount = 0;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("GRAND DAD");
@@ -66,11 +66,11 @@ namespace PissAndShit.NPCs.Bosses
             Vector2 targetPosition = Main.player[npc.target].position;
             Vector2 target = npc.HasPlayerTarget ? player.Center : Main.npc[npc.target].Center;
             npc.netAlways = true;
-            if (canTeleport == true)
+            if (canTeleport)
             {
                 teleportTimer++;
             }
-            if (secondPhase == true)
+            if (secondPhase)
             {
                 projectileTimer++;
             }
@@ -80,12 +80,9 @@ namespace PissAndShit.NPCs.Bosses
             }
             if (teleportTimer >= 30)
             {
-                
                 npc.position.X = targetPosition.X + Main.rand.Next(-500, 500);
                 npc.position.Y = targetPosition.Y + Main.rand.Next(-500, 500);
                 teleportTimer = 0;
-                
-
             }
             if (projectileTimer >= 180)
             {
@@ -99,7 +96,7 @@ namespace PissAndShit.NPCs.Bosses
                 {
                     if (projectileShoot == 0)
                     {
-                        Projectile.NewProjectile(shootPos.X + (float)(-100 * npc.direction) + (float)Main.rand.Next(-20, 20), shootPos.Y - (float)Main.rand.Next(-20, 20), shootVel.X, shootVel.Y, mod.ProjectileType("SevenProj"), npc.damage / 3, 5f);
+                        Projectile.NewProjectile(shootPos.X + -100 * npc.direction + Main.rand.Next(-20, 20), shootPos.Y - Main.rand.Next(-20, 20), shootVel.X, shootVel.Y, ModContent.ProjectileType<SevenProj>(), npc.damage / 3, 5f);
                     }
                     if (projectileShoot == 1)
                     {
@@ -107,7 +104,7 @@ namespace PissAndShit.NPCs.Bosses
                     }
                     if (projectileShoot == 2)
                     {
-                        Projectile.NewProjectile(shootPos.X + (float)(-100 * npc.direction) + (float)Main.rand.Next(-20, 20), shootPos.Y - (float)Main.rand.Next(-20, 20), shootVel.X, shootVel.Y, mod.ProjectileType("GrandDadBrian"), npc.damage / 2, 5f);
+                        Projectile.NewProjectile(shootPos.X + -100 * npc.direction + Main.rand.Next(-20, 20), shootPos.Y - Main.rand.Next(-20, 20), shootVel.X, shootVel.Y, ModContent.ProjectileType<GrandDadBrian>(), npc.damage / 2, 5f);
                     }
                 }
                 projectileTimer = 0;
@@ -124,12 +121,11 @@ namespace PissAndShit.NPCs.Bosses
                     return;
                 }
             }
-            
         }
 
         public override void FindFrame(int frameHeight)
         {
-            /*if (secondPhase == true)
+            /*if (secondPhase)
             {
                 if (++npc.frameCounter > 15)
                 {
@@ -140,12 +136,8 @@ namespace PissAndShit.NPCs.Bosses
                         npc.frame.Y = 6;
                     }
                 }
-
-
             }
-            else { 
-            
-
+            else {
                 if (++npc.frameCounter > 5)
                 {
                     npc.frameCounter = 0;
@@ -160,7 +152,7 @@ namespace PissAndShit.NPCs.Bosses
             if (npc.frameCounter < 5.0)
             {
                 npc.frame.Y = 0;
-                if (secondPhase == true)
+                if (secondPhase)
                 {
                     npc.frame.Y += frameHeight * 5;
                 }
@@ -168,15 +160,15 @@ namespace PissAndShit.NPCs.Bosses
             else if (npc.frameCounter < 10.0)
             {
                 npc.frame.Y = frameHeight;
-                if (secondPhase == true)
+                if (secondPhase)
                 {
                     npc.frame.Y += frameHeight * 5;
-                }       
+                }
             }
             else if (npc.frameCounter < 15.0)
             {
                 npc.frame.Y = frameHeight * 2;
-                if (secondPhase == true)
+                if (secondPhase)
                 {
                     npc.frame.Y += frameHeight * 5;
                 }
@@ -184,7 +176,7 @@ namespace PissAndShit.NPCs.Bosses
             else if (npc.frameCounter < 20.0)
             {
                 npc.frame.Y = frameHeight * 3;
-                if (secondPhase == true)
+                if (secondPhase)
                 {
                     npc.frame.Y += frameHeight * 5;
                 }
@@ -192,32 +184,32 @@ namespace PissAndShit.NPCs.Bosses
             else if (npc.frameCounter < 25.0)
             {
                 npc.frame.Y = frameHeight * 4;
-                if (secondPhase == true)
+                if (secondPhase)
                 {
                     npc.frame.Y += frameHeight * 5;
                 }
             }
-            /*else if (npc.frameCounter < 42.0 && secondPhase == true)
+            /*else if (npc.frameCounter < 42.0 && secondPhase)
             {
                 npc.frame.Y = frameHeight * 9;
             }*/
-            else if (npc.frameCounter < 30.0 && secondPhase == true)
+            else if (npc.frameCounter < 30.0 && secondPhase)
             {
                 npc.frame.Y = frameHeight * 10;
             }
-            else if (npc.frameCounter < 35.0 && secondPhase == true)
+            else if (npc.frameCounter < 35.0 && secondPhase)
             {
                 npc.frame.Y = frameHeight * 11;
             }
-            else if (npc.frameCounter < 40.0 && secondPhase == true)
+            else if (npc.frameCounter < 40.0 && secondPhase)
             {
                 npc.frame.Y = frameHeight * 12;
             }
-            else if (npc.frameCounter < 45.0 && secondPhase == true)
+            else if (npc.frameCounter < 45.0 && secondPhase)
             {
                 npc.frame.Y = frameHeight * 13;
             }
-            else if (npc.frameCounter < 50.0 && secondPhase == true)
+            else if (npc.frameCounter < 50.0 && secondPhase)
             {
                 npc.frame.Y = frameHeight * 14;
             }
@@ -226,9 +218,7 @@ namespace PissAndShit.NPCs.Bosses
                 npc.frameCounter = 0.0;
                 npc.frame.Y = 0;
             }
-            
         }
-
 
         public override void NPCLoot()
         {

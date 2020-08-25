@@ -1,16 +1,10 @@
-using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
-using Microsoft.Xna.Framework;
 
 namespace PissAndShit.Projectiles
 {
     public class DeathItselfDagger : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("deaths meme stabber");
-        }
+        public override void SetStaticDefaults() => DisplayName.SetDefault("deaths meme stabber");
 
         public override void SetDefaults()
         {
@@ -21,13 +15,10 @@ namespace PissAndShit.Projectiles
             projectile.aiStyle = 2;
             projectile.penetrate = 1;
             projectile.width = 22;
-	    projectile.height = 52;
-	    projectile.tileCollide = false;
+            projectile.height = 52;
+            projectile.tileCollide = false;
         }
 
-	public override void AI()
-	{
-	    projectile.velocity = projectile.velocity / 1.0f;
-	}
+        public override void AI() => projectile.velocity = projectile.velocity / 1.0f;
     }
 }

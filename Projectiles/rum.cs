@@ -1,16 +1,12 @@
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.ID;
-using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 
 namespace PissAndShit.Projectiles
 {
     public class rum : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("rum");
-        }
+        public override void SetStaticDefaults() => DisplayName.SetDefault("rum");
 
         public override void SetDefaults()
         {
@@ -32,7 +28,7 @@ namespace PissAndShit.Projectiles
         public override void Kill(int timeLeft)
         {
             Dust.NewDust(projectile.Center, 10, 10, DustID.ToxicBubble, 14, 14);
-            Projectile.NewProjectile(projectile.position, -projectile.velocity * 0.1f, ModContent.ProjectileType<Projectiles.RumCloud>(), 40, 3);
+            Projectile.NewProjectile(projectile.position, -projectile.velocity * 0.1f, ModContent.ProjectileType<RumCloud>(), 40, 3);
         }
     }
 }

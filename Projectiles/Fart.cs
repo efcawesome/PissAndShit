@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,19 +23,15 @@ namespace PissAndShit.Projectiles
             projectile.ai[0] += 1f;
             if (projectile.ai[0] >= 5f)
             {
-                // Half a second has passed. Reset timer, etc.
                 projectile.ai[0] = 0f;
                 projectile.netUpdate = true;
-                projectile.rotation += 0.05f * (float)projectile.direction;
+                projectile.rotation += 0.05f * projectile.direction;
                 projectile.velocity.X /= 1.43f;
                 projectile.velocity.Y /= 1.43f;
             }
         }
 
-        public override void Kill(int timeLeft)
-        {
-            Main.PlaySound(SoundID.NPCHit1, projectile.position);
-        }
+        public override void Kill(int timeLeft) => Main.PlaySound(SoundID.NPCHit1, projectile.position);
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {

@@ -5,7 +5,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit.Projectiles
 {
-    class GasterBlaster : ModProjectile
+    public class GasterBlaster : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -28,18 +28,19 @@ namespace PissAndShit.Projectiles
         {
             for (int i = 0; i < 20; i++)
             {
-                int KillDust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 212, projectile.direction * 2, 0f, 100, default(Color), 1.4f);
+                int KillDust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 212, projectile.direction * 2, 0f, 100, default, 1.4f);
                 Dust DustExample = Main.dust[KillDust];
+
                 DustExample.color = Color.LightPink;
                 DustExample.color = Color.Lerp(DustExample.color, Color.White, 0.3f);
                 DustExample.noGravity = true;
             }
-
         }
 
         public override void AI()
         {
             Vector2 center = projectile.Center;
+
             if (++projectile.frameCounter >= 5)
             {
                 projectile.frameCounter = 0;
@@ -47,14 +48,13 @@ namespace PissAndShit.Projectiles
             }
 
             projectile.ai[0] += 1f;
+
             if (projectile.ai[0] >= 15f)
             {
-                // Half a second has passed. Reset timer, etc.
                 projectile.ai[0] = 0f;
                 projectile.netUpdate = true;
                 // Do something here, maybe change to a new state.
                 NPC.NewNPC((int)center.X, (int)center.Y, NPCType<NPCs.SoapBubble>());
-
             }
         }
     }

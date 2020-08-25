@@ -25,7 +25,7 @@ namespace PissAndShit.Items.Weapons
             item.rare = ItemRarityID.Pink;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
-	    item.alpha = 255;
+            item.alpha = 255;
         }
     }
 }

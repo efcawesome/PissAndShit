@@ -1,11 +1,9 @@
-﻿using PissAndShit.Rarities;
-using Terraria;
-using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Accessories
 {
-    class AncientIdol : ModItem
+    public class AncientIdol : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -18,7 +16,7 @@ namespace PissAndShit.Items.Accessories
             item.height = 30;
 
             item.value = Item.buyPrice(gold: 50);
-            item.rare = TomatoLib.Core.TomatoLoader.RarityType<EndlessRarity>();
+            //item.rare = TomatoLoader.RarityType<EndlessRarity>();
             item.accessory = true;
         }
 

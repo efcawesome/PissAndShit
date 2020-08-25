@@ -5,13 +5,14 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Consumables
 {
-    class HiveSummon : ModItem
+    public class HiveSummon : ModItem
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("oBEEsity");
             Tooltip.SetDefault("Summons the protector of the bees");
         }
+
         public override void SetDefaults()
         {
             item.width = 34;
@@ -23,6 +24,7 @@ namespace PissAndShit.Items.Consumables
             item.consumable = true;
             item.rare = ItemRarityID.Red;
         }
+
         public override bool CanUseItem(Player player)
         {
             return !NPC.AnyNPCs(ModContent.NPCType<Hive>());
@@ -37,6 +39,7 @@ namespace PissAndShit.Items.Consumables
             }
             return true;
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

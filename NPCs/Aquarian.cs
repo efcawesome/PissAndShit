@@ -35,13 +35,22 @@ namespace PissAndShit.NPCs
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             if (spawnInfo.player.ZoneRain)
+            {
                 return SpawnCondition.Overworld.Chance * 0.12f;
-            else return 0.1f;
+            }
+            else
+            {
+                return 0.1f;
+            }
 
             if (spawnInfo.player.ZoneBeach)
+            {
                 return SpawnCondition.Overworld.Chance * 0.18f;
-
-            else return 0.1f;
+            }
+            else
+            {
+                return 0.1f;
+            }
         }
 
         public override void AI()

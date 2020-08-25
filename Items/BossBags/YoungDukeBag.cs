@@ -7,9 +7,10 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.BossBags
 {
-    class YoungDukeBag : ModItem
+    public class YoungDukeBag : ModItem
     {
         public override int BossBagNPC => ModContent.NPCType<YoungDuke>();
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Treasure Bag");

@@ -1,15 +1,10 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 
 namespace PissAndShit.Projectiles
 {
-    class GrandDadBrian : ModProjectile
+    public class GrandDadBrian : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("GrandDadBrian");
-        }
+        public override void SetStaticDefaults() => DisplayName.SetDefault("GrandDadBrian");
 
         public override void SetDefaults()
         {
@@ -22,10 +17,6 @@ namespace PissAndShit.Projectiles
             projectile.tileCollide = false;
         }
 
-        public override void AI()
-        {
-            //    projectile.CloneDefaults(ProjectileID.DesertDjinnCurse);
-        }
+        //public override void AI() => projectile.CloneDefaults(ProjectileID.DesertDjinnCurse);
     }
-    //yes I like to put comments on every code I do
 }

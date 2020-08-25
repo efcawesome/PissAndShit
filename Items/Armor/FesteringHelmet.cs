@@ -40,6 +40,7 @@ namespace PissAndShit.Items.Armor
         {
             player.statLifeMax2 += 500;
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

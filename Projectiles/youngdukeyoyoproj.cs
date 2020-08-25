@@ -8,14 +8,8 @@ namespace PissAndShit.Projectiles
     {
         public override void SetStaticDefaults()
         {
-
-
             ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = 8f;
-
-
             ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 300f;
-
-
             ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 14f;
         }
 
@@ -33,26 +27,18 @@ namespace PissAndShit.Projectiles
 
         public override void AI()
         {
-            if (Main.rand.Next(10) == 0)
+            if (Main.rand.NextBool(10))
             {
                 Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, ProjectileID.None, 50, projectile.knockBack, Main.myPlayer);
             }
-
         }
-
-
-
 
         public override void OnHitNPC(NPC n, int damage, float knockback, bool crit)
         {
-
-            Player owner = Main.player[projectile.owner];
-            int rand = Main.rand.Next(10); //Generates an integer from 0 to 1
-            if (rand == 0)
+            if (Main.rand.NextBool(10))
             {
                 n.AddBuff(20, 180);
             }
-
         }
     }
 }

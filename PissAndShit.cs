@@ -1,52 +1,61 @@
-using PissAndShit.Items.BossBags;
 using PissAndShit.Items.Consumables;
-using PissAndShit.Items.Weapons;
-using PissAndShit.NPCs;
-using PissAndShit.NPCs.Bosses;
 using System;
-using System.Collections.Generic;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace PissAndShit
 {
     public class PissAndShit : Mod
     {
+        internal static Mod BossChecklist;
+
+        public override void Load()
+        {
+            BossChecklist = ModLoader.GetMod("BossChecklist");
+
+            if (!Main.dedServ)
+            {
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/heavenly_bullshit"), ItemType("GodSlimeMusicBox"), TileType("GodSlimeMusicBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2"), ItemType("YoungDukeMusicBox"), TileType("YoungDukeMusicBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/GRANDDAD"), ItemType("GrandDadMusicBox"), TileType("GrandDadMusicBox"));
+            }
+
+            //TomatoLoader.AddMod(this);
+        }
+
         public override void PostSetupContent()
         {
-            Mod bossChecklist = ModLoader.GetMod("BossChecklist");
-            if(bossChecklist != null)
+            if (BossChecklist != null)
             {
-                bossChecklist.Call(
+                BossChecklist.Call(
                         "AddBossWithInfo",
                         "Young Duke",
                         5.5f,
                         (Func<bool>)(() => PaSWorld.downedYoungDuke),
                         "Use a [i:" + ModContent.ItemType<YoungWorm>() + "] in the ocean"
                     );
-                bossChecklist.Call(
+                BossChecklist.Call(
                         "AddBossWithInfo",
                         "God Slime",
                         16f,
                         (Func<bool>)(() => PaSWorld.downedGodSlime),
                         "Use a [i:" + ModContent.ItemType<HeavenlyChalice>() + "]"
                     );
-                bossChecklist.Call(
+                BossChecklist.Call(
                         "AddBossWithInfo",
                         "GRAND DAD",
                         18f,
                         (Func<bool>)(() => PaSWorld.downedGrandDad),
                         "Use a [i:" + ModContent.ItemType<Mario7>() + "]"
                     );
-                bossChecklist.Call(
+                BossChecklist.Call(
                         "AddBossWithInfo",
                         "Boozeshrume.exe",
                         6.5f,
                         (Func<bool>)(() => PaSWorld.downedBoozeshrume),
                         "Use a [i:" + ModContent.ItemType<SuspiciousAle>() + "]"
                     );
-                bossChecklist.Call(
+                BossChecklist.Call(
                         "AddBossWithInfo",
                         "The Hive",
                         17f,
@@ -55,9 +64,10 @@ namespace PissAndShit
                     );
             }
         }
+
         public override void Close()
         {
-            var slots = new int[] {
+            int[] slots = new int[] {
                 GetSoundSlot(SoundType.Music, "Sounds/Music/BallsOfFlesh"),
                 GetSoundSlot(SoundType.Music, "Sounds/Music/CHUNGUS"),
                 GetSoundSlot(SoundType.Music, "Sounds/Music/GRANDDAD"),
@@ -68,9 +78,9 @@ namespace PissAndShit
                 GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2"),
                 GetSoundSlot(SoundType.Music, "Sounds/Music/boss")
             };
-            foreach (var slot in slots)
+            foreach (int slot in slots)
             {
-                if (Main.music.IndexInRange(slot) && Main.music[slot]?.IsPlaying == true)
+                if (Main.music.IndexInRange(slot) && (bool)(Main.music[slot]?.IsPlaying))
                 {
                     Main.music[slot].Stop(Microsoft.Xna.Framework.Audio.AudioStopOptions.Immediate);
                 }
@@ -78,9 +88,10 @@ namespace PissAndShit
 
             base.Close();
         }
+
         public override void UpdateMusic(ref int music, ref MusicPriority priority)
         {
-            if(PaSWorld.endlesserModeSave == true)
+            if (PaSWorld.endlesserModeSave)
             {
                 if (Main.myPlayer == -1 || Main.gameMenu || !Main.LocalPlayer.active)
                 {
@@ -90,19 +101,7 @@ namespace PissAndShit
                 priority = MusicPriority.BossHigh;
             }
         }
-        
-        public override void Load()
-        {
-            if (!Main.dedServ)
-            {
-                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/heavenly_bullshit"), ItemType("GodSlimeMusicBox"), TileType("GodSlimeMusicBox"));
-                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2"), ItemType("YoungDukeMusicBox"), TileType("YoungDukeMusicBox"));
-                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/GRANDDAD"), ItemType("GrandDadMusicBox"), TileType("GrandDadMusicBox"));
-            }
-            public override void Load()
-            {
-                TomatoLib.Core.TomatoLoader.AddMod(this);
-            }
-        }
+
+        public override void Unload() => BossChecklist = null;
     }
 }

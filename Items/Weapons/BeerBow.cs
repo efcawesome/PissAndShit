@@ -27,7 +27,7 @@ namespace PissAndShit.Items.Weapons
             item.rare = ItemRarityID.LightPurple;
             item.UseSound = SoundID.Item34;
             item.autoReuse = true;
-            item.shoot = 669;
+            item.shoot = ProjectileID.Ale;
             item.shootSpeed = 21f;
         }
 

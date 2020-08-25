@@ -1,4 +1,3 @@
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -29,7 +28,6 @@ namespace PissAndShit.NPCs
 
         public override void NPCLoot()
         {
-
         }
     }
 }

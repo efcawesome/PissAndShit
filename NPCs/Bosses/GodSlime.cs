@@ -11,6 +11,7 @@ namespace PissAndShit.NPCs.Bosses
     {
         private int frameNum = 0;
         private int frameTimer = 0;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("God Slime");
@@ -183,7 +184,6 @@ namespace PissAndShit.NPCs.Bosses
 
         public override void FindFrame(int frameHeight)
         {
-
             if (frameTimer == 6)
             {
                 frameNum++;
@@ -202,7 +202,7 @@ namespace PissAndShit.NPCs.Bosses
         {
             if (Main.expertMode)
             {
-                if (Main.rand.Next(5) == 0)
+                if (Main.rand.NextBool(5))
                 {
                     NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-100, 100), (int)npc.Center.Y + Main.rand.Next(-100, 100), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
                 }

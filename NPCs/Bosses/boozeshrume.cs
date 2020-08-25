@@ -1,9 +1,13 @@
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using PissAndShit.Items.Misc;
 using PissAndShit.Items.BossBags;
+using PissAndShit.Items.Misc;
+using PissAndShit.Items.Weapons;
+using System;
+using Terraria;
+using Terraria.Graphics.Capture;
+using Terraria.ID;
+using Terraria.IO;
+using Terraria.ModLoader;
 
 namespace PissAndShit.NPCs.Bosses
 {
@@ -41,53 +45,119 @@ namespace PissAndShit.NPCs.Bosses
         public int GameCrashCounter = 0;
         public int SpeeeeenTimer = 0;
         public int AtttaackTimer = 0;
+
         public override void AI()
         {
-            if (npc.life < npc.lifeMax / 2) PhaseValueOrSomethingIDK = 1;
+            if (npc.life < npc.lifeMax / 2)
+            {
+                PhaseValueOrSomethingIDK = 1;
+            }
+
             npc.TargetClosest(true);
             npc.spriteDirection = npc.direction;
 
             Player player = Main.player[npc.target];
 
-            SpeeeeedValue = SpeeeenBool == true ? 5 : 7;
+            SpeeeeedValue = SpeeeenBool ? 5 : 7;
+
             Vector2 moveTo = player.Center - npc.Center;
             moveTo.Normalize();
             moveTo = moveTo * SpeeeeedValue;
+
             npc.velocity = moveTo;
 
             if (++SpeeeeenTimer % 180 == 0)
             {
-                if (SpeeeenBool == false) SpeeeenBool = true; else SpeeeenBool = false;
+                if (SpeeeenBool)
+                {
+                    SpeeeenBool = true;
+                }
+                else
+                {
+                    SpeeeenBool = false;
+                }
             }
 
-            if (SpeeeenBool == true) npc.rotation += npc.velocity.X * 0.1f;
+            if (SpeeeenBool)
+            {
+                npc.rotation += npc.velocity.X * 0.1f;
+            }
 
             if (PhaseValueOrSomethingIDK == 0)
             {
                 if (++AtttaackTimer >= 250)
                 {
                     for (int i = 0; i < Main.rand.Next(10, 20); i++)
+                    {
                         Projectile.NewProjectile(npc.Center.X - Main.rand.Next(-600, 600), npc.Center.Y - Main.screenHeight / 2 - 60, moveTo.X * 1.5f, moveTo.Y * 1.5f, ModContent.ProjectileType<Projectiles.rum>(), 35, 2);
+                    }
+
                     AtttaackTimer = 0;
                 }
             }
             else if (PhaseValueOrSomethingIDK == 1)
             {
                 GameCrashCounter++;
-                if (GameCrashCounter == 1) CombatText.NewText(npc.Hitbox, Color.DarkRed, "Kill me in 2 minute or Terraria go crash", dramatic: true);
-                    if (GameCrashCounter % 3600 == 0) CombatText.NewText(npc.Hitbox, Color.DarkRed, "One minute kill me or terraria crash HAHAHAH", dramatic: true);
-                if (GameCrashCounter == 7140) CombatText.NewText(npc.Hitbox, Color.DarkRed, "You are going to brazil", dramatic: true);
-                if (GameCrashCounter >= 7200)
+
+                if (GameCrashCounter == 1)
                 {
-                    Game game = default(Game);
-                    game.Exit();
-                    for (; ; )
-                    {
-                    }
+                    CombatText.NewText(npc.Hitbox, Color.DarkRed, "Kill me in 2 minute or you get booted", dramatic: true);
                 }
+
+                if (GameCrashCounter == 3600)
+                {
+                    CombatText.NewText(npc.Hitbox, Color.DarkRed, "One minute kill me or terraria go back to menu", dramatic: true);
+                }
+
+                if (GameCrashCounter == 7140)
+                {
+                    CombatText.NewText(npc.Hitbox, Color.DarkRed, "You are going to brazil", dramatic: true);
+                }
+
+                if (GameCrashCounter == 7200)
+                {
+                    CombatText.NewText(npc.Hitbox, Color.DarkRed, "Whoops gotta save your crap first", dramatic: true);
+                }
+
+                if (GameCrashCounter >= 7320)
+                {
+                    Main.SaveSettings();
+
+                    if (Main.netMode == NetmodeID.SinglePlayer)
+                    {
+                        WorldFile.CacheSaveTime();
+                    }
+
+                    Main.invasionProgress = 0;
+                    Main.invasionProgressDisplayLeft = 0;
+                    Main.invasionProgressAlpha = 0f;
+                    Main.menuMode = 10;
+                    Main.gameMenu = true;
+                    Main.StopTrackedSounds();
+                    CaptureInterface.ResetFocus();
+                    Main.ActivePlayerFileData.StopPlayTimer();
+
+                    Player.SavePlayer(Main.ActivePlayerFileData, false);
+
+                    if (Main.netMode == NetmodeID.SinglePlayer)
+                    {
+                        WorldFile.saveWorld();
+                    }
+                    else
+                    {
+                        Netplay.disconnect = true;
+                        Main.netMode = NetmodeID.SinglePlayer;
+                    }
+
+                    Main.fastForwardTime = false;
+                    Main.UpdateSundial();
+                    Main.menuMode = 0;
+                }
+
                 if (++AtttaackTimer >= 40)
                 {
                     Projectile.NewProjectile(npc.Center, moveTo * 4, ModContent.ProjectileType<Projectiles.beer>(), 50, 3);
+
                     AtttaackTimer = 0;
                 }
             }
@@ -97,18 +167,19 @@ namespace PissAndShit.NPCs.Bosses
         {
             PaSWorld.downedBoozeshrume = true;
             Main.NewText("boozeshrume.exe has stopped working", Color.MediumPurple);
-            if(!Main.expertMode)
+            if (!Main.expertMode)
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ScrumpyCiderRedwineTequillaWhiskeyVodkaRumArrackSpiritPureEthanolDrinkMix"), 3);
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Weapons/BeerBook"));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<ScrumpyCiderRedwineTequillaWhiskeyVodkaRumArrackSpiritPureEthanolDrinkMix>(), 3);
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<BeerBook>());
             }
-            if(Main.expertMode)
+            if (Main.expertMode)
             {
                 npc.DropBossBags();
             }
         }
     }
 }
+
 /*boozeshrume.exe
 
 Phase 1: Chases you, spins around, and throws rum all over the floor

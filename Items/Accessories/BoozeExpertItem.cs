@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Accessories
 {
-    class BoozeExpertItem : ModItem
+    public class BoozeExpertItem : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -27,7 +27,7 @@ namespace PissAndShit.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.allDamageMult *= 10;
-            if(player.statLife < player.statLifeMax)
+            if (player.statLife < player.statLifeMax)
             {
                 player.KillMe(PlayerDeathReason.ByCustomReason(player.name + " got too drunk"), 10000, 1, false);
             }

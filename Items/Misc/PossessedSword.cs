@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -10,12 +5,13 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Misc
 {
-    class PossessedSword : ModItem
+    public class PossessedSword : ModItem
     {
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Sometimes there's only one way out");
         }
+
         public override void SetDefaults()
         {
             item.width = 30;
@@ -23,6 +19,7 @@ namespace PissAndShit.Items.Misc
             item.maxStack = 1;
             item.useStyle = ItemUseStyleID.HoldingOut;
         }
+
         public override bool UseItem(Player player)
         {
             player.KillMe(PlayerDeathReason.ByCustomReason(player.name + " was bad"), 10000, 1, false);

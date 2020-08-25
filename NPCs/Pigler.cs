@@ -31,8 +31,13 @@ namespace PissAndShit.NPCs
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             if (spawnInfo.player.ZoneJungle)
+            {
                 return SpawnCondition.Overworld.Chance * 0.12f;
-            else return 0f;
+            }
+            else
+            {
+                return 0f;
+            }
         }
 
         public override void FindFrame(int frameHeight)
@@ -42,7 +47,6 @@ namespace PissAndShit.NPCs
 
         public override void NPCLoot()
         {
-
         }
     }
 }

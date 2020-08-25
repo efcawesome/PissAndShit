@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Weapons
 {
-    class YoungRazorTyphoon : ModItem
+    public class YoungRazorTyphoon : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -33,4 +33,3 @@ namespace PissAndShit.Items.Weapons
         }
     }
 }
-

@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
+using PissAndShit.Buffs;
 using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using PissAndShit.Buffs;
 
 namespace PissAndShit.NPCs
 {
@@ -33,15 +33,10 @@ namespace PissAndShit.NPCs
             NPCID.Sets.ProjectileNPC[npc.type] = true;
         }
 
-
-public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-
-            target.AddBuff(mod.BuffType("Soaped"), 300, false);
+            target.AddBuff(ModContent.BuffType<Soaped>(), 300, false);
         }
-
-
-
 
         public override void HitEffect(int hitDirection, double damage)
         {
@@ -71,8 +66,6 @@ public override void OnHitPlayer(Player target, int damage, bool crit)
                     dust154.scale = 0.7f;
                 }
             }
-
-
         }
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
@@ -86,8 +79,7 @@ public override void OnHitPlayer(Player target, int damage, bool crit)
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-
-            npc.damage = (int)((double)npc.damage * 0.75);
+            npc.damage = (int)(npc.damage * 0.75);
         }
 
         public override void AI()
@@ -95,8 +87,8 @@ public override void OnHitPlayer(Player target, int damage, bool crit)
             if (npc.target == 255)
             {
                 npc.TargetClosest();
-                npc.ai[3] = (float)Main.rand.Next(80, 121) / 100f;
-                float scaleFactor = (float)Main.rand.Next(165, 265) / 15f;
+                npc.ai[3] = Main.rand.Next(80, 121) / 100f;
+                float scaleFactor = Main.rand.Next(165, 265) / 15f;
                 npc.velocity = Vector2.Normalize(Main.player[npc.target].Center - npc.Center + new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101))) * scaleFactor;
                 npc.netUpdate = true;
             }
@@ -109,8 +101,8 @@ public override void OnHitPlayer(Player target, int damage, bool crit)
                 npc.alpha = 50;
             }
             npc.alpha = 50;
-            npc.velocity.X = (npc.velocity.X * 50f + Main.windSpeed * 2f + (float)Main.rand.Next(-10, 11) * 0.1f) / 51f;
-            npc.velocity.Y = (npc.velocity.Y * 50f + -0.25f + (float)Main.rand.Next(-10, 11) * 0.2f) / 51f;
+            npc.velocity.X = (npc.velocity.X * 50f + Main.windSpeed * 2f + Main.rand.Next(-10, 11) * 0.1f) / 51f;
+            npc.velocity.Y = (npc.velocity.Y * 50f + -0.25f + Main.rand.Next(-10, 11) * 0.2f) / 51f;
             if (npc.velocity.Y > 0f)
             {
                 npc.velocity.Y -= 0.04f;
@@ -160,7 +152,7 @@ public override void OnHitPlayer(Player target, int damage, bool crit)
                 npc.dontTakeDamage = true;
                 npc.position = npc.Center;
                 npc.width = (npc.height = 100);
-                npc.position = new Vector2(npc.position.X - (float)(npc.width / 2), npc.position.Y - (float)(npc.height / 2));
+                npc.position = new Vector2(npc.position.X - npc.width / 2, npc.position.Y - npc.height / 2);
                 if (npc.timeLeft > 3)
                 {
                     npc.timeLeft = 3;
@@ -168,5 +160,4 @@ public override void OnHitPlayer(Player target, int damage, bool crit)
             }
         }
     }
-
 }

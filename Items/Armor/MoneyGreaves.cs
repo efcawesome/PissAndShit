@@ -38,8 +38,3 @@ namespace PissAndShit.Items.Armor
         }
     }
 }
-
-
-
-
-

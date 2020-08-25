@@ -1,14 +1,12 @@
+using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using System.IO;
 
 namespace PissAndShit.NPCs.Bosses
 {
     public class VendingMachine : ModNPC
     {
-        private Player player;
         private int spawnTimer;
 
         public override void SetStaticDefaults()
@@ -79,18 +77,20 @@ namespace PissAndShit.NPCs.Bosses
                     int npcToSpawn = 0;
                     float ySpawnOffset = npc.position.Y += -20f * 16f;
 
-
                     switch (Main.rand.Next(1, 5))
                     {
                         case 1:
                             npcToSpawn = NPCID.KingSlime;
                             break;
+
                         case 2:
                             npcToSpawn = NPCID.EyeofCthulhu;
                             break;
+
                         case 3:
                             npcToSpawn = NPCID.QueenBee;
                             break;
+
                         case 4:
                             npcToSpawn = NPCID.SkeletronHead;
                             break;

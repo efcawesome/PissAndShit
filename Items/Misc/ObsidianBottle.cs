@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Misc
 {
-    public class ObsidianBottle: ModItem
+    public class ObsidianBottle : ModItem
     {
         public override void SetStaticDefaults()
         {

@@ -35,7 +35,6 @@ namespace PissAndShit.Items.Armor
             player.wingTimeMax += 5;
             player.goldRing = true;
             player.discount = true;
-
         }
 
         public override void AddRecipes()
@@ -48,4 +47,3 @@ namespace PissAndShit.Items.Armor
         }
     }
 }
-

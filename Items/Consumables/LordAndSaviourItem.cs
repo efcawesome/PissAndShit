@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework;
 using PissAndShit.NPCs;
 using Terraria;
 using Terraria.ID;
@@ -9,13 +8,15 @@ namespace PissAndShit.Items.Consumables
 {
     public class LordAndSaviourItem : ModItem
     {
-        public override void SetStaticDefaults(){
+        public override void SetStaticDefaults()
+        {
             DisplayName.SetDefault("???");
             Tooltip.SetDefault("Summons our Lord and Saviour");
         }
+
         public override void SetDefaults()
         {
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.useTime = 45;
             item.useAnimation = 45;
             item.width = 32;
@@ -30,7 +31,9 @@ namespace PissAndShit.Items.Consumables
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }
-        public override void AddRecipes(){
+
+        public override void AddRecipes()
+        {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.SetResult(this);
             recipe.AddRecipe();
