@@ -99,6 +99,10 @@ namespace PissAndShit
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2"), ItemType("YoungDukeMusicBox"), TileType("YoungDukeMusicBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/GRANDDAD"), ItemType("GrandDadMusicBox"), TileType("GrandDadMusicBox"));
             }
+            public override void Load()
+            {
+                TomatoLib.Core.TomatoLoader.AddMod(this);
+            }
         }
     }
 }
