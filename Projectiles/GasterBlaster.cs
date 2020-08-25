@@ -28,7 +28,7 @@ namespace PissAndShit.Projectiles
         {
             for (int i = 0; i < 20; i++)
             {
-                int KillDust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 212, projectile.direction * 2, 0f, 100, default(Color), 1.4f);
+                int KillDust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 212, projectile.direction * 2, 0f, 100, default, 1.4f);
                 Dust DustExample = Main.dust[KillDust];
                 DustExample.color = Color.LightPink;
                 DustExample.color = Color.Lerp(DustExample.color, Color.White, 0.3f);

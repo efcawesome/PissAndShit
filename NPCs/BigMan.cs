@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit.NPCs
 {
@@ -38,7 +31,7 @@ namespace PissAndShit.NPCs
         }
         public override void NPCLoot()
         {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BigChunk"), 3);
-            }
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BigChunk"), 3);
+        }
     }
 }

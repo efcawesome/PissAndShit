@@ -1,13 +1,8 @@
 using Terraria;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using PissAndShit.NPCs;
 
 namespace PissAndShit
 {
@@ -45,7 +40,7 @@ namespace PissAndShit
             var Modes = new List<string>();
             if (endlessModeSave) Modes.Add("endlessModeSave");
             if (endlesserModeSave) Modes.Add("endlesserModeSave");
-                 
+
             return new TagCompound
             {
                 {

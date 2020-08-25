@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Microsoft.Xna.Framework;
-using PissAndShit.Items.Consumables;
 using Terraria.GameContent.Events;
 
 namespace PissAndShit.NPCs
 {
     class ConfettiSlime : ModNPC
     {
-	private int frameNum = 0;
-	private int frameTimer = 0;
+        private int frameNum = 0;
+        private int frameTimer = 0;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Confetti Slime");
@@ -38,14 +31,14 @@ namespace PissAndShit.NPCs
 
         public override void AI()
         {
-	    Dust.NewDust(npc.position, npc.width, npc.height, 139);
-	    Dust.NewDust(npc.position, npc.width, npc.height, 140);
-	    Dust.NewDust(npc.position, npc.width, npc.height, 141);
-	    Dust.NewDust(npc.position, npc.width, npc.height, 142);
-	    frameTimer++;
-	}
+            Dust.NewDust(npc.position, npc.width, npc.height, 139);
+            Dust.NewDust(npc.position, npc.width, npc.height, 140);
+            Dust.NewDust(npc.position, npc.width, npc.height, 141);
+            Dust.NewDust(npc.position, npc.width, npc.height, 142);
+            frameTimer++;
+        }
 
-	public override void FindFrame(int frameHeight)
+        public override void FindFrame(int frameHeight)
         {
 
             if (frameTimer == 6)
@@ -60,15 +53,15 @@ namespace PissAndShit.NPCs
             }
 
             npc.frame.Y = frameNum * frameHeight;
-	}
+        }
 
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-	    if (BirthdayParty.PartyIsUp)
-		return SpawnCondition.OverworldDaySlime.Chance * 0.1f / 2;
-	    return 0f;
-	    
-	}
-	
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+            if (BirthdayParty.PartyIsUp)
+                return SpawnCondition.OverworldDaySlime.Chance * 0.1f / 2;
+            return 0f;
+
+        }
+
     }
 }

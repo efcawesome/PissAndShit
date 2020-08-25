@@ -1,6 +1,4 @@
-using Microsoft.Xna.Framework;
 using PissAndShit.Projectiles;
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 

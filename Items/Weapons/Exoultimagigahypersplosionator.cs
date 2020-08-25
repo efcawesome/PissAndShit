@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using PissAndShit.Projectiles;
 using Microsoft.Xna.Framework;
-using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit.Items.Weapons
 {
-    public class Exoultimagigahypersplosionator: ModItem
+    public class Exoultimagigahypersplosionator : ModItem
     {
-	private int splodinatorFired = 0;
-	private int splodinatorOffset = -1;
-	
+        private int splodinatorFired = 0;
+        private int splodinatorOffset = -1;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Exoultimagigahypersplosionator");
@@ -28,74 +24,74 @@ namespace PissAndShit.Items.Weapons
             item.crit = 1000;
             item.useStyle = 5;
             item.UseSound = SoundID.Item11;
-	    item.noMelee = true;
+            item.noMelee = true;
             item.useTime = 2;
             item.useAnimation = 2;
             item.autoReuse = true;
             item.ranged = true;
             item.scale = 1;
             item.expert = true;
-	    item.useAmmo = AmmoID.Rocket;
-	    item.shoot = ModContent.ProjectileType<Projectiles.SplosionatorRocket>();
-	    item.shootSpeed = 5f;
+            item.useAmmo = AmmoID.Rocket;
+            item.shoot = ModContent.ProjectileType<Projectiles.SplosionatorRocket>();
+            item.shootSpeed = 5f;
         }
 
-	public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-	{
-	    Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 29f;
-	    if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-	    {
-		position += muzzleOffset;
-	    }
-	    
-	    type = ModContent.ProjectileType<Projectiles.SplosionatorRocket>();
-	    
-	    if (splodinatorFired > 2)
-	    {
-		splodinatorFired = 0;
-	    }
-	    if (splodinatorFired == 0)
-	    {
-		splodinatorOffset = -4;
-	    }
-	    else if (splodinatorFired == 1)
-	    {
-		splodinatorOffset = 0;
-	    }
-	    else if (splodinatorFired == 2)
-	    {
-		splodinatorOffset = 4;
-	    }
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 29f;
+            if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+            {
+                position += muzzleOffset;
+            }
 
-	    if (player.direction == 1)
-	    {
+            type = ModContent.ProjectileType<Projectiles.SplosionatorRocket>();
 
-	    // how to choose position:
-	    // on X: if looking right, -22 X
-	    // on Y: -4 Y
-		
-	    Projectile.NewProjectile(position.X - 22, position.Y - 4 + splodinatorOffset, speedX, speedY, type, damage, knockBack, player.whoAmI);//front
-	    Projectile.NewProjectile(position.X - 3 - splodinatorOffset, position.Y - 28, speedX - 5, speedY - 5, type, damage, knockBack, player.whoAmI);//top
-	    Projectile.NewProjectile(position.X - 6, position.Y + 9, speedX - 1f, speedY - 5f, type, damage, knockBack, player.whoAmI);//top angled
-	    Projectile.NewProjectile(position.X + 6, position.Y - 9, speedX + 10f, speedY + 15f, type, damage, knockBack, player.whoAmI);//bottom angled
-	    Projectile.NewProjectile(position.X - 3, position.Y + 9, speedX - 5f, speedY + 5f, type, damage, knockBack, player.whoAmI);//bottom
-	    }
-	    else
-	    {
-	    Projectile.NewProjectile(position.X, position.Y - 4 - splodinatorOffset, speedX, speedY, type, damage, knockBack, player.whoAmI);//front
-	    Projectile.NewProjectile(position.X + 19 + splodinatorOffset, position.Y - 28, speedX + 5, speedY - 5, type, damage, knockBack, player.whoAmI);//top
-	    Projectile.NewProjectile(position.X - 2, position.Y + 9, speedX + 1f, speedY + 5f, type, damage, knockBack, player.whoAmI);//top angled
-	    Projectile.NewProjectile(position.X + 2, position.Y - 9, speedX - 10f, speedY - 15f, type, damage, knockBack, player.whoAmI);//bottom angled
-	    Projectile.NewProjectile(position.X + 19, position.Y + 13, speedX + 5f, speedY + 5f, type, damage, knockBack, player.whoAmI);//bottom
-	    }
-	    splodinatorFired++;
-	    
-	    return false; // return false because we don't want tmodloader to shoot projectile
-	}
+            if (splodinatorFired > 2)
+            {
+                splodinatorFired = 0;
+            }
+            if (splodinatorFired == 0)
+            {
+                splodinatorOffset = -4;
+            }
+            else if (splodinatorFired == 1)
+            {
+                splodinatorOffset = 0;
+            }
+            else if (splodinatorFired == 2)
+            {
+                splodinatorOffset = 4;
+            }
 
-	public override Vector2? HoldoutOffset()
-	{
-	    return new Vector2(-22, -4);
-	}
+            if (player.direction == 1)
+            {
+
+                // how to choose position:
+                // on X: if looking right, -22 X
+                // on Y: -4 Y
+
+                Projectile.NewProjectile(position.X - 22, position.Y - 4 + splodinatorOffset, speedX, speedY, type, damage, knockBack, player.whoAmI);//front
+                Projectile.NewProjectile(position.X - 3 - splodinatorOffset, position.Y - 28, speedX - 5, speedY - 5, type, damage, knockBack, player.whoAmI);//top
+                Projectile.NewProjectile(position.X - 6, position.Y + 9, speedX - 1f, speedY - 5f, type, damage, knockBack, player.whoAmI);//top angled
+                Projectile.NewProjectile(position.X + 6, position.Y - 9, speedX + 10f, speedY + 15f, type, damage, knockBack, player.whoAmI);//bottom angled
+                Projectile.NewProjectile(position.X - 3, position.Y + 9, speedX - 5f, speedY + 5f, type, damage, knockBack, player.whoAmI);//bottom
+            }
+            else
+            {
+                Projectile.NewProjectile(position.X, position.Y - 4 - splodinatorOffset, speedX, speedY, type, damage, knockBack, player.whoAmI);//front
+                Projectile.NewProjectile(position.X + 19 + splodinatorOffset, position.Y - 28, speedX + 5, speedY - 5, type, damage, knockBack, player.whoAmI);//top
+                Projectile.NewProjectile(position.X - 2, position.Y + 9, speedX + 1f, speedY + 5f, type, damage, knockBack, player.whoAmI);//top angled
+                Projectile.NewProjectile(position.X + 2, position.Y - 9, speedX - 10f, speedY - 15f, type, damage, knockBack, player.whoAmI);//bottom angled
+                Projectile.NewProjectile(position.X + 19, position.Y + 13, speedX + 5f, speedY + 5f, type, damage, knockBack, player.whoAmI);//bottom
+            }
+            splodinatorFired++;
+
+            return false; // return false because we don't want tmodloader to shoot projectile
+        }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-22, -4);
+        }
     }
 }

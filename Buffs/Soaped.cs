@@ -1,8 +1,5 @@
 ﻿using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 namespace PissAndShit.Buffs
 {

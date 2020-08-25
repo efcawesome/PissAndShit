@@ -76,7 +76,7 @@ namespace PissAndShit.NPCs
             {
                 for (int i = 0; i < 20; i++)
                 {
-                    int KillDust = Dust.NewDust(npc.position, npc.width, npc.height, 212, npc.direction * 2, 0f, 100, default(Color), 1.4f);
+                    int KillDust = Dust.NewDust(npc.position, npc.width, npc.height, 212, npc.direction * 2, 0f, 100, default, 1.4f);
                     Dust DustExample = Main.dust[KillDust];
                     DustExample.color = Color.LightPink;
                     DustExample.color = Color.Lerp(DustExample.color, Color.White, 0.3f);
@@ -91,7 +91,7 @@ namespace PissAndShit.NPCs
             {
                 npc.spriteDirection = player.direction;
                 npc.rotation = (float)Math.Atan2(playerX, -playerY) + 3.14f;
-                
+
 
             }
             if (playerX < 0f)
@@ -108,18 +108,18 @@ namespace PissAndShit.NPCs
                 npc.netUpdate = true;
                 // Do something here, maybe change to a new state.
                 //NPC.NewNPC((int)center.X, (int)center.Y, NPCType<NPCs.SoapBubble>());
-                
-                
-                    if (Main.netMode != NetmodeID.MultiplayerClient)
-                    {
-                        float velocityX = npc.rotation;
-                        float velocityY = npc.rotation;
-                        Vector2 vector3 = Vector2.Normalize(player.Center - center) * (npc.width + 20) / 2f + center;
-                        //int bubble = Projectile.NewProjectile(center.X, center.Y, velocityX, -velocityY, ProjectileType<SlightlyLessSoapyBubble>(), 35, 3f, 0, 0f, 0f);
-                        int bubble = NPC.NewNPC((int)vector3.X, (int)vector3.Y + 45, NPCType<SoapBubble>());
 
-                    }
-                
+
+                if (Main.netMode != NetmodeID.MultiplayerClient)
+                {
+                    float velocityX = npc.rotation;
+                    float velocityY = npc.rotation;
+                    Vector2 vector3 = Vector2.Normalize(player.Center - center) * (npc.width + 20) / 2f + center;
+                    //int bubble = Projectile.NewProjectile(center.X, center.Y, velocityX, -velocityY, ProjectileType<SlightlyLessSoapyBubble>(), 35, 3f, 0, 0f, 0f);
+                    int bubble = NPC.NewNPC((int)vector3.X, (int)vector3.Y + 45, NPCType<SoapBubble>());
+
+                }
+
             }
         }
     }

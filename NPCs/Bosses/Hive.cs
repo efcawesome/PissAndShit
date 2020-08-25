@@ -134,7 +134,7 @@ namespace PissAndShit.NPCs.Bosses
             {
                 npc.DropBossBags();
             }
-            if(!Main.expertMode)
+            if (!Main.expertMode)
             {
                 if (bossWeapon == 0)
                 {

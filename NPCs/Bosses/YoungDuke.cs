@@ -5,7 +5,6 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using PissAndShit.Items.BossBags;
 using static Terraria.ModLoader.ModContent;
-using PissAndShit.Projectiles;
 using PissAndShit.Items.Weapons;
 
 namespace PissAndShit.NPCs.Bosses
@@ -68,7 +67,7 @@ namespace PissAndShit.NPCs.Bosses
             }
             else
             {
-                switch(bossWeapon)
+                switch (bossWeapon)
                 {
                     case 0:
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<YoungBow>());
@@ -430,7 +429,7 @@ namespace PissAndShit.NPCs.Bosses
                     {
                         Vector2 value6 = (Vector2.Normalize(npc.velocity) * new Vector2((float)npc.width / 2f, npc.height) * 0.75f * 0.5f).RotatedBy((float)(i - (num13 / 2 - 1)) * ((float)Math.PI * 2f) / (float)num13) + npc.Center;
                         Vector2 value2 = value6 - npc.Center;
-                        int num14 = Dust.NewDust(value6 + value2, 0, 0, 172, value2.X * 2f, value2.Y * 2f, 100, default(Color), 1.4f);
+                        int num14 = Dust.NewDust(value6 + value2, 0, 0, 172, value2.X * 2f, value2.Y * 2f, 100, default, 1.4f);
                         Main.dust[num14].noGravity = true;
                         Main.dust[num14].noLight = true;
                         Main.dust[num14].velocity = Vector2.Normalize(value2) * 3f;
@@ -575,7 +574,7 @@ namespace PissAndShit.NPCs.Bosses
                 {
                     Vector2 value7 = (Vector2.Normalize(npc.velocity) * new Vector2((float)(npc.width + 50) / 2f, npc.height) * 0.75f).RotatedBy((double)(j - (num17 / 2 - 1)) * Math.PI / (double)(float)num17) + center;
                     Vector2 value3 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - (float)Math.PI / 2f).ToRotationVector2() * Main.rand.Next(3, 8);
-                    int num18 = Dust.NewDust(value7 + value3, 0, 0, 172, value3.X * 2f, value3.Y * 2f, 100, default(Color), 1.4f);
+                    int num18 = Dust.NewDust(value7 + value3, 0, 0, 172, value3.X * 2f, value3.Y * 2f, 100, default, 1.4f);
                     Main.dust[num18].noGravity = true;
                     Main.dust[num18].noLight = true;
                     Main.dust[num18].velocity /= 4f;
@@ -839,7 +838,7 @@ namespace PissAndShit.NPCs.Bosses
                 {
                     Vector2 value8 = (Vector2.Normalize(npc.velocity) * new Vector2((float)(npc.width + 50) / 2f, npc.height) * 0.75f).RotatedBy((double)(k - (num22 / 2 - 1)) * Math.PI / (double)(float)num22) + center;
                     Vector2 value4 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - (float)Math.PI / 2f).ToRotationVector2() * Main.rand.Next(3, 8);
-                    int num24 = Dust.NewDust(value8 + value4, 0, 0, 172, value4.X * 2f, value4.Y * 2f, 100, default(Color), 1.4f);
+                    int num24 = Dust.NewDust(value8 + value4, 0, 0, 172, value4.X * 2f, value4.Y * 2f, 100, default, 1.4f);
                     Main.dust[num24].noGravity = true;
                     Main.dust[num24].noLight = true;
                     Main.dust[num24].velocity /= 4f;
@@ -882,7 +881,7 @@ namespace PissAndShit.NPCs.Bosses
                     npc.ai[1] = 0f;
                     npc.ai[2] = 0f;
                     npc.netUpdate = true;
-                } 
+                }
             }
             else if (npc.ai[0] == 8f)
 
@@ -907,7 +906,7 @@ namespace PissAndShit.NPCs.Bosses
                         npc.ai[1] = 0f;
                         npc.ai[2] = 0f;
                         npc.netUpdate = true;
-                    } 
+                    }
                 }
                 else if (npc.ai[0] == 9f)
                 {
@@ -930,7 +929,7 @@ namespace PissAndShit.NPCs.Bosses
                             npc.alpha = 150;
                         }
                     }
-                    
+
                     npc.velocity *= 0.98f;
                     npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
                     if (npc.ai[2] == (float)(num3 - 60))
@@ -945,7 +944,7 @@ namespace PissAndShit.NPCs.Bosses
                         npc.ai[2] = 0f;
                         npc.ai[3] = 0f;
                         npc.netUpdate = true;
-                    } 
+                    }
                 }
                 else if (npc.ai[0] == 10f && !player.dead)
                 {
@@ -1050,7 +1049,7 @@ namespace PissAndShit.NPCs.Bosses
                     {
                         Vector2 value9 = (Vector2.Normalize(npc.velocity) * new Vector2((float)(npc.width + 50) / 2f, npc.height) * 0.75f).RotatedBy((double)(m - (num28 / 2 - 1)) * Math.PI / (double)(float)num28) + center;
                         Vector2 value5 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - (float)Math.PI / 2f).ToRotationVector2() * Main.rand.Next(3, 8);
-                        int num29 = Dust.NewDust(value9 + value5, 0, 0, 172, value5.X * 2f, value5.Y * 2f, 100, default(Color), 1.4f);
+                        int num29 = Dust.NewDust(value9 + value5, 0, 0, 172, value5.X * 2f, value5.Y * 2f, 100, default, 1.4f);
                         Main.dust[num29].noGravity = true;
                         Main.dust[num29].noLight = true;
                         Main.dust[num29].velocity /= 4f;

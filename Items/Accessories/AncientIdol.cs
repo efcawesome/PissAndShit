@@ -1,7 +1,7 @@
 ﻿using PissAndShit.Rarities;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
+using TomatoLib.Core;
 
 namespace PissAndShit.Items.Accessories
 {
@@ -18,13 +18,13 @@ namespace PissAndShit.Items.Accessories
             item.height = 30;
 
             item.value = Item.buyPrice(gold: 50);
-            item.rare = TomatoLib.Core.TomatoLoader.RarityType<EndlessRarity>();
+            item.rare = TomatoLoader.RarityType<EndlessRarity>();
             item.accessory = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<PaSPlayer>().ancientIdol = true;
+            //player.GetModPlayer<PaSPlayer>().ancientIdol = true;
         }
     }
 }

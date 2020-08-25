@@ -1,9 +1,5 @@
 ﻿using Terraria;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
@@ -54,20 +50,20 @@ namespace PissAndShit.NPCs.Bosses
             if (player.position.Y - 150 < npc.position.Y && npc.velocity.Y > -12)
             {
                 npc.velocity.Y -= 0.2f;
-                if(npc.velocity.Y > 0)
+                if (npc.velocity.Y > 0)
                 {
                     npc.velocity.Y = 0;
                 }
             }
-            if(player.position.Y - 400 > npc.position.Y && npc.velocity.Y < 12)
+            if (player.position.Y - 400 > npc.position.Y && npc.velocity.Y < 12)
             {
                 npc.velocity.Y += 0.2f;
-                if(npc.velocity.Y < 0)
+                if (npc.velocity.Y < 0)
                 {
                     npc.velocity.Y = 0;
                 }
             }
-            if(player.position.Y < npc.position.Y && player.position.Y - 400 > npc.position.Y)
+            if (player.position.Y < npc.position.Y && player.position.Y - 400 > npc.position.Y)
             {
                 overhead = false;
             }
@@ -75,7 +71,7 @@ namespace PissAndShit.NPCs.Bosses
             {
                 overhead = true;
             }
-            if(overhead == true)
+            if (overhead == true)
             {
                 if (player.position.X > npc.position.X && npc.velocity.X < 14)
                 {
@@ -95,11 +91,11 @@ namespace PissAndShit.NPCs.Bosses
                 }
             }
             regularShootTimer++;
-            if(regularShootTimer >= 120)
+            if (regularShootTimer >= 120)
             {
                 for (int i = 0; i <= 45; i++)
                 {
-                    switch(i)
+                    switch (i)
                     {
                         case 15:
                             Projectile.NewProjectile(shootPos.X, shootPos.Y, shootVel.X, shootVel.Y, ModContent.ProjectileType<PerceptionatorLaser>(), 100, 5f);

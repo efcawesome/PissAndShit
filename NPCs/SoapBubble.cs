@@ -3,7 +3,6 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using PissAndShit.Buffs;
 
 namespace PissAndShit.NPCs
 {
@@ -34,7 +33,7 @@ namespace PissAndShit.NPCs
         }
 
 
-public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitPlayer(Player target, int damage, bool crit)
         {
 
             target.AddBuff(mod.BuffType("Soaped"), 300, false);

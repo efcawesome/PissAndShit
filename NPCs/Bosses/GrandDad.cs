@@ -80,11 +80,11 @@ namespace PissAndShit.NPCs.Bosses
             }
             if (teleportTimer >= 30)
             {
-                
+
                 npc.position.X = targetPosition.X + Main.rand.Next(-500, 500);
                 npc.position.Y = targetPosition.Y + Main.rand.Next(-500, 500);
                 teleportTimer = 0;
-                
+
 
             }
             if (projectileTimer >= 180)
@@ -124,7 +124,7 @@ namespace PissAndShit.NPCs.Bosses
                     return;
                 }
             }
-            
+
         }
 
         public override void FindFrame(int frameHeight)
@@ -171,7 +171,7 @@ namespace PissAndShit.NPCs.Bosses
                 if (secondPhase == true)
                 {
                     npc.frame.Y += frameHeight * 5;
-                }       
+                }
             }
             else if (npc.frameCounter < 15.0)
             {
@@ -226,7 +226,7 @@ namespace PissAndShit.NPCs.Bosses
                 npc.frameCounter = 0.0;
                 npc.frame.Y = 0;
             }
-            
+
         }
 
 

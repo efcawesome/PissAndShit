@@ -1,9 +1,5 @@
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace PissAndShit.Items.Consumables
 {
@@ -31,7 +27,7 @@ namespace PissAndShit.Items.Consumables
 
         public override bool UseItem(Player player)
         {
-	    NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("DeathItself"));
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("DeathItself"));
             return true;
         }
     }

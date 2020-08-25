@@ -1,6 +1,5 @@
 using System;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using static Terraria.ModLoader.ModContent;
@@ -32,7 +31,7 @@ namespace PissAndShit.Projectiles
 
             for (int num282 = 0; num282 < 20; num282++)
             {
-                int num283 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 212, projectile.direction * 2, 0f, 100, default(Color), 1.4f);
+                int num283 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 212, projectile.direction * 2, 0f, 100, default, 1.4f);
                 Dust dust218 = Main.dust[num283];
                 dust218.color = Color.LightPink;
                 dust218.color = Color.Lerp(dust218.color, Color.White, 0.3f);

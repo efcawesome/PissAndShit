@@ -1,9 +1,7 @@
 using Microsoft.Xna.Framework;
-using PissAndShit.Items.Misc;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Exceptions;
 
 namespace PissAndShit.NPCs
 {
@@ -67,15 +65,15 @@ namespace PissAndShit.NPCs
                 {
                     npc.immortal = true;
                 }
-                if(NPC.AnyNPCs(NPCID.CultistBoss))
+                if (NPC.AnyNPCs(NPCID.CultistBoss))
                 {
-                    if(npc.type == NPCID.CultistDragonHead || npc.type == NPCID.CultistDragonBody1 || npc.type == NPCID.CultistDragonBody2 || npc.type == NPCID.CultistDragonBody3 || npc.type == NPCID.CultistDragonBody4 || npc.type == NPCID.CultistDragonTail)
+                    if (npc.type == NPCID.CultistDragonHead || npc.type == NPCID.CultistDragonBody1 || npc.type == NPCID.CultistDragonBody2 || npc.type == NPCID.CultistDragonBody3 || npc.type == NPCID.CultistDragonBody4 || npc.type == NPCID.CultistDragonTail)
                     {
                         npc.immortal = true;
                     }
                 }
             }
-            if(endlesserModeBool == true)
+            if (endlesserModeBool == true)
             {
                 if (NPC.AnyNPCs(NPCID.CultistBoss))
                 {
@@ -138,7 +136,7 @@ namespace PissAndShit.NPCs
                     }
                     if (npc.life <= npc.lifeMax / 2 && wanderingEyeSpawned == false)
                     {
-                        for(int k = 0; k < 10; k++)
+                        for (int k = 0; k < 10; k++)
                         {
                             NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-100, 100), (int)npc.Center.Y + Main.rand.Next(-100, 100), NPCID.WanderingEye, npc.whoAmI);
                         }
@@ -166,7 +164,7 @@ namespace PissAndShit.NPCs
                         extraCreeperSpawn = true;
                     }
                 }
-                if(npc.type == NPCID.EaterofWorldsHead)
+                if (npc.type == NPCID.EaterofWorldsHead)
                 {
                     corrupterTimer++;
                     worldFeederTimer++;
@@ -181,7 +179,7 @@ namespace PissAndShit.NPCs
                         worldFeederTimer = 0;
                     }
                 }
-                if(npc.type == NPCID.QueenBee)
+                if (npc.type == NPCID.QueenBee)
                 {
                     stingerShootTimer++;
                     if (stingerShootTimer >= 2)
@@ -202,21 +200,21 @@ namespace PissAndShit.NPCs
                         boneShootTimer = 0;
                     }
                 }
-                if(npc.type == NPCID.TheDestroyerBody)
+                if (npc.type == NPCID.TheDestroyerBody)
                 {
                     destroyerShootTimer++;
-                    if(destroyerShootTimer >= 20 && Main.rand.Next(3) == 0)
+                    if (destroyerShootTimer >= 20 && Main.rand.Next(3) == 0)
                     {
                         Projectile.NewProjectile(shootPos1.X + (float)Main.rand.Next(-200, 200), shootPos1.Y + (float)Main.rand.Next(-200, 200), shootVel1.X, shootVel1.Y, ProjectileID.DeathLaser, npc.damage / 4, 5f);
                         destroyerShootTimer = 0;
                     }
                 }
-                if(npc.type == NPCID.SkeletronPrime)
+                if (npc.type == NPCID.SkeletronPrime)
                 {
                     dungeonEnemySpawnTimer++;
-                    if(dungeonEnemySpawnTimer >= 600 + Main.rand.Next(-300, 300))
+                    if (dungeonEnemySpawnTimer >= 600 + Main.rand.Next(-300, 300))
                     {
-                        switch(Main.rand.Next(11))
+                        switch (Main.rand.Next(11))
                         {
                             case 0:
                                 NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.HellArmoredBones, npc.whoAmI);
@@ -255,20 +253,20 @@ namespace PissAndShit.NPCs
                         dungeonEnemySpawnTimer = 0;
                     }
                 }
-                if(npc.type == NPCID.Spazmatism)
+                if (npc.type == NPCID.Spazmatism)
                 {
                     npc.position.Y = player1.position.Y;
                 }
-                if(npc.type == NPCID.Retinazer)
+                if (npc.type == NPCID.Retinazer)
                 {
                     npc.position.X = player1.position.X;
                 }
-                if(npc.type == NPCID.Plantera)
+                if (npc.type == NPCID.Plantera)
                 {
-                    if(player1.Distance(npc.Center) > 400)
+                    if (player1.Distance(npc.Center) > 400)
                     {
                         planteraStatusBool = false;
-                        if(planteraDespawnTimer == 0)
+                        if (planteraDespawnTimer == 0)
                         {
                             Main.NewText("You are too far away from plantera!", 42, 173, 40);
                         }
@@ -290,7 +288,7 @@ namespace PissAndShit.NPCs
                     }
                     else
                     {
-                        if(planteraStatusBool == false)
+                        if (planteraStatusBool == false)
                         {
                             Main.NewText("You are close enough to plantera!", 42, 173, 40);
                             planteraStatusBool = true;
@@ -298,10 +296,10 @@ namespace PissAndShit.NPCs
                         planteraDespawnTimer = 0;
                     }
                 }
-                if(npc.type == NPCID.GolemFistLeft)
+                if (npc.type == NPCID.GolemFistLeft)
                 {
                     leftFistShootTimer++;
-                    if(leftFistShootTimer >= 20)
+                    if (leftFistShootTimer >= 20)
                     {
                         int projectile = Projectile.NewProjectile(shootPos1.X, shootPos1.Y, 0, 0, ProjectileID.DeathSickle, npc.damage / 4, 5f);
                         Main.projectile[projectile].hostile = true;
@@ -320,12 +318,12 @@ namespace PissAndShit.NPCs
                         rightFistShootTimer = 0;
                     }
                 }
-                if(npc.type == NPCID.GolemHeadFree)
+                if (npc.type == NPCID.GolemHeadFree)
                 {
                     headShootTimer++;
-                    if(headShootTimer >= 40 + Main.rand.Next(-20, 20))
+                    if (headShootTimer >= 40 + Main.rand.Next(-20, 20))
                     {
-                        int projectile = Projectile.NewProjectile(shootPos1.X, shootPos1.Y, shootVel1.X, shootVel1.Y, ProjectileID.DeathSickle , npc.damage / 4, 5f);
+                        int projectile = Projectile.NewProjectile(shootPos1.X, shootPos1.Y, shootVel1.X, shootVel1.Y, ProjectileID.DeathSickle, npc.damage / 4, 5f);
                         Main.projectile[projectile].hostile = true;
                         Main.projectile[projectile].friendly = false;
                         headShootTimer = 0;
@@ -343,18 +341,18 @@ namespace PissAndShit.NPCs
                         }
                     }
                 }
-                if(npc.type == NPCID.Golem)
+                if (npc.type == NPCID.Golem)
                 {
                     if (npc.life <= npc.lifeMax / 4) golemLowLife = true;
                     bodyLaserTimer++;
                     if (bodyLaserTimer >= 10)
                     {
-                        if(npc.life > npc.lifeMax / 2)
+                        if (npc.life > npc.lifeMax / 2)
                         {
                             Projectile.NewProjectile(shootPos1.X - 10, shootPos1.Y, shootVel1.X, shootVel1.Y, ProjectileID.EyeBeam, npc.damage / 4, 5f);
                             Projectile.NewProjectile(shootPos1.X + 10, shootPos1.Y, shootVel1.X, shootVel1.Y, ProjectileID.EyeBeam, npc.damage / 4, 5f);
                         }
-                        else if(npc.life <= npc.lifeMax/2)
+                        else if (npc.life <= npc.lifeMax / 2)
                         {
                             Projectile.NewProjectile(shootPos1.X - 20, shootPos1.Y, 0, -15, ProjectileID.EyeBeam, npc.damage / 4, 5f);
                             Projectile.NewProjectile(shootPos1.X + 20, shootPos1.Y, 0, -15, ProjectileID.EyeBeam, npc.damage / 4, 5f);
@@ -376,18 +374,18 @@ namespace PissAndShit.NPCs
                         bodyLaserTimer = 0;
                     }
                 }
-                if(npc.type == NPCID.CultistBoss)
+                if (npc.type == NPCID.CultistBoss)
                 {
                     lunarEnemySpawnTimer++;
-                    if(ancientDragonSpawned == false)
+                    if (ancientDragonSpawned == false)
                     {
                         NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y + 100, NPCID.CultistDragonHead, npc.whoAmI);
                         NPC.NewNPC((int)npc.Center.X - 100, (int)npc.Center.Y - 100, NPCID.CultistDragonHead, npc.whoAmI);
                         ancientDragonSpawned = true;
                     }
-                    if(lunarEnemySpawnTimer >= 900)
+                    if (lunarEnemySpawnTimer >= 900)
                     {
-                        switch(Main.rand.Next(4))
+                        switch (Main.rand.Next(4))
                         {
                             case 0:
                                 NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.SolarCrawltipedeHead, npc.whoAmI);
@@ -421,10 +419,10 @@ namespace PissAndShit.NPCs
                         lunarEnemySpawnTimer = 0;
                     }
                 }
-                if(npc.type == NPCID.MoonLordCore)
+                if (npc.type == NPCID.MoonLordCore)
                 {
                     eyeballTimer++;
-                    if(eyeballTimer >= 180 + Main.rand.Next(-60, 60))
+                    if (eyeballTimer >= 180 + Main.rand.Next(-60, 60))
                     {
                         Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, -10, ProjectileID.PhantasmalSphere, 100, 5f);
                         Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 10, ProjectileID.PhantasmalSphere, 100, 5f);
@@ -454,7 +452,7 @@ namespace PissAndShit.NPCs
                         handEyeShootTimer = 0;
                     }
                 }
-                if(npc.type == NPCID.MoonLordHand)
+                if (npc.type == NPCID.MoonLordHand)
                 {
 
                 }
@@ -545,7 +543,7 @@ namespace PissAndShit.NPCs
                     target.AddBuff(BuffID.Stoned, 60, false);
                 }
             }
-            if(hardDifficulty == true)
+            if (hardDifficulty == true)
             {
                 if (npc.type == NPCID.Golem || npc.type == NPCID.GolemFistLeft || npc.type == NPCID.GolemFistRight)
                 {
@@ -556,7 +554,7 @@ namespace PissAndShit.NPCs
         }
         public override void NPCLoot(NPC npc)
         {
-            if(hardDifficulty == true)
+            if (hardDifficulty == true)
             {
                 if (npc.type == NPCID.TheHungryII)
                 {
@@ -575,7 +573,7 @@ namespace PissAndShit.NPCs
                 {
                     extraCreeperSpawn = false;
                 }
-                if(npc.type == NPCID.SkeletronHead)
+                if (npc.type == NPCID.SkeletronHead)
                 {
                     NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.DungeonGuardian, npc.whoAmI);
                 }
@@ -589,7 +587,7 @@ namespace PissAndShit.NPCs
                     }
                 }
             }
-            if(endlesserModeBool == true)
+            if (endlesserModeBool == true)
             {
                 if (npc.type == NPCID.CultistBoss)
                 {
@@ -607,7 +605,7 @@ namespace PissAndShit.NPCs
         }
         public override void HitEffect(NPC npc, int hitDirection, double damage)
         {
-            if(hardDifficulty == true)
+            if (hardDifficulty == true)
             {
                 if (npc.type == NPCID.KingSlime)
                 {

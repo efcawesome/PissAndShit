@@ -1,13 +1,8 @@
-using PissAndShit.Items.BossBags;
 using PissAndShit.Items.Consumables;
-using PissAndShit.Items.Weapons;
-using PissAndShit.NPCs;
-using PissAndShit.NPCs.Bosses;
 using System;
-using System.Collections.Generic;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
+using TomatoLib.Core;
 
 namespace PissAndShit
 {
@@ -16,7 +11,7 @@ namespace PissAndShit
         public override void PostSetupContent()
         {
             Mod bossChecklist = ModLoader.GetMod("BossChecklist");
-            if(bossChecklist != null)
+            if (bossChecklist != null)
             {
                 bossChecklist.Call(
                         "AddBossWithInfo",
@@ -80,7 +75,7 @@ namespace PissAndShit
         }
         public override void UpdateMusic(ref int music, ref MusicPriority priority)
         {
-            if(PaSWorld.endlesserModeSave == true)
+            if (PaSWorld.endlesserModeSave == true)
             {
                 if (Main.myPlayer == -1 || Main.gameMenu || !Main.LocalPlayer.active)
                 {
@@ -90,7 +85,7 @@ namespace PissAndShit
                 priority = MusicPriority.BossHigh;
             }
         }
-        
+
         public override void Load()
         {
             if (!Main.dedServ)
@@ -99,10 +94,8 @@ namespace PissAndShit
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2"), ItemType("YoungDukeMusicBox"), TileType("YoungDukeMusicBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/GRANDDAD"), ItemType("GrandDadMusicBox"), TileType("GrandDadMusicBox"));
             }
-            public override void Load()
-            {
-                TomatoLib.Core.TomatoLoader.AddMod(this);
-            }
+
+            TomatoLoader.AddMod(this);
         }
     }
 }

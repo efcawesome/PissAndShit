@@ -9,14 +9,14 @@ namespace PissAndShit
     public class PaSPlayer : ModPlayer
     {
         public bool kamra = false;
-	public bool soaped = false;
+        public bool soaped = false;
 
         public override void ResetEffects()
         {
             kamra = false;
             soaped = false;
         }
-	
+
         public override void UpdateBadLifeRegen()
         {
             if (kamra)
@@ -48,7 +48,7 @@ namespace PissAndShit
             {
                 if (Main.rand.NextBool(4) && drawInfo.shadow == 0f)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, DustType<SoapBubble>(), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default(Color), 1f);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, DustType<SoapBubble>(), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 1f);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
                     Main.dust[dust].velocity.Y -= 0.5f;
@@ -58,6 +58,6 @@ namespace PissAndShit
                 g *= 0.5f;
                 b *= 0.7f;
             }
-        }   
+        }
     }
 }

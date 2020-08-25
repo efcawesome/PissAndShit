@@ -46,7 +46,7 @@ namespace PissAndShit.Projectiles
                 Vector2 spinningpoint2 = Vector2.Normalize(projectile.velocity) * new Vector2((float)projectile.width / 2f, projectile.height) * 0.75f;
                 spinningpoint2 = spinningpoint2.RotatedBy((float)(num253 - (num252 / 2 - 1)) * ((float)Math.PI * 2f) / (float)num252) + projectile.Center;
                 Vector2 vector6 = spinningpoint2 - projectile.Center;
-                int num254 = Dust.NewDust(spinningpoint2 + vector6, 0, 0, 172, vector6.X * 2f, vector6.Y * 2f, 100, default(Color), 1.4f);
+                int num254 = Dust.NewDust(spinningpoint2 + vector6, 0, 0, 172, vector6.X * 2f, vector6.Y * 2f, 100, default, 1.4f);
                 Main.dust[num254].noGravity = true;
                 Main.dust[num254].noLight = true;
                 Main.dust[num254].velocity = vector6;
@@ -113,7 +113,7 @@ namespace PissAndShit.Projectiles
                             Vector2 spinningpoint = Vector2.Normalize(projectile.velocity) * new Vector2((float)projectile.width / 2f, projectile.height) * 0.75f;
                             spinningpoint = spinningpoint.RotatedBy((double)(num787 - (num786 / 2 - 1)) * Math.PI / (double)(float)num786) + projectile.Center;
                             Vector2 value6 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - (float)Math.PI / 2f).ToRotationVector2() * Main.rand.Next(3, 8);
-                            int num788 = Dust.NewDust(spinningpoint + value6, 0, 0, 172, value6.X * 2f, value6.Y * 2f, 100, default(Color), 1.4f);
+                            int num788 = Dust.NewDust(spinningpoint + value6, 0, 0, 172, value6.X * 2f, value6.Y * 2f, 100, default, 1.4f);
                             Main.dust[num788].noGravity = true;
                             Main.dust[num788].noLight = true;
                             Dust dust119 = Main.dust[num788];

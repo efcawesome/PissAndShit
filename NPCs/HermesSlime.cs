@@ -1,9 +1,4 @@
 ﻿using Terraria;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
@@ -42,11 +37,11 @@ namespace PissAndShit.NPCs
             Player player = Main.player[npc.target];
             Vector2 targetPosition = Main.player[npc.target].position;
             Vector2 position = new Vector2(npc.position.X, npc.position.Y + npc.height);
-            if(targetPosition.X < npc.position.X)
+            if (targetPosition.X < npc.position.X)
             {
                 npc.spriteDirection = -1;
             }
-            else if(targetPosition.X > npc.position.X)
+            else if (targetPosition.X > npc.position.X)
             {
                 npc.spriteDirection = 1;
             }
@@ -58,18 +53,18 @@ namespace PissAndShit.NPCs
             {
                 npc.velocity.X += 0.22f;
             }
-            if(jumpTimer >= 60 && Main.rand.Next(3) == 0 && npc.velocity.Y == 0)
+            if (jumpTimer >= 60 && Main.rand.Next(3) == 0 && npc.velocity.Y == 0)
             {
                 npc.velocity.Y -= 5f;
                 jumpTimer = 0;
             }
-            else if(jumpTimer >= 60)
+            else if (jumpTimer >= 60)
             {
                 jumpTimer = 0;
             }
-            if(npc.velocity.X > 5 || npc.velocity.X < -5)
+            if (npc.velocity.X > 5 || npc.velocity.X < -5)
             {
-                if(npc.velocity.Y == 0)
+                if (npc.velocity.Y == 0)
                 {
                     Dust dust;
                     dust = Main.dust[Terraria.Dust.NewDust(position, 30, 0, 16, 0f, 0f, 0, new Color(255, 255, 255), 1.447368f)];
@@ -78,11 +73,11 @@ namespace PissAndShit.NPCs
         }
         public override void FindFrame(int frameHeight)
         {
-            if(frameNum == 2)
+            if (frameNum == 2)
             {
                 frameNum = 0;
             }
-            if(frameTimer == 6)
+            if (frameTimer == 6)
             {
                 frameNum++;
                 frameTimer = 0;

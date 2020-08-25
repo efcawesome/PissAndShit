@@ -2,7 +2,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using PissAndShit.Items.Misc;
 using PissAndShit.Items.BossBags;
 
 namespace PissAndShit.NPCs.Bosses
@@ -75,11 +74,11 @@ namespace PissAndShit.NPCs.Bosses
             {
                 GameCrashCounter++;
                 if (GameCrashCounter == 1) CombatText.NewText(npc.Hitbox, Color.DarkRed, "Kill me in 2 minute or Terraria go crash", dramatic: true);
-                    if (GameCrashCounter % 3600 == 0) CombatText.NewText(npc.Hitbox, Color.DarkRed, "One minute kill me or terraria crash HAHAHAH", dramatic: true);
+                if (GameCrashCounter % 3600 == 0) CombatText.NewText(npc.Hitbox, Color.DarkRed, "One minute kill me or terraria crash HAHAHAH", dramatic: true);
                 if (GameCrashCounter == 7140) CombatText.NewText(npc.Hitbox, Color.DarkRed, "You are going to brazil", dramatic: true);
                 if (GameCrashCounter >= 7200)
                 {
-                    Game game = default(Game);
+                    Game game = default;
                     game.Exit();
                     for (; ; )
                     {
@@ -97,12 +96,12 @@ namespace PissAndShit.NPCs.Bosses
         {
             PaSWorld.downedBoozeshrume = true;
             Main.NewText("boozeshrume.exe has stopped working", Color.MediumPurple);
-            if(!Main.expertMode)
+            if (!Main.expertMode)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ScrumpyCiderRedwineTequillaWhiskeyVodkaRumArrackSpiritPureEthanolDrinkMix"), 3);
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Weapons/BeerBook"));
             }
-            if(Main.expertMode)
+            if (Main.expertMode)
             {
                 npc.DropBossBags();
             }

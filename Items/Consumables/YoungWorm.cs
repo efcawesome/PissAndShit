@@ -42,8 +42,8 @@ namespace PissAndShit.Items.Consumables
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(154,20);
-            recipe.AddIngredient(183,20);
+            recipe.AddIngredient(154, 20);
+            recipe.AddIngredient(183, 20);
             recipe.AddTile(77);
             recipe.SetResult(this);
             recipe.AddRecipe();

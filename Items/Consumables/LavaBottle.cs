@@ -1,5 +1,4 @@
-﻿using Terraria;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
 using PissAndShit.Items.Misc;
 using static Terraria.ModLoader.ModContent;

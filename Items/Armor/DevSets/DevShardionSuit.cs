@@ -1,4 +1,3 @@
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Armor.DevSets
@@ -9,7 +8,7 @@ namespace PissAndShit.Items.Armor.DevSets
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shardion's Scorching Suit");
-	    Tooltip.SetDefault("'Imagine having power over Death while wearing this'");
+            Tooltip.SetDefault("'Imagine having power over Death while wearing this'");
         }
 
         public override void SetDefaults()

@@ -1,4 +1,3 @@
-using PissAndShit.Items.Misc;
 using PissAndShit.NPCs.Bosses;
 using Terraria;
 using Terraria.ID;
