@@ -28,6 +28,64 @@ namespace PissAndShit
                 player.lifeRegen = player.lifeRegen > 0 ? -25 : player.lifeRegen - 25;
             }
         }
+        
+        public override void PreUpdate()
+        {
+            if (PaSWorld.endlessModeSave){
+                if (player.ZoneSnow)
+                {
+                    player.AddBuff(BuffID.Chilled, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                }
+                if (player.ZoneDesert)
+                {
+                    player.AddBuff(BuffID.Slow, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                }
+                if (player.ZoneCorrupt)
+                {
+                    player.AddBuff(BuffID.Darkness, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                }
+                if (player.ZoneCrimson)
+                {
+                    player.AddBuff(BuffID.Ichor, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                }
+                if (player.ZoneJungle)
+                {
+                    player.AddBuff(BuffID.Bleeding, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                }
+                if (player.ZoneDungeon)
+                {
+                    player.AddBuff(BuffID.WaterCandle, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                }
+                if (player.ZoneBeach)
+                {
+                    player.AddBuff(BuffID.BrokenArmor, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                }
+                if (player.ZoneGlowshroom)
+                {
+                    player.AddBuff(BuffID.Confused, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                }
+                if (player.ZoneHoly)
+                {
+                    player.AddBuff(BuffID.ChaosState, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                }
+                if (player.ZoneUnderworldHeight)
+                {
+                    player.AddBuff(BuffID.Blackout, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                }
+                if (player.ZoneSkyHeight)
+                {
+                    player.AddBuff(BuffID.VortexDebuff, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                }
+                if (player.ZoneRockLayerHeight)
+                {
+                    player.AddBuff(BuffID.Rabies, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                }
+                if (player.ZoneDirtLayerHeight)
+                {
+                    player.AddBuff(BuffID.Rabies, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                }
+            }
+        }
 
         public override void PostUpdateBuffs()
         {
