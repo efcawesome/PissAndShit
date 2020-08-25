@@ -23,10 +23,9 @@ namespace PissAndShit.Projectiles
             projectile.ai[0] += 1f;
             if (projectile.ai[0] >= 5f)
             {
-                // Half a second has passed. Reset timer, etc.
                 projectile.ai[0] = 0f;
                 projectile.netUpdate = true;
-                projectile.rotation += 0.05f * (float)projectile.direction;
+                projectile.rotation += 0.05f * projectile.direction;
                 projectile.velocity.X /= 1.61f;
                 projectile.velocity.Y /= 1.61f;
             }

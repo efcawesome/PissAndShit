@@ -23,7 +23,7 @@ namespace PissAndShit.Items.Weapons
             item.damage = 30;
             item.knockBack = 2f;
             item.value = Item.sellPrice(silver: 80);
-            item.rare = 4; // Not on VS so rip intelisense
+            item.rare = ItemRarityID.LightRed; // Not on VS so rip intelisense
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.UseSound = SoundID.Item1;
         }

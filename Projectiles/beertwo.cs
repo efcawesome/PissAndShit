@@ -1,16 +1,13 @@
 using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
 using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace PissAndShit.Projectiles
 {
-    class beertwo : ModProjectile
+    public class beertwo : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Beer or Grog");
-        }
+        public override void SetStaticDefaults() => DisplayName.SetDefault("Beer or Grog");
 
         public override void SetDefaults()
         {
@@ -29,10 +26,6 @@ namespace PissAndShit.Projectiles
             Gore.NewGore(projectile.Center, projectile.velocity * 0.9f, mod.GetGoreSlot("Gores/beertwo_gore2"), 1f);
         }
 
-
-        public override void AI()
-        {
-            projectile.rotation += 0.2f * (float)projectile.direction;
-        }
+        public override void AI() => projectile.rotation += 0.2f * projectile.direction;
     }
 }

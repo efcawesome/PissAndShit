@@ -7,9 +7,10 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.BossBags
 {
-    class BoozeshrumeBag : ModItem
+    public class BoozeshrumeBag : ModItem
     {
         public override int BossBagNPC => ModContent.NPCType<boozeshrume>();
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Treasure Bag");
@@ -42,11 +43,9 @@ namespace PissAndShit.Items.BossBags
             }
             if (bossWeapon == 2)
             {
-
             }
             if (bossWeapon == 3)
             {
-
             }
         }
     }

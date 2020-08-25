@@ -1,7 +1,7 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 namespace PissAndShit.Items.Weapons
 {
@@ -15,6 +15,7 @@ namespace PissAndShit.Items.Weapons
             DisplayName.SetDefault("Exoultimagigahypersplosionator");
             Tooltip.SetDefault("A weapon so ridiculously overpowered it could kill death himself\n'Better stock up on rockets'");
         }
+
         public override void SetDefaults()
         {
             item.width = 66;
@@ -22,7 +23,7 @@ namespace PissAndShit.Items.Weapons
             item.rare = ItemRarityID.Expert;
             item.damage = 1250000;
             item.crit = 1000;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.UseSound = SoundID.Item11;
             item.noMelee = true;
             item.useTime = 2;
@@ -65,7 +66,6 @@ namespace PissAndShit.Items.Weapons
 
             if (player.direction == 1)
             {
-
                 // how to choose position:
                 // on X: if looking right, -22 X
                 // on Y: -4 Y

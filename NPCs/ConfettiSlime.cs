@@ -1,20 +1,20 @@
 ﻿using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
 using Terraria.GameContent.Events;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace PissAndShit.NPCs
 {
-    class ConfettiSlime : ModNPC
+    public class ConfettiSlime : ModNPC
     {
         private int frameNum = 0;
         private int frameTimer = 0;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Confetti Slime");
             Main.npcFrameCount[npc.type] = 2;
         }
-
 
         public override void SetDefaults()
         {
@@ -40,7 +40,6 @@ namespace PissAndShit.NPCs
 
         public override void FindFrame(int frameHeight)
         {
-
             if (frameTimer == 6)
             {
                 frameNum++;
@@ -58,10 +57,11 @@ namespace PissAndShit.NPCs
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             if (BirthdayParty.PartyIsUp)
+            {
                 return SpawnCondition.OverworldDaySlime.Chance * 0.1f / 2;
+            }
+
             return 0f;
-
         }
-
     }
 }

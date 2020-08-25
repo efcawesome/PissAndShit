@@ -52,16 +52,22 @@ namespace PissAndShit.NPCs
             {
                 case 0:
                     return "Pyxen";
+
                 case 1:
                     return "Splat";
+
                 case 2:
                     return "Zap";
+
                 case 3:
                     return "Tigershon";
+
                 case 4:
                     return "Moosic";
+
                 case 5:
                     return "Funta";
+
                 default:
                     return "Trevor";
             }
@@ -91,8 +97,10 @@ namespace PissAndShit.NPCs
             {
                 case 0:
                     return "Sometimes I feel like I'm different from everyone else here....... wait I am.";
+
                 case 1:
                     return "What's your favorite color? My favorite colors are blood and gore. what do you mean those are not colors?";
+
                 default:
                     return "What? I don't have any arms or legs? Oh, don't be ridiculous!";
             }
@@ -100,7 +108,7 @@ namespace PissAndShit.NPCs
     }
 }
 
-/* 
+/*
 // Consider using this alternate approach to choosing a random thing. Very useful for a variety of use cases.
 // The WeightedRandom class needs "using Terraria.Utilities;" to use
 public override string GetChat()

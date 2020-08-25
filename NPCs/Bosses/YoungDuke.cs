@@ -1,11 +1,11 @@
+using Microsoft.Xna.Framework;
+using PissAndShit.Items.BossBags;
+using PissAndShit.Items.Weapons;
 using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using PissAndShit.Items.BossBags;
 using static Terraria.ModLoader.ModContent;
-using PissAndShit.Items.Weapons;
 
 namespace PissAndShit.NPCs.Bosses
 {
@@ -48,15 +48,18 @@ namespace PissAndShit.NPCs.Bosses
 
             bossBag = ModContent.ItemType<YoungDukeBag>();
         }
+
         public override void BossLoot(ref string name, ref int potionType)
         {
             potionType = ItemID.HealingPotion;
         }
+
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)((double)npc.lifeMax * 0.6 * (double)1f);
-            npc.damage = (int)((double)npc.damage * 0.7);
+            npc.lifeMax = (int)(npc.lifeMax * 0.6 * 1f);
+            npc.damage = (int)(npc.damage * 0.7);
         }
+
         public override void NPCLoot()
         {
             PaSWorld.downedYoungDuke = true;
@@ -72,12 +75,15 @@ namespace PissAndShit.NPCs.Bosses
                     case 0:
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<YoungBow>());
                         break;
+
                     case 1:
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<youngdukeyoyo>());
                         break;
+
                     case 2:
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<YoungGun>());
                         break;
+
                     case 3:
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<YoungRazorTyphoon>());
                         break;
@@ -89,7 +95,7 @@ namespace PissAndShit.NPCs.Bosses
         {
             if (npc.life > 0)
             {
-                for (int num123 = 0; (double)num123 < npc.damage / (double)npc.lifeMax * 100.0; num123++)
+                for (int num123 = 0; num123 < npc.damage / (double)npc.lifeMax * 100.0; num123++)
                 {
                     Dust.NewDust(npc.position, npc.width, npc.height, 5, hitDirection, -1f);
                 }
@@ -150,43 +156,51 @@ namespace PissAndShit.NPCs.Bosses
             {
                 Projectile proj = Main.projectile[i];
                 if (proj.active && proj.type == 386)
+                {
                     proj.Kill();
+                }
             }
             for (int i = 0; i < Main.maxProjectiles; i++)
             {
                 Projectile proj = Main.projectile[i];
                 if (proj.active && proj.type == 385)
+                {
                     proj.Kill();
+                }
             }
             for (int i = 0; i < Main.maxProjectiles; i++)
             {
                 Projectile proj = Main.projectile[i];
                 if (proj.active && proj.type == 384)
+                {
                     proj.Kill();
+                }
             }
 
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 NPC npc = Main.npc[i];
-                if (npc.active && npc.type == 371)
+                if (npc.active && npc.type == NPCID.DetonatingBubble)
+                {
                     npc.life = 0;
+                }
             }
             bool expertMode = Main.expertMode;
             float num = expertMode ? (0.6f * Main.damageMultiplier) : 1f;
-            bool flag = (double)npc.life <= (double)npc.lifeMax * 0.5;
-            bool flag2 = expertMode && (double)npc.life <= (double)npc.lifeMax * 0.15;
+            bool flag = npc.life <= npc.lifeMax * 0.5;
+            bool flag2 = expertMode && npc.life <= npc.lifeMax * 0.15;
             bool flag3 = npc.ai[0] > 4f;
             bool flag4 = npc.ai[0] > 9f;
             bool flag5 = npc.ai[3] < 10f;
             if (flag4)
             {
-                npc.damage = (int)((float)npc.defDamage * 1.1f * num);
+                npc.damage = (int)(npc.defDamage * 1.1f * num);
                 npc.defense = 0;
             }
             else if (flag3)
             {
-                npc.damage = (int)((float)npc.defDamage * 1.2f * num);
-                npc.defense = (int)((float)npc.defDefense * 0.8f);
+                npc.damage = (int)(npc.defDamage * 1.2f * num);
+                npc.defense = (int)(npc.defDefense * 0.8f);
             }
             else
             {
@@ -239,7 +253,7 @@ namespace PissAndShit.NPCs.Bosses
             int num6 = 4;
             float scaleFactor3 = 6f;
             float scaleFactor4 = 20f;
-            float num7 = (float)Math.PI * 2f / (float)(num5 / 2);
+            float num7 = (float)Math.PI * 2f / (num5 / 2);
             int num8 = 75;
             Vector2 center = npc.Center;
             Player player = Main.player[npc.target];
@@ -270,7 +284,7 @@ namespace PissAndShit.NPCs.Bosses
                 }
                 npc.ai[2] = 0f;
             }
-            if (player.position.Y < 800f || (double)player.position.Y > Main.worldSurface * 16.0 || (player.position.X > 6400f && player.position.X < (float)(Main.maxTilesX * 16 - 6400)))
+            if (player.position.Y < 800f || player.position.Y > Main.worldSurface * 16.0 || (player.position.X > 6400f && player.position.X < Main.maxTilesX * 16 - 6400))
             {
                 num12 = 20;
                 npc.damage = npc.defDamage * 2;
@@ -341,7 +355,7 @@ namespace PissAndShit.NPCs.Bosses
             }
             if (npc.rotation < num9)
             {
-                if ((double)(num9 - npc.rotation) > Math.PI)
+                if (num9 - npc.rotation > Math.PI)
                 {
                     npc.rotation -= num10;
                 }
@@ -352,7 +366,7 @@ namespace PissAndShit.NPCs.Bosses
             }
             if (npc.rotation > num9)
             {
-                if ((double)(npc.rotation - num9) > Math.PI)
+                if (npc.rotation - num9 > Math.PI)
                 {
                     npc.rotation += num10;
                 }
@@ -422,12 +436,12 @@ namespace PissAndShit.NPCs.Bosses
                         npc.alpha = 150;
                     }
                 }
-                if (npc.ai[2] == (float)(num36 - 30))
+                if (npc.ai[2] == num36 - 30)
                 {
                     int num13 = 36;
                     for (int i = 0; i < num13; i++)
                     {
-                        Vector2 value6 = (Vector2.Normalize(npc.velocity) * new Vector2((float)npc.width / 2f, npc.height) * 0.75f * 0.5f).RotatedBy((float)(i - (num13 / 2 - 1)) * ((float)Math.PI * 2f) / (float)num13) + npc.Center;
+                        Vector2 value6 = (Vector2.Normalize(npc.velocity) * new Vector2(npc.width / 2f, npc.height) * 0.75f * 0.5f).RotatedBy((i - (num13 / 2 - 1)) * ((float)Math.PI * 2f) / num13) + npc.Center;
                         Vector2 value2 = value6 - npc.Center;
                         int num14 = Dust.NewDust(value6 + value2, 0, 0, 172, value2.X * 2f, value2.Y * 2f, 100, default, 1.4f);
                         Main.dust[num14].noGravity = true;
@@ -437,7 +451,7 @@ namespace PissAndShit.NPCs.Bosses
                     Main.PlaySound(SoundID.Zombie, (int)center.X, (int)center.Y, 20);
                 }
                 npc.ai[2] += 1f;
-                if (npc.ai[2] >= (float)num8)
+                if (npc.ai[2] >= num8)
                 {
                     npc.ai[0] = 0f;
                     npc.ai[1] = 0f;
@@ -499,7 +513,7 @@ namespace PissAndShit.NPCs.Bosses
                     npc.spriteDirection = -npc.direction;
                 }
                 npc.ai[2] += 1f;
-                if (!(npc.ai[2] >= (float)num12))
+                if (!(npc.ai[2] >= num12))
                 {
                     return;
                 }
@@ -518,10 +532,12 @@ namespace PissAndShit.NPCs.Bosses
                     case 9:
                         num16 = 1;
                         break;
+
                     case 10:
                         npc.ai[3] = 1f;
                         num16 = 2;
                         break;
+
                     case 11:
                         npc.ai[3] = 0f;
                         num16 = 3;
@@ -549,16 +565,19 @@ namespace PissAndShit.NPCs.Bosses
                             npc.spriteDirection = -npc.direction;
                         }
                         break;
+
                     case 2:
                         npc.ai[0] = 2f;
                         npc.ai[1] = 0f;
                         npc.ai[2] = 0f;
                         break;
+
                     case 3:
                         npc.ai[0] = 3f;
                         npc.ai[1] = 0f;
                         npc.ai[2] = 0f;
                         break;
+
                     case 4:
                         npc.ai[0] = 4f;
                         npc.ai[1] = 0f;
@@ -572,7 +591,7 @@ namespace PissAndShit.NPCs.Bosses
                 int num17 = 7;
                 for (int j = 0; j < num17; j++)
                 {
-                    Vector2 value7 = (Vector2.Normalize(npc.velocity) * new Vector2((float)(npc.width + 50) / 2f, npc.height) * 0.75f).RotatedBy((double)(j - (num17 / 2 - 1)) * Math.PI / (double)(float)num17) + center;
+                    Vector2 value7 = (Vector2.Normalize(npc.velocity) * new Vector2((npc.width + 50) / 2f, npc.height) * 0.75f).RotatedBy((j - (num17 / 2 - 1)) * Math.PI / (float)num17) + center;
                     Vector2 value3 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - (float)Math.PI / 2f).ToRotationVector2() * Main.rand.Next(3, 8);
                     int num18 = Dust.NewDust(value7 + value3, 0, 0, 172, value3.X * 2f, value3.Y * 2f, 100, default, 1.4f);
                     Main.dust[num18].noGravity = true;
@@ -581,7 +600,7 @@ namespace PissAndShit.NPCs.Bosses
                     Main.dust[num18].velocity -= npc.velocity;
                 }
                 npc.ai[2] += 1f;
-                if (npc.ai[2] >= (float)num31)
+                if (npc.ai[2] >= num31)
                 {
                     npc.ai[0] = 0f;
                     npc.ai[1] = 0f;
@@ -633,7 +652,7 @@ namespace PissAndShit.NPCs.Bosses
                 {
                     Main.PlaySound(SoundID.Zombie, (int)center.X, (int)center.Y, 20);
                 }
-                if (npc.ai[2] % (float)num34 == 0f)
+                if (npc.ai[2] % num34 == 0f)
                 {
                     Main.PlaySound(SoundID.NPCKilled, (int)npc.Center.X, (int)npc.Center.Y, 19);
                     if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -653,7 +672,7 @@ namespace PissAndShit.NPCs.Bosses
                     npc.spriteDirection = -npc.direction;
                 }
                 npc.ai[2] += 1f;
-                if (npc.ai[2] >= (float)num33)
+                if (npc.ai[2] >= num33)
                 {
                     npc.ai[0] = 0f;
                     npc.ai[1] = 0f;
@@ -665,18 +684,18 @@ namespace PissAndShit.NPCs.Bosses
             {
                 npc.velocity *= 0.98f;
                 npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
-                if (npc.ai[2] == (float)(num36 - 30))
+                if (npc.ai[2] == num36 - 30)
                 {
                     Main.PlaySound(SoundID.Zombie, (int)center.X, (int)center.Y, 9);
                 }
-                if (Main.netMode != NetmodeID.MultiplayerClient && npc.ai[2] == (float)(num36 - 30))
+                if (Main.netMode != NetmodeID.MultiplayerClient && npc.ai[2] == num36 - 30)
                 {
                     Vector2 vector4 = npc.rotation.ToRotationVector2() * (Vector2.UnitX * npc.direction) * (npc.width + 20) / 2f + center;
                     Projectile.NewProjectile(vector4.X, vector4.Y, npc.direction * 2, 8f, ProjectileType<Projectiles.YoungDukeSharknadoBolt>(), 0, 0f, Main.myPlayer);
                     Projectile.NewProjectile(vector4.X, vector4.Y, -npc.direction * 2, 8f, ProjectileType<Projectiles.YoungDukeSharknadoBolt>(), 0, 0f, Main.myPlayer);
                 }
                 npc.ai[2] += 1f;
-                if (npc.ai[2] >= (float)num36)
+                if (npc.ai[2] >= num36)
                 {
                     npc.ai[0] = 0f;
                     npc.ai[1] = 0f;
@@ -688,12 +707,12 @@ namespace PissAndShit.NPCs.Bosses
             {
                 npc.velocity *= 0.98f;
                 npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
-                if (npc.ai[2] == (float)(num2 - 60))
+                if (npc.ai[2] == num2 - 60)
                 {
                     Main.PlaySound(SoundID.Zombie, (int)center.X, (int)center.Y, 20);
                 }
                 npc.ai[2] += 1f;
-                if (npc.ai[2] >= (float)num2)
+                if (npc.ai[2] >= num2)
                 {
                     npc.ai[0] = 5f;
                     npc.ai[1] = 0f;
@@ -756,7 +775,7 @@ namespace PissAndShit.NPCs.Bosses
                     npc.spriteDirection = -npc.direction;
                 }
                 npc.ai[2] += 1f;
-                if (!(npc.ai[2] >= (float)num12))
+                if (!(npc.ai[2] >= num12))
                 {
                     return;
                 }
@@ -771,10 +790,12 @@ namespace PissAndShit.NPCs.Bosses
                     case 5:
                         num21 = 1;
                         break;
+
                     case 6:
                         npc.ai[3] = 1f;
                         num21 = 2;
                         break;
+
                     case 7:
                         npc.ai[3] = 0f;
                         num21 = 3;
@@ -802,6 +823,7 @@ namespace PissAndShit.NPCs.Bosses
                             npc.spriteDirection = -npc.direction;
                         }
                         break;
+
                     case 2:
                         npc.velocity = Vector2.Normalize(player.Center - center) * scaleFactor4;
                         npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X);
@@ -818,11 +840,13 @@ namespace PissAndShit.NPCs.Bosses
                         npc.ai[1] = 0f;
                         npc.ai[2] = 0f;
                         break;
+
                     case 3:
                         npc.ai[0] = 8f;
                         npc.ai[1] = 0f;
                         npc.ai[2] = 0f;
                         break;
+
                     case 4:
                         npc.ai[0] = 9f;
                         npc.ai[1] = 0f;
@@ -836,7 +860,7 @@ namespace PissAndShit.NPCs.Bosses
                 int num22 = 7;
                 for (int k = 0; k < num22; k++)
                 {
-                    Vector2 value8 = (Vector2.Normalize(npc.velocity) * new Vector2((float)(npc.width + 50) / 2f, npc.height) * 0.75f).RotatedBy((double)(k - (num22 / 2 - 1)) * Math.PI / (double)(float)num22) + center;
+                    Vector2 value8 = (Vector2.Normalize(npc.velocity) * new Vector2((npc.width + 50) / 2f, npc.height) * 0.75f).RotatedBy((k - (num22 / 2 - 1)) * Math.PI / (float)num22) + center;
                     Vector2 value4 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - (float)Math.PI / 2f).ToRotationVector2() * Main.rand.Next(3, 8);
                     int num24 = Dust.NewDust(value8 + value4, 0, 0, 172, value4.X * 2f, value4.Y * 2f, 100, default, 1.4f);
                     Main.dust[num24].noGravity = true;
@@ -845,7 +869,7 @@ namespace PissAndShit.NPCs.Bosses
                     Main.dust[num24].velocity -= npc.velocity;
                 }
                 npc.ai[2] += 1f;
-                if (npc.ai[2] >= (float)num31)
+                if (npc.ai[2] >= num31)
                 {
                     npc.ai[0] = 5f;
                     npc.ai[1] = 0f;
@@ -860,7 +884,7 @@ namespace PissAndShit.NPCs.Bosses
                 {
                     Main.PlaySound(SoundID.Zombie, (int)center.X, (int)center.Y, 20);
                 }
-                if (npc.ai[2] % (float)num6 == 0f)
+                if (npc.ai[2] % num6 == 0f)
                 {
                     Main.PlaySound(SoundID.NPCKilled, (int)npc.Center.X, (int)npc.Center.Y, 19);
                     if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -868,14 +892,14 @@ namespace PissAndShit.NPCs.Bosses
                         Vector2 vector6 = Vector2.Normalize(npc.velocity) * (npc.width + 20) / 2f + center;
                         int num25 = NPC.NewNPC((int)vector6.X, (int)vector6.Y + 45, NPCType<SoapBubble>());
                         Main.npc[num25].target = npc.target;
-                        Main.npc[num25].velocity = Vector2.Normalize(npc.velocity).RotatedBy((float)Math.PI / 2f * (float)npc.direction) * scaleFactor3;
+                        Main.npc[num25].velocity = Vector2.Normalize(npc.velocity).RotatedBy((float)Math.PI / 2f * npc.direction) * scaleFactor3;
                         Main.npc[num25].netUpdate = true;
                     }
                 }
-                npc.velocity = npc.velocity.RotatedBy((0f - num7) * (float)npc.direction);
-                npc.rotation -= num7 * (float)npc.direction;
+                npc.velocity = npc.velocity.RotatedBy((0f - num7) * npc.direction);
+                npc.rotation -= num7 * npc.direction;
                 npc.ai[2] += 1f;
-                if (npc.ai[2] >= (float)num5)
+                if (npc.ai[2] >= num5)
                 {
                     npc.ai[0] = 5f;
                     npc.ai[1] = 0f;
@@ -888,11 +912,11 @@ namespace PissAndShit.NPCs.Bosses
             {
                 npc.velocity *= 0.98f;
                 npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
-                if (npc.ai[2] == (float)(num36 - 30))
+                if (npc.ai[2] == num36 - 30)
                 {
                     Main.PlaySound(SoundID.Zombie, (int)center.X, (int)center.Y, 20);
                 }
-                if (Main.netMode != NetmodeID.MultiplayerClient && npc.ai[2] == (float)(num36 - 30))
+                if (Main.netMode != NetmodeID.MultiplayerClient && npc.ai[2] == num36 - 30)
                 {
                     //float gasterdirection = -2f;
                     /*if (player.position.Y > npc.position.Y)
@@ -900,7 +924,7 @@ namespace PissAndShit.NPCs.Bosses
                         gasterdirection = 2f;
                     }*/
                     NPC.NewNPC((int)center.X, (int)center.Y, NPCType<GasterBlaster>());
-                    if (npc.ai[2] >= (float)num36)
+                    if (npc.ai[2] >= num36)
                     {
                         npc.ai[0] = 5f;
                         npc.ai[1] = 0f;
@@ -910,7 +934,7 @@ namespace PissAndShit.NPCs.Bosses
                 }
                 else if (npc.ai[0] == 9f)
                 {
-                    if (npc.ai[2] < (float)(num3 - 90))
+                    if (npc.ai[2] < num3 - 90)
                     {
                         if (Collision.SolidCollision(npc.position, npc.width, npc.height))
                         {
@@ -932,12 +956,12 @@ namespace PissAndShit.NPCs.Bosses
 
                     npc.velocity *= 0.98f;
                     npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
-                    if (npc.ai[2] == (float)(num3 - 60))
+                    if (npc.ai[2] == num3 - 60)
                     {
                         Main.PlaySound(SoundID.Zombie, (int)center.X, (int)center.Y, 20);
                     }
                     npc.ai[2] += 1f;
-                    if (npc.ai[2] >= (float)num3)
+                    if (npc.ai[2] >= num3)
                     {
                         npc.ai[0] = 10f;
                         npc.ai[1] = 0f;
@@ -983,7 +1007,7 @@ namespace PissAndShit.NPCs.Bosses
                         npc.spriteDirection = -npc.direction;
                     }
                     npc.ai[2] += 1f;
-                    if (!(npc.ai[2] >= (float)num12))
+                    if (!(npc.ai[2] >= num12))
                     {
                         return;
                     }
@@ -998,6 +1022,7 @@ namespace PissAndShit.NPCs.Bosses
                         case 7:
                             num27 = 1;
                             break;
+
                         case 1:
                         case 4:
                         case 8:
@@ -1022,11 +1047,13 @@ namespace PissAndShit.NPCs.Bosses
                                 npc.spriteDirection = -npc.direction;
                             }
                             break;
+
                         case 2:
                             npc.ai[0] = 12f;
                             npc.ai[1] = 0f;
                             npc.ai[2] = 0f;
                             break;
+
                         case 3:
                             npc.ai[0] = 13f;
                             npc.ai[1] = 0f;
@@ -1047,7 +1074,7 @@ namespace PissAndShit.NPCs.Bosses
                     int num28 = 7;
                     for (int m = 0; m < num28; m++)
                     {
-                        Vector2 value9 = (Vector2.Normalize(npc.velocity) * new Vector2((float)(npc.width + 50) / 2f, npc.height) * 0.75f).RotatedBy((double)(m - (num28 / 2 - 1)) * Math.PI / (double)(float)num28) + center;
+                        Vector2 value9 = (Vector2.Normalize(npc.velocity) * new Vector2((npc.width + 50) / 2f, npc.height) * 0.75f).RotatedBy((m - (num28 / 2 - 1)) * Math.PI / (float)num28) + center;
                         Vector2 value5 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - (float)Math.PI / 2f).ToRotationVector2() * Main.rand.Next(3, 8);
                         int num29 = Dust.NewDust(value9 + value5, 0, 0, 172, value5.X * 2f, value5.Y * 2f, 100, default, 1.4f);
                         Main.dust[num29].noGravity = true;
@@ -1056,7 +1083,7 @@ namespace PissAndShit.NPCs.Bosses
                         Main.dust[num29].velocity -= npc.velocity;
                     }
                     npc.ai[2] += 1f;
-                    if (npc.ai[2] >= (float)num31)
+                    if (npc.ai[2] >= num31)
                     {
                         npc.ai[0] = 10f;
                         npc.ai[1] = 0f;
@@ -1079,11 +1106,11 @@ namespace PissAndShit.NPCs.Bosses
                     }
                     npc.velocity *= 0.98f;
                     npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
-                    if (npc.ai[2] == (float)(num4 / 2))
+                    if (npc.ai[2] == num4 / 2)
                     {
                         Main.PlaySound(SoundID.Zombie, (int)center.X, (int)center.Y, 20);
                     }
-                    if (Main.netMode != NetmodeID.MultiplayerClient && npc.ai[2] == (float)(num4 / 2))
+                    if (Main.netMode != NetmodeID.MultiplayerClient && npc.ai[2] == num4 / 2)
                     {
                         if (npc.ai[1] == 0f)
                         {
@@ -1112,7 +1139,7 @@ namespace PissAndShit.NPCs.Bosses
                         }
                     }
                     npc.ai[2] += 1f;
-                    if (npc.ai[2] >= (float)num4)
+                    if (npc.ai[2] >= num4)
                     {
                         npc.ai[0] = 10f;
                         npc.ai[1] = 0f;
@@ -1131,10 +1158,10 @@ namespace PissAndShit.NPCs.Bosses
                     {
                         Main.PlaySound(SoundID.Zombie, (int)center.X, (int)center.Y, 20);
                     }
-                    npc.velocity = npc.velocity.RotatedBy((0f - num7) * (float)npc.direction);
-                    npc.rotation -= num7 * (float)npc.direction;
+                    npc.velocity = npc.velocity.RotatedBy((0f - num7) * npc.direction);
+                    npc.rotation -= num7 * npc.direction;
                     npc.ai[2] += 1f;
-                    if (npc.ai[2] >= (float)num5)
+                    if (npc.ai[2] >= num5)
                     {
                         npc.ai[0] = 10f;
                         npc.ai[1] = 0f;

@@ -1,4 +1,5 @@
 ﻿using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace PissAndShit.Items
 {
@@ -9,14 +10,14 @@ namespace PissAndShit.Items
             DisplayName.SetDefault("Big Chunk");
             Tooltip.SetDefault("large");
         }
+
         public override void SetDefaults()
         {
             item.maxStack = 999;
-            item.rare = 6;
+            item.rare = ItemRarityID.LightPurple;
             item.width = 26;
             item.height = 28;
             item.scale = 10;
-
         }
     }
 }

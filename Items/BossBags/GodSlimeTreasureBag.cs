@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.BossBags
 {
-    class GodSlimeTreasureBag : ModItem
+    public class GodSlimeTreasureBag : ModItem
     {
         public override int BossBagNPC => ModContent.NPCType<GodSlime>();
 

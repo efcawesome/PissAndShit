@@ -5,13 +5,14 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Consumables
 {
-    class YoungWorm : ModItem
+    public class YoungWorm : ModItem
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Truffle Larva");
             Tooltip.SetDefault("use at the ocean unless you have a deathwish");
         }
+
         public override void SetDefaults()
         {
             item.width = 198;
@@ -42,9 +43,9 @@ namespace PissAndShit.Items.Consumables
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(154, 20);
-            recipe.AddIngredient(183, 20);
-            recipe.AddTile(77);
+            recipe.AddIngredient(ItemID.Bone, 20);
+            recipe.AddIngredient(ItemID.GlowingMushroom, 20);
+            recipe.AddTile(TileID.Hellforge);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

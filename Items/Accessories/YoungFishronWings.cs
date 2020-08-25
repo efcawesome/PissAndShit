@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace PissAndShit.Items.Accessories
 {
     [AutoloadEquip(EquipType.Wings)]
-    class YoungFishronWings : ModItem
+    public class YoungFishronWings : ModItem
     {
         public override void SetStaticDefaults()
         {

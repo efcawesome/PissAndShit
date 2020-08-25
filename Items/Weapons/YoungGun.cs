@@ -1,7 +1,7 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 namespace PissAndShit.Items.Weapons
 {
@@ -28,7 +28,7 @@ namespace PissAndShit.Items.Weapons
             item.value = 23000;
             item.rare = ItemRarityID.Green;
             item.autoReuse = true;
-            item.shoot = 10;
+            item.shoot = ProjectileID.PurificationPowder;
             item.useAmmo = AmmoID.Bullet;
             item.shootSpeed = 19f;
         }

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Accessories
 {
-    class HiveChunk : ModItem
+    public class HiveChunk : ModItem
     {
         public override void SetStaticDefaults()
         {

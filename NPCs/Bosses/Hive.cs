@@ -1,3 +1,4 @@
+using PissAndShit.Items.BossBags;
 using PissAndShit.Items.Weapons;
 using Terraria;
 using Terraria.ID;
@@ -6,10 +7,11 @@ using Terraria.ModLoader;
 namespace PissAndShit.NPCs.Bosses
 {
     [AutoloadBossHead]
-    class Hive : ModNPC
+    public class Hive : ModNPC
     {
         private int beeTimer = 0;
         private int beeType;
+
         public override void SetDefaults()
         {
             npc.width = 425;
@@ -35,7 +37,7 @@ namespace PissAndShit.NPCs.Bosses
             npc.DeathSound = SoundID.NPCDeath1;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/CHUNGUS");
             musicPriority = MusicPriority.BossHigh;
-            bossBag = mod.ItemType("HiveBag");
+            bossBag = ModContent.ItemType<HiveBag>();
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -126,6 +128,7 @@ namespace PissAndShit.NPCs.Bosses
                 }
             }
         }
+
         public override void NPCLoot()
         {
             PaSWorld.downedHive = true;

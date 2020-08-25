@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Accessories
 {
-    class BoozeExpertItem : ModItem
+    public class BoozeExpertItem : ModItem
     {
         public override void SetStaticDefaults()
         {

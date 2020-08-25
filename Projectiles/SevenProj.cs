@@ -4,12 +4,14 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Projectiles
 {
-    class SevenProj : ModProjectile
+    public class SevenProj : ModProjectile
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("7");
             Main.projFrames[projectile.type] = 4;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }
 
         public override void SetDefaults()
@@ -18,13 +20,14 @@ namespace PissAndShit.Projectiles
             projectile.height = 51;
             projectile.hostile = true;
             projectile.aiStyle = 1;
-            aiType = ProjectileID.Skull;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
             projectile.timeLeft = 300;
-            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
-            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+            aiType = ProjectileID.Skull;
+        }
 
+        public override void AI()
+        {
             if (++projectile.frameCounter >= 4)
             {
                 projectile.frameCounter = 0;

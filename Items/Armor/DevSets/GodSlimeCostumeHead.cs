@@ -22,18 +22,22 @@ namespace PissAndShit.Items.Armor.DevSets
             item.maxStack = 1;
             item.vanity = true;
         }
+
         public override bool DrawHead()
         {
             return false;
         }
+
         public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
         {
             drawHair = false;
         }
+
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
             return body.type == ModContent.ItemType<GodSlimeCostumeBody>() && legs.type == ModContent.ItemType<GodSlimeCostumeLegs>();
         }
+
         public override void UpdateArmorSet(Player player)
         {
             Main.NewText("Full Armor Set");

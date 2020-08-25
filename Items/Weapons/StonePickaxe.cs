@@ -2,7 +2,6 @@
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-
 namespace PissAndShit.Items.Weapons
 {
     public class StonePickaxe : ModItem
@@ -12,14 +11,15 @@ namespace PissAndShit.Items.Weapons
             DisplayName.SetDefault("Stone destruction tool");
             Tooltip.SetDefault("Made of stone");
         }
+
         public override void SetDefaults()
         {
             item.width = 28;
             item.height = 28;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.damage = 10;
             item.crit = 4;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.UseSound = SoundID.Item1;
             item.useTime = 20;
             item.useAnimation = 20;
@@ -38,6 +38,5 @@ namespace PissAndShit.Items.Weapons
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-
     }
 }

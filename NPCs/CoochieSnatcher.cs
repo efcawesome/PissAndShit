@@ -28,7 +28,6 @@ namespace PissAndShit.NPCs
 
         public override void NPCLoot()
         {
-
         }
     }
 }

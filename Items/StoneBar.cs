@@ -10,13 +10,15 @@ namespace PissAndShit.Items
             DisplayName.SetDefault("Stone bar");
             Tooltip.SetDefault("bar");
         }
+
         public override void SetDefaults()
         {
             item.width = 30;
             item.height = 24;
             item.maxStack = 999;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

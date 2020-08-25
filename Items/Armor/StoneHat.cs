@@ -3,7 +3,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-
 namespace PissAndShit.Items.Armor
 {
     [AutoloadEquip(EquipType.Head)]
@@ -19,9 +18,10 @@ namespace PissAndShit.Items.Armor
             item.width = 24;
             item.height = 22;
             item.value = 10000;
-            item.rare = 5;
+            item.rare = ItemRarityID.Pink;
             item.defense = 25;
         }
+
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
             return head.type == ItemType<StoneHat>();
@@ -35,7 +35,6 @@ namespace PissAndShit.Items.Armor
             player.wingTimeMax = 0;
             player.lifeRegen = 100;
             player.allDamage = 0.5f;
-
         }
 
         public override void AddRecipes()
@@ -46,7 +45,5 @@ namespace PissAndShit.Items.Armor
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-
     }
 }
-

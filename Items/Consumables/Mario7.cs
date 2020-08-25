@@ -5,13 +5,14 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Consumables
 {
-    class Mario7 : ModItem
+    public class Mario7 : ModItem
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mario 7");
             Tooltip.SetDefault("Summons the 7 god himself");
         }
+
         public override void SetDefaults()
         {
             item.width = 198;

@@ -26,11 +26,12 @@ namespace PissAndShit.Items.Weapons
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.TerraBlade, 1);
-            recipe.AddIngredient(3063, 1);
+            recipe.AddIngredient(ItemID.Meowmere, 1);
             recipe.AddIngredient(ItemID.StarWrath, 1);
             recipe.AddIngredient(ItemID.InfluxWaver, 1);
             recipe.AddIngredient(ItemID.TheHorsemansBlade, 1);

@@ -2,16 +2,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.DataStructures;
 
 namespace PissAndShit.NPCs.Bosses
 {
     public class DeathItself : ModNPC
     {
-
-        private int DeathPhase = 0;
         private int DeathAttkCounter1 = 0;
         private int DeathAttkCounter2 = 0;
         private int DeathAttkCounter3 = 0;
@@ -20,9 +18,8 @@ namespace PissAndShit.NPCs.Bosses
         private int DeathRocketShootOffset = 0;
         private int DeathRocketShootOffset2 = 0;
         private int DeathRocketsShot = 0;
-        Vector2 DeathLaserBoxPosition;
-        Vector2 DeathLaserBoxValueFixer;
-        private bool DeathTriggerOnce = true;
+        private Vector2 DeathLaserBoxPosition;
+        private Vector2 DeathLaserBoxValueFixer;
 
         public override void SetStaticDefaults()
         {
@@ -83,32 +80,45 @@ namespace PissAndShit.NPCs.Bosses
                             {
                                 npc.velocity.X += speedModifier;
                                 if (npc.velocity.X < 0)
+                                {
                                     npc.velocity.X += speedModifier * 2;
+                                }
                             }
                             else
                             {
                                 npc.velocity.X -= speedModifier;
                                 if (npc.velocity.X > 0)
+                                {
                                     npc.velocity.X -= speedModifier * 2;
+                                }
                             }
                             if (npc.Center.Y < targetPos.Y)
                             {
                                 npc.velocity.Y += speedModifier;
                                 if (npc.velocity.Y < 0)
+                                {
                                     npc.velocity.Y += speedModifier * 2;
+                                }
                             }
                             else
                             {
                                 npc.velocity.Y -= speedModifier;
                                 if (npc.velocity.Y > 0)
+                                {
                                     npc.velocity.Y -= speedModifier * 2;
+                                }
                             }
                             if (npc.localAI[3] > 0)
                             {
                                 if (Math.Abs(npc.velocity.X) > 24)
+                                {
                                     npc.velocity.X = 24 * Math.Sign(npc.velocity.X);
+                                }
+
                                 if (Math.Abs(npc.velocity.Y) > 24)
+                                {
                                     npc.velocity.Y = 24 * Math.Sign(npc.velocity.Y);
+                                }
                             }
                         }
                         npc.ai[1] = 0;
@@ -157,6 +167,7 @@ namespace PissAndShit.NPCs.Bosses
                         DeathRocketsShot = DeathRocketsShot + 1;
                     }
                     break;
+
                 case 2: // YEET SELF AT PLAYER AND THROW LOTS OF ROCKETS
                     npc.dontTakeDamage = false;
 
@@ -171,32 +182,45 @@ namespace PissAndShit.NPCs.Bosses
                         {
                             npc.velocity.X += speedModifier;
                             if (npc.velocity.X < 0)
+                            {
                                 npc.velocity.X += speedModifier * 2;
+                            }
                         }
                         else
                         {
                             npc.velocity.X -= speedModifier;
                             if (npc.velocity.X > 0)
+                            {
                                 npc.velocity.X -= speedModifier * 2;
+                            }
                         }
                         if (npc.Center.Y < targetPos.Y)
                         {
                             npc.velocity.Y += speedModifier;
                             if (npc.velocity.Y < 0)
+                            {
                                 npc.velocity.Y += speedModifier * 2;
+                            }
                         }
                         else
                         {
                             npc.velocity.Y -= speedModifier;
                             if (npc.velocity.Y > 0)
+                            {
                                 npc.velocity.Y -= speedModifier * 2;
+                            }
                         }
                         if (npc.localAI[3] > 0)
                         {
                             if (Math.Abs(npc.velocity.X) > 24)
+                            {
                                 npc.velocity.X = 24 * Math.Sign(npc.velocity.X);
+                            }
+
                             if (Math.Abs(npc.velocity.Y) > 24)
+                            {
                                 npc.velocity.Y = 24 * Math.Sign(npc.velocity.Y);
+                            }
                         }
                     }
 
@@ -263,38 +287,55 @@ namespace PissAndShit.NPCs.Bosses
                         {
                             npc.velocity.X += speedModifier;
                             if (npc.velocity.X < 0)
+                            {
                                 npc.velocity.X += speedModifier * 2;
+                            }
                         }
                         else
                         {
                             npc.velocity.X -= speedModifier;
                             if (npc.velocity.X > 0)
+                            {
                                 npc.velocity.X -= speedModifier * 2;
+                            }
                         }
                         if (npc.Center.Y < targetPos.Y)
                         {
                             npc.velocity.Y += speedModifier;
                             if (npc.velocity.Y < 0)
+                            {
                                 npc.velocity.Y += speedModifier * 2;
+                            }
                         }
                         else
                         {
                             npc.velocity.Y -= speedModifier;
                             if (npc.velocity.Y > 0)
+                            {
                                 npc.velocity.Y -= speedModifier * 2;
+                            }
                         }
                         if (npc.localAI[3] > 0)
                         {
                             if (Math.Abs(npc.velocity.X) > 24)
+                            {
                                 npc.velocity.X = 24 * Math.Sign(npc.velocity.X);
+                            }
+
                             if (Math.Abs(npc.velocity.Y) > 24)
+                            {
                                 npc.velocity.Y = 24 * Math.Sign(npc.velocity.Y);
+                            }
                         }
                     }
                     DeathAttkCounter2++;
                     if (DeathAttkCounter2 >= 120)
+                    {
                         AttkChange(4);
+                    }
+
                     break;
+
                 case 4: // lasers
                     npc.velocity.X = 0f;
                     npc.velocity.Y = 0f;
@@ -336,12 +377,16 @@ namespace PissAndShit.NPCs.Bosses
                     if (npc.ai[1] == 180)
                     {
                         for (int i = 0; i < 20; i++)
+                        {
                             Projectile.NewProjectile(DeathLaserBoxPosition + new Vector2(0, -800), -Vector2.UnitX.RotatedBy(-Main.rand.NextDouble() * -Math.PI) * -Main.rand.NextFloat(30f), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+                        }
                     }
                     if (npc.ai[1] == 240)
                     {
                         for (int i = 0; i < 20; i++)
+                        {
                             Projectile.NewProjectile(DeathLaserBoxPosition + new Vector2(0, -800), -Vector2.UnitX.RotatedBy(-Main.rand.NextDouble() * -Math.PI) * -Main.rand.NextFloat(30f) / 2, ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+                        }
                     }
                     break;
             }
@@ -354,11 +399,13 @@ namespace PissAndShit.NPCs.Bosses
                 npc.frameCounter = 0;
                 npc.frame.Y += frameHeight;
                 if (npc.frame.Y >= 3 * frameHeight)
+                {
                     npc.frame.Y = 0;
+                }
             }
         }
 
-        void AttkChange(int changeTo)
+        private void AttkChange(int changeTo)
         {
             for (int i = 0; i < 120; i++)
             {

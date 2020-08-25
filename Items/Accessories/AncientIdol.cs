@@ -1,11 +1,9 @@
-﻿using PissAndShit.Rarities;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
-using TomatoLib.Core;
 
 namespace PissAndShit.Items.Accessories
 {
-    class AncientIdol : ModItem
+    public class AncientIdol : ModItem
     {
         public override void SetStaticDefaults()
         {

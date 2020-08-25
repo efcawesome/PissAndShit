@@ -1,15 +1,12 @@
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace PissAndShit.Projectiles
 {
     public class beer : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("beer");
-        }
+        public override void SetStaticDefaults() => DisplayName.SetDefault("beer");
 
         public override void SetDefaults()
         {
@@ -29,9 +26,6 @@ namespace PissAndShit.Projectiles
             projectile.rotation = projectile.velocity.Y * 0.1f;
         }
 
-        public override void Kill(int timeLeft)
-        {
-            Dust.NewDust(projectile.Center, 15, 15, DustID.Tungsten, Main.rand.Next(-1, 1), -10);
-        }
+        public override void Kill(int timeLeft) => Dust.NewDust(projectile.Center, 15, 15, DustID.Tungsten, Main.rand.Next(-1, 1), -10);
     }
 }

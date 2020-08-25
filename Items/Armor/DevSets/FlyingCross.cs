@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace PissAndShit.Items.Armor.DevSets
 {
     [AutoloadEquip(EquipType.Wings)]
-    class FlyingCross : ModItem
+    public class FlyingCross : ModItem
     {
         public override void SetStaticDefaults()
         {

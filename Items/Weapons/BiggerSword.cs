@@ -2,7 +2,6 @@
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-
 namespace PissAndShit.Items.Weapons
 {
     public class BiggerSword : ModItem
@@ -12,14 +11,15 @@ namespace PissAndShit.Items.Weapons
             DisplayName.SetDefault("Bigger Sword");
             Tooltip.SetDefault("L a r g e r");
         }
+
         public override void SetDefaults()
         {
             item.width = 150;
             item.height = 150;
-            item.rare = 6;
+            item.rare = ItemRarityID.LightPurple;
             item.damage = 75;
             item.crit = 50;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.UseSound = SoundID.NPCHit41;
             item.useTime = 15;
             item.useAnimation = 15;
@@ -28,6 +28,7 @@ namespace PissAndShit.Items.Weapons
             item.scale = 8;
             item.knockBack = 100000000000000;
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -37,6 +38,5 @@ namespace PissAndShit.Items.Weapons
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-
     }
 }

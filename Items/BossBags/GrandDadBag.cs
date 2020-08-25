@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.BossBags
 {
-    class GrandDadBag : ModItem
+    public class GrandDadBag : ModItem
     {
         public override int BossBagNPC => ModContent.NPCType<GrandDad>();
 

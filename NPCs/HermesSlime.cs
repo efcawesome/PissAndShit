@@ -1,20 +1,22 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 namespace PissAndShit.NPCs
 {
-    class HermesSlime : ModNPC
+    public class HermesSlime : ModNPC
     {
         private int frameNum = 0;
         private int frameTimer = 0;
         private int jumpTimer = 0;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Hermes Boots Slime");
             Main.npcFrameCount[npc.type] = 2;
         }
+
         public override void SetDefaults()
         {
             npc.width = 32;
@@ -29,6 +31,7 @@ namespace PissAndShit.NPCs
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
         }
+
         public override void AI()
         {
             frameTimer++;
@@ -53,7 +56,7 @@ namespace PissAndShit.NPCs
             {
                 npc.velocity.X += 0.22f;
             }
-            if (jumpTimer >= 60 && Main.rand.Next(3) == 0 && npc.velocity.Y == 0)
+            if (jumpTimer >= 60 && Main.rand.NextBool(3) && npc.velocity.Y == 0)
             {
                 npc.velocity.Y -= 5f;
                 jumpTimer = 0;
@@ -71,6 +74,7 @@ namespace PissAndShit.NPCs
                 }
             }
         }
+
         public override void FindFrame(int frameHeight)
         {
             if (frameNum == 2)
@@ -84,10 +88,12 @@ namespace PissAndShit.NPCs
             }
             npc.frame.Y = frameNum * frameHeight;
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return SpawnCondition.Underground.Chance * 0.05f;
         }
+
         public override void NPCLoot()
         {
             Item.NewItem(new Vector2(npc.Center.X, npc.Center.Y), ItemID.HermesBoots);

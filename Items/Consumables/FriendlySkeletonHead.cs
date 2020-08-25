@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Consumables
 {
-    class FriendlySkeletonHead : ModItem
+    public class FriendlySkeletonHead : ModItem
     {
         public override void SetStaticDefaults()
         {

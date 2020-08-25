@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.NPCs
 {
-    class SpiderSlime : ModNPC
+    public class SpiderSlime : ModNPC
     {
         public override void SetStaticDefaults()
         {

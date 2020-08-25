@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 namespace PissAndShit.Items.Armor.DevSets
 {
     [AutoloadEquip(EquipType.Legs)]
-    class GodSlimeCostumeLegs : ModItem
+    public class GodSlimeCostumeLegs : ModItem
     {
         public override void SetStaticDefaults()
         {

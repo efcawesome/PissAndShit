@@ -5,13 +5,14 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Consumables
 {
-    class SuspiciousAle : ModItem
+    public class SuspiciousAle : ModItem
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Suspsicious Looking Ale");
             Tooltip.SetDefault("Summons the drunken shroom");
         }
+
         public override void SetDefaults()
         {
             item.width = 18;
@@ -23,6 +24,7 @@ namespace PissAndShit.Items.Consumables
             item.consumable = true;
             item.rare = ItemRarityID.Red;
         }
+
         public override bool CanUseItem(Player player)
         {
             return !NPC.AnyNPCs(ModContent.NPCType<boozeshrume>());
@@ -37,6 +39,7 @@ namespace PissAndShit.Items.Consumables
             }
             return true;
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

@@ -1,7 +1,7 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 //haha all in one file goes brrrrrr
 
@@ -13,6 +13,7 @@ namespace PissAndShit.Items.Weapons
         {
             DisplayName.SetDefault("Dynamite of the Gods");
         }
+
         public override void SetDefaults()
         {
             item.damage = 1;
@@ -22,13 +23,14 @@ namespace PissAndShit.Items.Weapons
             item.noMelee = true;
             item.useTime = 10;
             item.useAnimation = 10;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.rare = -12;
             item.autoReuse = true;
             item.shoot = ProjectileID.Dynamite;
             item.UseSound = SoundID.Item1;
             item.shootSpeed = 19f;
         }
+
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             float numProj = 5;
@@ -41,6 +43,7 @@ namespace PissAndShit.Items.Weapons
             }
             return false;
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -50,12 +53,14 @@ namespace PissAndShit.Items.Weapons
             recipe.AddRecipe();
         }
     }
+
     public class TombstoneLauncher : ModItem
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Tombstone Launcher");
         }
+
         public override void SetDefaults()
         {
             item.damage = 1;
@@ -65,13 +70,14 @@ namespace PissAndShit.Items.Weapons
             item.noMelee = true;
             item.useTime = 20;
             item.useAnimation = 20;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.rare = -1;
             item.autoReuse = true;
             item.shoot = ProjectileID.Tombstone;
             item.UseSound = SoundID.Item11;
             item.shootSpeed = 9f;
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -81,12 +87,14 @@ namespace PissAndShit.Items.Weapons
             recipe.AddRecipe();
         }
     }
+
     public class tortle : ModItem
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Turtle Gun");
         }
+
         public override void SetDefaults()
         {
             item.damage = 51;
@@ -96,13 +104,14 @@ namespace PissAndShit.Items.Weapons
             item.noMelee = true;
             item.useTime = 15;
             item.useAnimation = 15;
-            item.useStyle = 5;
-            item.rare = 7;
+            item.useStyle = ItemUseStyleID.HoldingOut;
+            item.rare = ItemRarityID.Lime;
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType("liltortle");
+            item.shoot = ModContent.ProjectileType<liltortle>();
             item.UseSound = SoundID.Item11;
             item.shootSpeed = 24f;
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -113,12 +122,14 @@ namespace PissAndShit.Items.Weapons
             recipe.AddRecipe();
         }
     }
-    class liltortle : ModProjectile
+
+    public class liltortle : ModProjectile
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Turtle Shell");
         }
+
         public override void SetDefaults()
         {
             projectile.width = 16;
@@ -130,6 +141,7 @@ namespace PissAndShit.Items.Weapons
             projectile.tileCollide = true;
             projectile.ranged = true;
         }
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             if (projectile.velocity.X != oldVelocity.X)
@@ -143,6 +155,7 @@ namespace PissAndShit.Items.Weapons
             return false;
         }
     }
+
     public class HalfExistingTrident : ModItem
     {
         public override void SetStaticDefaults()
@@ -170,13 +183,15 @@ namespace PissAndShit.Items.Weapons
             item.autoReuse = true; // Most spears don't autoReuse, but it's possible when used in conjunction with CanUseItem()
 
             item.UseSound = SoundID.Item1;
-            item.shoot = mod.ProjectileType("HalfExistingTridentProj");
+            item.shoot = ModContent.ProjectileType<HalfExistingTridentProj>();
         }
+
         public override bool CanUseItem(Player player)
         {
             // Ensures no more than one spear can be thrown out, use this when using autoReuse
             return player.ownedProjectileCounts[item.shoot] < 5;
         }
+
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             float numProj = 5;
@@ -189,6 +204,7 @@ namespace PissAndShit.Items.Weapons
             }
             return false;
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -199,6 +215,7 @@ namespace PissAndShit.Items.Weapons
             recipe.AddRecipe();
         }
     }
+
     public class HalfExistingTridentProj : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -241,8 +258,8 @@ namespace PissAndShit.Items.Weapons
             projectile.direction = projOwner.direction;
             projOwner.heldProj = projectile.whoAmI;
             projOwner.itemTime = projOwner.itemAnimation;
-            projectile.position.X = ownerMountedCenter.X - (float)(projectile.width / 2);
-            projectile.position.Y = ownerMountedCenter.Y - (float)(projectile.height / 2);
+            projectile.position.X = ownerMountedCenter.X - projectile.width / 2;
+            projectile.position.Y = ownerMountedCenter.Y - projectile.height / 2;
             // As long as the player isn't frozen, the spear can move
             if (!projOwner.frozen)
             {
@@ -281,8 +298,8 @@ namespace PissAndShit.Items.Weapons
             projectile.direction = projOwner.direction;
             projOwner.heldProj = projectile.whoAmI;
             projOwner.itemTime = projOwner.itemAnimation;
-            projectile.position.X = ownerMountedCenter.X - (float)(projectile.width / 2);
-            projectile.position.Y = ownerMountedCenter.Y - (float)(projectile.height / 2);
+            projectile.position.X = ownerMountedCenter.X - projectile.width / 2;
+            projectile.position.Y = ownerMountedCenter.Y - projectile.height / 2;
             // As long as the player isn't frozen, the spear can move
             if (!projOwner.frozen)
             {
@@ -317,6 +334,7 @@ namespace PissAndShit.Items.Weapons
             }
         }
     }
+
     public class AncientMonkys : ModItem
     {
         public override void SetStaticDefaults()
@@ -324,6 +342,7 @@ namespace PissAndShit.Items.Weapons
             DisplayName.SetDefault("Tome of the Ancient Monkys");
             Tooltip.SetDefault("Monky");
         }
+
         public override void SetDefaults()
         {
             item.damage = 40;
@@ -333,34 +352,35 @@ namespace PissAndShit.Items.Weapons
             item.noMelee = true;
             item.useTime = 15;
             item.useAnimation = 15;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.rare = ItemRarityID.Purple;
             item.autoReuse = true;
             item.mana = 10;
-            item.shoot = 532;
+            item.shoot = ProjectileID.BoneGloveProj;
             item.UseSound = SoundID.Item8;
             item.shootSpeed = 12f;
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, 370, damage, knockBack, player.whoAmI);
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, 497, damage, knockBack, player.whoAmI);
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, 607, damage, knockBack, player.whoAmI);
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, 700, damage, knockBack, player.whoAmI);
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, 78, damage, knockBack, player.whoAmI);
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, 712, damage, knockBack, player.whoAmI);
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, 669, damage, knockBack, player.whoAmI);
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, 523, damage, knockBack, player.whoAmI);
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.LovePotion, damage, knockBack, player.whoAmI);
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.ShadowFlameKnife, damage, knockBack, player.whoAmI);
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.SolarFlareRay, damage, knockBack, player.whoAmI);
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.MonkStaffT2Ghast, damage, knockBack, player.whoAmI);
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.TiedEighthNote, damage, knockBack, player.whoAmI);
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.BookStaffShot, damage, knockBack, player.whoAmI);
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.Ale, damage, knockBack, player.whoAmI);
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.ToxicBubble, damage, knockBack, player.whoAmI);
             return true;
         }
-        class MyGlobalNPC : GlobalNPC
+
+        private class MyGlobalNPC : GlobalNPC
         {
             public override void NPCLoot(NPC npc)
             {
                 if (npc.type == NPCID.CultistBoss)
                 {
-                    Item.NewItem(npc.getRect(), mod.ItemType("AncientMonkys"), 1);
+                    Item.NewItem(npc.getRect(), ModContent.ItemType<AncientMonkys>(), 1);
                 }
             }
         }

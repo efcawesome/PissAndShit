@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.BossBags
 {
-    class HiveBag : ModItem
+    public class HiveBag : ModItem
     {
         public override int BossBagNPC => ModContent.NPCType<Hive>();
 

@@ -29,6 +29,3 @@ namespace PissAndShit.Items.Misc
         }
     }
 }
-
-
-

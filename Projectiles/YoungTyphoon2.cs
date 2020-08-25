@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Projectiles
 {
-    class YoungTyphoon : ModProjectile
+    public class YoungTyphoon : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -31,5 +31,4 @@ namespace PissAndShit.Projectiles
         {
         }
     }
-    //yes I like to put comments on every code I do
 }

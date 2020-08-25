@@ -1,6 +1,6 @@
-﻿using Terraria.ID;
+﻿using PissAndShit.Items.Misc;
+using Terraria.ID;
 using Terraria.ModLoader;
-using PissAndShit.Items.Misc;
 using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit.Items.Consumables

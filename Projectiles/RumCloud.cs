@@ -1,5 +1,5 @@
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace PissAndShit.Projectiles
 {
@@ -7,10 +7,7 @@ namespace PissAndShit.Projectiles
     {
         public override string Texture => "Terraria/Projectile_" + ProjectileID.ToxicCloud;
 
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Rum Cloud");
-        }
+        public override void SetStaticDefaults() => DisplayName.SetDefault("Rum Cloud");
 
         public override void SetDefaults()
         {
@@ -30,6 +27,7 @@ namespace PissAndShit.Projectiles
         {
             projectile.velocity.Y = -0.8f;
             projectile.alpha += 8;
+
             if (projectile.alpha >= 246)
             {
                 projectile.Kill();

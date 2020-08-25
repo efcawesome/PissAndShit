@@ -53,7 +53,6 @@ namespace PissAndShit.Items.Misc
             player.AddBuff(BuffID.Oiled, 9001);
             player.AddBuff(BuffID.Daybreak, 9001);
 
-
             return true;
         }
 
@@ -63,4 +62,3 @@ namespace PissAndShit.Items.Misc
         }
     }
 }
-

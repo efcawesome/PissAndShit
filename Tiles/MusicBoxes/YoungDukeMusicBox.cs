@@ -6,7 +6,7 @@ using Terraria.ObjectData;
 
 namespace PissAndShit.Tiles.MusicBoxes
 {
-    class YoungDukeMusicBox : ModTile
+    public class YoungDukeMusicBox : ModTile
     {
         public override void SetDefaults()
         {
@@ -23,17 +23,14 @@ namespace PissAndShit.Tiles.MusicBoxes
             AddMapEntry(new Color(235, 131, 231), name);
         }
 
-        public override void KillMultiTile(int i, int j, int frameX, int frameY)
-        {
-            Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType("YoungDukeMusicBox"), 1, false, 0, false, false);
-        }
+        public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(i * 16, j * 16, 16, 48, ModContent.ItemType<Items.Misc.YoungDukeMusicBox>(), 1, false, 0, false, false);
 
         public override void MouseOver(int i, int j)
         {
             Player player = Main.player[Main.myPlayer];
             player.noThrow = 2;
             player.showItemIcon = true;
-            player.showItemIcon2 = mod.ItemType("YoungDukeMusicBox");
+            player.showItemIcon2 = ModContent.ItemType<Items.Misc.YoungDukeMusicBox>();
         }
     }
 }

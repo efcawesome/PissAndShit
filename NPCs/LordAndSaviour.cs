@@ -23,6 +23,7 @@ namespace PissAndShit.NPCs
             npc.noTileCollide = true;
             npc.dontTakeDamage = true;
         }
+
         public override bool CheckActive()
         {
             return false;

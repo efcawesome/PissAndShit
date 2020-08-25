@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Accessories
 {
-    class GodSlimesGel : ModItem
+    public class GodSlimesGel : ModItem
     {
         public override void SetStaticDefaults()
         {

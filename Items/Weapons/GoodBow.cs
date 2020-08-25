@@ -11,7 +11,6 @@ namespace PissAndShit.Items.Weapons
         {
             DisplayName.SetDefault("Good Bow"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
             Tooltip.SetDefault("Tip: It's good\nDoes more than it says");
-
         }
 
         public override void SetDefaults()
@@ -22,19 +21,19 @@ namespace PissAndShit.Items.Weapons
             item.height = 26;
             item.useTime = 20;
             item.useAnimation = 20;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.noMelee = true;
             item.channel = true; //Channel so that you can held the weapon [Important]
             item.knockBack = 8;
             item.autoReuse = true;
             item.value = Item.sellPrice(silver: 50000);
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.UseSound = SoundID.Item9;
-            item.shoot = 1;
+            item.shoot = ProjectileID.WoodenArrowFriendly;
             item.shootSpeed = 15f;
             item.useAmmo = AmmoID.Arrow;
-
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -44,10 +43,12 @@ namespace PissAndShit.Items.Weapons
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
+
         public override bool CanUseItem(Player player)
         {
             return true;
         }
+
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             type = 0;

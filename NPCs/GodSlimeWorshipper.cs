@@ -4,10 +4,8 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.NPCs
 {
-    class GodSlimeWorshipper : ModNPC
+    public class GodSlimeWorshipper : ModNPC
     {
-        private int frameNum = 0;
-        private int frameTimer = 0;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("God Slime's Servant");

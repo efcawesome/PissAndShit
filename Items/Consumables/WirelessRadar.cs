@@ -1,11 +1,12 @@
+using PissAndShit.NPCs.Bosses;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace PissAndShit.Items.Consumables
 {
     public class WirelessRadar : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wireless Radar");
@@ -16,18 +17,18 @@ namespace PissAndShit.Items.Consumables
         {
             item.width = 20;
             item.height = 20;
-            item.rare = 11;
+            item.rare = ItemRarityID.Purple;
             item.maxStack = 999;
             item.useAnimation = 30;
             item.useTime = 30;
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.consumable = true;
             item.value = Item.buyPrice(1);
         }
 
         public override bool UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("DeathItself"));
+            NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<DeathItself>());
             return true;
         }
     }

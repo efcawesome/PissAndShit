@@ -51,14 +51,19 @@ namespace PissAndShit.NPCs
             {
                 case 0:
                     return "Arnie";
+
                 case 1:
                     return "E.F.C. Lame";
+
                 case 2:
                     return "Soundperson";
+
                 case 3:
                     return "Enterium";
+
                 case 4:
                     return "Fragment-ion";
+
                 default:
                     return "Fragment-ion";
             }
@@ -112,7 +117,7 @@ namespace PissAndShit.NPCs
     }
 }
 
-/* 
+/*
 // Consider using this alternate approach to choosing a random thing. Very useful for a variety of use cases.
 // The WeightedRandom class needs "using Terraria.Utilities;" to use
 public override string GetChat()

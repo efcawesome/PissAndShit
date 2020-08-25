@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.NPCs
 {
-    class BabyShark : ModNPC
+    public class BabyShark : ModNPC
     {
         public override void SetStaticDefaults()
         {
@@ -31,17 +31,15 @@ namespace PissAndShit.NPCs
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)((double)npc.lifeMax * 0.75);
-            npc.damage = (int)((double)npc.damage * 0.75);
+            npc.lifeMax = (int)(npc.lifeMax * 0.75);
+            npc.damage = (int)(npc.damage * 0.75);
         }
 
         public override void HitEffect(int hitDirection, double damage)
         {
-
-
             if (npc.life > 0)
             {
-                for (int num117 = 0; (double)num117 < npc.damage / (double)npc.lifeMax * 100.0; num117++)
+                for (int num117 = 0; num117 < npc.damage / (double)npc.lifeMax * 100.0; num117++)
                 {
                     Dust.NewDust(npc.position, npc.width, npc.height, 5, hitDirection, -1f);
                 }
@@ -56,16 +54,11 @@ namespace PissAndShit.NPCs
                     dust160.velocity /= 2f;
                 }
 
-
-
                 Gore.NewGore(npc.Center, npc.velocity * 0.8f, mod.GetGoreSlot("Gores/dukegore_"), 1f);
                 Gore.NewGore(npc.Center, npc.velocity * 0.8f, mod.GetGoreSlot("Gores/dukegore_2"), 1f);
                 Gore.NewGore(npc.Center, npc.velocity * 0.9f, mod.GetGoreSlot("Gores/dukegore_3"), 1f);
                 Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/dukegore_4"), 1f);
-
             }
-
-
         }
 
         public override void AI()
@@ -90,20 +83,20 @@ namespace PissAndShit.NPCs
                     float num40 = (float)Math.PI / 30f;
                     float num41 = npc.ai[2];
                     float num42 = (float)(Math.Cos(num40 * npc.localAI[1]) - 0.5) * num41;
-                    npc.position.X -= num42 * (float)(-npc.direction);
+                    npc.position.X -= num42 * -npc.direction;
                     npc.localAI[1]++;
                     num42 = (float)(Math.Cos(num40 * npc.localAI[1]) - 0.5) * num41;
-                    npc.position.X += num42 * (float)(-npc.direction);
+                    npc.position.X += num42 * -npc.direction;
                     if (Math.Abs(Math.Cos(num40 * npc.localAI[1]) - 0.5) > 0.25)
                     {
                         npc.spriteDirection = ((!(Math.Cos(num40 * npc.localAI[1]) - 0.5 >= 0.0)) ? 1 : (-1));
                     }
-                    npc.rotation = npc.velocity.Y * (float)npc.spriteDirection * 0.1f;
-                    if ((double)npc.rotation < -0.2)
+                    npc.rotation = npc.velocity.Y * npc.spriteDirection * 0.1f;
+                    if (npc.rotation < -0.2)
                     {
                         npc.rotation = -0.2f;
                     }
-                    if ((double)npc.rotation > 0.2)
+                    if (npc.rotation > 0.2)
                     {
                         npc.rotation = 0.2f;
                     }
@@ -113,7 +106,7 @@ namespace PissAndShit.NPCs
                         npc.alpha = 0;
                     }
                 }
-                if (npc.ai[1] >= (float)num39)
+                if (npc.ai[1] >= num39)
                 {
                     npc.ai[0] = 1f;
                     npc.ai[1] = 0f;
@@ -190,6 +183,4 @@ namespace PissAndShit.NPCs
             }
         }
     }
-
 }
-

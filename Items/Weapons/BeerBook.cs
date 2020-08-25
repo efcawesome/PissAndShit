@@ -1,9 +1,10 @@
-﻿using Terraria.ModLoader;
+﻿using PissAndShit.Projectiles;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Weapons
 {
-    class BeerBook : ModItem
+    public class BeerBook : ModItem
 
     {
         public override void SetStaticDefaults()
@@ -25,11 +26,8 @@ namespace PissAndShit.Items.Weapons
             item.rare = ItemRarityID.Pink;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType("beertwo");
+            item.shoot = ModContent.ProjectileType<beertwo>();
             item.shootSpeed = 8f;
         }
-
-
-
     }
 }
