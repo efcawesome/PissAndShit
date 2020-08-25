@@ -2,6 +2,3 @@ displayName = The Super Funny High Quality Community Made Content Mod
 author = The Crew
 version = 0.1
 homepage = https://discord.gg/8pNWASV
-modReferences = TomatoLib@1.0.2
-dllReferences = TomatoLib_v1.0.2
-sortAfter = TomatoLib
