@@ -16,7 +16,6 @@ namespace PissAndShit.Items.Accessories
             item.height = 30;
 
             item.value = Item.buyPrice(gold: 50);
-            //item.rare = TomatoLoader.RarityType<EndlessRarity>();
             item.accessory = true;
         }
 
