@@ -13,7 +13,7 @@ namespace PissAndShit.Items.Misc
             item.useTime = 10;
             item.autoReuse = true;
             item.consumable = true;
-            item.createTile = ModContent.TileType<Tiles.MusicBoxes.GodSlimeMusicBox>());
+            item.createTile = ModContent.TileType<Tiles.MusicBoxes.GodSlimeMusicBox>();
             item.width = 30;
             item.height = 30;
             item.rare = ItemRarityID.LightRed;
