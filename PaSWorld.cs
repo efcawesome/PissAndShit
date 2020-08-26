@@ -166,8 +166,8 @@ namespace PissAndShit
         }
         public override void PostUpdate()
         {
-            AGLobalNPC.hardDifficulty = endlessModeSave;
-            AGLobalNPC.endlesserModeBool = endlesserModeSave;
+            PaSGlobalNPC.hardDifficulty = endlessModeSave;
+            PaSGlobalNPC.endlesserMode = endlesserModeSave;
         }
     }
 }
