@@ -164,5 +164,10 @@ namespace PissAndShit
             endlessModeSave = miscFlags0[0];
             endlesserModeSave = miscFlags0[0];
         }
+        public override void PostUpdate()
+        {
+            AGLobalNPC.hardDifficulty = endlessModeSave;
+            AGLobalNPC.endlesserModeBool = endlesserModeSave;
+        }
     }
 }
