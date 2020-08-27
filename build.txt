@@ -1,4 +1,4 @@
-displayName = The Super Funny High Quality Community Made Content Mod
+displayName = [c/d065e6:The Super Funny High Quality Community Made Content Mod]
 author = The Crew
 version = 1.1
 homepage = https://discord.gg/8pNWASV
