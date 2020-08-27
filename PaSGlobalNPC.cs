@@ -34,6 +34,8 @@ namespace PissAndShit.NPCs
         public static bool hardDifficulty = PaSWorld.endlessModeSave;
         public static bool endlesserMode = PaSWorld.endlesserModeSave;
 
+        public static bool cursedMedallionSpawn = false;
+
         public override void SetDefaults(NPC npc)
         {
             if (hardDifficulty)
@@ -87,13 +89,13 @@ namespace PissAndShit.NPCs
 
         public override void AI(NPC npc)
         {
+            npc.TargetClosest(true);
             Player player = Main.player[npc.target];
             Vector2 targetPositionDifficult1 = npc.HasPlayerTarget ? player.Center : Main.npc[npc.target].Center;
             Vector2 shootPos1 = npc.Center;
             float accuracy = 5f * (npc.life / npc.lifeMax);
             Vector2 shootVel1 = targetPositionDifficult1 - shootPos1 + new Vector2(Main.rand.NextFloat(-accuracy, accuracy), Main.rand.NextFloat(-accuracy, accuracy));
 
-            npc.TargetClosest(true);
             npc.netAlways = true;
             shootVel1.Normalize();
             shootVel1 *= 14.5f;
@@ -695,6 +697,10 @@ namespace PissAndShit.NPCs
                         }
                         break;
                 }
+            }
+            if(cursedMedallionSpawn && Main.rand.Next(3) == 0)
+            {
+                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<CursedSoul>(), npc.whoAmI);
             }
         }
 
