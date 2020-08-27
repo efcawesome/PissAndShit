@@ -70,7 +70,7 @@ namespace PissAndShit
                         (Func<bool>)(() => PaSWorld.downedBoozeshrume),
 			ModContent.ItemType<SuspiciousAle>(),
 			new List<int> { ModContent.ItemType<Items.Misc.BoozeshrumeMusicBox>() },
-			new List<int> { ModContent.ItemType<Items.Misc.ScrumpyCiderRedwineTequillaWhiskeyVodkaRumArrackSpiritPureEthanolDrinkMix>() },
+			new List<int> { ModContent.ItemType<Items.BossBags.BoozeshrumeBag>(), ModContent.ItemType<Items.Misc.ScrumpyCiderRedwineTequillaWhiskeyVodkaRumArrackSpiritPureEthanolDrinkMix>(), ModContent.ItemType<Items.Weapons.BeerBook>(), ModContent.ItemType<Items.Weapons.BeerBow>() },
 			"Spawn by using [i:" + ModContent.ItemType<SuspiciousAle>() + "].",
 			"boozeshrume.exe has completed successfully.",
 			"PissAndShit/NPCs/Bosses/boozeshrume",

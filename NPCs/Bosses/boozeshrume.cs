@@ -167,12 +167,22 @@ namespace PissAndShit.NPCs.Bosses
         {
             PaSWorld.downedBoozeshrume = true;
             Main.NewText("boozeshrume.exe has stopped working", Color.MediumPurple);
+	    int bossWeapon = Main.rand.Next(4);
+	    
             if (!Main.expertMode)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<ScrumpyCiderRedwineTequillaWhiskeyVodkaRumArrackSpiritPureEthanolDrinkMix>(), 3);
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<BeerBook>());
+		switch((int)bossWeapon) //godslimepog case switching
+		{
+		    case 0:
+			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<BeerBook>());
+			break;
+		    case 1:
+			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<BeerBow>());
+			break;
+		}
             }
-            if (Main.expertMode)
+            else
             {
                 npc.DropBossBags();
             }

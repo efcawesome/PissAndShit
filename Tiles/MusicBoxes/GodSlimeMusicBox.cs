@@ -17,7 +17,7 @@ namespace PissAndShit.Tiles.MusicBoxes
             TileObjectData.newTile.LavaDeath = false;
             TileObjectData.newTile.DrawYOffset = 2;
             TileObjectData.addTile(Type);
-            disableSmartCursor = true;
+            disableSmartCursor = false;
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Music Box");
             AddMapEntry(new Color(255, 253, 219), name);
