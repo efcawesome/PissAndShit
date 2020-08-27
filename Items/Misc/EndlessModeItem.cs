@@ -7,7 +7,6 @@ namespace PissAndShit.Items.Misc
 {
     public class EndlessModeItem : ModItem
     {
-        private static bool difficultyActive = false;
 
         public override void SetStaticDefaults()
         {
@@ -34,18 +33,14 @@ namespace PissAndShit.Items.Misc
 
         public override bool UseItem(Player player)
         {
-            if (difficultyActive)
+            if (!PaSWorld.endlessModeSave)
             {
-                difficultyActive = true;
-                PaSWorld.endlessModeSave = true;
-                PaSGlobalNPC.hardDifficulty = PaSWorld.endlessModeSave;
+                PaSGlobalNPC.hardDifficulty = PaSWorld.endlessModeSave = true;
                 Main.NewText("GET READY FOR A CHALLENGE", 135, 16, 22);
             }
             else
             {
-                difficultyActive = false;
-                PaSWorld.endlessModeSave = false;
-                PaSGlobalNPC.hardDifficulty = PaSWorld.endlessModeSave;
+                PaSGlobalNPC.hardDifficulty = PaSWorld.endlessModeSave = false;
                 Main.NewText("noob", 48, 248, 255);
             }
             return true;
