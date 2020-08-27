@@ -25,7 +25,7 @@ namespace PissAndShit.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.AddBuff(BuffID.Honey, 10);
+            player.AddBuff(BuffID.Honey, 10, false);
             player.statLifeMax2 += 250;
             player.statDefense += 50;
         }
