@@ -10,7 +10,7 @@ namespace PissAndShit.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("High Tide");
-            Tooltip.SetDefault("The Young Dukes Wrath Eminates From This Bow");
+            Tooltip.SetDefault("'The Young Duke's wrath eminates from this bow'");
         }
 
         public override void SetDefaults()

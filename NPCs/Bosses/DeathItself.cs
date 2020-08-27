@@ -46,6 +46,7 @@ namespace PissAndShit.NPCs.Bosses
             musicPriority = MusicPriority.BossHigh;
             npc.dontTakeDamage = true;
             npc.scale = 1f;
+	    bossBag = ModContent.ItemType<Items.BossBags.DeathBossBag>();
             for (int i = 1; i < 1000; i++)
             {
                 npc.ai[0] = 0;
@@ -62,6 +63,8 @@ namespace PissAndShit.NPCs.Bosses
             switch ((int)npc.ai[0])
             {
                 case 0: // initial charge for when summoned by item
+		    if (!AliveCheck(player))
+			break;
                     targetPos = player.Center;
                     targetPos.X += 500 * (npc.Center.X < targetPos.X ? -1 : 1);
                     npc.ai[1]++;
@@ -154,7 +157,9 @@ namespace PissAndShit.NPCs.Bosses
                     }
                     break;
 
-                case 1:
+                case 1: // shoot loads of rockets above player
+		    if (!AliveCheck(player))
+			break;
                     for (DeathRocketShootOffset2 = 0; DeathRocketShootOffset2 < 800; DeathRocketShootOffset2 = DeathRocketShootOffset2 + 20)
                     {
                         if (DeathRocketsShot >= 200)
@@ -169,6 +174,8 @@ namespace PissAndShit.NPCs.Bosses
                     break;
 
                 case 2: // YEET SELF AT PLAYER AND THROW LOTS OF ROCKETS
+		    if (!AliveCheck(player))
+			break;
                     npc.dontTakeDamage = false;
 
                     targetPos = player.Center;
@@ -249,6 +256,8 @@ namespace PissAndShit.NPCs.Bosses
                     break;
 
                 case 3: // throw dagger bomb
+		    if (!AliveCheck(player))
+			break;
                     npc.ai[1]++;
                     if (npc.ai[1] > 60)
                     {
@@ -337,6 +346,8 @@ namespace PissAndShit.NPCs.Bosses
                     break;
 
                 case 4: // lasers
+		    if (!AliveCheck(player))
+			break;
                     npc.velocity.X = 0f;
                     npc.velocity.Y = 0f;
                     npc.ai[1]++;
@@ -389,8 +400,10 @@ namespace PissAndShit.NPCs.Bosses
                         }
                     }
                     break;
-            }
-        }
+	    }
+	}
+		    
+    
 
         public override void FindFrame(int frameHeight)
         {
@@ -405,6 +418,18 @@ namespace PissAndShit.NPCs.Bosses
             }
         }
 
+	private bool AliveCheck(Player player)
+	{
+	    if (player.dead)
+	    {
+		if (npc.timeLeft > 30)
+		    npc.timeLeft = 30;
+		npc.velocity.Y -= 1f;
+		return false;
+	    }
+	    return true;
+	}
+	
         private void AttkChange(int changeTo)
         {
             for (int i = 0; i < 120; i++)
@@ -435,6 +460,20 @@ namespace PissAndShit.NPCs.Bosses
 
             Main.spriteBatch.Draw(texture2D13, npc.Center - Main.screenPosition + new Vector2(0f, npc.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), npc.GetAlpha(lightColor), npc.rotation, origin2, npc.scale, effects, 0f);
             return false;
+        }
+
+	public override void BossLoot(ref string name, ref int potionType)
+        {
+	    PaSWorld.downedDeathHimself = true;
+            potionType = ItemID.SuperHealingPotion;
+	    if (Main.expertMode)
+	    {
+		npc.DropBossBags();
+	    }
+	    else
+	    {
+		//handle drops manually?
+	    }
         }
     }
 }

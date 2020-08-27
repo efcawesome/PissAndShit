@@ -10,7 +10,7 @@ namespace PissAndShit.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cyclone");
-            Tooltip.SetDefault("This gun embodies the speed of the young duke");
+            Tooltip.SetDefault("'This gun embodies the speed of the Young Duke'");
         }
 
         public override void SetDefaults()
