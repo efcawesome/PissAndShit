@@ -7,7 +7,6 @@ namespace PissAndShit.Items.Misc
 {
     public class EndlesserModeItem : ModItem
     {
-        private static bool difficultyActive = false;
 
         public override void SetStaticDefaults()
         {
@@ -34,16 +33,14 @@ namespace PissAndShit.Items.Misc
 
         public override bool UseItem(Player player)
         {
-            if (difficultyActive)
+            if (!PaSWorld.endlesserModeSave)
             {
-                difficultyActive = true;
                 PaSGlobalNPC.endlesserMode = PaSWorld.endlesserModeSave = true;
                 Main.NewText("Turn back before its too late", 48, 0, 2);
             }
             else
             {
-                difficultyActive = false;
-                PaSGlobalNPC.endlesserMode = PaSWorld.endlesserModeSave = true;
+                PaSGlobalNPC.endlesserMode = PaSWorld.endlesserModeSave = false;
                 Main.NewText("You may have strayed from the path, but you are back on it again", 212, 38, 45);
             }
             return true;
