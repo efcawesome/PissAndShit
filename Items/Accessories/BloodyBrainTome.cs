@@ -4,16 +4,17 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Accessories
 {
-    public class AncientIdol : ModItem
+    public class BloodyBrainTome : ModItem
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Shoot golem beams after taking damage\nEndless Drop");
+            DisplayName.SetDefault("Bloody Brain's Tome");
+            Tooltip.SetDefault("30% increased magic damage\n15% decreased mana usage\n20% reduced damage resistance\nEndless Drop");
         }
 
         public override void SetDefaults()
         {
-            item.width = 32;
+            item.width = 30;
             item.height = 30;
             item.rare = ItemRarityID.Expert;
 
@@ -23,7 +24,9 @@ namespace PissAndShit.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<PaSPlayer>().ancientIdol = true;
+            player.magicDamageMult *= 1.3f;
+            player.manaCost *= 0.85f;
+            player.endurance *= 0.8f;
         }
     }
 }
