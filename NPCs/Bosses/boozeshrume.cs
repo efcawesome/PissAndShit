@@ -118,7 +118,12 @@ namespace PissAndShit.NPCs.Bosses
                 {
                     CombatText.NewText(npc.Hitbox, Color.DarkRed, "Whoops gotta save your stuff first", dramatic: true);
                 }
-
+		
+                if (GameCrashCounter == 7300)
+                {
+                    CombatText.NewText(npc.Hitbox, Color.DarkRed, "PASTA LA VISTA!!!!!", dramatic: true);
+                }
+		
                 if (GameCrashCounter >= 7320)
                 {
                     Main.SaveSettings();
