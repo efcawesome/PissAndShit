@@ -13,6 +13,8 @@ namespace PissAndShit
         public bool soaped = false;
         public bool ancientIdol = false;
         public bool cursedMedallion = false;
+        public bool exoskeletonBad = false;
+        public bool exoskeletonGood = false;
 
         public override void ResetEffects()
         {
@@ -20,6 +22,8 @@ namespace PissAndShit
             soaped = false;
             ancientIdol = false;
             cursedMedallion = false;
+            exoskeletonBad = false;
+            exoskeletonGood = false;
         }
 
         public override void UpdateBadLifeRegen()
@@ -119,7 +123,27 @@ namespace PissAndShit
                 b *= 0.7f;
             }
         }
-
+        public override void PostUpdateRunSpeeds()
+        {
+            if(exoskeletonBad)
+            {
+                player.maxRunSpeed *= 0.5f;
+                player.accRunSpeed *= 0.5f;
+                player.moveSpeed *= 0.5f;
+            }
+            if(exoskeletonGood)
+            {
+                player.maxRunSpeed *= 0.5f;
+                player.accRunSpeed *= 0.5f;
+                player.moveSpeed *= 0.5f;
+            }
+            if(exoskeletonBad && exoskeletonGood)
+            {
+                player.maxRunSpeed *= 0.01f;
+                player.accRunSpeed *= 0.01f;
+                player.moveSpeed *= 0.01f;
+            }
+        }
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
         {
             if (ancientIdol)
