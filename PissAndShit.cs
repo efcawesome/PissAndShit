@@ -1,3 +1,4 @@
+using Terraria.ID;
 using PissAndShit.Items.Consumables;
 using System;
 using Terraria;
@@ -101,7 +102,20 @@ namespace PissAndShit
                 priority = MusicPriority.BossHigh;
             }
         }
-
+        public override void PostUpdateEverything()
+        {
+            if (PaSWorld.endlesserModeSave)
+            {
+                Main.instance.LoadNPC(NPCID.EyeofCthulhu);
+                Main.npcTexture[NPCID.EyeofCthulhu] = GetTexture("NPCs/VanillaRecolors/EyeOfEndless");
+                Main.instance.LoadNPC(NPCID.TheDestroyer);
+                Main.npcTexture[NPCID.TheDestroyer] = GetTexture("NPCs/VanillaRecolors/DestroyerOfGodsHead");
+                Main.instance.LoadNPC(NPCID.TheDestroyerBody);
+                Main.npcTexture[NPCID.TheDestroyerBody] = GetTexture("NPCs/VanillaRecolors/DestroyerOfGodsBody");
+                Main.instance.LoadNPC(NPCID.TheDestroyerTail);
+                Main.npcTexture[NPCID.TheDestroyerTail] = GetTexture("NPCs/VanillaRecolors/DestroyerOfGodsTail");
+            }
+        }
         public override void Unload() => BossChecklist = null;
     }
 }
