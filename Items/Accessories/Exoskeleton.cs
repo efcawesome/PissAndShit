@@ -4,18 +4,18 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.Accessories
 {
-    public class BloodyBrainTome : ModItem
+    public class Exoskeleton : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bloody Brain's Tome");
-            Tooltip.SetDefault("30% increased magic damage\n15% decreased mana usage\n20% reduced damage resistance\nEndless Drop");
+            DisplayName.SetDefault("Exoskeleton");
+            Tooltip.SetDefault("20 defense\n10% increased damage reduction\nEndless Drop");
         }
 
         public override void SetDefaults()
         {
-            item.width = 30;
-            item.height = 30;
+            item.width = 32;
+            item.height = 18;
             item.rare = ItemRarityID.Expert;
 
             item.value = Item.buyPrice(gold: 50);
@@ -24,9 +24,9 @@ namespace PissAndShit.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.magicDamageMult += 0.3f;
-            player.manaCost *= 0.85f;
-            player.endurance *= 0.8f;
+            player.statDefense += 20;
+            player.endurance += 0.1f;
+            player.maxRunSpeed *= 0.5f;
         }
     }
 }
