@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -9,7 +9,7 @@ namespace PissAndShit.Items.Accessories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Exoskeleton Mk. II");
-            Tooltip.SetDefault("20 defense\n10% increased damage reduction\nEndless Drop");
+            Tooltip.SetDefault("35 defense\n20% increased damage reduction\nEndless Drop");
         }
 
         public override void SetDefaults()
