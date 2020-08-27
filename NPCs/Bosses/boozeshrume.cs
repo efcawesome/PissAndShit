@@ -116,7 +116,7 @@ namespace PissAndShit.NPCs.Bosses
 
                 if (GameCrashCounter == 7200)
                 {
-                    CombatText.NewText(npc.Hitbox, Color.DarkRed, "Whoops gotta save your crap first", dramatic: true);
+                    CombatText.NewText(npc.Hitbox, Color.DarkRed, "Whoops gotta save your stuff first", dramatic: true);
                 }
 
                 if (GameCrashCounter >= 7320)
