@@ -3,6 +3,7 @@ using System.IO;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using PissAndShit.NPCs;
 
 namespace PissAndShit
 {
