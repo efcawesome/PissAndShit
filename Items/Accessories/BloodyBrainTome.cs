@@ -26,7 +26,7 @@ namespace PissAndShit.Items.Accessories
         {
             player.magicDamageMult += 0.3f;
             player.manaCost *= 0.85f;
-            player.endurance *= 0.8f;
+            player.endurance -= 0.2f;
         }
     }
 }
