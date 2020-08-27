@@ -12,12 +12,14 @@ namespace PissAndShit
         public bool kamra = false;
         public bool soaped = false;
         public bool ancientIdol = false;
+        public bool cursedMedallion = false;
 
         public override void ResetEffects()
         {
             kamra = false;
             soaped = false;
             ancientIdol = false;
+            cursedMedallion = false;
         }
 
         public override void UpdateBadLifeRegen()
