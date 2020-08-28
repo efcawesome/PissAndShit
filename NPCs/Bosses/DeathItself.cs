@@ -387,18 +387,33 @@ namespace PissAndShit.NPCs.Bosses
                     }
                     if (npc.ai[1] == 180)
                     {
-                        for (int i = 0; i < 20; i++)
-                        {
-                            Projectile.NewProjectile(DeathLaserBoxPosition + new Vector2(0, -800), -Vector2.UnitX.RotatedBy(-Main.rand.NextDouble() * -Math.PI) * -Main.rand.NextFloat(30f), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
-                        }
+                        for (int rocketWave1 = -250; rocketWave1 > 0; rocketWave1 = rocketWave1 - 10)
+			{
+			    Projectile.NewProjectile(new Vector2(DeathLaserBoxPosition.X, DeathLaserBoxPosition.Y - 800) + new Vector2(i, -250), new Vector2(0, -10), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			}
                     }
                     if (npc.ai[1] == 240)
                     {
-                        for (int i = 0; i < 20; i++)
-                        {
-                            Projectile.NewProjectile(DeathLaserBoxPosition + new Vector2(0, -800), -Vector2.UnitX.RotatedBy(-Main.rand.NextDouble() * -Math.PI) * -Main.rand.NextFloat(30f) / 2, ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
-                        }
-                    }
+                        for (int rocketWave2 = 250; rocketWave2 > 0; rocketWave2 = rocketWave2 + 10)
+			{
+			    Projectile.NewProjectile(new Vector2(DeathLaserBoxPosition.X, DeathLaserBoxPosition.Y + 800) + new Vector2(i, 250), new Vector2(0, 10), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			}
+		    }
+                    if (npc.ai[1] == 300)
+		    {
+			// right rockets
+			for (int i = -250; i < 0; i = i + 10)
+			{
+			    Projectile.NewProjectile(new Vector2(DeathLaserBoxPosition.X - 800, DeathLaserBoxPosition.Y) + new Vector2(-250, i), new Vector2(10, 0), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			}
+		    }
+		    if (npc.ai[1] == 360)
+		    {	
+			for (int i = 250; i > 0; i = i - 10)
+			{
+			    Projectile.NewProjectile(new Vector2(DeathLaserBoxPosition.X + 800, DeathLaserBoxPosition.Y) + new Vector2(250, i), new Vector2(-10, 0), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+			}
+		    }
                     break;
 	    }
 	}
