@@ -10,7 +10,7 @@ namespace PissAndShit.NPCs.Bosses
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("WarioApperition");
+			DisplayName.SetDefault("Wario Apparition");
 			Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.DungeonGuardian];
 		}
 
