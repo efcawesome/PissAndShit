@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.NPCs.Bosses
 {
-	class WarioApperition : ModNPC
+	class WarioApparition : ModNPC
 	{
 
 

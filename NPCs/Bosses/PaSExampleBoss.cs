@@ -14,7 +14,7 @@ using Terraria.ModLoader;
 namespace PissAndShit.NPCs.Bosses
 {
     [AutoloadBossHead] // load boss minimap icon, keep this here!
-    public class PaSTemplateBoss : ModNPC // internal name : class
+    public class PaSExampleBoss : ModNPC // internal name : class
     {
 	// keep these as private, nothing should need to access them that's outside of this ModNPC
 	// if something does, change the name to something that will not be taken and replace private with public
@@ -135,6 +135,9 @@ namespace PissAndShit.NPCs.Bosses
                 npc.rotation += npc.velocity.X * 0.1f;
             }
 
+	    // increment attacktimer by 1 every in-game frame
+	    attacktimer++;
+	    
 	    // start a case switch. case switches are awesome!
 	    // think of a case switch as an advanced if-else.
 	    // this switch handles phase.
@@ -144,19 +147,25 @@ namespace PissAndShit.NPCs.Bosses
 		case 0:
 		    // if so, don't spin (see the above if (spin).
 		    spin = false;
-		    // shoot a projectile, in this case an exoultimagigahypersplosionator rocket which hurts the player out of the direction the modnpc is facing
-		    /*
-		    Projectile.NewProjectile(new Vector2(npc.Center, // position to shoot from
-							 new Vector2(npc.direction, 0), // speed and rotation to shoot at (vector2, x = direction npc is facing, y = 0)
-							 ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), // projectile to shoot
-							 40, // damage to deal
-							 0f, // knockback to deal (keep the f)
-							 Main.myPlayer, // owner (keep it as Main.myPlayer)
-							 0f, // projectile.ai[0] value to set for the projectile
-							 0f); // projectile.ai[1] value to set for the projectile
-		    */
-		    // condensed version of above
-		    Projectile.NewProjectile(npc.Center, new Vector2(npc.direction, 0), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 40, 0f, Main.myPlayer, 0f, 0f);
+		    // count up attacktimer.
+		    
+		    if (attacktimer > 60) // if attacktimer is greater than 60
+		    {
+			// shoot a projectile, in this case a splosionator rocket which hurts the player out of the direction the modnpc is facing
+			/*
+			  Projectile.NewProjectile(new Vector2(npc.Center, // position to shoot from
+			                                       new Vector2(npc.direction, 0), // speed and rotation to shoot at (vector2, x = direction npc is facing, y = 0)
+							       ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), // projectile to shoot
+							       40, // damage to deal
+							       0f, // knockback to deal (keep the f)
+							       Main.myPlayer, // owner (keep it as Main.myPlayer)
+							       0f, // projectile.ai[0] value to set for the projectile
+							       0f); // projectile.ai[1] value to set for the projectile
+			*/
+			// condensed version of above
+			Projectile.NewProjectile(npc.Center, new Vector2(npc.direction, 0), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 40, 0f, Main.myPlayer, 0f, 0f);
+			attacktimer = 0; // set attacktimer to 0
+		    }
 		    // break. this is nessecary at the end of every case.
 		    break;
 		// are we on phase 1 (1 health below half or below)?
@@ -164,8 +173,14 @@ namespace PissAndShit.NPCs.Bosses
 		    // if so, spin (see the above if (spin)).
 		    spin = true;
 		    // shoot projectiles in both directions
-		    Projectile.NewProjectile(npc.Center, new Vector2(-1, 0), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 40, 0f, Main.myPlayer, 0f, 0f);
-		    Projectile.NewProjectile(npc.Center, new Vector2(1, 0), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 40, 0f, Main.myPlayer, 0f, 0f);
+		    if (attacktimer > 60) // if attacktimer is greater than 60
+		    {
+			// shoot projectiles in both directions
+			Projectile.NewProjectile(npc.Center, new Vector2(-1, 0), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 40, 0f, Main.myPlayer, 0f, 0f);
+			Projectile.NewProjectile(npc.Center, new Vector2(1, 0), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 40, 0f, Main.myPlayer, 0f, 0f);
+			// set attacktimer to zero
+			attacktimer = 0;
+		    }
 		    // break, same as above
 		    break;
 	    }
@@ -174,15 +189,11 @@ namespace PissAndShit.NPCs.Bosses
 	// NPCLoot, handles NPC loot after it dies.
         public override void NPCLoot()
         {
-	    if (Main.expertMode) // are we in expert mode?
-            {
-		// if so, drop boozeshrume bag (see bossBag variable in SetDefaults).
-                npc.DropBossBags();
-            }
-	    else // if we're not in expert mode...
+
+	    if (!Main.expertMode) // if not in expert mode...
 	    {
 		// make a value called bossWeapon which is a random value of either 0 or 1.
-		private int bossWeapon = Main.rand.Next(2);
+		int bossWeapon = Main.rand.Next(2);
 		// start a case switch of bossWeapon.
 		switch((int)bossWeapon)
 		{
@@ -198,7 +209,11 @@ namespace PissAndShit.NPCs.Bosses
 			break;
 		}
 	    }
-        }
+	    else // if in expert mode...
+	    {
+		npc.DropBossBags(); // drop boozeshrume bag (see bossBag variable in SetDefaults).
+	    }
+	}
 
 	// FindFrame, used for animating sprite frames
 	public override void FindFrame(int frameHeight)

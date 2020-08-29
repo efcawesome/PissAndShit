@@ -387,14 +387,14 @@ namespace PissAndShit.NPCs.Bosses
                     }
                     if (npc.ai[1] == 180)
                     {
-                        for (int rocketWave1 = -250; rocketWave1 > 0; rocketWave1 = rocketWave1 - 10)
+                        for (int i = -250; i > 0; i = i - 10)
 			{
 			    Projectile.NewProjectile(new Vector2(DeathLaserBoxPosition.X, DeathLaserBoxPosition.Y - 800) + new Vector2(i, -250), new Vector2(0, -10), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
 			}
                     }
                     if (npc.ai[1] == 240)
                     {
-                        for (int rocketWave2 = 250; rocketWave2 > 0; rocketWave2 = rocketWave2 + 10)
+                        for (int i = 250; i > 0; i = i + 10)
 			{
 			    Projectile.NewProjectile(new Vector2(DeathLaserBoxPosition.X, DeathLaserBoxPosition.Y + 800) + new Vector2(i, 250), new Vector2(0, 10), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
 			}
