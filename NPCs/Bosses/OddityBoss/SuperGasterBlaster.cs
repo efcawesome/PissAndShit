@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 
 using Terraria;
 using Terraria.ModLoader;
@@ -52,28 +52,69 @@ namespace PissAndShit.NPCs.Bosses.OddityBoss
 
             npc.frame.Y = frameNum * frameHeight;
         }
-
+        private Vector2 LaserBoxPosition;
+        private Vector2 LaserBoxValueFixer;
+        private Vector2 playerCenter;
         public override void AI()
         {
+
             npc.ai[2]++;
             if (npc.ai[2] >= 3)
             {
                 npc.ai[2] = 0f;
                 npc.netUpdate = true;
-                frameTimer++;
+                
             }
             Player player = Main.player[npc.target];
             Vector2 center = npc.Center;
             Vector2 Velocity = npc.velocity;
-            if (++npc.frameCounter >= 5)
-            {
-                npc.frameCounter = 0;
-                npc.frameCounter = ++npc.frameCounter % Main.npcFrameCount[npc.type];
-
-            }
+            
             npc.ai[1] += 1f;
+            if (npc.ai[1] <= 150f)
+            {
+                
+                Vector2 vectoridk = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
+                float playerX = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vectoridk.X;
+                float playerY = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vectoridk.Y;
+                npc.spriteDirection = playerX > 0f ? player.direction : -player.direction;
+                npc.rotation = playerX > 0f ? (float)Math.Atan2(playerX, -playerY) + 3.14f : (float)Math.Atan2(playerX, -playerY) + -3.14f;
+                
+            } else
+            {
+                
+                if (npc.ai[0] == 0f)
+                {
+                   playerCenter  = Main.player[npc.target].Center;
+                }
+                npc.ai[0]++;
+                
+                if (npc.ai[0] == 20f)
+                {
+                    
+                    LaserBoxPosition = npc.Center;
+                    LaserBoxValueFixer = new Vector2(LaserBoxPosition.X + 1, LaserBoxPosition.Y + 1);
+                    LaserBoxPosition = new Vector2(LaserBoxValueFixer.X - 1, LaserBoxValueFixer.Y - 1);
+                    npc.TargetClosest(faceTarget: false);
+                    Vector2 targerplayer = playerCenter - npc.Center;
+                    targerplayer.Normalize();
+                    //float yOffset = LaserBoxPosition.X < 0f ? 25f : -25f;
+                    Projectile.NewProjectile(LaserBoxPosition + new Vector2(0,0), new Vector2(targerplayer.X, targerplayer.Y), ModContent.ProjectileType<Projectiles.Deathrays.GasterDeathray>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
+                }
+                if (npc.ai[0] >= 20f)
+                {
+                    frameTimer++;
+                    if (++npc.frameCounter >= 5)
+                    {
+                        npc.frameCounter = 0;
+                        npc.frameCounter = ++npc.frameCounter % Main.npcFrameCount[npc.type];
+
+                    }
+                }
+                
+            }
             if (npc.ai[1] >= 300f)
             {
+
                 for (int i = 0; i < 20; i++)
                 {
                     int KillDust = Dust.NewDust(npc.position, npc.width, npc.height, 212, npc.direction * 2, 0f, 100, default(Color), 1.4f);
@@ -84,43 +125,8 @@ namespace PissAndShit.NPCs.Bosses.OddityBoss
                 }
                 npc.life = 0;
             }
-            Vector2 vectoridk = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-            float playerX = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vectoridk.X;
-            float playerY = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vectoridk.Y;
-            if (playerX > 0f)
-            {
-                npc.spriteDirection = player.direction;
-                npc.rotation = (float)Math.Atan2(playerX, -playerY) + 3.14f;
-
-
-            }
-            if (playerX < 0f)
-            {
-                npc.spriteDirection = -player.direction;
-                npc.rotation = (float)Math.Atan2(playerX, -playerY) + -3.14f;
-
-            }
-            npc.ai[0] += 1f;
-            if (npc.ai[0] >= 15f)
-            {
-                // Half a second has passed. Reset timer, etc.
-                npc.ai[0] = 0f;
-                npc.netUpdate = true;
-                // Do something here, maybe change to a new state.
-                //NPC.NewNPC((int)center.X, (int)center.Y, NPCType<NPCs.SoapBubble>());
-
-
-                if (Main.netMode != NetmodeID.MultiplayerClient)
-                {
-                    float velocityX = npc.rotation;
-                    float velocityY = npc.rotation;
-                    Vector2 vector3 = Vector2.Normalize(player.Center - center) * (npc.width + 20) / 2f + center;
-                    //int bubble = Projectile.NewProjectile(center.X, center.Y, velocityX, -velocityY, ProjectileType<SlightlyLessSoapyBubble>(), 35, 3f, 0, 0f, 0f);
-                    int bubble = NPC.NewNPC((int)vector3.X, (int)vector3.Y + 45, NPCType<SoapBubble>());
-
-                }
-
-            }
+            
+            
         }
     }
 }
