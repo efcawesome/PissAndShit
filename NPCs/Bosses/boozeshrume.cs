@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using PissAndShit.Items.BossBags;
 using PissAndShit.Items.Misc;
 using PissAndShit.Items.Weapons;
-using System;
 using Terraria;
 using Terraria.Graphics.Capture;
 using Terraria.ID;
