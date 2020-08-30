@@ -38,12 +38,7 @@ namespace PissAndShit.NPCs
             {
                 return SpawnCondition.Overworld.Chance * 0.12f;
             }
-            else
-            {
-                return 0.1f;
-            }
-
-            if (spawnInfo.player.ZoneBeach)
+            else if (spawnInfo.player.ZoneBeach)
             {
                 return SpawnCondition.Overworld.Chance * 0.18f;
             }
