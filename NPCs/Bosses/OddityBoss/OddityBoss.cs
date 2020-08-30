@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
@@ -12,6 +12,9 @@ namespace PissAndShit.NPCs.Bosses.OddityBoss
 {
     class OddityBoss : ModNPC
     {
+		private int OddityAttackCounter1 = 0;
+		private bool dead = false;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Oddity");
@@ -51,17 +54,20 @@ namespace PissAndShit.NPCs.Bosses.OddityBoss
 			switch ((int)npc.ai[0])
             {
 				case 0:
+					if (!AliveCheck(player))
+						break;
 					targetPos = player.Center;
 					targetPos.X += 500 * (npc.Center.X < targetPos.X ? -1 : 1);
 					npc.ai[1]++;
-					/*DeathAttkCounter3++;
-					if (DeathAttkCounter3 > 120)
+					OddityAttackCounter1++;
+					if (OddityAttackCounter1 >= 100)
 					{
 						npc.velocity.X = 0;
 						npc.velocity.Y = 0;
-					}*/
-					
-					
+						
+					}
+					else
+					{
 						if (npc.Distance(targetPos) > 50)
 						{
 							speedModifier = npc.localAI[3] > 0 ? 0.5f : 2f;
@@ -98,39 +104,29 @@ namespace PissAndShit.NPCs.Bosses.OddityBoss
 							}
 						}
 						npc.ai[1] = 0;
+					}
+					if (npc.ai[1] == 20)
+					{
+						if (Main.netMode != NetmodeID.MultiplayerClient)
+						{
+							CombatText.NewText(npc.Hitbox, Color.Black, "HEY BUDDY! WATCH OUT FOR MY FRIEND GASTER", dramatic: true);
+							OddityAttackCounter1++;
+							NPC.NewNPC((int)player.Center.X, (int)player.Center.Y - 20, ModContent.NPCType<SuperGasterBlaster>());
+						}
+						npc.life = 0;
+					}
+					break;
 					
 
-					if (npc.ai[1] == 30)
-					{
-						/*DeathRocketShootOffset = -10;
-						for (DeathRocketShootOffset = -10; DeathRocketShootOffset < 10; DeathRocketShootOffset++)
-						{
-							Projectile.NewProjectile(npc.position, new Vector2(14, -DeathRocketShootOffset), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
-						}
-						DeathAttkCounter1 = DeathAttkCounter1 + 1;*/
-					}
-					if (npc.ai[1] == 60)
-					{
-						/*DeathRocketShootOffset = -10;
-						for (DeathRocketShootOffset = -10; DeathRocketShootOffset < 10; DeathRocketShootOffset++)
-						{
-							Projectile.NewProjectile(new Vector2(npc.position.X, npc.position.Y + 12), new Vector2(-14, DeathRocketShootOffset), ModContent.ProjectileType<Projectiles.SplodinatorRocketEvil>(), 400, 0f, Main.myPlayer, 0f, npc.whoAmI);
-						}
-						DeathAttkCounter1 = DeathAttkCounter1 + 1;*/
-
-						npc.ai[1] = 0;
-					}
-					/*if (DeathAttkCounter1 == 4)
-					{
-						DeathRocketsShot = 0;
-						DeathRocketShootOffset = 0;
-						DeathAttkCounter3 = 0;
-						npc.ai[1] = 0;
-						npc.ai[0] = 1;
-					}*/
-					break;
-
 			}
+
+
+
+			if (npc.life == 0 && dead == false)
+            {
+				NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<OddityTown>());
+				dead = true;
+            }
 		}
 
 
@@ -147,7 +143,17 @@ namespace PissAndShit.NPCs.Bosses.OddityBoss
 
 
 
-
+		private bool AliveCheck(Player player)
+		{
+			if (player.dead)
+			{
+				if (npc.timeLeft > 30)
+					npc.timeLeft = 30;
+				npc.velocity.Y -= 1f;
+				return false;
+			}
+			return true;
+		}
 
 	}
 }
