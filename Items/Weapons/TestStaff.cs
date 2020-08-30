@@ -27,7 +27,6 @@ namespace PissAndShit.Items.Weapons
             item.useAnimation = 60;
             item.useStyle = ItemUseStyleID.HoldingUp;
             item.noMelee = true;
-
             item.autoReuse = true;
             item.rare = ItemRarityID.Red;
         }

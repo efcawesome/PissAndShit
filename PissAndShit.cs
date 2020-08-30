@@ -4,6 +4,10 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 using System.Collections.Generic;
+using PissAndShit.UI;
+using Terraria.UI;
+using Microsoft.Xna.Framework;
+using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit
 {
@@ -11,17 +15,27 @@ namespace PissAndShit
     {
 	Mod bossChecklist;
 	Mod FargosMutantMod;
-        public override void Load()
-        {
 
+    internal DeathHandPanelDraw deathHandPanelDraw;
+    private UserInterface _deathHandPanelDraw;
+        public override void Load()
+        {     
             if (!Main.dedServ)
             {
+                deathHandPanelDraw = new DeathHandPanelDraw();
+                deathHandPanelDraw.Activate();
+                _deathHandPanelDraw = new UserInterface();
+                _deathHandPanelDraw.SetState(deathHandPanelDraw);
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/heavenly_bullshit"), ItemType("GodSlimeMusicBox"), TileType("GodSlimeMusicBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2"), ItemType("YoungDukeMusicBox"), TileType("YoungDukeMusicBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/GRANDDAD"), ItemType("GrandDadMusicBox"), TileType("GrandDadMusicBox"));
-		AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Staying_As_a_1.14"), ItemType("BoozeshrumeMusicBox"), TileType("BoozeshrumeMusicBoxSheet"));
+		        AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Staying_As_a_1.14"), ItemType("BoozeshrumeMusicBox"), TileType("BoozeshrumeMusicBoxSheet"));
             }
 
+       }
+        public override void UpdateUI(GameTime gameTime)
+        {
+            _deathHandPanelDraw?.Update(gameTime);
         }
 
         public override void PostSetupContent()
@@ -104,10 +118,10 @@ namespace PissAndShit
 	    FargosMutantMod = ModLoader.GetMod("Fargowiltas");
             if (FargosMutantMod != null)
             {
-		FargosMutantMod.Call("AddSummon", 5.5f, "PissAndShit", "YoungWorm", (Func<bool>)(() => PaSWorld.downedYoungDuke), 150000);
-		FargosMutantMod.Call("AddSummon", 6.5f, "PissAndShit", "SuspiciousAle", (Func<bool>)(() => PaSWorld.downedBoozeshrume), 300000);
-		FargosMutantMod.Call("AddSummon", 16f, "PissAndShit", "WirelessRadar", (Func<bool>)(() => PaSWorld.downedDeathHimself), 8000000);
-		FargosMutantMod.Call("AddSummon", 17f, "PissAndShit", "HeavenlyChalice", (Func<bool>)(() => PaSWorld.downedGodSlime), 12000000);
+	        	FargosMutantMod.Call("AddSummon", 5.5f, "PissAndShit", "YoungWorm", (Func<bool>)(() => PaSWorld.downedYoungDuke), 150000);
+                FargosMutantMod.Call("AddSummon", 6.5f, "PissAndShit", "SuspiciousAle", (Func<bool>)(() => PaSWorld.downedBoozeshrume), 300000);
+                FargosMutantMod.Call("AddSummon", 16f, "PissAndShit", "WirelessRadar", (Func<bool>)(() => PaSWorld.downedDeathHimself), 8000000);
+	        	FargosMutantMod.Call("AddSummon", 17f, "PissAndShit", "HeavenlyChalice", (Func<bool>)(() => PaSWorld.downedGodSlime), 12000000);
                 FargosMutantMod.Call("AddSummon", 18f, "PissAndShit", "HiveSummon", (Func<bool>)(() => PaSWorld.downedHive), 1);
 	    }
 	}
@@ -163,6 +177,24 @@ namespace PissAndShit
                 Main.npcTexture[NPCID.TheDestroyerTail] = GetTexture("NPCs/VanillaRecolors/DestroyerOfGodsTail");
             }
         }
+
+        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
+        {
+            int mouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
+            if (mouseTextIndex != -1)
+            {
+                layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
+                "The Funny Community Made Content Mod: Now 200% Better!",
+                delegate
+                {
+                        _deathHandPanelDraw.Draw(Main.spriteBatch, new GameTime());
+                        return true;
+                },
+                InterfaceScaleType.UI)
+            );
+        }
+    }
+
         public override void Unload() => bossChecklist = null;
     }
 }

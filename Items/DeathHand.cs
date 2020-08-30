@@ -19,13 +19,12 @@ namespace PissAndShit.Items
             item.damage = -1;
             item.width = 180;
             item.height = 180;
-            item.useTime = 10;
+            item.useTime = 2;
             item.useAnimation = 10;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 0;
             item.value = Item.buyPrice(6, 24, 11, 2);
             item.rare = ItemRarityID.Purple;
-            item.UseSound = SoundID.Item1;
             item.autoReuse = true;
         }
         public override bool UseItem(Player player)
@@ -43,6 +42,7 @@ namespace PissAndShit.Items
                     hitbox.Inflate(5, 5);
                     if (hitbox.Contains(location)) {
                         mouseover = true;
+                        CombatText.NewText(player.Hitbox, Color.DarkRed, "Mouseover is true!", dramatic: true);
                         npc.life = 0;
                     }
                 }
