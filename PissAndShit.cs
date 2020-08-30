@@ -25,7 +25,8 @@ namespace PissAndShit
                 deathHandPanelDraw = new DeathHandPanelDraw();
                 deathHandPanelDraw.Activate();
                 _deathHandPanelDraw = new UserInterface();
-                _deathHandPanelDraw.SetState(deathHandPanelDraw);
+                // change null to deathHandPanelDraw to show the Death Hand UI. Too lazy to make Death Hand item work other than setting NPC
+                _deathHandPanelDraw.SetState(null);
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/heavenly_bullshit"), ItemType("GodSlimeMusicBox"), TileType("GodSlimeMusicBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2"), ItemType("YoungDukeMusicBox"), TileType("YoungDukeMusicBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/GRANDDAD"), ItemType("GrandDadMusicBox"), TileType("GrandDadMusicBox"));
@@ -35,6 +36,7 @@ namespace PissAndShit
        }
         public override void UpdateUI(GameTime gameTime)
         {
+            // change null to gameTime to open the Death Hand UI
             _deathHandPanelDraw?.Update(gameTime);
         }
 

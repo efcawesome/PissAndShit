@@ -42,8 +42,8 @@ namespace PissAndShit.Items
                     hitbox.Inflate(5, 5);
                     if (hitbox.Contains(location)) {
                         mouseover = true;
-                        CombatText.NewText(player.Hitbox, Color.DarkRed, "Mouseover is true!", dramatic: true);
-                        npc.life = 0;
+                        PaSWorld.deathHandNPCType = npc.type;
+                        PaSWorld.deathHandNPCIdentifier = npc.whoAmI;
                     }
                 }
             }
