@@ -11,9 +11,9 @@ namespace PissAndShit.UI
     class DeathHandPanelDraw : UIState
     {
         public DraggablePanel BackgroundPanel;
-        public UIPanel NPCBackgroundPanel;
+        public UIImage NPCBackgroundPanel;
         public static bool DeathHandPanelVisible;
-        public UIDrawNPC NPCImage;
+        public UIImage NPCImage;
         public override void OnInitialize()
         {
         	BackgroundPanel = new DraggablePanel();
@@ -24,20 +24,21 @@ namespace PissAndShit.UI
 			BackgroundPanel.Height.Set(400f, 0f);
             BackgroundPanel.BackgroundColor = new Color(73, 94, 171);
 
-            NPCBackgroundPanel = new UIPanel();
+            NPCBackgroundPanel = new UIImage(ModContent.GetTexture("PissAndShit/UI/NPCPanelBackground"));
 			NPCBackgroundPanel.SetPadding(0);
 			NPCBackgroundPanel.Left.Set(10f, 0f);
 			NPCBackgroundPanel.Top.Set(60f, 0f);
 			NPCBackgroundPanel.Width.Set(280f, 0f);
 			NPCBackgroundPanel.Height.Set(330f, 0f);
-            NPCBackgroundPanel.BackgroundColor = new Color(50, 58, 119);
 
             BackgroundPanel.Append(NPCBackgroundPanel);
 
-            NPCImage = new UIDrawNPC(new Vector2(0, 0));
+            NPCImage = new UIImage(Main.npcTexture[PaSWorld.deathHandNPCType]);
 
             NPCImage.Left.Set(240f, 0f);
             NPCImage.Top.Set(20f, 0f);
+            NPCImage.Width.Set(280f, 0f);
+            NPCImage.Height.Set(330f, 0f);
 
             NPCBackgroundPanel.Append(NPCImage);
 
