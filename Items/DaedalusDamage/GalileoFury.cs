@@ -16,7 +16,7 @@ namespace PissAndShit.Items.DaedalusDamage
 		{
 			Tooltip.SetDefault("Shoots stars from the sky!");
 		}
-		public override void SetDefaults()
+		public override void SafeSetDefaults()
 		{
 			item.CloneDefaults(ItemID.DaedalusStormbow);
 			item.UseSound = SoundID.Item9;
