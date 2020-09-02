@@ -14,13 +14,13 @@ namespace PissAndShit.Items.DaedalusDamage
         }
         public override void SafeSetDefaults()
         {
-            item.width = 99;
-            item.height = 99;
-            item.useTime = 30;
-            item.useAnimation = 30;
+            item.width = 30;
+            item.height = 62;
+            item.useTime = 19;
+            item.useAnimation = 19;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.noMelee = true;
-            item.damage = 10;
+            item.damage = 43;
             item.knockBack = 1.2f;
             item.maxStack = 1;
             item.shoot = 91;
@@ -32,9 +32,9 @@ namespace PissAndShit.Items.DaedalusDamage
         {
             // really weird hax
             // why are we doing this
-            player.GetModPlayer<PaSPlayer>().stormbowStormbowType = type;
+            /*player.GetModPlayer<PaSPlayer>().stormbowStormbowType = type;
             player.GetModPlayer<PaSPlayer>().stormbowStormbowKnockback = item.knockBack;
-            player.GetModPlayer<PaSPlayer>().stormbowStormbowDamage = item.damage;
+            player.GetModPlayer<PaSPlayer>().stormbowStormbowDamage = item.damage;*/
             int numberProjectiles = 4 + Main.rand.Next(4);
             for (int index = 0; index < numberProjectiles; ++index)
             {

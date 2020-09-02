@@ -18,8 +18,8 @@ namespace PissAndShit.Projectiles
             projectile.ranged = true;
             projectile.aiStyle = -1;
             projectile.penetrate = 1;
-            projectile.width = 22;
-            projectile.height = 52;
+            projectile.width = 62;
+            projectile.height = 30;
             projectile.tileCollide = true;
         }
 
@@ -57,7 +57,7 @@ namespace PissAndShit.Projectiles
                     float num17 = num13 * num15;
                     float SpeedX = num16 + Main.rand.Next(-5, 6) * 0.02f;
                     float SpeedY = num17 + Main.rand.Next(-5, 6) * 0.02f;
-                    Projectile.NewProjectile(vector2_1.X, vector2_1.Y, SpeedX, SpeedY, 91, player.GetModPlayer<PaSPlayer>().stormbowStormbowDamage, player.GetModPlayer<PaSPlayer>().stormbowStormbowKnockback, Main.myPlayer, 0.0f, Main.rand.Next(5));
+                    Projectile.NewProjectile(vector2_1.X, vector2_1.Y, SpeedX, SpeedY, 91, 43 + 13, 2f + 2.25f, Main.myPlayer, 0.0f, Main.rand.Next(5));
                     daedalusStormbowStormbowDaedalusStormbowUT = 30;
                 }
             }
