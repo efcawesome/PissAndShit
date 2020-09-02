@@ -16,10 +16,9 @@ namespace PissAndShit.Items.DaedalusDamage
 		public override string Texture => "Terraria/Item_3029"; ///Placeholder, delete when sprite gets
 		public override void SetStaticDefaults()
 		{
-
 			Tooltip.SetDefault("What rangers wanted celebration to be");
 		}
-		public override void SetDefaults()
+		public override void SetSafeDefaults()
 		{
 			item.CloneDefaults(ItemID.DaedalusStormbow);
 			item.UseSound = SoundID.Item75;
