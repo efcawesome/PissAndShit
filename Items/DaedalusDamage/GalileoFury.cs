@@ -12,6 +12,7 @@ namespace PissAndShit.Items.DaedalusDamage
 {
 	public class GalileoFury : DaedalusDamageItem
 	{
+		public override string Texture => "Terraria/Item_3029";
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("Shoots stars from the sky!");
