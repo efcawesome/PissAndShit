@@ -12,7 +12,8 @@ namespace PissAndShit.Projectiles
         public override void SetDefaults()
         {
             projectile.damage = 400;
-            projectile.hostile = true;
+            projectile.hostile = false;
+            projectile.friendly = true;
             projectile.knockBack = 2;
             projectile.ranged = true;
             projectile.aiStyle = -1;
