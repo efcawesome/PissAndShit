@@ -15,6 +15,9 @@ namespace PissAndShit
         public bool cursedMedallion = false;
         public bool exoskeletonBad = false;
         public bool exoskeletonGood = false;
+        public int stormbowStormbowType = 0;
+        public int stormbowStormbowDamage = 0;
+        public float stormbowStormbowKnockback = 0f;
 
         public override void ResetEffects()
         {
@@ -24,6 +27,9 @@ namespace PissAndShit
             cursedMedallion = false;
             exoskeletonBad = false;
             exoskeletonGood = false;
+            stormbowStormbowType = 0;
+            stormbowStormbowDamage = 0;
+            stormbowStormbowKnockback = 0f;
         }
 
         public override void UpdateBadLifeRegen()
