@@ -8,9 +8,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace daesubmision.Items
+namespace PissAndShit.Items.DaedalusDamage
 {
-	public class PissrainBow : ModItem
+	public class PissRainBow :  DaedalusDamageItem
 	{
 		public override string Texture => "Terraria/Item_3029"; ///Placeholder, delete when sprite gets
 		public override void SetStaticDefaults()
