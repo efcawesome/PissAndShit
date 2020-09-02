@@ -13,7 +13,7 @@ namespace PissAndShit.UI
         public DraggablePanel BackgroundPanel;
         public UIImage NPCBackgroundPanel;
         public static bool DeathHandPanelVisible;
-        public UIImage NPCImage;
+        //public UIImage NPCImage;
         public override void OnInitialize()
         {
         	BackgroundPanel = new DraggablePanel();
@@ -33,14 +33,14 @@ namespace PissAndShit.UI
 
             BackgroundPanel.Append(NPCBackgroundPanel);
 
-            NPCImage = new UIImage(Main.npcTexture[PaSWorld.deathHandNPCType]);
+            //NPCImage = new UIImage(Main.npcTexture[PaSWorld.deathHandNPCType]);
 
-            NPCImage.Left.Set(240f, 0f);
-            NPCImage.Top.Set(20f, 0f);
-            NPCImage.Width.Set(280f, 0f);
-            NPCImage.Height.Set(330f, 0f);
+            //NPCImage.Left.Set(240f, 0f);
+            //NPCImage.Top.Set(20f, 0f);
+            //NPCImage.Width.Set(280f, 0f);
+            //NPCImage.Height.Set(330f, 0f);
 
-            NPCBackgroundPanel.Append(NPCImage);
+            //NPCBackgroundPanel.Append(NPCImage);
 
             Texture2D buttonKillTexture = ModContent.GetTexture("PissAndShit/UI/DeathHandKillButton");
 			UIHoverImageButton killButton = new UIHoverImageButton(buttonKillTexture, "Kill NPC");
