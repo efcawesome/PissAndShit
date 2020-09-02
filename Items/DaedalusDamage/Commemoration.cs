@@ -10,14 +10,14 @@ using Terraria.ModLoader;
 
 namespace PissAndShit.Items.DaedalusDamage
 {
-	public class Celestormbow : DaedalusDamageItem
+	public class Commemoration : DaedalusDamageItem
 	{
 
 		public override string Texture => "Terraria/Item_3029"; ///Placeholder, delete when sprite gets
 		public override void SetStaticDefaults()
 		{
 
-			Tooltip.SetDefault("Sky goes Pew Pew");
+			Tooltip.SetDefault("What rangers wanted celebration to be");
 		}
 		public override void SetDefaults()
 		{
@@ -45,7 +45,7 @@ namespace PissAndShit.Items.DaedalusDamage
 		}
 		public override Color? GetAlpha(Color lightColor) ///This part needs to be deleted when sprite is submitted
 		{
-			return new Color(219, 138, 39, 255) * (1f - (float)item.alpha / 255f);
+			return new Color(82 + Main.DiscoR, Main.DiscoR, 0f, 255) * (1f - (float)item.alpha / 255f);
 		} ///Up to here
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
