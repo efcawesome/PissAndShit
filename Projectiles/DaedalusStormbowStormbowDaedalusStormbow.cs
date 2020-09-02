@@ -57,7 +57,7 @@ namespace PissAndShit.Projectiles
                     float num17 = num13 * num15;
                     float SpeedX = num16 + Main.rand.Next(-5, 6) * 0.02f;
                     float SpeedY = num17 + Main.rand.Next(-5, 6) * 0.02f;
-                    Projectile.NewProjectile(vector2_1.X, vector2_1.Y, SpeedX, SpeedY, player.GetModPlayer<PaSPlayer>().stormbowStormbowType, player.GetModPlayer<PaSPlayer>().stormbowStormbowDamage, player.GetModPlayer<PaSPlayer>().stormbowStormbowKnockback, Main.myPlayer, 0.0f, Main.rand.Next(5));
+                    Projectile.NewProjectile(vector2_1.X, vector2_1.Y, SpeedX, SpeedY, 91, player.GetModPlayer<PaSPlayer>().stormbowStormbowDamage, player.GetModPlayer<PaSPlayer>().stormbowStormbowKnockback, Main.myPlayer, 0.0f, Main.rand.Next(5));
                     daedalusStormbowStormbowDaedalusStormbowUT = 30;
                 }
             }

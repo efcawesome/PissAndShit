@@ -23,8 +23,7 @@ namespace PissAndShit.Items.DaedalusDamage
             item.damage = 10;
             item.knockBack = 1.2f;
             item.maxStack = 1;
-            item.useAmmo = AmmoID.Arrow;
-            item.shoot = AmmoID.Arrow;
+            item.shoot = 91;
             item.shootSpeed = 9f;
             item.rare = ItemRarityID.Green;
             item.crit = 4;
