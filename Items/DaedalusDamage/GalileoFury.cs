@@ -22,8 +22,8 @@ namespace PissAndShit.Items.DaedalusDamage
 			item.CloneDefaults(ItemID.DaedalusStormbow);
 			item.UseSound = SoundID.Item9;
 			item.damage = 27;
-			item.useTime = 22;
-			item.useAnimation = 22;
+			item.useTime = 25;
+			item.useAnimation = 25;
 			item.noMelee = true;
 			item.crit = 5;
 			item.knockBack = 2;
@@ -70,15 +70,19 @@ namespace PissAndShit.Items.DaedalusDamage
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.StarWrath, 1);
-			recipe.AddIngredient(ItemID.PlatinumBow, 1);
-			recipe.AddIngredient(ItemID.Star, 15);
+			recipe.AddIngredient(ItemID.Starfury, 1);
+			recipe.AddIngredient(ItemID.WoodenBow, 1);
+			recipe.AddIngredient(ItemID.DemoniteBar, 6);
+			recipe.AddIngredient(ItemID.FallenStar, 15);
 			recipe.AddTile(TileID.SkyMill);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-			recipe.AddIngredient(ItemID.StarWrath, 1);
-			recipe.AddIngredient(ItemID.GoldBow, 1);
-			recipe.AddIngredient(ItemID.Star, 15);
+
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.Starfury, 1);
+			recipe.AddIngredient(ItemID.WoodenBow, 1);
+			recipe.AddIngredient(ItemID.CrimtaneBar, 6);
+			recipe.AddIngredient(ItemID.FallenStar, 15);
 			recipe.AddTile(TileID.SkyMill);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
