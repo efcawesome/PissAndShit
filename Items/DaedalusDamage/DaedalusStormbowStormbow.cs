@@ -24,9 +24,10 @@ namespace PissAndShit.Items.DaedalusDamage
             item.knockBack = 1.2f;
             item.maxStack = 1;
             item.shoot = 91;
-            item.shootSpeed = 9f;
+            item.shootSpeed = 12.5f;
             item.rare = ItemRarityID.Green;
             item.crit = 4;
+            item.autoReuse = true;
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
