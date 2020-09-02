@@ -10,7 +10,7 @@ namespace PissAndShit.Items.DaedalusDamage
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Rains Daedalus Stormbows which rain arrows");
+            Tooltip.SetDefault("Rains Daedalus Stormbows which rain Holy Arrows");
         }
         public override void SafeSetDefaults()
         {
