@@ -702,6 +702,13 @@ namespace PissAndShit.NPCs
             {
                 NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<CursedSoul>(), npc.whoAmI);
             }
+            if (npc.type == NPCID.MoonLordCore)
+            {
+                float bossweapon = Main.rand.Next(10);
+                if (bossweapon == 10) {
+                    Item.NewItem(npc.getRect(), ModContent.ItemType<Commemoration>());
+                }
+            }
         }
 
         public override void HitEffect(NPC npc, int hitDirection, double damage)
