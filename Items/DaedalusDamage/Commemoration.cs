@@ -37,11 +37,6 @@ namespace PissAndShit.Items.DaedalusDamage
 			item.height = 50;
 		}
 
-		public override void GetWeaponCrit(Player player, ref int crit)
-		{
-			crit = Main.LocalPlayer.rangedCrit - Main.LocalPlayer.inventory[Main.LocalPlayer.selectedItem].crit + Main.HoverItem.crit;
-			base.GetWeaponCrit(player, ref crit);
-		}
 		public override Color? GetAlpha(Color lightColor) ///This part needs to be deleted when sprite is submitted
 		{
 			return new Color(82 + Main.DiscoR, Main.DiscoR, 0f, 255) * (1f - (float)item.alpha / 255f);
