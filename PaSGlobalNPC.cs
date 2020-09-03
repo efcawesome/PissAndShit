@@ -705,7 +705,7 @@ namespace PissAndShit.NPCs
             if (npc.type == NPCID.MoonLordCore)
             {
                int bossweapon = Main.rand.Next(10);
-                if (bossweapon == 10)
+                if (bossweapon == 0)
                 {
                     Item.NewItem(npc.getRect(), ModContent.ItemType<Commemoration>());
                 }
