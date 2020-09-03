@@ -48,7 +48,7 @@ namespace PissAndShit.Items.DaedalusDamage
 		} ///Up to here
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			float rocketColor = 1 + Main.rand.Next(4);
+			int rocketColor = 1 + Main.rand.Next(4);
 			if (rocketColor == 1) 
 			{
 				type = ProjectileID.RocketFireworkBlue;
