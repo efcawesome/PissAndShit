@@ -18,7 +18,7 @@ namespace PissAndShit.Items.DaedalusDamage
 		{
 			Tooltip.SetDefault("What rangers wanted celebration to be");
 		}
-		public override void SetSafeDefaults()
+		public override void SafeSetDefaults()
 		{
 			item.CloneDefaults(ItemID.DaedalusStormbow);
 			item.UseSound = SoundID.Item75;
