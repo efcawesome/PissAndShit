@@ -32,7 +32,7 @@ namespace PissAndShit.Items.DaedalusDamage
 			item.autoReuse = true;
 			item.value = Item.sellPrice(gold: 1, silver: 50);
 			item.useStyle = ItemUseStyleID.HoldingOut;
-			item.width = 30;
+			item.width = 40;
 			item.height = 50;
 		}
 
