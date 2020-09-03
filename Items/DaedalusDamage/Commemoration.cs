@@ -22,7 +22,7 @@ namespace PissAndShit.Items.DaedalusDamage
 		{
 			item.CloneDefaults(ItemID.DaedalusStormbow);
 			item.UseSound = SoundID.Item75;
-			item.damage = 54;
+			item.damage = 60;
 			item.useTime = 12;
 			item.useAnimation = 12;
 			item.noMelee = true;
