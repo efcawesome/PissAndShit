@@ -35,7 +35,6 @@ namespace PissAndShit.Items.DaedalusDamage
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.width = 30;
 			item.height = 50;
-			item.shoot = ProjectileID.GoldenShowerFriendly;
 		}
 		
 		public override Color? GetAlpha(Color lightColor) ///This part needs to be deleted when sprite is submitted
@@ -44,6 +43,7 @@ namespace PissAndShit.Items.DaedalusDamage
 		} ///Up to here
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
+		type = ProjectileID..GoldenShowerFriendly;
 			int numberProjectiles = 10 + Main.rand.Next(2);
 			for (int index = 0; index < numberProjectiles; ++index)
 			{
