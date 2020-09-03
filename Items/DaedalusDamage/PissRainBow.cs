@@ -18,7 +18,7 @@ namespace PissAndShit.Items.DaedalusDamage
 
 			Tooltip.SetDefault("IMMA GO MAKE IT RAIN PISS FROM THE SKY!");
 		}
-		public override void SetSafeDefaults()
+		public override void SafeSetDefaults()
 		{
 			item.CloneDefaults(ItemID.DaedalusStormbow);
 			item.UseSound = SoundID.Item13;
