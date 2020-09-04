@@ -20,7 +20,6 @@ namespace PissAndShit.Items.DaedalusDamage
 		}
 		public override void SafeSetDefaults()
 		{
-			item.CloneDefaults(ItemID.DaedalusStormbow);
 			item.UseSound = SoundID.Item75;
 			item.damage = 60;
 			item.useTime = 12;
@@ -35,6 +34,7 @@ namespace PissAndShit.Items.DaedalusDamage
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.width = 30;
 			item.height = 50;
+			item.shoot = ProjectileID.RocketFireworkBlue;
 		}
 
 		public override Color? GetAlpha(Color lightColor) ///This part needs to be deleted when sprite is submitted
