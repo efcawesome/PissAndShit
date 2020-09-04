@@ -1,4 +1,5 @@
-﻿using PissAndShit.Items.Accessories;
+using PissAndShit.Items.Accessories;
+using PissAndShit.Items.Misc;
 using PissAndShit.Items.Weapons;
 using PissAndShit.NPCs.Bosses;
 using Terraria;
