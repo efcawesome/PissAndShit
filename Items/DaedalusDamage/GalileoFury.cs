@@ -18,6 +18,8 @@ namespace PissAndShit.Items.DaedalusDamage
 		}
 		public override void SafeSetDefaults()
 		{
+			item.height = 50;
+			item.width = 50;
 			item.UseSound = SoundID.Item9;
 			item.damage = 20;
 			item.useTime = 35;
@@ -27,11 +29,10 @@ namespace PissAndShit.Items.DaedalusDamage
 			item.knockBack = 2;
 			item.rare = ItemRarityID.Green;
 			item.shootSpeed = 22f;
-			item.autoReuse = true;
+			item.autoReuse = false;
 			item.value = Item.sellPrice(gold: 1, silver: 50);
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.shoot = ProjectileID.Starfury;
-		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
