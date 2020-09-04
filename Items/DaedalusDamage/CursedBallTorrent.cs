@@ -20,7 +20,6 @@ namespace PissAndShit.Items.DaedalusDamage
 		}
 		public override void SafeSetDefaults()
 		{
-			item.CloneDefaults(ItemID.DaedalusStormbow);
 			item.UseSound = SoundID.Item100;
 			item.damage = 33;
 			item.useTime = 28;
@@ -35,6 +34,7 @@ namespace PissAndShit.Items.DaedalusDamage
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.width = 40;
 			item.height = 50;
+			item.shoot = ProjectileID.CursedFlameFriendly;
 		}
 		public override Color? GetAlpha(Color lightColor) ///This part needs to be deleted when sprite is submitted
 		{
@@ -42,7 +42,6 @@ namespace PissAndShit.Items.DaedalusDamage
 		} ///Up to here
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			type = ProjectileID.CursedFlameFriendly;
 			int numberProjectiles = 1 + Main.rand.Next(2);
 			for (int index = 0; index < numberProjectiles; ++index)
 			{
