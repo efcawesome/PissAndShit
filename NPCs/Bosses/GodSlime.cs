@@ -61,56 +61,10 @@ namespace PissAndShit.NPCs.Bosses
             if (Main.expertMode)
             {
                 npc.DropBossBags();
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
+                for (int i = 0; i < 49; i++)
+                {
+                    NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
+                }
             }
             else
             {
@@ -119,56 +73,11 @@ namespace PissAndShit.NPCs.Bosses
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<GodlyCross>());
                 }
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
-                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
+
+                for (int i = 0; i < 61;  i++)
+                {
+                    NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-1000, 1000), (int)npc.Center.Y + Main.rand.Next(-1000, 1000), ModContent.NPCType<GodSlimeWorshipper>(), npc.whoAmI);
+                }
             }
         }
 
