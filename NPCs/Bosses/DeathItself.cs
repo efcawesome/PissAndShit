@@ -46,7 +46,7 @@ namespace PissAndShit.NPCs.Bosses
             musicPriority = MusicPriority.BossHigh;
             npc.dontTakeDamage = true;
             npc.scale = 1f;
-	    bossBag = ModContent.ItemType<Items.BossBags.DeathBossBag>();
+	        bossBag = ModContent.ItemType<Items.BossBags.DeathBossBag>();
             for (int i = 1; i < 1000; i++)
             {
                 npc.ai[0] = 0;
