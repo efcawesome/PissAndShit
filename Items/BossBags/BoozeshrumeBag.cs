@@ -1,4 +1,5 @@
-﻿using PissAndShit.Items.Accessories;
+using PissAndShit.Items.Accessories;
+using PissAndShit.Items.Misc;
 using PissAndShit.Items.Weapons;
 using PissAndShit.NPCs.Bosses;
 using Terraria;
@@ -33,6 +34,7 @@ namespace PissAndShit.Items.BossBags
             player.QuickSpawnItem(ItemID.GoldCoin, 60);
             player.QuickSpawnItem(ItemID.GreaterHealingPotion, Main.rand.Next(5, 10));
             player.QuickSpawnItem(ModContent.ItemType<BoozeExpertItem>(), 1);
+            player.QuickSpawnItem(ModContent.ItemType<ScrumpyCiderRedwineTequillaWhiskeyVodkaRumArrackSpiritPureEthanolDrinkMix>(), 3);
             if (bossWeapon == 0)
             {
                 player.QuickSpawnItem(ModContent.ItemType<BeerBook>(), 1);

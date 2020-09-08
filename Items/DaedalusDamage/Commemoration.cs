@@ -20,9 +20,8 @@ namespace PissAndShit.Items.DaedalusDamage
 		}
 		public override void SafeSetDefaults()
 		{
-			item.CloneDefaults(ItemID.DaedalusStormbow);
 			item.UseSound = SoundID.Item75;
-			item.damage = 54;
+			item.damage = 60;
 			item.useTime = 12;
 			item.useAnimation = 12;
 			item.noMelee = true;
@@ -35,20 +34,16 @@ namespace PissAndShit.Items.DaedalusDamage
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.width = 30;
 			item.height = 50;
+			item.shoot = ProjectileID.RocketFireworkBlue;
 		}
 
-		public override void GetWeaponCrit(Player player, ref int crit)
-		{
-			crit = Main.LocalPlayer.rangedCrit - Main.LocalPlayer.inventory[Main.LocalPlayer.selectedItem].crit + Main.HoverItem.crit;
-			base.GetWeaponCrit(player, ref crit);
-		}
 		public override Color? GetAlpha(Color lightColor) ///This part needs to be deleted when sprite is submitted
 		{
 			return new Color(82 + Main.DiscoR, Main.DiscoR, 0f, 255) * (1f - (float)item.alpha / 255f);
 		} ///Up to here
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			float rocketColor = 1 + Main.rand.Next(4);
+			int rocketColor = 1 + Main.rand.Next(4);
 			if (rocketColor == 1) 
 			{
 				type = ProjectileID.RocketFireworkBlue;

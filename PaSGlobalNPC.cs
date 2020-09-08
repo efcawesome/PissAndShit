@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using PissAndShit.Items.DaedalusDamage;
 
 namespace PissAndShit.NPCs
 {
@@ -701,6 +702,14 @@ namespace PissAndShit.NPCs
             if(cursedMedallionSpawn && Main.rand.Next(3) == 0)
             {
                 NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<CursedSoul>(), npc.whoAmI);
+            }
+            if (npc.type == NPCID.MoonLordCore)
+            {
+               int bossweapon = Main.rand.Next(10);
+                if (bossweapon == 0)
+                {
+                    Item.NewItem(npc.getRect(), ModContent.ItemType<Commemoration>());
+                }
             }
         }
 

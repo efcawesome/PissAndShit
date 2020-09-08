@@ -12,33 +12,30 @@ namespace PissAndShit.Items.DaedalusDamage
 {
 	public class GalileoFury : DaedalusDamageItem
 	{
-		public override string Texture => "Terraria/Item_3029";
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("Shoots stars from the sky!");
 		}
 		public override void SafeSetDefaults()
 		{
-			item.CloneDefaults(ItemID.DaedalusStormbow);
+			item.height = 50;
+			item.width = 50;
 			item.UseSound = SoundID.Item9;
-			item.damage = 27;
-			item.useTime = 25;
-			item.useAnimation = 25;
+			item.damage = 20;
+			item.useTime = 35;
+			item.useAnimation = 35;
 			item.noMelee = true;
 			item.crit = 5;
 			item.knockBack = 2;
 			item.rare = ItemRarityID.Green;
 			item.shootSpeed = 22f;
-			item.autoReuse = true;
+			item.autoReuse = false;
 			item.value = Item.sellPrice(gold: 1, silver: 50);
 			item.useStyle = ItemUseStyleID.HoldingOut;
-			item.width = 30;
-			item.height = 50;
+			item.shoot = ProjectileID.Starfury;
 		}
-
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			type = ProjectileID.Starfury;
 			int numberProjectiles = 2 + Main.rand.Next(1);
 			for (int index = 0; index < numberProjectiles; ++index)
 			{
@@ -70,19 +67,17 @@ namespace PissAndShit.Items.DaedalusDamage
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Starfury, 1);
-			recipe.AddIngredient(ItemID.WoodenBow, 1);
-			recipe.AddIngredient(ItemID.DemoniteBar, 6);
-			recipe.AddIngredient(ItemID.FallenStar, 15);
+			recipe.AddIngredient(ItemID.SilverBow, 1);
+			recipe.AddIngredient(ItemID.SunplateBlock, 15);
+			recipe.AddIngredient(ItemID.FallenStar, 10);
 			recipe.AddTile(TileID.SkyMill);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 
 			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Starfury, 1);
-			recipe.AddIngredient(ItemID.WoodenBow, 1);
-			recipe.AddIngredient(ItemID.CrimtaneBar, 6);
-			recipe.AddIngredient(ItemID.FallenStar, 15);
+			recipe.AddIngredient(ItemID.TungstenBow, 1);
+			recipe.AddIngredient(ItemID.SunplateBlock, 15);
+			recipe.AddIngredient(ItemID.FallenStar, 10);
 			recipe.AddTile(TileID.SkyMill);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
