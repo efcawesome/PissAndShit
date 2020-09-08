@@ -16,28 +16,16 @@ namespace PissAndShit
 	Mod bossChecklist;
 	Mod FargosMutantMod;
 
-    internal DeathHandPanelDraw deathHandPanelDraw;
-    private UserInterface _deathHandPanelDraw;
         public override void Load()
         {     
             if (!Main.dedServ)
             {
-                deathHandPanelDraw = new DeathHandPanelDraw();
-                deathHandPanelDraw.Activate();
-                _deathHandPanelDraw = new UserInterface();
-                // change null to deathHandPanelDraw to show the Death Hand UI. Too lazy to make Death Hand item work other than setting NPC
-                _deathHandPanelDraw.SetState(null);
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/heavenly_bullshit"), ItemType("GodSlimeMusicBox"), TileType("GodSlimeMusicBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2"), ItemType("YoungDukeMusicBox"), TileType("YoungDukeMusicBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/GRANDDAD"), ItemType("GrandDadMusicBox"), TileType("GrandDadMusicBox"));
-		        AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Staying_As_a_1.14"), ItemType("BoozeshrumeMusicBox"), TileType("BoozeshrumeMusicBoxSheet"));
+		AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Staying_As_a_1.14"), ItemType("BoozeshrumeMusicBox"), TileType("BoozeshrumeMusicBoxSheet"));
             }
 
-       }
-        public override void UpdateUI(GameTime gameTime)
-        {
-            // change null to gameTime to open the Death Hand UI
-            _deathHandPanelDraw?.Update(gameTime);
         }
 
         public override void PostSetupContent()
@@ -92,7 +80,7 @@ namespace PissAndShit
 			"PissAndShit/NPCs/Bosses/boozeshrume",
 			"PissAndShit/NPCs/Bosses/boozeshrume_Head_Boss"
                     );
-		// TODO: These calls are deprecated! Replace with 1.0 AddBoss.
+		// TODO: These calls are deprecated! Replace with 1.0 AddBoss before release!
 		/*
                 BossChecklist.Call(
                         "AddBossWithInfo",
@@ -179,24 +167,6 @@ namespace PissAndShit
                 Main.npcTexture[NPCID.TheDestroyerTail] = GetTexture("NPCs/VanillaRecolors/DestroyerOfGodsTail");
             }
         }
-
-        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
-        {
-            int mouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
-            if (mouseTextIndex != -1)
-            {
-                layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
-                "The Funny Community Made Content Mod: Now 200% Better!",
-                delegate
-                {
-                        _deathHandPanelDraw.Draw(Main.spriteBatch, new GameTime());
-                        return true;
-                },
-                InterfaceScaleType.UI)
-            );
-        }
-    }
-
         public override void Unload() => bossChecklist = null;
     }
 }
