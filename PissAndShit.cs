@@ -4,10 +4,6 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 using System.Collections.Generic;
-using PissAndShit.UI;
-using Terraria.UI;
-using Microsoft.Xna.Framework;
-using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit
 {
@@ -49,24 +45,8 @@ namespace PissAndShit
 			"PissAndShit/NPCs/Bosses/YoungDuke_Head_Boss"
                     );
 		
-		bossChecklist.Call(
-                        "AddBoss",
-			16f,
-			ModContent.NPCType<NPCs.Bosses.DeathItself>(),
-			this,
-			"Death Himself, God of Universes, Extinguisher of Souls, Obliterator of the Foolish",
-                        (Func<bool>)(() => PaSWorld.downedDeathHimself),
-			ModContent.ItemType<WirelessRadar>(),
-			0,
-			new List<int> { ModContent.ItemType<Items.Weapons.Exoultimagigahypersplosionator>() },
-			"Spawn by using [i:" + ModContent.ItemType<WirelessRadar>() + "].",
-			"Death has reaped all before it.",
-			"PissAndShit/NPCs/Bosses/DeathItself_Still",
-			"PissAndShit/NPCs/Bosses/DeathItself_Head_Boss"
-                    );
-		
-                bossChecklist.Call(
-                        "AddBoss",
+            bossChecklist.Call(
+            "AddBoss",
 			6.5f,
 			ModContent.NPCType<NPCs.Bosses.boozeshrume>(),
 			this,
@@ -79,7 +59,7 @@ namespace PissAndShit
 			"boozeshrume.exe has completed successfully.",
 			"PissAndShit/NPCs/Bosses/boozeshrume",
 			"PissAndShit/NPCs/Bosses/boozeshrume_Head_Boss"
-                    );
+             );
 		// TODO: These calls are deprecated! Replace with 1.0 AddBoss before release!
 		/*
                 BossChecklist.Call(
@@ -110,7 +90,6 @@ namespace PissAndShit
             {
 	        	FargosMutantMod.Call("AddSummon", 5.5f, "PissAndShit", "YoungWorm", (Func<bool>)(() => PaSWorld.downedYoungDuke), 150000);
                 FargosMutantMod.Call("AddSummon", 6.5f, "PissAndShit", "SuspiciousAle", (Func<bool>)(() => PaSWorld.downedBoozeshrume), 300000);
-                FargosMutantMod.Call("AddSummon", 16f, "PissAndShit", "WirelessRadar", (Func<bool>)(() => PaSWorld.downedDeathHimself), 8000000);
 	        	FargosMutantMod.Call("AddSummon", 17f, "PissAndShit", "HeavenlyChalice", (Func<bool>)(() => PaSWorld.downedGodSlime), 12000000);
                 FargosMutantMod.Call("AddSummon", 18f, "PissAndShit", "HiveSummon", (Func<bool>)(() => PaSWorld.downedHive), 1);
 	    }
