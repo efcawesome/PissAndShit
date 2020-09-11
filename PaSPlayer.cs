@@ -15,6 +15,7 @@ namespace PissAndShit
         public bool cursedMedallion = false;
         public bool exoskeletonBad = false;
         public bool exoskeletonGood = false;
+        private int cancerCounter = 0;
         public override void ResetEffects()
         {
             kamra = false;
@@ -89,6 +90,35 @@ namespace PissAndShit
                 {
                     player.AddBuff(BuffID.Rabies, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
                 }
+            }
+            if (PaSWorld.endlesserModeSave)
+            {
+                if (player.ZoneCorrupt || player.ZoneCrimson)
+                {
+                    cancerCounter++;
+                    switch (cancerCounter)
+                    {
+                        case 4500:
+                            Main.NewText($"{player.name} is feeling queasy");
+                            break;
+                        case 9000:
+                            Main.NewText($"{player.name}'s hair is falling out in chunks");
+                            break;
+                        case 13500:
+                            Main.NewText($"{player.name} is seeing spots");
+                            break;
+                        case 18000:
+                            player.KillMe(PlayerDeathReason.ByCustomReason($"{player.name} got cancer"), 10000, 1);
+                            cancerCounter = 0;
+                            break;
+                    }
+                }
+                else
+                {
+                    cancerCounter--;
+                    if (cancerCounter < 0) cancerCounter = 0;
+                }
+
             }
         }
 
