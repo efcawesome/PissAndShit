@@ -99,13 +99,13 @@ namespace PissAndShit
                     switch (cancerCounter)
                     {
                         case 4500:
-                            Main.NewText($"{player.name} is feeling queasy");
+                            Main.NewText($"{player.name} is feeling queasy", 50, 237, 21);
                             break;
                         case 9000:
-                            Main.NewText($"{player.name}'s hair is falling out in chunks");
+                            Main.NewText($"{player.name}'s hair is falling out in chunks", 39, 194, 16);
                             break;
                         case 13500:
-                            Main.NewText($"{player.name} is seeing spots");
+                            Main.NewText($"{player.name} is seeing spots", 28, 143, 11);
                             break;
                         case 18000:
                             player.KillMe(PlayerDeathReason.ByCustomReason($"{player.name} got cancer"), 10000, 1);
