@@ -31,6 +31,8 @@ namespace PissAndShit.NPCs
         private static bool golemLowLife = false;
         private static bool ancientDragonSpawned = false;
         private static bool lunarEnemySpawn = false;
+        private static int tornadoShootTimer = 0;
+        private static int bubbleShootTimer = 0;
 
         public static bool hardDifficulty = PaSWorld.endlessModeSave;
         public static bool endlesserMode = PaSWorld.endlesserModeSave;
@@ -586,6 +588,32 @@ namespace PissAndShit.NPCs
                                 Projectile.NewProjectile(shootPos1.X + Main.rand.Next(-1000, 1000), shootPos1.Y + Main.rand.Next(-1000, 1000), shootVel1.X, shootVel1.Y, ProjectileID.PhantasmalEye, 50, 5f);
                             }
                             handEyeShootTimer = 0;
+                        }
+                        break;
+                    case NPCID.DukeFishron:
+                        tornadoShootTimer++;
+                        if(tornadoShootTimer >= 300)
+                        {
+                            for(int i = 0; i < 4; i++)
+                            {
+                                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-100, 101), (int)npc.Center.Y + Main.rand.Next(-100, 101), NPCID.PigronCorruption);
+                                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-100, 101), (int)npc.Center.Y + Main.rand.Next(-100, 101), NPCID.PigronCrimson);
+                                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-100, 101), (int)npc.Center.Y + Main.rand.Next(-100, 101), NPCID.PigronHallow);
+                            }
+                            tornadoShootTimer = 0;
+                        }
+                        if(npc.life <= npc.lifeMax/2)
+                        {
+                            bubbleShootTimer++;
+                            if(bubbleShootTimer >= 600)
+                            {
+                                npc.velocity = Vector2.Zero;
+                                for(int i = 0; i < 120; i++)
+                                {
+                                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Main.rand.Next(-15, 16), Main.rand.Next(-15, 16), ModContent.ProjectileType<DetonatingBubbleProj>(), 60, 5f);
+                                }
+                                bubbleShootTimer = 0;
+                            }
                         }
                         break;
                 }
