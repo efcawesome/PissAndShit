@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using PissAndShit.Dusts;
 using Terraria;
 using Terraria.ID;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
