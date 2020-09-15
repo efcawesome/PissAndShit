@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using PissAndShit.Items.DaedalusDamage;
+using PissAndShit.Projectiles;
 
 namespace PissAndShit.NPCs
 {
