@@ -1,8 +1,8 @@
 using Microsoft.Xna.Framework;
 using PissAndShit.Dusts;
 using Terraria;
-using Terraria.ID;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -17,6 +17,8 @@ namespace PissAndShit
         public bool exoskeletonBad = false;
         public bool exoskeletonGood = false;
         private int cancerCounter = 0;
+        private bool jungleTalked = false;
+        private bool spaceTalked = false;
         public override void ResetEffects()
         {
             kamra = false;
@@ -35,61 +37,60 @@ namespace PissAndShit
                 player.lifeRegen = player.lifeRegen > 0 ? -25 : player.lifeRegen - 25;
             }
         }
-        
         public override void PreUpdate()
         {
             if (PaSWorld.endlessModeSave){
                 if (player.ZoneSnow)
                 {
-                    player.AddBuff(BuffID.Chilled, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                    player.AddBuff(BuffID.Chilled, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2, false);
                 }
                 if (player.ZoneDesert)
                 {
-                    player.AddBuff(BuffID.Slow, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                    player.AddBuff(BuffID.Slow, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2, false);
                 }
                 if (player.ZoneCorrupt)
                 {
-                    player.AddBuff(BuffID.Darkness, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                    player.AddBuff(BuffID.Darkness, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2, false);
                 }
                 if (player.ZoneCrimson)
                 {
-                    player.AddBuff(BuffID.Ichor, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                    player.AddBuff(BuffID.Ichor, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2, false);
                 }
                 if (player.ZoneJungle)
                 {
-                    player.AddBuff(BuffID.Bleeding, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                    player.AddBuff(BuffID.Bleeding, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2, false);
                 }
                 if (player.ZoneDungeon)
                 {
-                    player.AddBuff(BuffID.WaterCandle, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                    player.AddBuff(BuffID.WaterCandle, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2, false);
                 }
                 if (player.ZoneBeach)
                 {
-                    player.AddBuff(BuffID.BrokenArmor, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                    player.AddBuff(BuffID.BrokenArmor, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2, false);
                 }
                 if (player.ZoneGlowshroom)
                 {
-                    player.AddBuff(BuffID.Confused, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                    player.AddBuff(BuffID.Confused, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2, false);
                 }
                 if (player.ZoneHoly)
                 {
-                    player.AddBuff(BuffID.ChaosState, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                    player.AddBuff(BuffID.ChaosState, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2, false);
                 }
                 if (player.ZoneUnderworldHeight)
                 {
-                    player.AddBuff(BuffID.Blackout, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                    player.AddBuff(BuffID.Blackout, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2, false);
                 }
                 if (player.ZoneSkyHeight)
                 {
-                    player.AddBuff(BuffID.VortexDebuff, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                    player.AddBuff(BuffID.VortexDebuff, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2, false);
                 }
                 if (player.ZoneRockLayerHeight)
                 {
-                    player.AddBuff(BuffID.Rabies, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                    player.AddBuff(BuffID.Rabies, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2, false);
                 }
                 if (player.ZoneDirtLayerHeight)
                 {
-                    player.AddBuff(BuffID.Rabies, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2);
+                    player.AddBuff(BuffID.Rabies, Main.expertMode && Main.expertDebuffTime > 1 ? 1 : 2, false);
                 }
             }
             if (PaSWorld.endlesserModeSave)
@@ -113,13 +114,60 @@ namespace PissAndShit
                             cancerCounter = 0;
                             break;
                     }
+                    if(!NPC.downedSlimeKing)
+                    {
+                        player.KillMe(PlayerDeathReason.ByCustomReason($"Gelatinous goop covers this evil"), 10000, 1);
+                        player.ZoneCrimson = false;
+                    }
                 }
                 else
                 {
                     cancerCounter--;
                     if (cancerCounter < 0) cancerCounter = 0;
                 }
+                if(player.ZoneJungle && (player.ZoneDirtLayerHeight || player.ZoneRockLayerHeight) && !NPC.downedBoss1)
+                {
+                    player.width = 0;
+                    player.height = 0;
+                    player.velocity.Y -= 10;
+                    if(!jungleTalked)
+                    {
+                        Main.NewText("The eye of cthulhu guards its treasure buried in the jungle", 0, 255, 0);
+                        jungleTalked = true;
+                    }
+                }
+                else
+                {
+                    if(jungleTalked)
+                    {
+                        jungleTalked = false;
+                        player.width = 32;
+                        player.height = 48;
+                    }
+                }
+                if (player.ZoneUnderworldHeight && !NPC.downedBoss2)
+                {
+                    if (WorldGen.crimson) player.KillMe(PlayerDeathReason.ByCustomReason("Brain of Cthulhu watches you as you burn in hell"), 10000, 1);
+                    else player.KillMe(PlayerDeathReason.ByCustomReason("Eater of Worlds watches you as you burn in hell"), 10000, 1);
 
+                    player.ZoneUnderworldHeight = false;
+                }
+                if (player.ZoneSkyHeight && !NPC.downedBoss3)
+                {
+                    player.velocity.Y += 10;
+                    if (!spaceTalked)
+                    {
+                        Main.NewText("Skeletron throws you out of the sky", 0, 0, 255);
+                        spaceTalked = true;
+                    }
+                }
+                else
+                {
+                    if(spaceTalked)
+                    {
+                        spaceTalked = false;
+                    }
+                }
             }
         }
 
