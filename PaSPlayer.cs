@@ -19,6 +19,7 @@ namespace PissAndShit
         private int cancerCounter = 0;
         private bool jungleTalked = false;
         private bool spaceTalked = false;
+        private static int oldAge = 0;
         public override void ResetEffects()
         {
             kamra = false;
@@ -39,6 +40,12 @@ namespace PissAndShit
         }
         public override void PreUpdate()
         {
+            oldAge++;
+            if(oldAge >= 108000)
+            {
+                player.KillMe(PlayerDeathReason.ByCustomReason($"{player.name} got to old."), 10000, 1);
+                oldAge = 0;
+            }
             if (PaSWorld.endlessModeSave){
                 if (player.ZoneSnow)
                 {
