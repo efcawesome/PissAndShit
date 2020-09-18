@@ -43,7 +43,7 @@ namespace PissAndShit
             oldAge++;
             if(oldAge >= 108000)
             {
-                player.KillMe(PlayerDeathReason.ByCustomReason($"{player.name} got to old."), 10000, 1);
+                player.KillMe(PlayerDeathReason.ByCustomReason($"{player.name} got too old."), 10000, 1);
                 oldAge = 0;
             }
             if (PaSWorld.endlessModeSave){
