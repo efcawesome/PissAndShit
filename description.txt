@@ -1,18 +1,12 @@
-The Super Funny High Quality Community Made Content Mod is a collaborative experiment in modding. We gathered over 80 "developers" and attempted to "code" this monstrosity. If this has caught your eye, feel free to download it, althouth the result may not please you
+The Super Funny High Quality Community Made Content Mod is a collaborative experiment in modding. We gathered over 80 "developers" and attempted to "code" this monstrosity. If this has caught your eye, feel free to download it, although the result may not please you.
 
 ~~~ CHANGELOG ~~~
 
 V1.1 - THE RETURN PT1:
 -Endless Mode
 -ENDLESSER MODE
--Oddity NPC
--Oddity Boss
--Death Himself, God of Universes, Extinguisher of Souls, Obliterator of the Foolish boss
--Grand Dad rework
--Mech Biome
--Content from Compendium of Trash
--Mechanical Bee boss
--Balls of Flesh boss
+-Multiple resprites
+-Fun and interesting new items
 -And more!
 
 v1.0.1:
@@ -37,3 +31,10 @@ multibanana, Fargowilta, A44, BabyBlueSheep, Doodle, PuddingPepzi, Randomtrr2, H
 
 yelloface, A Bad Spriter, LolXD87, Amnosia, bruhmomento, AP STP, Apple Stick, Arcri, Arcyanide, BM124, WINGNUT, Bousta, BrimstonelordT, Robber234, lettuce, Cabig, bruoh, Cherry, Chimken Numgets, CreeperSaga95, Croissant, Shawdy's Like A Melody, Red Lee, CC, D4rK3R_66, Daboy, daim, DAYSA, desest scourge, Dumb Sharpener, MuffinsMuffins1, Eh Maybe, Enanodso, Drain, ez veszélyes, Sneaklone, Legofactor, Memora, festivneer, Fixit20153, FreeLancer, gareb3ar1, EpicCrownKing, GitGudWO, gitl, GMA, Gongaga, groove time babey!!!!?!?, It'sSquid, izzyandviolins, CrackJackery, JellyBru, Kevert_321, Krito, Klink, Komotho, KrazyxWolf, LightFleece, Lihi02, Lunkexs, Maskano, R8DIO, Thatonekid415, Mello, Microwaved Sun, monkeee, ee, Totally Not A Hentai PFP, moonburn, Neon, Nerbins, NO, No Me Soy, Nomis, Oli. H, or_not_er, OS, Ranipla, Fefo06aert, PlaceholderName, Plane 'n Boom, potato, energykid, prirp, raspribbon, Real_Lucien_Fielder, Vadim, Rhyex, rish, Roboglitch, Salvati, Sane039, Sans, ScreechamusPrime, Seraph, Sevenberry, sised, SolariumTea, Osiris the Fallen, Sploopo, Ssssstar control 2, bricc, SuccCentral, GoldenCraftVSGames, Gabe///, Walking House, The Prophet, the sin of drunk, TheCherrynuke, Carleah22, Tip, tired, TechTato, a cats, UltraYarida, Universe, Vector, Velboyoyo, Victor16, Voup, THE m, Woodio, Xlaine, Yana, YourAverageCasual, ZefroW, ZETRYJEN, Zote, Pyrossal, BlazenBreaker, PlatinumOre, Emperor OwOpatine, Birb Might, AndreyGhoxt, bob cry, Depressed Chara, Red Lunatic, Bat Mox
 
+~~~ PLANNED FEATURES ~~~
+Hey! You scrolled to the bottom! Good job! Here's some planned things for you!
+-4 new bosses
+-A new biome, the mech biome filled with wonders and horrors
+-A new class built around one of the most powerful weapons in the game
+-Endless mode exclusive items for each boss and miniboss
+-And much more...
