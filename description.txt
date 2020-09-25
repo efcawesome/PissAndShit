@@ -9,6 +9,7 @@ V1.1 - THE RETURN PT1:
 -Fun and interesting new items
 -Boss checklist improvements
 -A few config options
+-Fargo's Mutant mod compatability
 -Some content from the mod "compendium of trash", the successor of PaS which sadly died
 -And more!
 
