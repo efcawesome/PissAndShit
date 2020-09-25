@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.GameInput;
 using Terraria.ModLoader;
 using Terraria.UI;
+using PissAndShit.UI;
 using Terraria.Localization;
 
 namespace PissAndShit
@@ -81,14 +82,11 @@ namespace PissAndShit
             cursorTimer++;
             cursorTimer %= 60;
 
-            cursorTimer++;
-            cursorTimer %= 60;
-
             Rectangle dim = GetFullRectangle(this);
-            MouseState mouse = curMouse;
+            MouseState mouse = DeathHandDamagePanel.curMouse;
             bool mouseOver = mouse.X > dim.X && mouse.X < dim.X + dim.Width && mouse.Y > dim.Y && mouse.Y < dim.Y + dim.Height;
 
-            if (MouseClicked)
+            if (DeathHandDamagePanel.MouseClicked && Parent != null)
             {
                 if (!hasFocus && mouseOver)
                 {
@@ -102,11 +100,11 @@ namespace PissAndShit
                     cursorPosition = text.Length;
                 }
             }
-            else if (curMouse.RightButton == ButtonState.Pressed && oldMouse.RightButton == ButtonState.Released && Parent != null && hasFocus && !mouseOver) {
+            else if (DeathHandDamagePanel.curMouse.RightButton == ButtonState.Pressed && DeathHandDamagePanel.oldMouse.RightButton == ButtonState.Released && Parent != null && hasFocus && !mouseOver) {
                 hasFocus = false;
                 cursorPosition = text.Length;
                 CheckBlockInput();
-            } else if (curMouse.RightButton == ButtonState.Pressed && oldMouse.RightButton == ButtonState.Released && mouseOver) {
+            } else if (DeathHandDamagePanel.curMouse.RightButton == ButtonState.Pressed && DeathHandDamagePanel.oldMouse.RightButton == ButtonState.Released && mouseOver) {
                 if (text.Length > 0) {
                     text = string.Empty;
                     cursorPosition = 0;
@@ -167,7 +165,7 @@ namespace PissAndShit
 
                 if (changed)
                 {
-                
+                    
                 }
 
                 if (KeyTyped(Keys.Enter) || KeyTyped(Keys.Tab) || KeyTyped(Keys.Escape)) {
