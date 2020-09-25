@@ -65,7 +65,7 @@ namespace PissAndShit
 
                 bossChecklist.Call(
                 "AddBoss",
-			    6.5f,
+			    16f,
 			    ModContent.NPCType<NPCs.Bosses.GrandDad>(),
 			    this,
 			    "Grand Dad",
@@ -81,7 +81,7 @@ namespace PissAndShit
 
                 bossChecklist.Call(
                 "AddBoss",
-			    6.5f,
+			    15f,
 			    ModContent.NPCType<NPCs.Bosses.Hive>(),
 			    this,
 			    "Hive",
@@ -94,6 +94,24 @@ namespace PissAndShit
 			    "PissAndShit/NPCs/Bosses/Hive",
 			    "PissAndShit/NPCs/Bosses/Hive_Head_Boss"
                 );
+
+                bossChecklist.Call(
+                "AddBoss",
+			    15.5f,
+			    ModContent.NPCType<NPCs.Bosses.GodSlime>(),
+			    this,
+			    "God Slime",
+                (Func<bool>)(() => PaSWorld.downedGodSlime),
+			    ModContent.ItemType<HeavenlyChalice>(),
+			    0,
+			    new List<int> { ModContent.ItemType<Items.BossBags.GodSlimeTreasureBag>(), ModContent.ItemType<Items.Weapons.GodlyCross>(), ModContent.ItemType<Items.Weapons.HolyShower>(), ModContent.ItemType<Items.Accessories.GodSlimesGel>(), 23 },
+			    "Spawn by using [i:" + ModContent.ItemType<HeavenlyChalice>() + "].",
+			    "God Slime has vibed everybody to death.",
+			    "PissAndShit/NPCs/Bosses/GodSlime_Still",
+			    "PissAndShit/NPCs/Bosses/GodSlime_Head_Boss"
+                );
+
+
             }
 	        FargosMutantMod = ModLoader.GetMod("Fargowiltas");
             if (FargosMutantMod != null)
