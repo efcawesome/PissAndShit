@@ -22,19 +22,19 @@ namespace PissAndShit.UI
             BackgroundPanel.BackgroundColor = new Color(73, 94, 171);
 
             UINumPanel = new UINumberPanel();
-            UINumPanel.SetPadding(0);
+            //UINumPanel.SetPadding(0); // ?????
             UINumPanel.Left.Set(20f, 0f);
             UINumPanel.Top.Set(10f, 0f);
             BackgroundPanel.Append(UINumPanel);
 
             Append(BackgroundPanel);
         }
-        private void HitButtonClicked(UIMouseEvent evt, UIElement listeningElement)
+        /*private void HitButtonClicked(UIMouseEvent evt, UIElement listeningElement)
         {
             int damageToDeal = 0;
             Int32.TryParse(UINumPanel.text, out damageToDeal);
             NPC npc = Main.npc[PaSWorld.deathHandNPCIdentifier];
             npc.life =- 0;
-        }
+        }*/
     }
 }

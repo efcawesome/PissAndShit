@@ -180,7 +180,7 @@ namespace PissAndShit
 
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {
-            Texture2D texture = ModContent.GetTexture("MagicStorage/SearchBar");
+            Texture2D texture = ModContent.GetTexture("PissAndShit/UI/NumPanel");
             CalculatedStyle dim = GetDimensions();
             int innerWidth = (int)dim.Width - 2 * padding;
             int innerHeight = (int)dim.Height - 2 * padding;
