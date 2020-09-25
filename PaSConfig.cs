@@ -26,5 +26,9 @@ namespace PissAndShit
         [Label("Disable zombie speaking enchant table")]
         [Tooltip("Removes zombies having the chance to make horrid screeching noises")]
         public bool disableZombieScreech;
+        [DefaultValue(false)]
+        [Label("Disable boss1 music in endlesser mode")]
+        [Tooltip("Disables the track 'Boss1' from constantly playing while endlesser mode is active")]
+        public bool disableBossOneMusic;
     }
 }

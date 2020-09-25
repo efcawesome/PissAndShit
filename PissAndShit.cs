@@ -4,6 +4,7 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 using System.Collections.Generic;
+using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit
 {
@@ -131,7 +132,7 @@ namespace PissAndShit
 
         public override void UpdateMusic(ref int music, ref MusicPriority priority)
         {
-            if (PaSWorld.endlesserModeSave)
+            if (PaSWorld.endlesserModeSave && !GetInstance<PaSConfig>().disableBossOneMusic)
             {
                 if (Main.myPlayer == -1 || Main.gameMenu || !Main.LocalPlayer.active)
                 {
