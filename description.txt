@@ -2,6 +2,8 @@ The Super Funny High Quality Community Made Content Mod is a collaborative exper
 
 ~~~ CHANGELOG ~~~
 
+V1.1.0.0.0.1 - HOTFIX
+
 V1.1 - THE RETURN PT1:
 -Endless Mode
 -ENDLESSER MODE
