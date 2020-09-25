@@ -8,28 +8,16 @@ using Terraria.GameInput;
 using Terraria.ModLoader;
 using Terraria.UI;
 using PissAndShit.UI;
-using Terraria.Localization;
 
 namespace PissAndShit
 {
     public class UINumberPanel : UIElement
     {
-
-        public static MouseState curMouse;
-        public static MouseState oldMouse;
-        private string defaultText = "0";
-        public static bool MouseClicked
-        {
-            get
-            {
-                return curMouse.LeftButton == ButtonState.Pressed && oldMouse.LeftButton == ButtonState.Released;
-            }
-        }
-
+        private string defaultText = string.Empty;
         private static List<UINumberPanel> searchBars = new List<UINumberPanel>();
 
         private const int padding = 4;
-        public string text = "0";
+        public string text = string.Empty;
         private int cursorPosition = 0;
         private bool hasFocus = false;
         private int cursorTimer = 0;
@@ -55,7 +43,7 @@ namespace PissAndShit
 
         public void Reset()
         {
-            text = "0";
+            text = string.Empty;
             cursorPosition = 0;
             hasFocus = false;
             CheckBlockInput();
@@ -86,7 +74,7 @@ namespace PissAndShit
             MouseState mouse = DeathHandDamagePanel.curMouse;
             bool mouseOver = mouse.X > dim.X && mouse.X < dim.X + dim.Width && mouse.Y > dim.Y && mouse.Y < dim.Y + dim.Height;
 
-            if (DeathHandDamagePanel.MouseClicked && Parent != null)
+            if (DeathHandDamagePanel.MouseClicked && this.Parent != null)
             {
                 if (!hasFocus && mouseOver)
                 {
@@ -100,7 +88,7 @@ namespace PissAndShit
                     cursorPosition = text.Length;
                 }
             }
-            else if (DeathHandDamagePanel.curMouse.RightButton == ButtonState.Pressed && DeathHandDamagePanel.oldMouse.RightButton == ButtonState.Released && Parent != null && hasFocus && !mouseOver) {
+            else if (DeathHandDamagePanel.curMouse.RightButton == ButtonState.Pressed && DeathHandDamagePanel.oldMouse.RightButton == ButtonState.Released && this.Parent != null && hasFocus && !mouseOver) {
                 hasFocus = false;
                 cursorPosition = text.Length;
                 CheckBlockInput();
@@ -165,7 +153,7 @@ namespace PissAndShit
 
                 if (changed)
                 {
-                    
+
                 }
 
                 if (KeyTyped(Keys.Enter) || KeyTyped(Keys.Tab) || KeyTyped(Keys.Escape)) {
