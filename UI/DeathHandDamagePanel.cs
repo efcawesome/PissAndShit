@@ -17,14 +17,16 @@ namespace PissAndShit.UI
 			BackgroundPanel.SetPadding(0);
 			BackgroundPanel.Left.Set(400f, 0f);
 			BackgroundPanel.Top.Set(50f, 0f);
-			BackgroundPanel.Width.Set(60f, 0f);
-			BackgroundPanel.Height.Set(20f, 0f);
+			BackgroundPanel.Width.Set(80f, 0f);
+			BackgroundPanel.Height.Set(40f, 0f);
             BackgroundPanel.BackgroundColor = new Color(73, 94, 171);
 
             UINumPanel = new UINumberPanel();
-            //UINumPanel.SetPadding(0); // ?????
+            UINumPanel.SetPadding(0); // ?????
             UINumPanel.Left.Set(20f, 0f);
             UINumPanel.Top.Set(10f, 0f);
+            UINumPanel.Width.Set(60f, 0f);
+			UINumPanel.Height.Set(35f, 0f);
             BackgroundPanel.Append(UINumPanel);
 
             Append(BackgroundPanel);
