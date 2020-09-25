@@ -161,6 +161,10 @@ namespace PissAndShit
                 priority = MusicPriority.BossHigh;
             }
         }
-        public override void Unload() => bossChecklist = null;
+        public override void Unload()
+        {
+            bossChecklist = null;
+            FargosMutantMod = null;
+        }
     }
 }
