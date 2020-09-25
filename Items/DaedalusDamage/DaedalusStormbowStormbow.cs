@@ -67,10 +67,10 @@ namespace PissAndShit.Items.DaedalusDamage
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.FlareGun, 1);
-            recipe.AddIngredient(ItemID.FlareGun, 1);
-            recipe.AddIngredient(ItemID.Flare, 100);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient(ItemID.DaedalusStormbow, 4);
+            recipe.AddIngredient(ItemID.HolyArrow, 3996);
+            recipe.AddIngredient(ItemID.LunarBar, 14);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
