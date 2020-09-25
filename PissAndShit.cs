@@ -16,7 +16,9 @@ namespace PissAndShit
 	Mod bossChecklist;
 	Mod FargosMutantMod;
     internal DeathHandPanelDraw deathHandPanelDraw;
+    internal DeathHandDamagePanel deathHandDamageUI;
     private UserInterface _deathHandPanelDraw;
+    private UserInterface _deathHandDamageUI;
 
         public override void Load()
         {     
@@ -27,6 +29,10 @@ namespace PissAndShit
                 deathHandPanelDraw.Activate();
                 _deathHandPanelDraw = new UserInterface();
                 _deathHandPanelDraw.SetState(deathHandPanelDraw);
+                deathHandDamageUI = new DeathHandDamagePanel();
+                deathHandDamageUI.Activate();
+                _deathHandDamageUI = new UserInterface();
+                _deathHandDamageUI.SetState(deathHandDamageUI);
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/heavenly_bullshit"), ItemType("GodSlimeMusicBox"), TileType("GodSlimeMusicBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2"), ItemType("YoungDukeMusicBox"), TileType("YoungDukeMusicBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/GRANDDAD"), ItemType("GrandDadMusicBox"), TileType("GrandDadMusicBox"));
@@ -38,6 +44,7 @@ namespace PissAndShit
         public override void UpdateUI(GameTime gameTime)
         {
             _deathHandPanelDraw?.Update(gameTime);
+            _deathHandDamageUI?.Update(gameTime);
         }
         public override void PostSetupContent()
         {
@@ -185,6 +192,7 @@ namespace PissAndShit
                 delegate
                 {
                         _deathHandPanelDraw.Draw(Main.spriteBatch, new GameTime());
+                        _deathHandDamageUI.Draw(Main.spriteBatch, new GameTime());
                         return true;
                 },
                 InterfaceScaleType.UI)
