@@ -8,7 +8,7 @@ V1.1 - THE RETURN PT1:
 -Multiple resprites
 -Fun and interesting new items
 -Boss checklist improvements
--Config for zombie screeching
+-A few config options
 -Some content from the mod "compendium of trash", the successor of PaS which sadly died
 -And more!
 
