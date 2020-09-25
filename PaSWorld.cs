@@ -17,6 +17,8 @@ namespace PissAndShit
         public static bool downedHive = false;
         public static bool endlessModeSave = false;
         public static bool endlesserModeSave = false;
+        public static int deathHandNPCType = 0;
+        public static int deathHandNPCIdentifier = 0;
         public override void Initialize()
         {
             downedGodSlime = false;
@@ -27,6 +29,8 @@ namespace PissAndShit
             downedHive = false;
             endlessModeSave = false;
             endlesserModeSave = false;
+            deathHandNPCType = 0;
+            deathHandNPCIdentifier = 0;
         }
 
         public override TagCompound Save()

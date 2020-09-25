@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using static Terraria.ModLoader.ModContent;
 using Terraria.UI;
 using Microsoft.Xna.Framework;
+using PissAndShit.UI;
 
 
 namespace PissAndShit
@@ -34,7 +35,10 @@ namespace PissAndShit
             }
 
         }
-
+        public override void UpdateUI(GameTime gameTime)
+        {
+            _deathHandPanelDraw?.Update(gameTime);
+        }
         public override void PostSetupContent()
         {
 	    bossChecklist = ModLoader.GetMod("BossChecklist");
