@@ -1,10 +1,12 @@
-using Terraria.ID;
 using PissAndShit.Items.Consumables;
 using System;
 using Terraria;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 using static Terraria.ModLoader.ModContent;
+using Terraria.UI;
+using Microsoft.Xna.Framework;
+
 
 namespace PissAndShit
 {
@@ -12,16 +14,23 @@ namespace PissAndShit
     {
 	Mod bossChecklist;
 	Mod FargosMutantMod;
+    internal DeathHandPanelDraw deathHandPanelDraw;
+    private UserInterface _deathHandPanelDraw;
 
         public override void Load()
         {     
+                
             if (!Main.dedServ)
             {
+                deathHandPanelDraw = new DeathHandPanelDraw();
+                deathHandPanelDraw.Activate();
+                _deathHandPanelDraw = new UserInterface();
+                _deathHandPanelDraw.SetState(deathHandPanelDraw);
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/heavenly_bullshit"), ItemType("GodSlimeMusicBox"), TileType("GodSlimeMusicBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2"), ItemType("YoungDukeMusicBox"), TileType("YoungDukeMusicBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/GRANDDAD"), ItemType("GrandDadMusicBox"), TileType("GrandDadMusicBox"));
-		AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Staying_As_a_1.14"), ItemType("BoozeshrumeMusicBox"), TileType("BoozeshrumeMusicBoxSheet"));
-		AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Young_Dook_Phase_2"), ItemType("YoungDukeMusicBoxTwo"), TileType("YoungDukeMusicBoxTwo"));
+		        AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Staying_As_a_1.14"), ItemType("BoozeshrumeMusicBox"), TileType("BoozeshrumeMusicBoxSheet"));
+		        AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Young_Dook_Phase_2"), ItemType("YoungDukeMusicBoxTwo"), TileType("YoungDukeMusicBoxTwo"));
             }
 
         }
@@ -160,6 +169,23 @@ namespace PissAndShit
                 music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/boss");
                 priority = MusicPriority.BossHigh;
             }
+        }
+
+        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
+        {
+            int mouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
+            if (mouseTextIndex != -1)
+            {
+                layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
+                "The Funny Community Made Content Mod: Now 200% Better!",
+                delegate
+                {
+                        _deathHandPanelDraw.Draw(Main.spriteBatch, new GameTime());
+                        return true;
+                },
+                InterfaceScaleType.UI)
+            );
+        }
         }
         public override void Unload()
         {
