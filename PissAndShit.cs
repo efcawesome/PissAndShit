@@ -118,8 +118,9 @@ namespace PissAndShit
             {
 	        	FargosMutantMod.Call("AddSummon", 5.5f, "PissAndShit", "YoungWorm", (Func<bool>)(() => PaSWorld.downedYoungDuke), 150000);
                 FargosMutantMod.Call("AddSummon", 6.5f, "PissAndShit", "SuspiciousAle", (Func<bool>)(() => PaSWorld.downedBoozeshrume), 300000);
-	        	FargosMutantMod.Call("AddSummon", 17f, "PissAndShit", "HeavenlyChalice", (Func<bool>)(() => PaSWorld.downedGodSlime), 12000000);
-                FargosMutantMod.Call("AddSummon", 18f, "PissAndShit", "HiveSummon", (Func<bool>)(() => PaSWorld.downedHive), 1);
+	        	FargosMutantMod.Call("AddSummon", 16f, "PissAndShit", "HeavenlyChalice", (Func<bool>)(() => PaSWorld.downedGodSlime), 12000000);
+                FargosMutantMod.Call("AddSummon", 15f, "PissAndShit", "HiveSummon", (Func<bool>)(() => PaSWorld.downedHive), 1);
+                FargosMutantMod.Call("AddSummon", 17f, "PissAndShit", "GrandDad", (Func<bool>)(() => PaSWorld.downedGrandDad), 42000000);
 	    }
 	}
 			   
