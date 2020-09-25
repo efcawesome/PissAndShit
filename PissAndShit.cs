@@ -28,11 +28,11 @@ namespace PissAndShit
                 deathHandPanelDraw = new DeathHandPanelDraw();
                 deathHandPanelDraw.Activate();
                 _deathHandPanelDraw = new UserInterface();
-                _deathHandPanelDraw.SetState(deathHandPanelDraw);
+                _deathHandPanelDraw.SetState(null); // change null to DeathHandPanelDraw to open the death hand's main UI on spawn, disabled for a reason
                 deathHandDamageUI = new DeathHandDamagePanel();
                 deathHandDamageUI.Activate();
                 _deathHandDamageUI = new UserInterface();
-                _deathHandDamageUI.SetState(deathHandDamageUI);
+                _deathHandDamageUI.SetState(null); // change null to DeathHandDamageUI to open the death hand damage button's UI on spawn, disabled for a reason
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/heavenly_bullshit"), ItemType("GodSlimeMusicBox"), TileType("GodSlimeMusicBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/YungDook_2"), ItemType("YoungDukeMusicBox"), TileType("YoungDukeMusicBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/GRANDDAD"), ItemType("GrandDadMusicBox"), TileType("GrandDadMusicBox"));
