@@ -24,7 +24,7 @@ namespace PissAndShit.UI
             UINumPanel = new UINumberPanel();
             UINumPanel.SetPadding(0); // ?????
             UINumPanel.Left.Set(20f, 0f);
-            UINumPanel.Top.Set(10f, 0f);
+            UINumPanel.Top.Set(20f, 0f);
             UINumPanel.Width.Set(60f, 0f);
 			UINumPanel.Height.Set(35f, 0f);
             BackgroundPanel.Append(UINumPanel);
