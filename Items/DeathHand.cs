@@ -10,8 +10,7 @@ namespace PissAndShit.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Death's Hand");
-            //Tooltip.SetDefault("'Everything is under your control'\nClick an enemy or Town NPC to get info and control aspects of it");
-            Tooltip.SetDefault("Does nothing yet, but keep this on you.\nWill do something cool in a later update.");
+            Tooltip.SetDefault("'Everything is under your control'\nClick an enemy to get info and control aspects of it");
             Item.staff[item.type] = true;
         }
 
