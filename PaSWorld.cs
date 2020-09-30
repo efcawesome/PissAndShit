@@ -14,13 +14,11 @@ namespace PissAndShit
         public static bool downedYoungDuke = false;
         public static bool downedBoozeshrume = false;
         public static bool downedVendingMachine = false;
-        public static bool downedDeathHimself = false;
         public static bool downedHive = false;
         public static bool endlessModeSave = false;
         public static bool endlesserModeSave = false;
         public static int deathHandNPCType = 0;
         public static int deathHandNPCIdentifier = 0;
-
         public override void Initialize()
         {
             downedGodSlime = false;
@@ -28,7 +26,6 @@ namespace PissAndShit
             downedYoungDuke = false;
             downedBoozeshrume = false;
             downedVendingMachine = false;
-            downedDeathHimself = false;
             downedHive = false;
             endlessModeSave = false;
             endlesserModeSave = false;
@@ -64,11 +61,6 @@ namespace PissAndShit
             if (downedVendingMachine)
             {
                 Downed.Add("vendingMachine");
-            }
-
-            if (downedDeathHimself)
-            {
-                Downed.Add("deathHimself");
             }
 
             if (downedHive)
@@ -110,7 +102,6 @@ namespace PissAndShit
             downedYoungDuke = Downed.Contains("youngDuke");
             downedBoozeshrume = Downed.Contains("boozeshrume");
             downedVendingMachine = Downed.Contains("vendingMachine");
-            downedDeathHimself = Downed.Contains("deathHimself");
             downedHive = Downed.Contains("hive");
             endlessModeSave = Modes.Contains("endlessModeSave");
             endlesserModeSave = Modes.Contains("endlesserModeSave");
@@ -131,7 +122,6 @@ namespace PissAndShit
                 downedBoozeshrume = downedFlags0[3];
                 downedHive = downedFlags0[4];
                 downedVendingMachine = downedFlags0[5];
-                downedDeathHimself = downedFlags0[6];
                 endlessModeSave = miscFlags0[0];
                 endlesserModeSave = miscFlags0[1];
             }
@@ -148,7 +138,6 @@ namespace PissAndShit
             downedFlags0[3] = downedBoozeshrume;
             downedFlags0[4] = downedHive;
             downedFlags0[5] = downedVendingMachine;
-            downedFlags0[6] = downedDeathHimself;
             miscFlags0[0] = endlessModeSave;
             miscFlags0[1] = endlesserModeSave;
 

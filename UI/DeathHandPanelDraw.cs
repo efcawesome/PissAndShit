@@ -24,24 +24,6 @@ namespace PissAndShit.UI
 			BackgroundPanel.Height.Set(400f, 0f);
             BackgroundPanel.BackgroundColor = new Color(73, 94, 171);
 
-            NPCBackgroundPanel = new UIImage(ModContent.GetTexture("PissAndShit/UI/NPCPanelBackground"));
-			NPCBackgroundPanel.SetPadding(0);
-			NPCBackgroundPanel.Left.Set(10f, 0f);
-			NPCBackgroundPanel.Top.Set(60f, 0f);
-			NPCBackgroundPanel.Width.Set(280f, 0f);
-			NPCBackgroundPanel.Height.Set(330f, 0f);
-
-            BackgroundPanel.Append(NPCBackgroundPanel);
-
-            //NPCImage = new UIImage(Main.npcTexture[PaSWorld.deathHandNPCType]);
-
-            //NPCImage.Left.Set(240f, 0f);
-            //NPCImage.Top.Set(20f, 0f);
-            //NPCImage.Width.Set(280f, 0f);
-            //NPCImage.Height.Set(330f, 0f);
-
-            //NPCBackgroundPanel.Append(NPCImage);
-
             Texture2D buttonKillTexture = ModContent.GetTexture("PissAndShit/UI/DeathHandKillButton");
 			UIHoverImageButton killButton = new UIHoverImageButton(buttonKillTexture, "Kill NPC");
 			killButton.Left.Set(10, 0f);

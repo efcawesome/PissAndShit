@@ -3,6 +3,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using PissAndShit.Items.DaedalusDamage;
+using PissAndShit.Projectiles;
+using static Terraria.ModLoader.ModContent;
 
 namespace PissAndShit.NPCs
 {
@@ -31,6 +33,8 @@ namespace PissAndShit.NPCs
         private static bool golemLowLife = false;
         private static bool ancientDragonSpawned = false;
         private static bool lunarEnemySpawn = false;
+        private static int tornadoShootTimer = 0;
+        private static int bubbleShootTimer = 0;
 
         public static bool hardDifficulty = PaSWorld.endlessModeSave;
         public static bool endlesserMode = PaSWorld.endlesserModeSave;
@@ -109,29 +113,32 @@ namespace PissAndShit.NPCs
             switch (npc.type)
             {
                 case NPCID.Zombie:
-                    if (Main.rand.NextBool(2))
+                    if (!GetInstance<PaSConfig>().disableZombieScreech)
                     {
-                        switch (Main.rand.Next(4))
+                        if (Main.rand.NextBool(2))
                         {
-                            case 0:
-                                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/Zombie1").WithPitchVariance(.45f), npc.position);
-                                break;
+                            switch (Main.rand.Next(4))
+                            {
+                                case 0:
+                                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/Zombie1").WithPitchVariance(.45f), npc.position);
+                                    break;
 
-                            case 1:
-                                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/Zombie2").WithPitchVariance(.45f), npc.position);
-                                break;
+                                case 1:
+                                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/Zombie2").WithPitchVariance(.45f), npc.position);
+                                    break;
 
-                            case 2:
-                                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/Zombie3").WithPitchVariance(.45f), npc.position);
-                                break;
+                                case 2:
+                                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/Zombie3").WithPitchVariance(.45f), npc.position);
+                                    break;
 
-                            case 3:
-                                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/Zombie4").WithPitchVariance(.45f), npc.position);
-                                break;
+                                case 3:
+                                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/Zombie4").WithPitchVariance(.45f), npc.position);
+                                    break;
 
-                            default:
-                                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/Zombie5").WithPitchVariance(.45f), npc.position);
-                                break;
+                                default:
+                                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/Zombie5").WithPitchVariance(.45f), npc.position);
+                                    break;
+                            }
                         }
                     }
                     break;
@@ -586,6 +593,32 @@ namespace PissAndShit.NPCs
                                 Projectile.NewProjectile(shootPos1.X + Main.rand.Next(-1000, 1000), shootPos1.Y + Main.rand.Next(-1000, 1000), shootVel1.X, shootVel1.Y, ProjectileID.PhantasmalEye, 50, 5f);
                             }
                             handEyeShootTimer = 0;
+                        }
+                        break;
+                    case NPCID.DukeFishron:
+                        tornadoShootTimer++;
+                        if(tornadoShootTimer >= 300)
+                        {
+                            for(int i = 0; i < 4; i++)
+                            {
+                                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-100, 101), (int)npc.Center.Y + Main.rand.Next(-100, 101), NPCID.PigronCorruption);
+                                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-100, 101), (int)npc.Center.Y + Main.rand.Next(-100, 101), NPCID.PigronCrimson);
+                                NPC.NewNPC((int)npc.Center.X + Main.rand.Next(-100, 101), (int)npc.Center.Y + Main.rand.Next(-100, 101), NPCID.PigronHallow);
+                            }
+                            tornadoShootTimer = 0;
+                        }
+                        if(npc.life <= npc.lifeMax/2)
+                        {
+                            bubbleShootTimer++;
+                            if(bubbleShootTimer >= 600)
+                            {
+                                npc.velocity = Vector2.Zero;
+                                for(int i = 0; i < 120; i++)
+                                {
+                                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Main.rand.Next(-15, 16), Main.rand.Next(-15, 16), ModContent.ProjectileType<DetonatingBubbleProj>(), 60, 5f);
+                                }
+                                bubbleShootTimer = 0;
+                            }
                         }
                         break;
                 }
