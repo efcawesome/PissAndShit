@@ -3,6 +3,8 @@
 
 Welcome to the source code repository for the Piss And Shit Terraria mod (known as `The Super Funny High Quality Community Made Content Mod` in-game)!
 
-Feel free to contribute sprites, code, ideas, music, whatever you have (but submit it in the Discord server first)!
+Feel free to contribute sprites, code, ideas, music, whatever you have (but submit it in the Discord server first) !
+
+Piss and shit mod discord is unfortunatly gone :((((
 
 <sup>made with :ech:, coffee, shitposts and the community</sup>
