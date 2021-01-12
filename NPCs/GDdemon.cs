@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,9 +12,9 @@ namespace PissAndShit.NPCs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Froge");
+            DisplayName.SetDefault("GDdemon");
             NPCID.Sets.MustAlwaysDraw[npc.type] = true;
-            Main.npcFrameCount[npc.type] = 53;
+            Main.npcFrameCount[npc.type] = 1;
         }
 
         public override void SetDefaults()
@@ -28,33 +28,19 @@ namespace PissAndShit.NPCs
             npc.DeathSound = SoundID.NPCHit2;
             npc.value = 60f;
             npc.knockBackResist = 0.5f;
-            npc.aiStyle = 5;
+            npc.aiStyle = 26;
             npc.lavaImmune = true;
-            npc.noGravity = true;
-            npc.noTileCollide = true;
         }
 
-        public override void AI()
+            public override void AI()
         {
-            frameTimer++;
+            npc.rotation += npc.velocity.X * 0.1f;
         }
 
-        public override void FindFrame(int frameHeight)
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            npc.spriteDirection = npc.direction;
-
-            if (frameTimer == 2)
-            {
-                frameNum++;
-                frameTimer = 0;
-            }
-
-            if (frameNum == 53)
-            {
-                frameNum = 0;
-            }
-
-            npc.frame.Y = frameNum * frameHeight;
+            // we would like this npc to spawn in the overworld.
+            return SpawnCondition.OverworldDaySlime.Chance * 0.1f;
         }
     }
 }
